@@ -10,6 +10,9 @@
 		21702BFB1DBFA23B00085FBD /* DebuggIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21702BF11DBFA23B00085FBD /* DebuggIt.framework */; };
 		21702C001DBFA23B00085FBD /* DebuggItTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21702BFF1DBFA23B00085FBD /* DebuggItTests.swift */; };
 		21702C021DBFA23B00085FBD /* DebuggIt.h in Headers */ = {isa = PBXBuildFile; fileRef = 21702BF41DBFA23B00085FBD /* DebuggIt.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		98A4FB731DBFAAF7003F61AD /* DebuggIt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4FB721DBFAAF7003F61AD /* DebuggIt.swift */; };
+		98A4FB751DBFABD1003F61AD /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4FB741DBFABD1003F61AD /* Report.swift */; };
+		98A4FB771DBFB079003F61AD /* ConfigType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4FB761DBFB079003F61AD /* ConfigType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +32,9 @@
 		21702BFA1DBFA23B00085FBD /* DebuggItTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DebuggItTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21702BFF1DBFA23B00085FBD /* DebuggItTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebuggItTests.swift; sourceTree = "<group>"; };
 		21702C011DBFA23B00085FBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98A4FB721DBFAAF7003F61AD /* DebuggIt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebuggIt.swift; sourceTree = "<group>"; };
+		98A4FB741DBFABD1003F61AD /* Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
+		98A4FB761DBFB079003F61AD /* ConfigType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +79,9 @@
 			children = (
 				21702BF41DBFA23B00085FBD /* DebuggIt.h */,
 				21702BF51DBFA23B00085FBD /* Info.plist */,
+				98A4FB721DBFAAF7003F61AD /* DebuggIt.swift */,
+				98A4FB741DBFABD1003F61AD /* Report.swift */,
+				98A4FB761DBFB079003F61AD /* ConfigType.swift */,
 			);
 			path = DebuggIt;
 			sourceTree = "<group>";
@@ -148,6 +157,7 @@
 				TargetAttributes = {
 					21702BF01DBFA23B00085FBD = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 					21702BF91DBFA23B00085FBD = {
@@ -196,6 +206,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98A4FB731DBFAAF7003F61AD /* DebuggIt.swift in Sources */,
+				98A4FB771DBFB079003F61AD /* ConfigType.swift in Sources */,
+				98A4FB751DBFABD1003F61AD /* Report.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +333,7 @@
 		21702C061DBFA23B00085FBD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -331,6 +345,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.moodup.DebuggIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -338,6 +353,7 @@
 		21702C071DBFA23B00085FBD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -356,6 +372,7 @@
 		21702C091DBFA23B00085FBD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = DebuggItTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.moodup.DebuggItTests;
@@ -367,6 +384,7 @@
 		21702C0A1DBFA23B00085FBD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = DebuggItTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.moodup.DebuggItTests;
@@ -394,6 +412,7 @@
 				21702C071DBFA23B00085FBD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		21702C081DBFA23B00085FBD /* Build configuration list for PBXNativeTarget "DebuggItTests" */ = {
 			isa = XCConfigurationList;
@@ -402,6 +421,7 @@
 				21702C0A1DBFA23B00085FBD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
