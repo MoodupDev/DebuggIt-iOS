@@ -73,11 +73,9 @@ class BitbucketApiClient: ApiClientProtocol {
             "kind": kind
         ]
         
-        var headers : [String : String] = [:]
-        
-        if let accessToken = accessToken {
-            headers["Authorization"] = authorizationHeader(token: accessToken)
-        }
+        let headers : HTTPHeaders = [
+            "Authorization": authorizationHeader(token: accessToken ?? "")
+        ]
         
         Alamofire.request(Constants.Bitbucket.issuesUrl, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseString { (response) in
             switch response.result {
