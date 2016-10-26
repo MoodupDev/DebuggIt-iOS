@@ -45,7 +45,7 @@ class GitHubApiClient: ApiClientProtocol {
             headers["X-Github-OTP"] = twoFactorCode
         }
         
-        Alamofire.request(Constants.Bitbucket.authorizeUrl, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseString { (response) in
+        Alamofire.request(Constants.GitHub.authorizeUrl, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseString { (response) in
             switch response.result {
             case .success(let value):
                 if response.isSuccess() {
@@ -80,7 +80,7 @@ class GitHubApiClient: ApiClientProtocol {
             "Authorization" : authorizationHeader(prefix: "token", token: accessToken ?? "")
         ]
         
-        Alamofire.request(Constants.Bitbucket.authorizeUrl, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseString { (response) in
+        Alamofire.request(Constants.Bitbucket.authorizeUrl, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseString { (response) in
             switch response.result {
             case .success(let value):
                 if response.isSuccess() {
