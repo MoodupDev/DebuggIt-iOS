@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2196AC0E1DC0C1B1003A7A67 /* String+Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196AC0D1DC0C1B1003A7A67 /* String+Base64.swift */; };
+		2196AC101DC0C203003A7A67 /* ApiClientProtocol+Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196AC0F1DC0C203003A7A67 /* ApiClientProtocol+Headers.swift */; };
+		2196AC121DC0C23F003A7A67 /* DataResponse+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196AC111DC0C23F003A7A67 /* DataResponse+Validation.swift */; };
 		98F184A41DC0B906001CB560 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184A31DC0B906001CB560 /* AppDelegate.swift */; };
 		98F184A61DC0B906001CB560 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184A51DC0B906001CB560 /* ViewController.swift */; };
 		98F184A91DC0B906001CB560 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98F184A71DC0B906001CB560 /* Main.storyboard */; };
@@ -50,6 +53,9 @@
 /* Begin PBXFileReference section */
 		07E65FF20F8DF49AF438DCE8 /* Pods-DebugItTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugItTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DebugItTests/Pods-DebugItTests.release.xcconfig"; sourceTree = "<group>"; };
 		0B546534046DD8BF92BF6A0A /* Pods_DebugItTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DebugItTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2196AC0D1DC0C1B1003A7A67 /* String+Base64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Base64.swift"; sourceTree = "<group>"; };
+		2196AC0F1DC0C203003A7A67 /* ApiClientProtocol+Headers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ApiClientProtocol+Headers.swift"; sourceTree = "<group>"; };
+		2196AC111DC0C23F003A7A67 /* DataResponse+Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataResponse+Validation.swift"; sourceTree = "<group>"; };
 		41EDDC6575F58C14F85B7D2F /* Pods-DebugItUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugItUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DebugItUITests/Pods-DebugItUITests.release.xcconfig"; sourceTree = "<group>"; };
 		953A63AF08C46A826FC22D7D /* Pods-DebugIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugIt.release.xcconfig"; path = "Pods/Target Support Files/Pods-DebugIt/Pods-DebugIt.release.xcconfig"; sourceTree = "<group>"; };
 		98F184A01DC0B906001CB560 /* DebugIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DebugIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +121,9 @@
 			isa = PBXGroup;
 			children = (
 				98F184F01DC0BAB8001CB560 /* Constants.swift */,
+				2196AC0D1DC0C1B1003A7A67 /* String+Base64.swift */,
+				2196AC0F1DC0C203003A7A67 /* ApiClientProtocol+Headers.swift */,
+				2196AC111DC0C23F003A7A67 /* DataResponse+Validation.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -505,7 +514,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2196AC101DC0C203003A7A67 /* ApiClientProtocol+Headers.swift in Sources */,
 				98F184F91DC0BAB8001CB560 /* GitHubApiClient.swift in Sources */,
+				2196AC0E1DC0C1B1003A7A67 /* String+Base64.swift in Sources */,
 				98F184F41DC0BAB8001CB560 /* ApiClientProtocol.swift in Sources */,
 				98F184F51DC0BAB8001CB560 /* BitbucketApiClient.swift in Sources */,
 				98F184DB1DC0BA11001CB560 /* DebuggIt.swift in Sources */,
@@ -516,6 +527,7 @@
 				98F184F71DC0BAB8001CB560 /* Constants.swift in Sources */,
 				98F184A41DC0B906001CB560 /* AppDelegate.swift in Sources */,
 				98F184DE1DC0BA11001CB560 /* Report.swift in Sources */,
+				2196AC121DC0C23F003A7A67 /* DataResponse+Validation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

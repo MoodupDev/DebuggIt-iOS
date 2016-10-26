@@ -6,6 +6,8 @@
 //  Copyright © 2016 Mood Up. All rights reserved.
 //
 
+import Alamofire
+
 class BitbucketApiClient: ApiClientProtocol {
     
     // MARK: Properties
@@ -27,15 +29,102 @@ class BitbucketApiClient: ApiClientProtocol {
     
     // MARK: ApiClient
     
-    func login(email: String, password: String, successBlock: (String) -> (), errorBlock: (Error?) -> ()) {
+    func login(
+        email: String,
+        password: String,
+        successBlock: @escaping (String) -> (),
+        errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
+        
+        let params: Parameters = [
+            "grant_type" : "password",
+            "username" : email,
+            "password" : password
+        ]
+        
+        let headers = [
+            "Authorization": authorizationHeader(username: clientId, password: clientSecret)
+        ]
+        
+        Alamofire.request(Constants.Bitbucket.authorizeUrl, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).validate().responseString { (response) in
+            switch response.result {
+            case .success(let value):
+                if response.isSuccess() {
+                    successBlock(value)
+                } else {
+                    errorBlock(response.responseCode, value)
+                }
+            case .failure(let error as AFError):
+                errorBlock(nil, error.errorDescription)
+            default:
+                errorBlock(nil, nil)
+                
+            }
+            
+        }
         
     }
     
-    func addIssue(title: String, content: String, priority: String, kind: String, successBlock: (String) -> (), errorBlock: (Error?) -> ()) {
+    func addIssue(title: String, content: String, priority: String, kind: String, successBlock: @escaping (String) -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
+        
+        let params: Parameters = [
+            "title": title,
+            "content": content,
+            "priority": priority,
+            "kind": kind
+        ]
+        
+        var headers : [String : String] = [:]
+        
+        if let accessToken = accessToken {
+            headers["Authorization"] = authorizationHeader(token: accessToken)
+        }
+        
+        Alamofire.request(Constants.Bitbucket.issuesUrl, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseString { (response) in
+            switch response.result {
+            case .success(let value):
+                if response.isSuccess() {
+                    successBlock(value)
+                } else {
+                    errorBlock(response.responseCode, value)
+                }
+            case .failure(let error as AFError):
+                errorBlock(nil, error.errorDescription)
+            default:
+                errorBlock(nil, nil)
+                
+            }
+        }
         
     }
     
-    func refreshToken(token: String, successBlock: (String) -> (), errorBlock: (Error?) -> ()) {
+    func refreshToken(token: String, successBlock: @escaping (String) -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
+        
+        let params: Parameters = [
+            "grant_type": "refresh_token",
+            "refresh_token": token
+        ]
+        
+        var headers : [String: String] = [:]
+        
+        if let accessToken = accessToken {
+            headers["Authorization"] = authorizationHeader(token: accessToken)
+        }
+        
+        Alamofire.request(Constants.Bitbucket.issuesUrl, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseString { (response) in
+            switch response.result {
+            case .success(let value):
+                if response.isSuccess() {
+                    successBlock(value)
+                } else {
+                    errorBlock(response.responseCode, value)
+                }
+            case .failure(let error as AFError):
+                errorBlock(nil, error.errorDescription)
+            default:
+                errorBlock(nil, nil)
+                
+            }
+        }
         
     }
 }
