@@ -9,13 +9,11 @@
 import UIKit
 
 class DebuggItButton: UIView {
-
-    @IBOutlet weak var button: UIImageView!
-    /*
-    // Only override draw() if you perform custom drawing.
+    
+    /*// Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-        // Drawing code
+        
     }
     */
 

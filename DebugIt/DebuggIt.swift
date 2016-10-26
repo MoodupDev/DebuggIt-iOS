@@ -8,17 +8,6 @@
 
 import UIKit
 
-extension Bundle {
-    static func loadView<T>(fromNib name:String, withType type: T.Type) -> T {
-        if let view = Bundle.main.loadNibNamed(name, owner: nil, options: nil)?.first as? T {
-            return view
-        }
-        
-        fatalError("Waddup")
-    }
-}
-
-
 class DebuggIt {
     
     static let sharedInstance = DebuggIt()
@@ -31,7 +20,7 @@ class DebuggIt {
     private var isInitialized:Bool = false
     private var shouldPostInitializedEvent:Bool = true
     
-    init() {
+    private init() {
     
     }
     
@@ -70,16 +59,34 @@ class DebuggIt {
             //todo add version checking
             
             self.currentViewController = viewController
-            registerShakeDetector()
             
+            registerShakeDetector()
+            addReportButton()
             
             return true
         }
     }
     
     private func addReportButton() {
-        let debuggItButton = Bundle.loadView(fromNib: "DebuggItButton", withType: DebuggItButton.self)
+        let debuggItButton = Bundle.main.loadNibNamed("DebuggItButton", owner: nil, options: nil)?[0] as! UIView
+        debuggItButton.translatesAutoresizingMaskIntoConstraints = false
+        
         self.currentViewController?.view.addSubview(debuggItButton)
+        addConstraints(forView: debuggItButton)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action:"showReportDialog:")
+        debuggItButton.isUserInteractionEnabled = true
+        debuggItButton.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    private func addConstraints(forView : UIView) {
+        self.currentViewController?.view.addConstraint(NSLayoutConstraint(item: forView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: self.currentViewController?.view, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: 0.0))
+        
+        self.currentViewController?.view.addConstraint(NSLayoutConstraint(item: forView, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: self.currentViewController?.view, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: -forView.frame.width))
+    }
+    
+    func showReportDialog(_ recognizer: UITapGestureRecognizer) {
+        print("I am showing byoch")
     }
     
     private func registerShakeDetector() {
