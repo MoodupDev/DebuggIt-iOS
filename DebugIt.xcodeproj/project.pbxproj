@@ -22,7 +22,6 @@
 		98F184F41DC0BAB8001CB560 /* ApiClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184ED1DC0BAB8001CB560 /* ApiClientProtocol.swift */; };
 		98F184F51DC0BAB8001CB560 /* BitbucketApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184EE1DC0BAB8001CB560 /* BitbucketApiClient.swift */; };
 		98F184F71DC0BAB8001CB560 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184F01DC0BAB8001CB560 /* Constants.swift */; };
-		98F184F81DC0BAB8001CB560 /* DebuggItError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184F11DC0BAB8001CB560 /* DebuggItError.swift */; };
 		98F184F91DC0BAB8001CB560 /* GitHubApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184F21DC0BAB8001CB560 /* GitHubApiClient.swift */; };
 		98F184FA1DC0BAB8001CB560 /* JiraApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184F31DC0BAB8001CB560 /* JiraApiClient.swift */; };
 		98F184FE1DC0BB09001CB560 /* ConfigType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184FD1DC0BB09001CB560 /* ConfigType.swift */; };
@@ -74,7 +73,6 @@
 		98F184ED1DC0BAB8001CB560 /* ApiClientProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClientProtocol.swift; sourceTree = "<group>"; };
 		98F184EE1DC0BAB8001CB560 /* BitbucketApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitbucketApiClient.swift; sourceTree = "<group>"; };
 		98F184F01DC0BAB8001CB560 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		98F184F11DC0BAB8001CB560 /* DebuggItError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebuggItError.swift; sourceTree = "<group>"; };
 		98F184F21DC0BAB8001CB560 /* GitHubApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubApiClient.swift; sourceTree = "<group>"; };
 		98F184F31DC0BAB8001CB560 /* JiraApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JiraApiClient.swift; sourceTree = "<group>"; };
 		98F184FD1DC0BB09001CB560 /* ConfigType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigType.swift; sourceTree = "<group>"; };
@@ -113,6 +111,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2196AC0A1DC0BE91003A7A67 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				98F184F01DC0BAB8001CB560 /* Constants.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		2196AC0B1DC0BE98003A7A67 /* Backend */ = {
+			isa = PBXGroup;
+			children = (
+				98F184ED1DC0BAB8001CB560 /* ApiClientProtocol.swift */,
+				2196AC0C1DC0BF78003A7A67 /* ApiClients */,
+			);
+			path = Backend;
+			sourceTree = "<group>";
+		};
+		2196AC0C1DC0BF78003A7A67 /* ApiClients */ = {
+			isa = PBXGroup;
+			children = (
+				98F184F31DC0BAB8001CB560 /* JiraApiClient.swift */,
+				98F184EE1DC0BAB8001CB560 /* BitbucketApiClient.swift */,
+				98F184F21DC0BAB8001CB560 /* GitHubApiClient.swift */,
+			);
+			path = ApiClients;
+			sourceTree = "<group>";
+		};
 		98F184971DC0B906001CB560 = {
 			isa = PBXGroup;
 			children = (
@@ -138,12 +163,8 @@
 		98F184A21DC0B906001CB560 /* DebugIt */ = {
 			isa = PBXGroup;
 			children = (
-				98F184ED1DC0BAB8001CB560 /* ApiClientProtocol.swift */,
-				98F184EE1DC0BAB8001CB560 /* BitbucketApiClient.swift */,
-				98F184F01DC0BAB8001CB560 /* Constants.swift */,
-				98F184F11DC0BAB8001CB560 /* DebuggItError.swift */,
-				98F184F21DC0BAB8001CB560 /* GitHubApiClient.swift */,
-				98F184F31DC0BAB8001CB560 /* JiraApiClient.swift */,
+				2196AC0B1DC0BE98003A7A67 /* Backend */,
+				2196AC0A1DC0BE91003A7A67 /* Helpers */,
 				98F184DF1DC0BA29001CB560 /* logo_bug_small.png */,
 				98F184D61DC0BA11001CB560 /* DebuggIt.swift */,
 				98F184D71DC0BA11001CB560 /* DebuggItButton.swift */,
@@ -489,7 +510,6 @@
 				98F184F51DC0BAB8001CB560 /* BitbucketApiClient.swift in Sources */,
 				98F184DB1DC0BA11001CB560 /* DebuggIt.swift in Sources */,
 				98F184DC1DC0BA11001CB560 /* DebuggItButton.swift in Sources */,
-				98F184F81DC0BAB8001CB560 /* DebuggItError.swift in Sources */,
 				98F184A61DC0B906001CB560 /* ViewController.swift in Sources */,
 				98F184FE1DC0BB09001CB560 /* ConfigType.swift in Sources */,
 				98F184FA1DC0BAB8001CB560 /* JiraApiClient.swift in Sources */,
