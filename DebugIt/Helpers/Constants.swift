@@ -21,4 +21,9 @@ struct Constants {
         
         static let jsonFormat = "application/vnd.github.v3+json"
     }
+    
+    struct Jira {
+        static let configurationUrl = "https://%s/rest/api/2/configuration"
+        static let issuesUrl = "https://%s/rest/api/2/issue"
+    }
 }
