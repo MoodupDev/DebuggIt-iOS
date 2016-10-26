@@ -79,7 +79,7 @@ class JiraApiClient: ApiClientProtocol {
         
         let url = checkUrlProtocol(url: String(format: Constants.Jira.issuesUrl, host))
         
-        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseString { (response) in
+        Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseString { (response) in
             switch response.result {
             case .success(let value):
                 if response.isSuccess() {
