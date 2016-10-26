@@ -40,6 +40,8 @@ class JiraApiClient: ApiClientProtocol {
             switch response.result {
             case .success(let value):
                 if response.isSuccess() {
+                    self.username = email
+                    self.password = password
                     successBlock(value)
                 } else {
                     errorBlock(response.responseCode, value)
