@@ -14,7 +14,7 @@ class DebuggIt {
     let debuggItButton = DebuggItButton.instantiateFromNib()
     
     private var currentViewController:UIViewController?
-    private var apiClient:ApiClientProtocol?
+    var apiClient:ApiClientProtocol?
     
     private var report:Report = Report()
     private var configType:ConfigType = ConfigType.bitbucket
@@ -59,6 +59,10 @@ class DebuggIt {
             
             registerShakeDetector()
             addReportButton()
+            
+            let modal = LoginModalViewController()
+            modal.modalPresentationStyle = .overCurrentContext
+            viewController.present(modal, animated: true, completion: nil)
             
             return true
         }
