@@ -40,13 +40,9 @@ class DebuggIt {
         initDebugIt(configType: ConfigType.bitbucket)
     }
     
-    func initJira(host:String, projectKey:String, usesHttps:Bool) {
+    func initJira(host:String, projectKey:String, usesHttps:Bool = true) {
         self.apiClient = JiraApiClient(host: host, projectKey: projectKey, usesHttps: usesHttps)
         initDebugIt(configType: ConfigType.jira)
-    }
-    
-    func initJira(host:String, projectKey:String) {
-        initJira(host: host, projectKey: projectKey, usesHttps: true)
     }
     
     func initGithub(repoSlug:String, accountName:String) {
