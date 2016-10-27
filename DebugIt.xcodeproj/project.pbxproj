@@ -314,6 +314,7 @@
 				TargetAttributes = {
 					98F1849F1DC0B906001CB560 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 98YJ95K3V9;
 						ProvisioningStyle = Automatic;
 					};
 					98F184B31DC0B906001CB560 = {
@@ -608,6 +609,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -658,6 +660,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -687,7 +690,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CCAE263CF4F7F84E5EFCC41A /* Pods-DebugIt.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 98YJ95K3V9;
 				INFOPLIST_FILE = DebugIt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.moodup.DebugIt;
@@ -700,7 +705,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 953A63AF08C46A826FC22D7D /* Pods-DebugIt.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 98YJ95K3V9;
 				INFOPLIST_FILE = DebugIt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.moodup.DebugIt;
