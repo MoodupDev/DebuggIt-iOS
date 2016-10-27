@@ -11,6 +11,7 @@ import UIKit
 class DebuggIt {
     
     static let sharedInstance = DebuggIt()
+    let debuggItButton = DebuggItButton.instantiateFromNib()
     
     private var currentViewController:UIViewController?
     private var apiClient:ApiClientProtocol?
@@ -64,13 +65,13 @@ class DebuggIt {
     }
     
     private func addReportButton() {
-        let debuggItButton = Bundle.main.loadNibNamed("DebuggItButton", owner: nil, options: nil)?[0] as! UIView
+        debuggItButton.clipsToBounds = true
         debuggItButton.translatesAutoresizingMaskIntoConstraints = false
         
         self.currentViewController?.view.addSubview(debuggItButton)
         addConstraints(forView: debuggItButton)
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action:"showReportDialog:")
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(self.showReportDialog(_:)))
         debuggItButton.isUserInteractionEnabled = true
         debuggItButton.addGestureRecognizer(tapGestureRecognizer)
     }
@@ -78,11 +79,11 @@ class DebuggIt {
     private func addConstraints(forView : UIView) {
         self.currentViewController?.view.addConstraint(NSLayoutConstraint(item: forView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: self.currentViewController?.view, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: 0.0))
         
-        self.currentViewController?.view.addConstraint(NSLayoutConstraint(item: forView, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: self.currentViewController?.view, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: -forView.frame.width))
+        self.currentViewController?.view.addConstraint(NSLayoutConstraint(item: forView, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: self.currentViewController?.view, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 0.0))
     }
     
-    func showReportDialog(_ recognizer: UITapGestureRecognizer) {
-        print("I am showing byoch")
+    @objc func showReportDialog(_ recognizer: UITapGestureRecognizer) {
+        //todo show dialog
     }
     
     private func registerShakeDetector() {
