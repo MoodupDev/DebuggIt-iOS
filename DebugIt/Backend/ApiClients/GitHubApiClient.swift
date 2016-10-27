@@ -20,7 +20,7 @@ class GitHubApiClient: ApiClientProtocol {
     // MARK: Initialization
     
     init(repoSlug: String, accountName: String) {
-        self.repoSlug = repoSlug
+        self.repoSlug = repoSlug.lowercased()
         self.accountName = accountName
     }
     

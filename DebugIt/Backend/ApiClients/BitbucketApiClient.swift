@@ -23,7 +23,7 @@ class BitbucketApiClient: ApiClientProtocol {
     init(clientId: String, clientSecret: String, repoSlug: String, accountName: String) {
         self.clientId = clientId
         self.clientSecret = clientSecret
-        self.repoSlug = repoSlug
+        self.repoSlug = repoSlug.lowercased()
         self.accountName = accountName
     }
     
