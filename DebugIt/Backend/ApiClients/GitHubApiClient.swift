@@ -107,6 +107,6 @@ class GitHubApiClient: ApiClientProtocol {
     
     private func storeToken(from jsonString: String) {
         let json = JSON.parse(jsonString)
-        self.accessToken = json["access_token"].stringValue
+        self.accessToken = json["token"].stringValue
     }
 }
