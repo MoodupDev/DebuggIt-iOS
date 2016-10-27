@@ -23,6 +23,8 @@ class GitHubApiClient: ApiClientProtocol {
     init(repoSlug: String, accountName: String) {
         self.repoSlug = repoSlug.lowercased()
         self.accountName = accountName
+        
+        loadTokens()
     }
     
     // MARK: ApiClient
@@ -44,13 +46,14 @@ class GitHubApiClient: ApiClientProtocol {
         
         if let twoFactorCode = twoFactorAuthCode {
             headers["X-Github-OTP"] = twoFactorCode
+            
         }
         
         Alamofire.request(Constants.GitHub.authorizeUrl, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseString { (response) in
             switch response.result {
             case .success(let value):
                 if response.isSuccess() {
-                    self.storeToken(from: value)
+                    self.storeTokens(from: value)
                     successBlock(value)
                 } else {
                     errorBlock(response.responseCode, value)
@@ -105,8 +108,23 @@ class GitHubApiClient: ApiClientProtocol {
         // do nothing
     }
     
-    private func storeToken(from jsonString: String) {
+    private func storeTokens(from jsonString: String) {
         let json = JSON.parse(jsonString)
         self.accessToken = json["token"].stringValue
+        
+        let defaults = UserDefaults.standard
+        defaults.set(self.accessToken, forKey: Constants.GitHub.accessTokenKey)
+        defaults.set(self.twoFactorAuthCode, forKey: Constants.GitHub.twoFactorAuthCodeKey)
+        defaults.synchronize()
+    }
+    
+    private func loadTokens() {
+        let defaults = UserDefaults.standard
+        if let accessToken = defaults.string(forKey: Constants.GitHub.accessTokenKey) {
+            self.accessToken = accessToken
+        }
+        if let accessToken = defaults.string(forKey: Constants.GitHub.accessTokenKey) {
+            self.accessToken = accessToken
+        }
     }
 }

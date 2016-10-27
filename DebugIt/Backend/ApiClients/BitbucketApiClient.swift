@@ -27,6 +27,8 @@ class BitbucketApiClient: ApiClientProtocol {
         self.clientSecret = clientSecret
         self.repoSlug = repoSlug.lowercased()
         self.accountName = accountName
+        
+        loadTokens()
     }
     
     // MARK: ApiClient
@@ -134,5 +136,20 @@ class BitbucketApiClient: ApiClientProtocol {
         let json = JSON.parse(jsonString)
         self.accessToken = json["access_token"].stringValue
         self.refreshToken = json["refresh_token"].stringValue
+        
+        let defaults = UserDefaults.standard
+        defaults.set(self.accessToken, forKey: Constants.Bitbucket.accessTokenKey)
+        defaults.set(self.refreshToken, forKey: Constants.Bitbucket.refreshTokenKey)
+        defaults.synchronize()
+    }
+    
+    private func loadTokens() {
+        let defaults = UserDefaults.standard
+        if let accessToken = defaults.string(forKey: Constants.Bitbucket.accessTokenKey) {
+            self.accessToken = accessToken
+        }
+        if let refreshToken = defaults.string(forKey: Constants.Bitbucket.refreshTokenKey) {
+            self.refreshToken = refreshToken
+        }
     }
 }

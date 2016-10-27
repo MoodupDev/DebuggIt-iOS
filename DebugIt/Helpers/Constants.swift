@@ -11,21 +11,46 @@ struct Constants {
     static let debuggItUrl = "http://debugg.it"
     
     struct Bitbucket {
+        
+        // MARK: URLs
+        
         static let authorizeUrl = "https://bitbucket.org/site/oauth2/access_token"
         static let issuesUrl = "https://api.bitbucket.org/1.0/repositories/%@/%@/issues"
+        
+        // MARK: UserDefault keys
+        
+        static let accessTokenKey = "bitbucket_access_token"
+        static let refreshTokenKey = "bitbucket_refresh_token"
     }
     
     struct GitHub {
+        
+        // MARK: URLs
+        
         static let authorizeUrl = "https://api.github.com/authorizations"
         static let issuesUrl = "https://api.github.com/repos/%@/%@/issues"
         
-        static let jsonFormat = "application/vnd.github.v3+json"
+        // MARK: UserDefault keys
         
+        static let accessTokenKey = "github_access_token"
+        static let twoFactorAuthCodeKey = "github_2fa_code"
+        
+        // MARK: API spec
+        
+        static let jsonFormat = "application/vnd.github.v3+json"
         static let note = "debugg.it library"
     }
     
     struct Jira {
+        
+        // MARK: URLs
+        
         static let configurationUrl = "https://%@/rest/api/2/configuration"
         static let issuesUrl = "https://%@/rest/api/2/issue"
+        
+        // MARK: UserDefault keys
+        
+        static let usernameKey = "jira_username"
+        static let passwordKey = "jira_password"
     }
 }
