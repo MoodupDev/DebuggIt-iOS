@@ -7,6 +7,7 @@
 //
 
 import Alamofire
+import SwiftyJSON
 
 class GitHubApiClient: ApiClientProtocol {
     
@@ -49,6 +50,7 @@ class GitHubApiClient: ApiClientProtocol {
             switch response.result {
             case .success(let value):
                 if response.isSuccess() {
+                    self.storeToken(from: value)
                     successBlock(value)
                 } else {
                     errorBlock(response.responseCode, value)
@@ -101,5 +103,10 @@ class GitHubApiClient: ApiClientProtocol {
     
     func refreshToken(token: String, successBlock: @escaping (String) -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
         // do nothing
+    }
+    
+    private func storeToken(from jsonString: String) {
+        let json = JSON.parse(jsonString)
+        self.accessToken = json["access_token"].stringValue
     }
 }

@@ -40,8 +40,7 @@ class JiraApiClient: ApiClientProtocol {
             switch response.result {
             case .success(let value):
                 if response.isSuccess() {
-                    self.username = email
-                    self.password = password
+                    self.storeUserCredentials(email: email, password: password)
                     successBlock(value)
                 } else {
                     errorBlock(response.responseCode, value)
@@ -110,5 +109,10 @@ class JiraApiClient: ApiClientProtocol {
             return url.replaceFirst(replace: "s", with: "")
         }
         return url
+    }
+    
+    private func storeUserCredentials(email: String, password: String) {
+        self.username = email
+        self.password = password
     }
 }

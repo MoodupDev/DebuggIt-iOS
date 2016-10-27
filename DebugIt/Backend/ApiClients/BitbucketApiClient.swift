@@ -7,6 +7,7 @@
 //
 
 import Alamofire
+import SwiftyJSON
 
 class BitbucketApiClient: ApiClientProtocol {
     
@@ -17,6 +18,7 @@ class BitbucketApiClient: ApiClientProtocol {
     var repoSlug: String
     var accountName: String
     var accessToken: String?
+    var refreshToken: String?
     
     // MARK: Initialization
     
@@ -49,6 +51,7 @@ class BitbucketApiClient: ApiClientProtocol {
             switch response.result {
             case .success(let value):
                 if response.isSuccess() {
+                    self.storeTokens(from: value)
                     successBlock(value)
                 } else {
                     errorBlock(response.responseCode, value)
@@ -112,6 +115,7 @@ class BitbucketApiClient: ApiClientProtocol {
             switch response.result {
             case .success(let value):
                 if response.isSuccess() {
+                    self.storeTokens(from: value)
                     successBlock(value)
                 } else {
                     errorBlock(response.responseCode, value)
@@ -124,5 +128,11 @@ class BitbucketApiClient: ApiClientProtocol {
             }
         }
         
+    }
+    
+    private func storeTokens(from jsonString: String) {
+        let json = JSON.parse(jsonString)
+        self.accessToken = json["access_token"].stringValue
+        self.refreshToken = json["refresh_token"].stringValue
     }
 }
