@@ -24,6 +24,8 @@ class JiraApiClient: ApiClientProtocol {
         self.host = host
         self.projectKey = projectKey
         self.usesHttps = usesHttps
+        
+        loadUserCredentials()
     }
     
     // MARK: ApiClient
@@ -114,5 +116,20 @@ class JiraApiClient: ApiClientProtocol {
     private func storeUserCredentials(email: String, password: String) {
         self.username = email
         self.password = password
+        
+        let defaults = UserDefaults.standard
+        defaults.set(self.username, forKey: Constants.Jira.usernameKey)
+        defaults.set(self.password, forKey: Constants.Jira.passwordKey)
+        defaults.synchronize()
+    }
+    
+    private func loadUserCredentials() {
+        let defaults = UserDefaults.standard
+        if let username = defaults.string(forKey: Constants.Jira.usernameKey) {
+            self.username = username
+        }
+        if let password = defaults.string(forKey: Constants.Jira.passwordKey) {
+            self.password = password
+        }
     }
 }
