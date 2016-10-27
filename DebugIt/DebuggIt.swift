@@ -22,7 +22,7 @@ class DebuggIt {
     private var shouldPostInitializedEvent:Bool = true
     
     private init() {
-    
+        
     }
     
     func initBitbucket(clientId:String, clientSecret:String, repoSlug:String, accountName:String) {
@@ -67,13 +67,16 @@ class DebuggIt {
     private func addReportButton() {
         debuggItButton.clipsToBounds = true
         debuggItButton.translatesAutoresizingMaskIntoConstraints = false
+        debuggItButton.isUserInteractionEnabled = true
         
         self.currentViewController?.view.addSubview(debuggItButton)
         addConstraints(forView: debuggItButton)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(self.showReportDialog(_:)))
-        debuggItButton.isUserInteractionEnabled = true
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action:#selector(self.moveButton(_:)))
+        
         debuggItButton.addGestureRecognizer(tapGestureRecognizer)
+        debuggItButton.addGestureRecognizer(panGestureRecognizer)
     }
     
     private func addConstraints(forView : UIView) {
@@ -84,6 +87,19 @@ class DebuggIt {
     
     @objc func showReportDialog(_ recognizer: UITapGestureRecognizer) {
         //todo show dialog
+    }
+    
+    @objc func moveButton(_ recognizer: UIPanGestureRecognizer) {
+        if recognizer.state == .began || recognizer.state == .changed {
+            if let view = recognizer.view {
+                let translation = recognizer.translation(in: view)
+                if(translation.y < 0.0 && view.center.y > (view.frame.height / 2)
+                    || translation.y >= 0.0 && view.center.y < ((self.currentViewController?.view.frame.maxY)! - (view.frame.height/2))) {
+                    view.center = CGPoint(x: view.center.x, y: view.center.y + translation.y)
+                    recognizer.setTranslation(CGPoint.zero, in: view)
+                }
+            }
+        }
     }
     
     private func registerShakeDetector() {
