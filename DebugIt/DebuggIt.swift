@@ -60,10 +60,6 @@ class DebuggIt {
             registerShakeDetector()
             addReportButton()
             
-            let modal = LoginModalViewController()
-            modal.modalPresentationStyle = .overCurrentContext
-            viewController.present(modal, animated: true, completion: nil)
-            
             return true
         }
     }
@@ -90,7 +86,9 @@ class DebuggIt {
     }
     
     @objc func showReportDialog(_ recognizer: UITapGestureRecognizer) {
-        //todo show dialog
+        let modal = LoginModalViewController()
+        modal.modalPresentationStyle = .overCurrentContext
+        self.currentViewController?.present(modal, animated: true, completion: nil)
     }
     
     @objc func moveButton(_ recognizer: UIPanGestureRecognizer) {

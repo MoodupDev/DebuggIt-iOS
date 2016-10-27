@@ -12,10 +12,11 @@
 		2196AC121DC0C23F003A7A67 /* DataResponse+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196AC111DC0C23F003A7A67 /* DataResponse+Validation.swift */; };
 		2196AC141DC0C3F9003A7A67 /* DebuggItError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196AC131DC0C3F9003A7A67 /* DebuggItError.swift */; };
 		2196AC161DC0CFF7003A7A67 /* String+Replace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196AC151DC0CFF7003A7A67 /* String+Replace.swift */; };
-		21A81EFC1DC2050F0014FCD7 /* LoginModal.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21A81EFB1DC2050F0014FCD7 /* LoginModal.xib */; };
 		21A81F001DC20EC00014FCD7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21A81EFF1DC20EC00014FCD7 /* Images.xcassets */; };
 		21A81F031DC21F800014FCD7 /* LoginModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A81F011DC21F800014FCD7 /* LoginModalViewController.swift */; };
 		21A81F041DC21F800014FCD7 /* LoginModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21A81F021DC21F800014FCD7 /* LoginModalViewController.xib */; };
+		98BEF42C1DC22D9E00483759 /* DebuggItButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BEF42A1DC22D9E00483759 /* DebuggItButton.swift */; };
+		98BEF42D1DC22D9E00483759 /* DebuggItButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98BEF42B1DC22D9E00483759 /* DebuggItButton.xib */; };
 		98F184A41DC0B906001CB560 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184A31DC0B906001CB560 /* AppDelegate.swift */; };
 		98F184A61DC0B906001CB560 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184A51DC0B906001CB560 /* ViewController.swift */; };
 		98F184A91DC0B906001CB560 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98F184A71DC0B906001CB560 /* Main.storyboard */; };
@@ -24,8 +25,6 @@
 		98F184B91DC0B906001CB560 /* DebugItTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184B81DC0B906001CB560 /* DebugItTests.swift */; };
 		98F184C41DC0B906001CB560 /* DebugItUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184C31DC0B906001CB560 /* DebugItUITests.swift */; };
 		98F184DB1DC0BA11001CB560 /* DebuggIt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184D61DC0BA11001CB560 /* DebuggIt.swift */; };
-		98F184DC1DC0BA11001CB560 /* DebuggItButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184D71DC0BA11001CB560 /* DebuggItButton.swift */; };
-		98F184DD1DC0BA11001CB560 /* DebuggItButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98F184D81DC0BA11001CB560 /* DebuggItButton.xib */; };
 		98F184DE1DC0BA11001CB560 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184D91DC0BA11001CB560 /* Report.swift */; };
 		98F184E01DC0BA29001CB560 /* logo_bug_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 98F184DF1DC0BA29001CB560 /* logo_bug_small.png */; };
 		98F184F41DC0BAB8001CB560 /* ApiClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184ED1DC0BAB8001CB560 /* ApiClientProtocol.swift */; };
@@ -64,12 +63,13 @@
 		2196AC111DC0C23F003A7A67 /* DataResponse+Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataResponse+Validation.swift"; sourceTree = "<group>"; };
 		2196AC131DC0C3F9003A7A67 /* DebuggItError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebuggItError.swift; sourceTree = "<group>"; };
 		2196AC151DC0CFF7003A7A67 /* String+Replace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Replace.swift"; sourceTree = "<group>"; };
-		21A81EFB1DC2050F0014FCD7 /* LoginModal.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginModal.xib; sourceTree = "<group>"; };
 		21A81EFF1DC20EC00014FCD7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		21A81F011DC21F800014FCD7 /* LoginModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModalViewController.swift; sourceTree = "<group>"; };
 		21A81F021DC21F800014FCD7 /* LoginModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginModalViewController.xib; sourceTree = "<group>"; };
 		41EDDC6575F58C14F85B7D2F /* Pods-DebugItUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugItUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DebugItUITests/Pods-DebugItUITests.release.xcconfig"; sourceTree = "<group>"; };
 		953A63AF08C46A826FC22D7D /* Pods-DebugIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugIt.release.xcconfig"; path = "Pods/Target Support Files/Pods-DebugIt/Pods-DebugIt.release.xcconfig"; sourceTree = "<group>"; };
+		98BEF42A1DC22D9E00483759 /* DebuggItButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebuggItButton.swift; sourceTree = "<group>"; };
+		98BEF42B1DC22D9E00483759 /* DebuggItButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DebuggItButton.xib; sourceTree = "<group>"; };
 		98F184A01DC0B906001CB560 /* DebugIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DebugIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98F184A31DC0B906001CB560 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98F184A51DC0B906001CB560 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,9 +84,7 @@
 		98F184C31DC0B906001CB560 /* DebugItUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugItUITests.swift; sourceTree = "<group>"; };
 		98F184C51DC0B906001CB560 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98F184D61DC0BA11001CB560 /* DebuggIt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebuggIt.swift; sourceTree = "<group>"; };
-		98F184D71DC0BA11001CB560 /* DebuggItButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebuggItButton.swift; sourceTree = "<group>"; };
-		98F184D81DC0BA11001CB560 /* DebuggItButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DebuggItButton.xib; sourceTree = "<group>"; };
-		98F184D91DC0BA11001CB560 /* Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
+		98F184D91DC0BA11001CB560 /* Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Report.swift; path = ../Report.swift; sourceTree = "<group>"; };
 		98F184DF1DC0BA29001CB560 /* logo_bug_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo_bug_small.png; path = Assets.xcassets/logo_bug_small.png; sourceTree = "<group>"; };
 		98F184ED1DC0BAB8001CB560 /* ApiClientProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClientProtocol.swift; sourceTree = "<group>"; };
 		98F184EE1DC0BAB8001CB560 /* BitbucketApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitbucketApiClient.swift; sourceTree = "<group>"; };
@@ -132,6 +130,7 @@
 		2196AC0A1DC0BE91003A7A67 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				98F184D91DC0BA11001CB560 /* Report.swift */,
 				98F184F01DC0BAB8001CB560 /* Constants.swift */,
 				2196AC0D1DC0C1B1003A7A67 /* String+Base64.swift */,
 				2196AC0F1DC0C203003A7A67 /* ApiClientProtocol+Headers.swift */,
@@ -163,7 +162,8 @@
 		21A81EFA1DC204DC0014FCD7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				21A81EFB1DC2050F0014FCD7 /* LoginModal.xib */,
+				98BEF42A1DC22D9E00483759 /* DebuggItButton.swift */,
+				98BEF42B1DC22D9E00483759 /* DebuggItButton.xib */,
 				21A81EFF1DC20EC00014FCD7 /* Images.xcassets */,
 				21A81F011DC21F800014FCD7 /* LoginModalViewController.swift */,
 				21A81F021DC21F800014FCD7 /* LoginModalViewController.xib */,
@@ -202,9 +202,6 @@
 				2196AC0A1DC0BE91003A7A67 /* Helpers */,
 				98F184DF1DC0BA29001CB560 /* logo_bug_small.png */,
 				98F184D61DC0BA11001CB560 /* DebuggIt.swift */,
-				98F184D71DC0BA11001CB560 /* DebuggItButton.swift */,
-				98F184D81DC0BA11001CB560 /* DebuggItButton.xib */,
-				98F184D91DC0BA11001CB560 /* Report.swift */,
 				98F184A31DC0B906001CB560 /* AppDelegate.swift */,
 				98F184A51DC0B906001CB560 /* ViewController.swift */,
 				98F184A71DC0B906001CB560 /* Main.storyboard */,
@@ -379,9 +376,8 @@
 				21A81F041DC21F800014FCD7 /* LoginModalViewController.xib in Resources */,
 				21A81F001DC20EC00014FCD7 /* Images.xcassets in Resources */,
 				98F184AB1DC0B906001CB560 /* Assets.xcassets in Resources */,
-				98F184DD1DC0BA11001CB560 /* DebuggItButton.xib in Resources */,
 				98F184A91DC0B906001CB560 /* Main.storyboard in Resources */,
-				21A81EFC1DC2050F0014FCD7 /* LoginModal.xib in Resources */,
+				98BEF42D1DC22D9E00483759 /* DebuggItButton.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,7 +547,7 @@
 				98F184F51DC0BAB8001CB560 /* BitbucketApiClient.swift in Sources */,
 				98F184DB1DC0BA11001CB560 /* DebuggIt.swift in Sources */,
 				21A81F031DC21F800014FCD7 /* LoginModalViewController.swift in Sources */,
-				98F184DC1DC0BA11001CB560 /* DebuggItButton.swift in Sources */,
+				98BEF42C1DC22D9E00483759 /* DebuggItButton.swift in Sources */,
 				2196AC141DC0C3F9003A7A67 /* DebuggItError.swift in Sources */,
 				98F184A61DC0B906001CB560 /* ViewController.swift in Sources */,
 				98F184FE1DC0BB09001CB560 /* ConfigType.swift in Sources */,
