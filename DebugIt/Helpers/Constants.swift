@@ -20,6 +20,8 @@ struct Constants {
         static let issuesUrl = "https://api.github.com/repos/%@/%@/issues"
         
         static let jsonFormat = "application/vnd.github.v3+json"
+        
+        static let note = "debugg.it library"
     }
     
     struct Jira {

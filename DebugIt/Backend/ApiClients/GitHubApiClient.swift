@@ -33,7 +33,7 @@ class GitHubApiClient: ApiClientProtocol {
             "scopes": [
                 "repo"
             ],
-            "note": "note",
+            "note": "\(Constants.GitHub.note) at \(NSDate())",
             "note_url" : Constants.debuggItUrl
         ]
         
