@@ -26,4 +26,6 @@ protocol ApiClientProtocol {
                       errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()
     )
     
+    func hasToken() -> Bool
+    
 }

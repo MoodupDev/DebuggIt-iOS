@@ -132,6 +132,10 @@ class BitbucketApiClient: ApiClientProtocol {
         
     }
     
+    func hasToken() -> Bool {
+        return self.accessToken != nil
+    }
+    
     private func storeTokens(from jsonString: String) {
         let json = JSON.parse(jsonString)
         self.accessToken = json["access_token"].stringValue

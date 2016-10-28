@@ -104,6 +104,10 @@ class GitHubApiClient: ApiClientProtocol {
         
     }
     
+    func hasToken() -> Bool {
+        return self.accessToken != nil
+    }
+    
     func refreshToken(token: String, successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
         // do nothing
     }
