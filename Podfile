@@ -8,6 +8,7 @@ target 'DebugIt' do
   # Pods for DebugIt
     pod 'Alamofire', '~> 4.0'
     pod 'SwiftyJSON'
+    pod 'IQKeyboardManagerSwift', '4.0.6'
 
   target 'DebugItTests' do
     inherit! :search_paths

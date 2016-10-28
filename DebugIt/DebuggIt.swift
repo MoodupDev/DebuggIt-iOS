@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 class DebuggIt {
     
@@ -43,6 +44,7 @@ class DebuggIt {
     private func initDebugIt(configType:ConfigType) {
         self.configType = configType
         self.isInitialized = true
+        IQKeyboardManager.sharedManager().enable = true
     }
     
     func attach(viewController:UIViewController) throws -> Bool {
