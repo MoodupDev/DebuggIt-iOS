@@ -29,7 +29,7 @@ class GitHubApiClient: ApiClientProtocol {
     
     // MARK: ApiClient
     
-    func login(email: String, password: String, successBlock: @escaping (String) -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
+    func login(email: String, password: String, successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
         
         let params: Parameters = [
             "scopes": [
@@ -54,7 +54,7 @@ class GitHubApiClient: ApiClientProtocol {
             case .success(let value):
                 if response.isSuccess() {
                     self.storeTokens(from: value)
-                    successBlock(value)
+                    successBlock()
                 } else {
                     errorBlock(response.responseCode, value)
                 }
@@ -70,7 +70,7 @@ class GitHubApiClient: ApiClientProtocol {
         
     }
     
-    func addIssue(title: String, content: String, priority: String, kind: String, successBlock: @escaping (String) -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
+    func addIssue(title: String, content: String, priority: String, kind: String, successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
         
         let params : Parameters = [
             "title": title,
@@ -89,7 +89,7 @@ class GitHubApiClient: ApiClientProtocol {
             switch response.result {
             case .success(let value):
                 if response.isSuccess() {
-                    successBlock(value)
+                    successBlock()
                 } else {
                     errorBlock(response.responseCode, value)
                 }
@@ -104,7 +104,7 @@ class GitHubApiClient: ApiClientProtocol {
         
     }
     
-    func refreshToken(token: String, successBlock: @escaping (String) -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
+    func refreshToken(token: String, successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
         // do nothing
     }
     

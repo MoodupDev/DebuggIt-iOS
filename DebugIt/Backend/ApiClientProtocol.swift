@@ -9,7 +9,7 @@
 protocol ApiClientProtocol {
     func login(email: String,
                password: String,
-               successBlock: @escaping (_ response: String) -> (),
+               successBlock: @escaping () -> (),
                errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()
     )
     
@@ -17,12 +17,12 @@ protocol ApiClientProtocol {
                   content: String,
                   priority: String,
                   kind: String,
-                  successBlock: @escaping (_ response: String) -> (),
+                  successBlock: @escaping () -> (),
                   errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()
     )
     
     func refreshToken(token: String,
-                      successBlock: @escaping (_ response: String) -> (),
+                      successBlock: @escaping () -> (),
                       errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()
     )
     

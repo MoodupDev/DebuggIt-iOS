@@ -36,7 +36,7 @@ class BitbucketApiClient: ApiClientProtocol {
     func login(
         email: String,
         password: String,
-        successBlock: @escaping (String) -> (),
+        successBlock: @escaping () -> (),
         errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
         
         let params: Parameters = [
@@ -54,7 +54,7 @@ class BitbucketApiClient: ApiClientProtocol {
             case .success(let value):
                 if response.isSuccess() {
                     self.storeTokens(from: value)
-                    successBlock(value)
+                    successBlock()
                 } else {
                     errorBlock(response.responseCode, value)
                 }
@@ -69,7 +69,7 @@ class BitbucketApiClient: ApiClientProtocol {
         
     }
     
-    func addIssue(title: String, content: String, priority: String, kind: String, successBlock: @escaping (String) -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
+    func addIssue(title: String, content: String, priority: String, kind: String, successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
         
         let params: Parameters = [
             "title": title,
@@ -86,7 +86,7 @@ class BitbucketApiClient: ApiClientProtocol {
             switch response.result {
             case .success(let value):
                 if response.isSuccess() {
-                    successBlock(value)
+                    successBlock()
                 } else {
                     errorBlock(response.responseCode, value)
                 }
@@ -100,7 +100,7 @@ class BitbucketApiClient: ApiClientProtocol {
         
     }
     
-    func refreshToken(token: String, successBlock: @escaping (String) -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
+    func refreshToken(token: String, successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
         
         let params: Parameters = [
             "grant_type": "refresh_token",
@@ -118,7 +118,7 @@ class BitbucketApiClient: ApiClientProtocol {
             case .success(let value):
                 if response.isSuccess() {
                     self.storeTokens(from: value)
-                    successBlock(value)
+                    successBlock()
                 } else {
                     errorBlock(response.responseCode, value)
                 }
