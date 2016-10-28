@@ -8,46 +8,55 @@
 
 import UIKit
 
-class LoginModalViewController: UIViewController {
+class LoginModalViewController: UIViewController, Dimmable {
     
     // MARK: Properties
     
+    static let loginText = "Sign in to %@ account and report bugs from the phone"
+    
+    @IBOutlet weak var serviceImageView: UIImageView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var infoLabel: UILabel!
     
     // MARK: Overriden
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    
+        updateLoginInfoSection()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     // MARK: Actions
     
     @IBAction func signIn(_ sender: UIButton) {
         let email = emailTextField.text!
         let password = passwordTextField.text!
-        DebuggIt.sharedInstance.apiClient?.login(email: email, password: password, successBlock: { (result) in
-            print(result)
+        DebuggIt.sharedInstance.apiClient?.login(email: email, password: password, successBlock: { (response) in
+                // TODO: show succes popup, then dismiss this view
+            self.dismiss(animated: true, completion: nil)
             }, errorBlock: { (status, error) in
+                // TODO: show failure popup
                 print(status, error)
         })
+    }
+    
+    func updateLoginInfoSection() {
+        switch DebuggIt.sharedInstance.configType {
+        case .bitbucket:
+            serviceImageView.image = UIImage(named: "bitbucket")
+            infoLabel.text = String(format: LoginModalViewController.loginText, "Bitbucket")
+        case .github:
+            serviceImageView.image = UIImage(named: "github")
+            infoLabel.text = String(format: LoginModalViewController.loginText, "GitHub")
+        case .jira:
+            serviceImageView.image = UIImage(named: "jira")
+            infoLabel.text = String(format: LoginModalViewController.loginText, "JIRA")
+        }
     }
 
 }

@@ -18,7 +18,7 @@ class DebuggIt {
     var apiClient:ApiClientProtocol?
     
     private var report:Report = Report()
-    private var configType:ConfigType = ConfigType.bitbucket
+    var configType:ConfigType = ConfigType.bitbucket
     private var isInitialized:Bool = false
     private var shouldPostInitializedEvent:Bool = true
     
