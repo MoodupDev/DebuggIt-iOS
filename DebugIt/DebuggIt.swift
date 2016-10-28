@@ -88,9 +88,11 @@ class DebuggIt {
     }
     
     @objc func showReportDialog(_ recognizer: UITapGestureRecognizer) {
-        let modal = LoginModalViewController()
-        modal.modalPresentationStyle = .overCurrentContext
-        self.currentViewController?.present(modal, animated: true, completion: nil)
+        if apiClient?.hasToken() {
+            // TODO: show drawing dialog
+        } else {
+            showLoginDialog()
+        }
     }
     
     @objc func moveButton(_ recognizer: UIPanGestureRecognizer) {
@@ -104,6 +106,12 @@ class DebuggIt {
                 }
             }
         }
+    }
+    
+    private func showLoginDialog() {
+        let modal = LoginModalViewController()
+        modal.modalPresentationStyle = .overCurrentContext
+        self.currentViewController?.present(modal, animated: true, completion: nil)
     }
     
     private func registerShakeDetector() {
