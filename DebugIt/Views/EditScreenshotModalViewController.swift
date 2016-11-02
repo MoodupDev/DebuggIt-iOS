@@ -14,13 +14,15 @@ class EditScreenshotModalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        screenshotSurface.image = DebuggIt.sharedInstance.report.screenshot
+        screenshotSurface.image = DebuggIt.sharedInstance.report.screenshots.last
     }
     
     
     @IBAction func tapDone(_ sender: UIButton) {
+        //todo go to the form modal
     }
 
     @IBAction func tapCancel(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
 }

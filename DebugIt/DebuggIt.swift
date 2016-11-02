@@ -114,7 +114,7 @@ class DebuggIt {
     
     private func takeScreenshot() {
         let window:UIWindow! = UIApplication.shared.keyWindow
-        report.screenshot = window.capture()
+        report.screenshots.append(window.capture())
     }
     
     private func showModal(viewController:UIViewController) {
