@@ -23,11 +23,17 @@
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="8uj-Jy-Hvr" userLabel="Kind buttons">
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sW0-2B-gh9">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sW0-2B-gh9">
                                                 <state key="normal" title="Bug"/>
+                                                <connections>
+                                                    <action selector="kindSelected:" destination="jou-oo-RbY" eventType="touchUpInside" id="NWz-qB-Rat"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xi8-0t-llP">
                                                 <state key="normal" title="Enhancement"/>
+                                                <connections>
+                                                    <action selector="kindSelected:" destination="jou-oo-RbY" eventType="touchUpInside" id="anm-iP-xJf"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -35,12 +41,21 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJF-Bh-B4Q">
                                                 <state key="normal" title="Low"/>
+                                                <connections>
+                                                    <action selector="prioritySelected:" destination="jou-oo-RbY" eventType="touchUpInside" id="KR9-KW-KNz"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rI9-87-mZU">
+                                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rI9-87-mZU">
                                                 <state key="normal" title="Medium"/>
+                                                <connections>
+                                                    <action selector="prioritySelected:" destination="jou-oo-RbY" eventType="touchUpInside" id="siv-xI-vlw"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A5v-Wz-lN9">
                                                 <state key="normal" title="High"/>
+                                                <connections>
+                                                    <action selector="prioritySelected:" destination="jou-oo-RbY" eventType="touchUpInside" id="40M-76-KCj"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -78,6 +93,14 @@
                             <constraint firstItem="xvT-q1-Bj6" firstAttribute="top" secondItem="TTH-5D-anf" secondAttribute="bottom" constant="8" symbolic="YES" id="poE-2O-DXW"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="titleTextView" destination="TTH-5D-anf" id="Mdq-Y7-dyW"/>
+                        <outletCollection property="kindButtons" destination="sW0-2B-gh9" collectionClass="NSMutableArray" id="tjj-3j-jWp"/>
+                        <outletCollection property="kindButtons" destination="xi8-0t-llP" collectionClass="NSMutableArray" id="JGs-i7-WTW"/>
+                        <outletCollection property="priorityButtons" destination="IJF-Bh-B4Q" collectionClass="NSMutableArray" id="RYr-bL-8Oc"/>
+                        <outletCollection property="priorityButtons" destination="rI9-87-mZU" collectionClass="NSMutableArray" id="324-mR-qGZ"/>
+                        <outletCollection property="priorityButtons" destination="A5v-Wz-lN9" collectionClass="NSMutableArray" id="8wW-wg-PeF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DoC-u6-S9H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

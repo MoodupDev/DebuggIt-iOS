@@ -9,6 +9,9 @@
 import UIKit
 
 class BugDescriptionPage1ViewController: UIViewController {
+    @IBOutlet var kindButtons: [UIButton]!
+    @IBOutlet var priorityButtons: [UIButton]!
+    @IBOutlet weak var titleTextView: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +24,23 @@ class BugDescriptionPage1ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func deselectOtherButtons(_ buttons: [UIButton], without: UIButton) {
+        for button in buttons {
+            if button != without {
+                button.isSelected = false
+            }
+        }
+    }
+    
+    @IBAction func kindSelected(_ sender: UIButton) {
+        sender.isSelected = true
+        deselectOtherButtons(kindButtons, without: sender)
+    }
+    
+    @IBAction func prioritySelected(_ sender: UIButton) {
+        sender.isSelected = true
+        deselectOtherButtons(priorityButtons, without: sender)
+    }
 
     /*
     // MARK: - Navigation
