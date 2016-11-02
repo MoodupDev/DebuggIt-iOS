@@ -88,12 +88,15 @@ class DebuggIt {
     }
     
     @objc func showReportDialog(_ recognizer: UITapGestureRecognizer) {
-        if apiClient?.hasToken() {
+        takeScreenshot()
+        showModal(viewController:EditScreenshotModalViewController())
+        
+        /*if (apiClient?.hasToken())! {
             takeScreenshot()
             showModal(viewController:EditScreenshotModalViewController())
         } else {
             showModal(viewController:LoginModalViewController())
-        }
+        }*/
     }
     
     @objc func moveButton(_ recognizer: UIPanGestureRecognizer) {

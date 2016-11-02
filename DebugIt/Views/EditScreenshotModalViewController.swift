@@ -16,5 +16,11 @@ class EditScreenshotModalViewController: UIViewController {
         super.viewDidLoad()
         screenshotSurface.image = DebuggIt.sharedInstance.report.screenshot
     }
+    
+    
+    @IBAction func tapDone(_ sender: UIButton) {
+    }
 
+    @IBAction func tapCancel(_ sender: UIButton) {
+    }
 }
