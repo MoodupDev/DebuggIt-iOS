@@ -9,11 +9,14 @@
 import UIKit
 
 class BugDescriptionPageViewController: UIPageViewController {
+    
+    @IBOutlet weak var pageControl: UIPageControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.dataSource = self
+        self.delegate = self
         
         if let firstViewController = orderedViewControllers.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
@@ -47,6 +50,14 @@ class BugDescriptionPageViewController: UIPageViewController {
             instantiateViewController(withIdentifier: "BugDescriptionPage\(page)")
     }
 
+    @IBAction func pageControlTapped(_ sender: UIPageControl) {
+        switch sender.currentPage {
+        case 0:
+            setViewControllers([orderedViewControllers.first!], direction: .reverse, animated: true, completion: nil)
+        default:
+            setViewControllers([orderedViewControllers.last!], direction: .forward, animated: true, completion: nil)
+        }
+    }
 }
 
 extension BugDescriptionPageViewController: UIPageViewControllerDataSource {
@@ -65,7 +76,6 @@ extension BugDescriptionPageViewController: UIPageViewControllerDataSource {
         guard orderedViewControllers.count > previousIndex else {
             return nil
         }
-        
         return orderedViewControllers[previousIndex]
     }
     
@@ -84,20 +94,32 @@ extension BugDescriptionPageViewController: UIPageViewControllerDataSource {
         guard orderedViewControllersCount > nextIndex else {
             return nil
         }
-        
         return orderedViewControllers[nextIndex]
     }
     
-    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+    
+    
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        self.pageControl.numberOfPages = orderedViewControllers.count
         return orderedViewControllers.count
     }
     
-    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-        guard let firstViewController = viewControllers?.first,
-            let firstViewControllerIndex = orderedViewControllers.index(of: firstViewController) else {
-                return 0
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+        guard let firstViewController = viewControllers?.first, let firstViewControllerIndex = orderedViewControllers.index(of: firstViewController) else {
+            return 0
         }
-        
         return firstViewControllerIndex
+    }
+
+}
+
+extension BugDescriptionPageViewController: UIPageViewControllerDelegate {
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if previousViewControllers.first != orderedViewControllers.first {
+            pageControl.currentPage = 0
+        } else {
+            pageControl.currentPage = 1
+        }
     }
 }
