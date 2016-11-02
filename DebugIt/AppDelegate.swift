@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        DebuggIt.sharedInstance.initJira(host: "lol.com", projectKey: "lololo")
+        DebuggIt.sharedInstance.initJira(host: "testingdebug.atlassian.net", projectKey: "TEST")
         return true
     }
 
