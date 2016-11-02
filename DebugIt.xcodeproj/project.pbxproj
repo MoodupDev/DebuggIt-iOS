@@ -20,6 +20,7 @@
 		98BEF4301DC24C1500483759 /* EditScreenshotModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BEF42E1DC24C1500483759 /* EditScreenshotModalViewController.swift */; };
 		98BEF4311DC24C1500483759 /* EditScreenshotModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98BEF42F1DC24C1500483759 /* EditScreenshotModalViewController.xib */; };
 		98EEEF881DCA044A0018730B /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EEEF871DCA044A0018730B /* DrawingView.swift */; };
+		98EEEF8A1DCA3C210018730B /* UIView+RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EEEF891DCA3C210018730B /* UIView+RoundedCorners.swift */; };
 		98F184A41DC0B906001CB560 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184A31DC0B906001CB560 /* AppDelegate.swift */; };
 		98F184A61DC0B906001CB560 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184A51DC0B906001CB560 /* ViewController.swift */; };
 		98F184A91DC0B906001CB560 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98F184A71DC0B906001CB560 /* Main.storyboard */; };
@@ -29,7 +30,6 @@
 		98F184C41DC0B906001CB560 /* DebugItUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184C31DC0B906001CB560 /* DebugItUITests.swift */; };
 		98F184DB1DC0BA11001CB560 /* DebuggIt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184D61DC0BA11001CB560 /* DebuggIt.swift */; };
 		98F184DE1DC0BA11001CB560 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184D91DC0BA11001CB560 /* Report.swift */; };
-		98F184E01DC0BA29001CB560 /* logo_bug_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 98F184DF1DC0BA29001CB560 /* logo_bug_small.png */; };
 		98F184F41DC0BAB8001CB560 /* ApiClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184ED1DC0BAB8001CB560 /* ApiClientProtocol.swift */; };
 		98F184F51DC0BAB8001CB560 /* BitbucketApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184EE1DC0BAB8001CB560 /* BitbucketApiClient.swift */; };
 		98F184F71DC0BAB8001CB560 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184F01DC0BAB8001CB560 /* Constants.swift */; };
@@ -77,6 +77,7 @@
 		98BEF42E1DC24C1500483759 /* EditScreenshotModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditScreenshotModalViewController.swift; sourceTree = "<group>"; };
 		98BEF42F1DC24C1500483759 /* EditScreenshotModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditScreenshotModalViewController.xib; sourceTree = "<group>"; };
 		98EEEF871DCA044A0018730B /* DrawingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
+		98EEEF891DCA3C210018730B /* UIView+RoundedCorners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+RoundedCorners.swift"; sourceTree = "<group>"; };
 		98F184A01DC0B906001CB560 /* DebugIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DebugIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98F184A31DC0B906001CB560 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98F184A51DC0B906001CB560 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -92,7 +93,6 @@
 		98F184C51DC0B906001CB560 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98F184D61DC0BA11001CB560 /* DebuggIt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebuggIt.swift; sourceTree = "<group>"; };
 		98F184D91DC0BA11001CB560 /* Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Report.swift; path = ../Report.swift; sourceTree = "<group>"; };
-		98F184DF1DC0BA29001CB560 /* logo_bug_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo_bug_small.png; path = Assets.xcassets/logo_bug_small.png; sourceTree = "<group>"; };
 		98F184ED1DC0BAB8001CB560 /* ApiClientProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClientProtocol.swift; sourceTree = "<group>"; };
 		98F184EE1DC0BAB8001CB560 /* BitbucketApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitbucketApiClient.swift; sourceTree = "<group>"; };
 		98F184F01DC0BAB8001CB560 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -146,6 +146,7 @@
 				2196AC111DC0C23F003A7A67 /* DataResponse+Validation.swift */,
 				2196AC151DC0CFF7003A7A67 /* String+Replace.swift */,
 				98F3F3281DC9E33A00F3E403 /* UIWindow+Screenshot.swift */,
+				98EEEF891DCA3C210018730B /* UIView+RoundedCorners.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -212,7 +213,6 @@
 				21A81EFA1DC204DC0014FCD7 /* Views */,
 				2196AC0B1DC0BE98003A7A67 /* Backend */,
 				2196AC0A1DC0BE91003A7A67 /* Helpers */,
-				98F184DF1DC0BA29001CB560 /* logo_bug_small.png */,
 				98F184D61DC0BA11001CB560 /* DebuggIt.swift */,
 				98F184A31DC0B906001CB560 /* AppDelegate.swift */,
 				98F184A51DC0B906001CB560 /* ViewController.swift */,
@@ -384,7 +384,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				98F184AE1DC0B906001CB560 /* LaunchScreen.storyboard in Resources */,
-				98F184E01DC0BA29001CB560 /* logo_bug_small.png in Resources */,
 				21A81F041DC21F800014FCD7 /* LoginModalViewController.xib in Resources */,
 				21A81F001DC20EC00014FCD7 /* Images.xcassets in Resources */,
 				98F184AB1DC0B906001CB560 /* Assets.xcassets in Resources */,
@@ -556,6 +555,7 @@
 				2196AC101DC0C203003A7A67 /* ApiClientProtocol+Headers.swift in Sources */,
 				98F184F91DC0BAB8001CB560 /* GitHubApiClient.swift in Sources */,
 				2196AC0E1DC0C1B1003A7A67 /* String+Base64.swift in Sources */,
+				98EEEF8A1DCA3C210018730B /* UIView+RoundedCorners.swift in Sources */,
 				98F184F41DC0BAB8001CB560 /* ApiClientProtocol.swift in Sources */,
 				98F184F51DC0BAB8001CB560 /* BitbucketApiClient.swift in Sources */,
 				98F3F3291DC9E33A00F3E403 /* UIWindow+Screenshot.swift in Sources */,

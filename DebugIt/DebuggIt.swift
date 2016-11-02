@@ -71,6 +71,11 @@ class DebuggIt {
         debuggItButton.translatesAutoresizingMaskIntoConstraints = false
         debuggItButton.isUserInteractionEnabled = true
         
+        debuggItButton.layoutIfNeeded()
+        
+        debuggItButton.imageView.roundCorners(corners: [.topRight, .bottomRight], radius: 5)
+        debuggItButton.edge.roundCorners(corners: [.bottomLeft, .topLeft], radius: 5)
+
         self.currentViewController?.view.addSubview(debuggItButton)
         addConstraints(forView: debuggItButton)
         
@@ -80,6 +85,7 @@ class DebuggIt {
         debuggItButton.addGestureRecognizer(tapGestureRecognizer)
         debuggItButton.addGestureRecognizer(panGestureRecognizer)
     }
+    
     
     private func addConstraints(forView : UIView) {
         self.currentViewController?.view.addConstraint(NSLayoutConstraint(item: forView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: self.currentViewController?.view, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: 0.0))
