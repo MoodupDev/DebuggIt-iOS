@@ -71,6 +71,11 @@ class DebuggIt {
         debuggItButton.translatesAutoresizingMaskIntoConstraints = false
         debuggItButton.isUserInteractionEnabled = true
         
+        debuggItButton.layoutIfNeeded()
+        
+        debuggItButton.imageView.roundCorners(corners: [.topRight, .bottomRight], radius: 5)
+        debuggItButton.edge.roundCorners(corners: [.bottomLeft, .topLeft], radius: 5)
+
         self.currentViewController?.view.addSubview(debuggItButton)
         addConstraints(forView: debuggItButton)
         
@@ -81,6 +86,7 @@ class DebuggIt {
         debuggItButton.addGestureRecognizer(panGestureRecognizer)
     }
     
+    
     private func addConstraints(forView : UIView) {
         self.currentViewController?.view.addConstraint(NSLayoutConstraint(item: forView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: self.currentViewController?.view, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: 0.0))
         
@@ -88,12 +94,15 @@ class DebuggIt {
     }
     
     @objc func showReportDialog(_ recognizer: UITapGestureRecognizer) {
-        if apiClient?.hasToken() {
+        takeScreenshot()
+        showModal(viewController:EditScreenshotModalViewController())
+        
+        /*if (apiClient?.hasToken())! {
             takeScreenshot()
             showModal(viewController:EditScreenshotModalViewController())
         } else {
             showModal(viewController:LoginModalViewController())
-        }
+        }*/
     }
     
     @objc func moveButton(_ recognizer: UIPanGestureRecognizer) {
@@ -111,7 +120,7 @@ class DebuggIt {
     
     private func takeScreenshot() {
         let window:UIWindow! = UIApplication.shared.keyWindow
-        report.screenshot = window.capture()
+        report.screenshots.append(window.capture())
     }
     
     private func showModal(viewController:UIViewController) {
