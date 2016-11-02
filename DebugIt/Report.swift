@@ -10,6 +10,8 @@ import UIKit
 
 class Report {
 
+    var screenshot:UIImage?
+    
     init() {
        
     }

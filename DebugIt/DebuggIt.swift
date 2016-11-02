@@ -17,7 +17,7 @@ class DebuggIt {
     private var currentViewController:UIViewController?
     var apiClient:ApiClientProtocol?
     
-    private var report:Report = Report()
+    var report:Report = Report()
     var configType:ConfigType = ConfigType.bitbucket
     private var isInitialized:Bool = false
     private var shouldPostInitializedEvent:Bool = true
@@ -89,9 +89,10 @@ class DebuggIt {
     
     @objc func showReportDialog(_ recognizer: UITapGestureRecognizer) {
         if apiClient?.hasToken() {
-            // TODO: show drawing dialog
+            takeScreenshot()
+            showModal(viewController:EditScreenshotModalViewController())
         } else {
-            showLoginDialog()
+            showModal(viewController:LoginModalViewController())
         }
     }
     
@@ -108,10 +109,14 @@ class DebuggIt {
         }
     }
     
-    private func showLoginDialog() {
-        let modal = LoginModalViewController()
-        modal.modalPresentationStyle = .overCurrentContext
-        self.currentViewController?.present(modal, animated: true, completion: nil)
+    private func takeScreenshot() {
+        let window:UIWindow! = UIApplication.shared.keyWindow
+        report.screenshot = window.capture()
+    }
+    
+    private func showModal(viewController:UIViewController) {
+        viewController.modalPresentationStyle = .overCurrentContext
+        self.currentViewController?.present(viewController, animated: true, completion: nil)
     }
     
     private func registerShakeDetector() {
