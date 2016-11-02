@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginModalViewController: UIViewController, Dimmable {
+class LoginModalViewController: UIViewController {
     
     // MARK: Properties
     

@@ -19,6 +19,8 @@
 		21ECFF3E1DC38B1E0076FC22 /* Report.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21ECFF3D1DC38B1E0076FC22 /* Report.storyboard */; };
 		98BEF42C1DC22D9E00483759 /* DebuggItButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BEF42A1DC22D9E00483759 /* DebuggItButton.swift */; };
 		98BEF42D1DC22D9E00483759 /* DebuggItButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98BEF42B1DC22D9E00483759 /* DebuggItButton.xib */; };
+		98BEF4301DC24C1500483759 /* EditScreenshotModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BEF42E1DC24C1500483759 /* EditScreenshotModalViewController.swift */; };
+		98BEF4311DC24C1500483759 /* EditScreenshotModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98BEF42F1DC24C1500483759 /* EditScreenshotModalViewController.xib */; };
 		98F184A41DC0B906001CB560 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184A31DC0B906001CB560 /* AppDelegate.swift */; };
 		98F184A61DC0B906001CB560 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184A51DC0B906001CB560 /* ViewController.swift */; };
 		98F184A91DC0B906001CB560 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98F184A71DC0B906001CB560 /* Main.storyboard */; };
@@ -35,6 +37,7 @@
 		98F184F91DC0BAB8001CB560 /* GitHubApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184F21DC0BAB8001CB560 /* GitHubApiClient.swift */; };
 		98F184FA1DC0BAB8001CB560 /* JiraApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184F31DC0BAB8001CB560 /* JiraApiClient.swift */; };
 		98F184FE1DC0BB09001CB560 /* ConfigType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184FD1DC0BB09001CB560 /* ConfigType.swift */; };
+		98F3F3291DC9E33A00F3E403 /* UIWindow+Screenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F3F3281DC9E33A00F3E403 /* UIWindow+Screenshot.swift */; };
 		EEC7CEF3F50457AA63BE61A7 /* Pods_DebugItTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B546534046DD8BF92BF6A0A /* Pods_DebugItTests.framework */; };
 		F22E5CF0502C12EAACB17BC8 /* Pods_DebugIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5EF6650A6D55ADD8175470F /* Pods_DebugIt.framework */; };
 		F6D399D9F9EC594A125B9135 /* Pods_DebugItUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0EA17C463A14BDB98EABF6B /* Pods_DebugItUITests.framework */; };
@@ -74,6 +77,8 @@
 		953A63AF08C46A826FC22D7D /* Pods-DebugIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugIt.release.xcconfig"; path = "Pods/Target Support Files/Pods-DebugIt/Pods-DebugIt.release.xcconfig"; sourceTree = "<group>"; };
 		98BEF42A1DC22D9E00483759 /* DebuggItButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebuggItButton.swift; sourceTree = "<group>"; };
 		98BEF42B1DC22D9E00483759 /* DebuggItButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DebuggItButton.xib; sourceTree = "<group>"; };
+		98BEF42E1DC24C1500483759 /* EditScreenshotModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditScreenshotModalViewController.swift; sourceTree = "<group>"; };
+		98BEF42F1DC24C1500483759 /* EditScreenshotModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditScreenshotModalViewController.xib; sourceTree = "<group>"; };
 		98F184A01DC0B906001CB560 /* DebugIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DebugIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98F184A31DC0B906001CB560 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98F184A51DC0B906001CB560 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +101,7 @@
 		98F184F21DC0BAB8001CB560 /* GitHubApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubApiClient.swift; sourceTree = "<group>"; };
 		98F184F31DC0BAB8001CB560 /* JiraApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JiraApiClient.swift; sourceTree = "<group>"; };
 		98F184FD1DC0BB09001CB560 /* ConfigType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigType.swift; sourceTree = "<group>"; };
+		98F3F3281DC9E33A00F3E403 /* UIWindow+Screenshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+Screenshot.swift"; sourceTree = "<group>"; };
 		9D5A863C7231D6E67199C167 /* Pods-DebugItTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugItTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DebugItTests/Pods-DebugItTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CCAE263CF4F7F84E5EFCC41A /* Pods-DebugIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugIt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DebugIt/Pods-DebugIt.debug.xcconfig"; sourceTree = "<group>"; };
 		E0EA17C463A14BDB98EABF6B /* Pods_DebugItUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DebugItUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,6 +146,7 @@
 				2196AC0F1DC0C203003A7A67 /* ApiClientProtocol+Headers.swift */,
 				2196AC111DC0C23F003A7A67 /* DataResponse+Validation.swift */,
 				2196AC151DC0CFF7003A7A67 /* String+Replace.swift */,
+				98F3F3281DC9E33A00F3E403 /* UIWindow+Screenshot.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -173,6 +180,8 @@
 				21A81F021DC21F800014FCD7 /* LoginModalViewController.xib */,
 				21ECFF3D1DC38B1E0076FC22 /* Report.storyboard */,
 				21BA798B1DC9DCD800D29015 /* BugDescriptionViewController.swift */,
+				98BEF42E1DC24C1500483759 /* EditScreenshotModalViewController.swift */,
+				98BEF42F1DC24C1500483759 /* EditScreenshotModalViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -384,6 +393,7 @@
 				21ECFF3E1DC38B1E0076FC22 /* Report.storyboard in Resources */,
 				98F184AB1DC0B906001CB560 /* Assets.xcassets in Resources */,
 				98F184A91DC0B906001CB560 /* Main.storyboard in Resources */,
+				98BEF4311DC24C1500483759 /* EditScreenshotModalViewController.xib in Resources */,
 				98BEF42D1DC22D9E00483759 /* DebuggItButton.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -553,6 +563,7 @@
 				98F184F41DC0BAB8001CB560 /* ApiClientProtocol.swift in Sources */,
 				98F184F51DC0BAB8001CB560 /* BitbucketApiClient.swift in Sources */,
 				21BA798C1DC9DCD800D29015 /* BugDescriptionViewController.swift in Sources */,
+				98F3F3291DC9E33A00F3E403 /* UIWindow+Screenshot.swift in Sources */,
 				98F184DB1DC0BA11001CB560 /* DebuggIt.swift in Sources */,
 				21A81F031DC21F800014FCD7 /* LoginModalViewController.swift in Sources */,
 				98BEF42C1DC22D9E00483759 /* DebuggItButton.swift in Sources */,
@@ -560,6 +571,7 @@
 				98F184A61DC0B906001CB560 /* ViewController.swift in Sources */,
 				98F184FE1DC0BB09001CB560 /* ConfigType.swift in Sources */,
 				98F184FA1DC0BAB8001CB560 /* JiraApiClient.swift in Sources */,
+				98BEF4301DC24C1500483759 /* EditScreenshotModalViewController.swift in Sources */,
 				98F184F71DC0BAB8001CB560 /* Constants.swift in Sources */,
 				98F184A41DC0B906001CB560 /* AppDelegate.swift in Sources */,
 				2196AC161DC0CFF7003A7A67 /* String+Replace.swift in Sources */,
