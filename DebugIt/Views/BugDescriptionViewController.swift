@@ -96,20 +96,6 @@ extension BugDescriptionPageViewController: UIPageViewControllerDataSource {
         }
         return orderedViewControllers[nextIndex]
     }
-    
-    
-    
-    func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        self.pageControl.numberOfPages = orderedViewControllers.count
-        return orderedViewControllers.count
-    }
-    
-    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        guard let firstViewController = viewControllers?.first, let firstViewControllerIndex = orderedViewControllers.index(of: firstViewController) else {
-            return 0
-        }
-        return firstViewControllerIndex
-    }
 
 }
 
