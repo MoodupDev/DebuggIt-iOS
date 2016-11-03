@@ -165,21 +165,29 @@
                                     <constraint firstAttribute="height" constant="182" id="DqW-vt-NVM"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHT-h7-xg1" userLabel="Record button">
+                                <state key="normal" image="recordMicro"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="xvT-q1-Bj6" firstAttribute="leading" secondItem="yrv-DU-ai8" secondAttribute="leadingMargin" id="0GL-yp-YZh"/>
                             <constraint firstItem="xvT-q1-Bj6" firstAttribute="trailing" secondItem="yrv-DU-ai8" secondAttribute="trailingMargin" id="1cD-cG-tGm"/>
-                            <constraint firstItem="TTH-5D-anf" firstAttribute="trailing" secondItem="yrv-DU-ai8" secondAttribute="trailingMargin" id="Fc7-yl-KBU"/>
+                            <constraint firstItem="pHT-h7-xg1" firstAttribute="top" secondItem="QGd-ND-hOD" secondAttribute="bottom" constant="55" id="BLE-PJ-NFK"/>
+                            <constraint firstItem="TTH-5D-anf" firstAttribute="trailing" secondItem="yrv-DU-ai8" secondAttribute="trailingMargin" constant="-59" id="Fc7-yl-KBU"/>
+                            <constraint firstItem="xvT-q1-Bj6" firstAttribute="top" secondItem="pHT-h7-xg1" secondAttribute="bottom" constant="55" id="GBO-VO-Ysw"/>
                             <constraint firstItem="QGd-ND-hOD" firstAttribute="leading" secondItem="yrv-DU-ai8" secondAttribute="leadingMargin" id="J0e-wA-Ijm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QGd-ND-hOD" secondAttribute="trailing" id="K50-qO-rXf"/>
+                            <constraint firstItem="pHT-h7-xg1" firstAttribute="leading" secondItem="TTH-5D-anf" secondAttribute="trailing" constant="8" id="T2f-fk-F5q"/>
                             <constraint firstItem="TTH-5D-anf" firstAttribute="top" secondItem="QGd-ND-hOD" secondAttribute="bottom" constant="16" id="XaI-1K-Dbv"/>
                             <constraint firstItem="QGd-ND-hOD" firstAttribute="top" secondItem="scV-cd-xNk" secondAttribute="bottom" id="ma7-UO-J5R"/>
                             <constraint firstItem="TTH-5D-anf" firstAttribute="leading" secondItem="yrv-DU-ai8" secondAttribute="leadingMargin" id="maL-Tn-7JG"/>
                             <constraint firstItem="xvT-q1-Bj6" firstAttribute="top" secondItem="TTH-5D-anf" secondAttribute="bottom" constant="8" symbolic="YES" id="poE-2O-DXW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pHT-h7-xg1" secondAttribute="trailing" id="rqw-77-96g"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="recordButton" destination="pHT-h7-xg1" id="EvG-TV-0lb"/>
                         <outlet property="reportItemsStackView" destination="xvT-q1-Bj6" id="Box-4T-EdJ"/>
                         <outlet property="titleTextView" destination="TTH-5D-anf" id="Mdq-Y7-dyW"/>
                         <outletCollection property="kindButtons" destination="sW0-2B-gh9" collectionClass="NSMutableArray" id="tjj-3j-jWp"/>
@@ -255,49 +263,121 @@
             <objects>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" modalPresentationStyle="overCurrentContext" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="min" id="mTg-Ni-ERc" customClass="BugDescriptionPageViewController" customModule="DebugIt" customModuleProvider="target" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" id="Byw-6J-BOP">
-                        <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="2bs-1s-M7f">
-                            <connections>
-                                <action selector="cancelClicked:" destination="mTg-Ni-ERc" id="Hf9-8j-hwK"/>
-                            </connections>
-                        </barButtonItem>
-                        <pageControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" id="hH5-Dm-Aey">
-                            <rect key="frame" x="75" y="4" width="238" height="37"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="pageIndicatorTintColor" red="1" green="0.098778169380000003" blue="0.14002036809999999" alpha="0.46723030821917799" colorSpace="custom" customColorSpace="sRGB"/>
-                            <color key="currentPageIndicatorTintColor" red="1" green="0.098778169380000003" blue="0.14002036809999999" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="pageControlTapped:" destination="mTg-Ni-ERc" eventType="valueChanged" id="Ru9-Ou-eyr"/>
-                            </connections>
-                        </pageControl>
-                        <barButtonItem key="rightBarButtonItem" title="Send" id="rQ7-Jz-dHX"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="pageControl" destination="hH5-Dm-Aey" id="i85-fA-qm4"/>
-                    </connections>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mVL-7a-6dV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="656.79999999999995" y="158.77061469265368"/>
+            <point key="canvasLocation" x="-242" y="189"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="C0r-mN-hcV">
+        <!--Bug Description View Controller-->
+        <scene sceneID="k2p-zX-YD3">
             <objects>
-                <navigationController storyboardIdentifier="BugDescription" automaticallyAdjustsScrollViewInsets="NO" id="nFH-rI-20l" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hAo-C2-NzC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                <viewController storyboardIdentifier="BugDescription" id="bV9-0k-HiM" customClass="BugDescriptionViewController" customModule="DebugIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tuG-Ym-6nu"/>
+                        <viewControllerLayoutGuide type="bottom" id="QD2-eR-RjW"/>
+                    </layoutGuides>
+                    <view key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Vkc-t5-dfB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IML-Q8-Xul" userLabel="mainArea">
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PlO-IC-LNd" userLabel="redEdges">
+                                <color key="backgroundColor" red="0.90980392160000001" green="0.41176470590000003" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dSE-2U-Hra" userLabel="whiteArea">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Llw-mg-dtQ">
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DlE-UC-eId">
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T6r-UG-2RC">
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="60" id="uTo-TP-0Mj"/>
+                                                </constraints>
+                                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cancelClicked:" destination="bV9-0k-HiM" eventType="touchUpInside" id="N9d-6T-rwO"/>
+                                                </connections>
+                                            </button>
+                                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="mkE-vO-Xot">
+                                                <color key="pageIndicatorTintColor" red="0.95542651414871216" green="0.65559518337249756" blue="0.66193246841430664" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="currentPageIndicatorTintColor" red="0.93139916658401489" green="0.27553075551986694" blue="0.18585780262947083" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </pageControl>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9UA-hX-t0Z">
+                                                <color key="backgroundColor" red="0.90980392160000001" green="0.41176470590000003" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="60" id="wFZ-Vg-dMl"/>
+                                                </constraints>
+                                                <state key="normal" title="Send">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="9KE-Xf-0W5"/>
+                                        </constraints>
+                                        <edgeInsets key="layoutMargins" top="4" left="4" bottom="4" right="4"/>
+                                    </stackView>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AOR-QA-lqb">
+                                        <connections>
+                                            <segue destination="mTg-Ni-ERc" kind="embed" identifier="bugDescriptionPageViewController" id="hko-ou-gce"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="PlO-IC-LNd" secondAttribute="bottom" constant="35" id="4jF-cY-WuB"/>
+                            <constraint firstAttribute="bottom" secondItem="IML-Q8-Xul" secondAttribute="bottom" id="EW8-aN-nEK"/>
+                            <constraint firstAttribute="bottom" secondItem="dSE-2U-Hra" secondAttribute="bottom" constant="40" id="PYU-TS-OdP"/>
+                            <constraint firstAttribute="bottom" secondItem="Llw-mg-dtQ" secondAttribute="bottom" constant="40" id="VUz-5c-0Y4"/>
+                            <constraint firstAttribute="trailing" secondItem="IML-Q8-Xul" secondAttribute="trailing" id="VtY-e5-nNf"/>
+                            <constraint firstItem="IML-Q8-Xul" firstAttribute="leading" secondItem="Vkc-t5-dfB" secondAttribute="leading" id="Wd6-Yc-dZA"/>
+                            <constraint firstItem="IML-Q8-Xul" firstAttribute="top" secondItem="Vkc-t5-dfB" secondAttribute="top" id="Yzs-Qv-cb8"/>
+                            <constraint firstAttribute="trailing" secondItem="dSE-2U-Hra" secondAttribute="trailing" constant="30" id="Zu4-La-org"/>
+                            <constraint firstAttribute="trailing" secondItem="PlO-IC-LNd" secondAttribute="trailing" constant="30" id="a3D-bc-a5B"/>
+                            <constraint firstItem="PlO-IC-LNd" firstAttribute="leading" secondItem="Vkc-t5-dfB" secondAttribute="leading" constant="30" id="jlx-VU-Q8y"/>
+                            <constraint firstItem="PlO-IC-LNd" firstAttribute="top" secondItem="Vkc-t5-dfB" secondAttribute="top" constant="35" id="m61-A3-SFA"/>
+                            <constraint firstAttribute="trailing" secondItem="Llw-mg-dtQ" secondAttribute="trailing" constant="40" id="nfC-o5-Lss"/>
+                            <constraint firstItem="dSE-2U-Hra" firstAttribute="top" secondItem="Vkc-t5-dfB" secondAttribute="top" constant="40" id="qPp-8j-dn2"/>
+                            <constraint firstItem="Llw-mg-dtQ" firstAttribute="leading" secondItem="Vkc-t5-dfB" secondAttribute="leading" constant="40" id="roE-zO-qHe"/>
+                            <constraint firstItem="Llw-mg-dtQ" firstAttribute="top" secondItem="Vkc-t5-dfB" secondAttribute="top" constant="40" id="vGc-rv-599"/>
+                            <constraint firstItem="dSE-2U-Hra" firstAttribute="leading" secondItem="Vkc-t5-dfB" secondAttribute="leading" constant="30" id="xdM-wm-peS"/>
+                        </constraints>
+                    </view>
                     <connections>
-                        <segue destination="mTg-Ni-ERc" kind="relationship" relationship="rootViewController" id="Hrw-O5-WrM"/>
+                        <outlet property="pageControl" destination="mkE-vO-Xot" id="3Kz-oQ-TCp"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gCM-eN-ke4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fyr-ZT-CUI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-282.39999999999998" y="158.77061469265368"/>
+            <point key="canvasLocation" x="-1068" y="190"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="recordMicro" width="34" height="34"/>
+    </resources>
 </document>

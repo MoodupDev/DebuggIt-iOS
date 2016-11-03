@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2107BD281DCB2FC400C02C3D /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2107BD271DCB2FC400C02C3D /* RoundedButton.swift */; };
+		2107BD2D1DCB593400C02C3D /* BugDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2107BD2C1DCB593400C02C3D /* BugDescriptionViewController.swift */; };
+		2107BD2F1DCB5F1E00C02C3D /* ReportKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2107BD2E1DCB5F1E00C02C3D /* ReportKind.swift */; };
+		2107BD311DCB5F5300C02C3D /* ReportPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2107BD301DCB5F5300C02C3D /* ReportPriority.swift */; };
 		21282EEC1DCA0E010001DE66 /* BugDescriptionPage1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21282EEB1DCA0E010001DE66 /* BugDescriptionPage1ViewController.swift */; };
 		21282EEE1DCA0E220001DE66 /* BugDescriptionPage2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21282EED1DCA0E220001DE66 /* BugDescriptionPage2ViewController.swift */; };
 		2196AC0E1DC0C1B1003A7A67 /* String+Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196AC0D1DC0C1B1003A7A67 /* String+Base64.swift */; };
@@ -18,10 +21,9 @@
 		21A81F001DC20EC00014FCD7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21A81EFF1DC20EC00014FCD7 /* Images.xcassets */; };
 		21A81F031DC21F800014FCD7 /* LoginModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A81F011DC21F800014FCD7 /* LoginModalViewController.swift */; };
 		21A81F041DC21F800014FCD7 /* LoginModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21A81F021DC21F800014FCD7 /* LoginModalViewController.xib */; };
-		21BA798C1DC9DCD800D29015 /* BugDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA798B1DC9DCD800D29015 /* BugDescriptionViewController.swift */; };
+		21BA798C1DC9DCD800D29015 /* BugDescriptionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA798B1DC9DCD800D29015 /* BugDescriptionPageViewController.swift */; };
 		21ECFF3E1DC38B1E0076FC22 /* Report.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21ECFF3D1DC38B1E0076FC22 /* Report.storyboard */; };
-		981826EC1DCB60AE00122591 /* ResizableRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981826EB1DCB60AE00122591 /* ResizableRectangle.swift */; };
-		981826EE1DCB60C700122591 /* ResizableRectangle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 981826ED1DCB60C700122591 /* ResizableRectangle.xib */; };
+		981826EA1DCB572600122591 /* DrawingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981826E91DCB572600122591 /* DrawingType.swift */; };
 		98BEF42C1DC22D9E00483759 /* DebuggItButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BEF42A1DC22D9E00483759 /* DebuggItButton.swift */; };
 		98BEF42D1DC22D9E00483759 /* DebuggItButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98BEF42B1DC22D9E00483759 /* DebuggItButton.xib */; };
 		98BEF4301DC24C1500483759 /* EditScreenshotModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BEF42E1DC24C1500483759 /* EditScreenshotModalViewController.swift */; };
@@ -70,6 +72,9 @@
 		07E65FF20F8DF49AF438DCE8 /* Pods-DebugItTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugItTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DebugItTests/Pods-DebugItTests.release.xcconfig"; sourceTree = "<group>"; };
 		0B546534046DD8BF92BF6A0A /* Pods_DebugItTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DebugItTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2107BD271DCB2FC400C02C3D /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		2107BD2C1DCB593400C02C3D /* BugDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BugDescriptionViewController.swift; sourceTree = "<group>"; };
+		2107BD2E1DCB5F1E00C02C3D /* ReportKind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportKind.swift; sourceTree = "<group>"; };
+		2107BD301DCB5F5300C02C3D /* ReportPriority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportPriority.swift; sourceTree = "<group>"; };
 		21282EEB1DCA0E010001DE66 /* BugDescriptionPage1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BugDescriptionPage1ViewController.swift; sourceTree = "<group>"; };
 		21282EED1DCA0E220001DE66 /* BugDescriptionPage2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BugDescriptionPage2ViewController.swift; sourceTree = "<group>"; };
 		2196AC0D1DC0C1B1003A7A67 /* String+Base64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Base64.swift"; sourceTree = "<group>"; };
@@ -80,12 +85,11 @@
 		21A81EFF1DC20EC00014FCD7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		21A81F011DC21F800014FCD7 /* LoginModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModalViewController.swift; sourceTree = "<group>"; };
 		21A81F021DC21F800014FCD7 /* LoginModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginModalViewController.xib; sourceTree = "<group>"; };
-		21BA798B1DC9DCD800D29015 /* BugDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BugDescriptionViewController.swift; sourceTree = "<group>"; };
+		21BA798B1DC9DCD800D29015 /* BugDescriptionPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BugDescriptionPageViewController.swift; sourceTree = "<group>"; };
 		21ECFF3D1DC38B1E0076FC22 /* Report.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Report.storyboard; sourceTree = "<group>"; };
 		41EDDC6575F58C14F85B7D2F /* Pods-DebugItUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugItUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DebugItUITests/Pods-DebugItUITests.release.xcconfig"; sourceTree = "<group>"; };
 		953A63AF08C46A826FC22D7D /* Pods-DebugIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugIt.release.xcconfig"; path = "Pods/Target Support Files/Pods-DebugIt/Pods-DebugIt.release.xcconfig"; sourceTree = "<group>"; };
-		981826EB1DCB60AE00122591 /* ResizableRectangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizableRectangle.swift; sourceTree = "<group>"; };
-		981826ED1DCB60C700122591 /* ResizableRectangle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResizableRectangle.xib; sourceTree = "<group>"; };
+		981826E91DCB572600122591 /* DrawingType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingType.swift; sourceTree = "<group>"; };
 		98BEF42A1DC22D9E00483759 /* DebuggItButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebuggItButton.swift; sourceTree = "<group>"; };
 		98BEF42B1DC22D9E00483759 /* DebuggItButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DebuggItButton.xib; sourceTree = "<group>"; };
 		98BEF42E1DC24C1500483759 /* EditScreenshotModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditScreenshotModalViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +166,9 @@
 				2196AC151DC0CFF7003A7A67 /* String+Replace.swift */,
 				98F3F3281DC9E33A00F3E403 /* UIWindow+Screenshot.swift */,
 				98EEEF891DCA3C210018730B /* UIView+RoundedCorners.swift */,
+				2107BD2E1DCB5F1E00C02C3D /* ReportKind.swift */,
+				2107BD301DCB5F5300C02C3D /* ReportPriority.swift */,
+				981826E91DCB572600122591 /* DrawingType.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -194,15 +201,14 @@
 				21A81F011DC21F800014FCD7 /* LoginModalViewController.swift */,
 				21A81F021DC21F800014FCD7 /* LoginModalViewController.xib */,
 				21ECFF3D1DC38B1E0076FC22 /* Report.storyboard */,
-				21BA798B1DC9DCD800D29015 /* BugDescriptionViewController.swift */,
+				21BA798B1DC9DCD800D29015 /* BugDescriptionPageViewController.swift */,
 				98BEF42E1DC24C1500483759 /* EditScreenshotModalViewController.swift */,
 				98BEF42F1DC24C1500483759 /* EditScreenshotModalViewController.xib */,
 				21282EEB1DCA0E010001DE66 /* BugDescriptionPage1ViewController.swift */,
 				21282EED1DCA0E220001DE66 /* BugDescriptionPage2ViewController.swift */,
 				98EEEF871DCA044A0018730B /* DrawingView.swift */,
 				2107BD271DCB2FC400C02C3D /* RoundedButton.swift */,
-				981826EB1DCB60AE00122591 /* ResizableRectangle.swift */,
-				981826ED1DCB60C700122591 /* ResizableRectangle.xib */,
+				2107BD2C1DCB593400C02C3D /* BugDescriptionViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -404,7 +410,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				981826EE1DCB60C700122591 /* ResizableRectangle.xib in Resources */,
 				98F184AE1DC0B906001CB560 /* LaunchScreen.storyboard in Resources */,
 				21A81F041DC21F800014FCD7 /* LoginModalViewController.xib in Resources */,
 				21A81F001DC20EC00014FCD7 /* Images.xcassets in Resources */,
@@ -576,19 +581,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				2196AC101DC0C203003A7A67 /* ApiClientProtocol+Headers.swift in Sources */,
-				981826EC1DCB60AE00122591 /* ResizableRectangle.swift in Sources */,
+				981826EA1DCB572600122591 /* DrawingType.swift in Sources */,
 				98F184F91DC0BAB8001CB560 /* GitHubApiClient.swift in Sources */,
 				2196AC0E1DC0C1B1003A7A67 /* String+Base64.swift in Sources */,
 				98EEEF8A1DCA3C210018730B /* UIView+RoundedCorners.swift in Sources */,
 				98F184F41DC0BAB8001CB560 /* ApiClientProtocol.swift in Sources */,
 				98F184F51DC0BAB8001CB560 /* BitbucketApiClient.swift in Sources */,
-				21BA798C1DC9DCD800D29015 /* BugDescriptionViewController.swift in Sources */,
+				2107BD2D1DCB593400C02C3D /* BugDescriptionViewController.swift in Sources */,
+				21BA798C1DC9DCD800D29015 /* BugDescriptionPageViewController.swift in Sources */,
 				21282EEE1DCA0E220001DE66 /* BugDescriptionPage2ViewController.swift in Sources */,
 				98F3F3291DC9E33A00F3E403 /* UIWindow+Screenshot.swift in Sources */,
 				98F184DB1DC0BA11001CB560 /* DebuggIt.swift in Sources */,
 				98EEEF881DCA044A0018730B /* DrawingView.swift in Sources */,
 				21A81F031DC21F800014FCD7 /* LoginModalViewController.swift in Sources */,
 				98BEF42C1DC22D9E00483759 /* DebuggItButton.swift in Sources */,
+				2107BD2F1DCB5F1E00C02C3D /* ReportKind.swift in Sources */,
 				2196AC141DC0C3F9003A7A67 /* DebuggItError.swift in Sources */,
 				98F184A61DC0B906001CB560 /* ViewController.swift in Sources */,
 				98F184FE1DC0BB09001CB560 /* ConfigType.swift in Sources */,
@@ -599,6 +606,7 @@
 				2196AC161DC0CFF7003A7A67 /* String+Replace.swift in Sources */,
 				2107BD281DCB2FC400C02C3D /* RoundedButton.swift in Sources */,
 				98F184DE1DC0BA11001CB560 /* Report.swift in Sources */,
+				2107BD311DCB5F5300C02C3D /* ReportPriority.swift in Sources */,
 				21282EEC1DCA0E010001DE66 /* BugDescriptionPage1ViewController.swift in Sources */,
 				2196AC121DC0C23F003A7A67 /* DataResponse+Validation.swift in Sources */,
 			);
