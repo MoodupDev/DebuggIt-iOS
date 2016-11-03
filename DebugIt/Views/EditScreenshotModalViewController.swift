@@ -15,6 +15,8 @@ class EditScreenshotModalViewController: UIViewController {
     @IBOutlet weak var freedrawButton: UIButton!
     @IBOutlet weak var undoButton: UIButton!
     
+    var currentRectangle:ResizableRectangle?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         screenshotSurface.image = DebuggIt.sharedInstance.report.screenshots.last
@@ -51,32 +53,18 @@ class EditScreenshotModalViewController: UIViewController {
         changeButtonState(sender, secondOptionButton: freedrawButton)
         screenshotSurface.active(isActive: !sender.isSelected)
         
-        let resizableRectangle = ResizableRectangle.instantiateFromNib()
-        
-        resizableRectangle.center.y = screenshotSurface.center.y
-        resizableRectangle.center.x = screenshotSurface.center.x
-        
-        resizableRectangle.layer.borderColor = UIColor(red: 255.0, green: 0.0, blue: 0.0, alpha:1.0).cgColor
-        resizableRectangle.layer.borderWidth = 5.0
-    
-        screenshotSurface.addSubview(resizableRectangle)    
-    }
-
-    @objc func moveRectangle(_ recognizer:UIPanGestureRecognizer) {
-        if recognizer.state == .began || recognizer.state == .changed {
-            if let view = recognizer.view {
-                let translation = recognizer.translation(in: view)
-                view.center = CGPoint(x: view.center.x + translation.x, y: view.center.y + translation.y)
-                recognizer.setTranslation(CGPoint.zero, in: view)
-            }
-        }
-    }
-    
-    @objc func resizeRectangle(_ recognizer:UIPinchGestureRecognizer) {
-        if recognizer.state == .began || recognizer.state == .changed {
-            if let view = recognizer.view {
-                view.transform = CGAffineTransform.identity.scaledBy(x: recognizer.scale, y: recognizer.scale)
-            }
+        if(sender.isSelected) {
+            currentRectangle = ResizableRectangle.instantiateFromNib()
+            
+            currentRectangle?.center.y = screenshotSurface.center.y
+            currentRectangle?.center.x = screenshotSurface.center.x
+            
+            currentRectangle?.layer.borderColor = UIColor(red: 255.0, green: 0.0, blue: 0.0, alpha:1.0).cgColor
+            currentRectangle?.layer.borderWidth = 5.0
+            
+            screenshotSurface.addSubview(currentRectangle!)
+        } else {
+            currentRectangle?.pin()
         }
     }
     
@@ -91,7 +79,7 @@ class EditScreenshotModalViewController: UIViewController {
         if(sender.isSelected) {
             secondOptionButton.isSelected = false
         }
-
+        
     }
 }
 
