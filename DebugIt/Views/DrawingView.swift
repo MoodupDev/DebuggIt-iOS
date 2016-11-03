@@ -18,42 +18,51 @@ class DrawingView: UIImageView {
     
     var lastPoint:CGPoint?
     var isDrawing = false
-
+    var isActive = true
+    
+    func active(isActive:Bool) {
+        self.isActive = isActive
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        isDrawing = true;
-        lastPoint = (touches.first?.location(in: self))!
+        if(isActive) {
+            isDrawing = true;
+            lastPoint = (touches.first?.location(in: self))!
+        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        isDrawing = true
-        let touch = touches.first
-        let currentPoint:CGPoint = (touch?.location(in: self))!
-        
-        UIGraphicsBeginImageContext(self.frame.size)
-        let context = UIGraphicsGetCurrentContext()
-        
-        self.draw(CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
-        
-        context?.move(to: lastPoint!)
-        context?.addLine(to: currentPoint)
-        context?.setLineWidth(lineWidth)
-        context?.setStrokeColor(red: red, green: green, blue: blue, alpha: paintAlpha)
-        context?.setBlendMode(CGBlendMode.normal)
-        context?.setLineCap(CGLineCap.round)
-        context?.strokePath()
-        
-        self.image = UIGraphicsGetImageFromCurrentImageContext()
-        
-        UIGraphicsEndImageContext()
-        
-        lastPoint = currentPoint
-    }
-
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if(!isDrawing) {
+        if(isActive) {
+            isDrawing = true
+            let touch = touches.first
+            let currentPoint:CGPoint = (touch?.location(in: self))!
+            
             UIGraphicsBeginImageContext(self.frame.size)
             let context = UIGraphicsGetCurrentContext()
-
+            
+            self.draw(CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
+            
+            context?.move(to: lastPoint!)
+            context?.addLine(to: currentPoint)
+            context?.setLineWidth(lineWidth)
+            context?.setStrokeColor(red: red, green: green, blue: blue, alpha: paintAlpha)
+            context?.setBlendMode(CGBlendMode.normal)
+            context?.setLineCap(CGLineCap.round)
+            context?.strokePath()
+            
+            self.image = UIGraphicsGetImageFromCurrentImageContext()
+            
+            UIGraphicsEndImageContext()
+            
+            lastPoint = currentPoint
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if(!isDrawing && isActive) {
+            UIGraphicsBeginImageContext(self.frame.size)
+            let context = UIGraphicsGetCurrentContext()
+            
             self.draw(CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
             
             context?.setLineCap(CGLineCap.round)
@@ -63,7 +72,7 @@ class DrawingView: UIImageView {
             context?.addLine(to: lastPoint!)
             context?.strokePath()
             context?.flush()
-        
+            
             self.image = UIGraphicsGetImageFromCurrentImageContext()
             
             UIGraphicsEndImageContext()

@@ -8,37 +8,69 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditScreenshotModalViewController" customModule="DebugIt">
             <connections>
+                <outlet property="freedrawButton" destination="Yuf-29-eh8" id="Bdt-TJ-Q5f"/>
+                <outlet property="rectangleButton" destination="xaI-5i-RVl" id="rMo-tb-ZDh"/>
                 <outlet property="screenshotSurface" destination="Nj5-3L-GDr" id="6xp-4h-DgF"/>
+                <outlet property="undoButton" destination="Izm-RY-fO5" id="u52-sG-3AK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bee-fv-MEP">
+                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bee-fv-MEP" userLabel="mainArea">
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X2F-yE-sDc">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yrZ-uD-yYI" userLabel="redEdges">
+                    <color key="backgroundColor" red="0.90980392156862744" green="0.41176470588235292" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X2F-yE-sDc" userLabel="whiteArea">
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r32-Fa-nQc" userLabel="greyArea">
+                    <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="07g-wt-XI2">
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="go7-IF-8Kc">
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="go7-IF-8Kc">
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fac-uK-0gz">
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="60" id="kdv-9Z-UFm"/>
+                                    </constraints>
+                                    <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                     <state key="normal" title="Cancel">
-                                        <color key="titleColor" red="1" green="0.40145753849999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
                                         <action selector="tapCancel:" destination="-1" eventType="touchUpInside" id="uTT-tY-C7t"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l97-P3-CfM">
-                                    <state key="normal" title="Done">
-                                        <color key="titleColor" red="1" green="0.40145753849999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l97-P3-CfM">
+                                    <color key="backgroundColor" red="0.90980392156862744" green="0.41176470588235292" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="60" id="ly1-wk-q7O"/>
+                                    </constraints>
+                                    <state key="normal" title="Send">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="tapDone:" destination="-1" eventType="touchUpInside" id="2oX-sw-nPy"/>
                                     </connections>
@@ -47,8 +79,34 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="1qz-2K-ou1"/>
                             </constraints>
+                            <edgeInsets key="layoutMargins" top="4" left="4" bottom="4" right="4"/>
                         </stackView>
                         <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nj5-3L-GDr" customClass="DrawingView" customModule="DebugIt" customModuleProvider="target"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="VwM-po-uZI">
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Izm-RY-fO5">
+                                    <state key="normal" image="undo"/>
+                                    <connections>
+                                        <action selector="tapUndo:" destination="-1" eventType="touchUpInside" id="u78-qX-Msv"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaI-5i-RVl">
+                                    <state key="normal" image="rectangle"/>
+                                    <connections>
+                                        <action selector="tapRectangle:" destination="-1" eventType="touchUpInside" id="aqx-CR-Xh9"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yuf-29-eh8">
+                                    <state key="normal" image="draw"/>
+                                    <connections>
+                                        <action selector="tapFreeDraw:" destination="-1" eventType="touchUpInside" id="PKJ-hG-hZc"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="MyR-aS-d7G"/>
+                            </constraints>
+                        </stackView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </stackView>
@@ -56,19 +114,32 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="X2F-yE-sDc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="40" id="4if-P0-LXf"/>
+                <constraint firstItem="yrZ-uD-yYI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="35" id="7ku-97-Wcw"/>
                 <constraint firstItem="07g-wt-XI2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="8Zg-oE-SJq"/>
                 <constraint firstAttribute="trailing" secondItem="X2F-yE-sDc" secondAttribute="trailing" constant="30" id="Bbv-29-22A"/>
+                <constraint firstItem="yrZ-uD-yYI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="LjH-OT-XjF"/>
                 <constraint firstAttribute="bottom" secondItem="X2F-yE-sDc" secondAttribute="bottom" constant="40" id="Mfl-0o-MxW"/>
-                <constraint firstAttribute="bottom" secondItem="07g-wt-XI2" secondAttribute="bottom" constant="40" id="VJf-sR-aLF"/>
+                <constraint firstAttribute="bottom" secondItem="r32-Fa-nQc" secondAttribute="bottom" constant="80" id="QKq-Zc-TLG"/>
+                <constraint firstAttribute="bottom" secondItem="07g-wt-XI2" secondAttribute="bottom" constant="40" id="W1Q-we-aWV"/>
                 <constraint firstItem="07g-wt-XI2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="40" id="WT7-av-Hk6"/>
+                <constraint firstItem="r32-Fa-nQc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="Wo9-jQ-rwN"/>
                 <constraint firstAttribute="trailing" secondItem="07g-wt-XI2" secondAttribute="trailing" constant="40" id="X3p-Ls-4kG"/>
                 <constraint firstAttribute="bottom" secondItem="Bee-fv-MEP" secondAttribute="bottom" id="c1P-t0-sYc"/>
                 <constraint firstAttribute="trailing" secondItem="Bee-fv-MEP" secondAttribute="trailing" id="dee-sa-Wv6"/>
+                <constraint firstItem="r32-Fa-nQc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="kAe-wG-O2B"/>
                 <constraint firstItem="X2F-yE-sDc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="lhO-qs-M9N"/>
                 <constraint firstItem="Bee-fv-MEP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="wZv-JM-d2t"/>
+                <constraint firstAttribute="trailing" secondItem="yrZ-uD-yYI" secondAttribute="trailing" constant="30" id="ySf-5y-p7H"/>
                 <constraint firstItem="Bee-fv-MEP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="yyp-H1-eN1"/>
+                <constraint firstAttribute="trailing" secondItem="r32-Fa-nQc" secondAttribute="trailing" constant="30" id="zDr-d7-FlJ"/>
+                <constraint firstAttribute="bottom" secondItem="yrZ-uD-yYI" secondAttribute="bottom" constant="35" id="zUf-dC-uEe"/>
             </constraints>
-            <point key="canvasLocation" x="44.5" y="14.5"/>
+            <point key="canvasLocation" x="44" y="14"/>
         </view>
     </objects>
+    <resources>
+        <image name="draw" width="34" height="34"/>
+        <image name="rectangle" width="34" height="34"/>
+        <image name="undo" width="34" height="34"/>
+    </resources>
 </document>
