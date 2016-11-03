@@ -47,21 +47,22 @@ class EditScreenshotModalViewController: UIViewController {
     }
     
     @IBAction func tapRectangle(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        
-        if(sender.isSelected) {
-            freedrawButton.isSelected = false
-        }
+        changeButtonState(sender, secondOptionButton: freedrawButton)
+        screenshotSurface.active(isActive: sender.isSelected, type: DrawingType.rectangles)
     }
     
     @IBAction func tapFreeDraw(_ sender: UIButton) {
+        changeButtonState(sender, secondOptionButton: rectangleButton)
+        screenshotSurface.active(isActive: sender.isSelected, type: DrawingType.freedraw)
+    }
+    
+    private func changeButtonState(_ sender:UIButton, secondOptionButton:UIButton) {
         sender.isSelected = !sender.isSelected
         
         if(sender.isSelected) {
-            rectangleButton.isSelected = false
+            secondOptionButton.isSelected = false
         }
-        
-        screenshotSurface.active(isActive: sender.isSelected)
+
     }
 }
 

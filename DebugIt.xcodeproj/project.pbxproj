@@ -19,6 +19,7 @@
 		21A81F041DC21F800014FCD7 /* LoginModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21A81F021DC21F800014FCD7 /* LoginModalViewController.xib */; };
 		21BA798C1DC9DCD800D29015 /* BugDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA798B1DC9DCD800D29015 /* BugDescriptionViewController.swift */; };
 		21ECFF3E1DC38B1E0076FC22 /* Report.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21ECFF3D1DC38B1E0076FC22 /* Report.storyboard */; };
+		981826EA1DCB572600122591 /* DrawingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981826E91DCB572600122591 /* DrawingType.swift */; };
 		98BEF42C1DC22D9E00483759 /* DebuggItButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BEF42A1DC22D9E00483759 /* DebuggItButton.swift */; };
 		98BEF42D1DC22D9E00483759 /* DebuggItButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98BEF42B1DC22D9E00483759 /* DebuggItButton.xib */; };
 		98BEF4301DC24C1500483759 /* EditScreenshotModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BEF42E1DC24C1500483759 /* EditScreenshotModalViewController.swift */; };
@@ -80,6 +81,7 @@
 		21ECFF3D1DC38B1E0076FC22 /* Report.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Report.storyboard; sourceTree = "<group>"; };
 		41EDDC6575F58C14F85B7D2F /* Pods-DebugItUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugItUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DebugItUITests/Pods-DebugItUITests.release.xcconfig"; sourceTree = "<group>"; };
 		953A63AF08C46A826FC22D7D /* Pods-DebugIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugIt.release.xcconfig"; path = "Pods/Target Support Files/Pods-DebugIt/Pods-DebugIt.release.xcconfig"; sourceTree = "<group>"; };
+		981826E91DCB572600122591 /* DrawingType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingType.swift; sourceTree = "<group>"; };
 		98BEF42A1DC22D9E00483759 /* DebuggItButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebuggItButton.swift; sourceTree = "<group>"; };
 		98BEF42B1DC22D9E00483759 /* DebuggItButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DebuggItButton.xib; sourceTree = "<group>"; };
 		98BEF42E1DC24C1500483759 /* EditScreenshotModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditScreenshotModalViewController.swift; sourceTree = "<group>"; };
@@ -106,7 +108,7 @@
 		98F184F01DC0BAB8001CB560 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		98F184F21DC0BAB8001CB560 /* GitHubApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubApiClient.swift; sourceTree = "<group>"; };
 		98F184F31DC0BAB8001CB560 /* JiraApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JiraApiClient.swift; sourceTree = "<group>"; };
-		98F184FD1DC0BB09001CB560 /* ConfigType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigType.swift; sourceTree = "<group>"; };
+		98F184FD1DC0BB09001CB560 /* ConfigType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigType.swift; path = ../ConfigType.swift; sourceTree = "<group>"; };
 		98F3F3281DC9E33A00F3E403 /* UIWindow+Screenshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+Screenshot.swift"; sourceTree = "<group>"; };
 		9D5A863C7231D6E67199C167 /* Pods-DebugItTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugItTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DebugItTests/Pods-DebugItTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CCAE263CF4F7F84E5EFCC41A /* Pods-DebugIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugIt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DebugIt/Pods-DebugIt.debug.xcconfig"; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 		2196AC0A1DC0BE91003A7A67 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				98F184FD1DC0BB09001CB560 /* ConfigType.swift */,
 				2196AC131DC0C3F9003A7A67 /* DebuggItError.swift */,
 				98F184D91DC0BA11001CB560 /* Report.swift */,
 				98F184F01DC0BAB8001CB560 /* Constants.swift */,
@@ -155,6 +158,7 @@
 				2196AC151DC0CFF7003A7A67 /* String+Replace.swift */,
 				98F3F3281DC9E33A00F3E403 /* UIWindow+Screenshot.swift */,
 				98EEEF891DCA3C210018730B /* UIView+RoundedCorners.swift */,
+				981826E91DCB572600122591 /* DrawingType.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -232,7 +236,6 @@
 				98F184AA1DC0B906001CB560 /* Assets.xcassets */,
 				98F184AC1DC0B906001CB560 /* LaunchScreen.storyboard */,
 				98F184AF1DC0B906001CB560 /* Info.plist */,
-				98F184FD1DC0BB09001CB560 /* ConfigType.swift */,
 			);
 			path = DebugIt;
 			sourceTree = "<group>";
@@ -566,6 +569,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2196AC101DC0C203003A7A67 /* ApiClientProtocol+Headers.swift in Sources */,
+				981826EA1DCB572600122591 /* DrawingType.swift in Sources */,
 				98F184F91DC0BAB8001CB560 /* GitHubApiClient.swift in Sources */,
 				2196AC0E1DC0C1B1003A7A67 /* String+Base64.swift in Sources */,
 				98EEEF8A1DCA3C210018730B /* UIView+RoundedCorners.swift in Sources */,
