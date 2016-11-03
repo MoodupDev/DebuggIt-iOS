@@ -37,7 +37,6 @@ class BugDescriptionPage1ViewController: UIViewController {
             view.layer.masksToBounds = true
             reportItemsStackView.addArrangedSubview(view)
         }
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,15 +54,33 @@ class BugDescriptionPage1ViewController: UIViewController {
         }
     }
     
+    private func setReportKind(selectedButton: UIButton) {
+        for (index, button) in kindButtons.enumerated() {
+            if(button == selectedButton) {
+                DebuggIt.sharedInstance.report.kind = ReportKind.from(index: index)
+            }
+        }
+    }
+    
+    private func setReportPriority(selectedButton: UIButton) {
+        for (index, button) in priorityButtons.enumerated() {
+            if(button == selectedButton) {
+                DebuggIt.sharedInstance.report.priority = ReportPriority.from(index: index)
+            }
+        }
+    }
+    
     // MARK: Actions
     
     @IBAction func kindSelected(_ sender: UIButton) {
         sender.isSelected = true
+        setReportKind(selectedButton: sender)
         deselectOtherButtons(kindButtons, selected: sender)
     }
     
     @IBAction func prioritySelected(_ sender: UIButton) {
         sender.isSelected = true
+        setReportPriority(selectedButton: sender)
         deselectOtherButtons(priorityButtons, selected: sender)
     }
 

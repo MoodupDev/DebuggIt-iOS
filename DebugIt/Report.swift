@@ -11,6 +11,9 @@ import UIKit
 class Report {
     
     var title = ""
+    
+    var kind : ReportKind = .bug
+    var priority : ReportPriority = .medium
 
     var stepsToReproduce = ""
     var actualBehavior = ""

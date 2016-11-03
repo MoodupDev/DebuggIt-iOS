@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2107BD281DCB2FC400C02C3D /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2107BD271DCB2FC400C02C3D /* RoundedButton.swift */; };
 		2107BD2D1DCB593400C02C3D /* BugDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2107BD2C1DCB593400C02C3D /* BugDescriptionViewController.swift */; };
+		2107BD2F1DCB5F1E00C02C3D /* ReportKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2107BD2E1DCB5F1E00C02C3D /* ReportKind.swift */; };
+		2107BD311DCB5F5300C02C3D /* ReportPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2107BD301DCB5F5300C02C3D /* ReportPriority.swift */; };
 		21282EEC1DCA0E010001DE66 /* BugDescriptionPage1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21282EEB1DCA0E010001DE66 /* BugDescriptionPage1ViewController.swift */; };
 		21282EEE1DCA0E220001DE66 /* BugDescriptionPage2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21282EED1DCA0E220001DE66 /* BugDescriptionPage2ViewController.swift */; };
 		2196AC0E1DC0C1B1003A7A67 /* String+Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196AC0D1DC0C1B1003A7A67 /* String+Base64.swift */; };
@@ -70,6 +72,8 @@
 		0B546534046DD8BF92BF6A0A /* Pods_DebugItTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DebugItTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2107BD271DCB2FC400C02C3D /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		2107BD2C1DCB593400C02C3D /* BugDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BugDescriptionViewController.swift; sourceTree = "<group>"; };
+		2107BD2E1DCB5F1E00C02C3D /* ReportKind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportKind.swift; sourceTree = "<group>"; };
+		2107BD301DCB5F5300C02C3D /* ReportPriority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportPriority.swift; sourceTree = "<group>"; };
 		21282EEB1DCA0E010001DE66 /* BugDescriptionPage1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BugDescriptionPage1ViewController.swift; sourceTree = "<group>"; };
 		21282EED1DCA0E220001DE66 /* BugDescriptionPage2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BugDescriptionPage2ViewController.swift; sourceTree = "<group>"; };
 		2196AC0D1DC0C1B1003A7A67 /* String+Base64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Base64.swift"; sourceTree = "<group>"; };
@@ -159,6 +163,8 @@
 				2196AC151DC0CFF7003A7A67 /* String+Replace.swift */,
 				98F3F3281DC9E33A00F3E403 /* UIWindow+Screenshot.swift */,
 				98EEEF891DCA3C210018730B /* UIView+RoundedCorners.swift */,
+				2107BD2E1DCB5F1E00C02C3D /* ReportKind.swift */,
+				2107BD301DCB5F5300C02C3D /* ReportPriority.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -585,6 +591,7 @@
 				98EEEF881DCA044A0018730B /* DrawingView.swift in Sources */,
 				21A81F031DC21F800014FCD7 /* LoginModalViewController.swift in Sources */,
 				98BEF42C1DC22D9E00483759 /* DebuggItButton.swift in Sources */,
+				2107BD2F1DCB5F1E00C02C3D /* ReportKind.swift in Sources */,
 				2196AC141DC0C3F9003A7A67 /* DebuggItError.swift in Sources */,
 				98F184A61DC0B906001CB560 /* ViewController.swift in Sources */,
 				98F184FE1DC0BB09001CB560 /* ConfigType.swift in Sources */,
@@ -595,6 +602,7 @@
 				2196AC161DC0CFF7003A7A67 /* String+Replace.swift in Sources */,
 				2107BD281DCB2FC400C02C3D /* RoundedButton.swift in Sources */,
 				98F184DE1DC0BA11001CB560 /* Report.swift in Sources */,
+				2107BD311DCB5F5300C02C3D /* ReportPriority.swift in Sources */,
 				21282EEC1DCA0E010001DE66 /* BugDescriptionPage1ViewController.swift in Sources */,
 				2196AC121DC0C23F003A7A67 /* DataResponse+Validation.swift in Sources */,
 			);
