@@ -6,16 +6,7 @@
 //  Copyright © 2016 MoodUp. All rights reserved.
 //
 
-enum ReportKind {
-    case bug
+enum ReportKind: Int {
+    case bug = 0
     case enhancement
-    
-    static func from(index: Int) -> ReportKind {
-        switch index {
-        case 0:
-            return .bug
-        default:
-            return .enhancement
-        }
-    }
 }

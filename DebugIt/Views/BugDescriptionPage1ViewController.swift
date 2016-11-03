@@ -22,21 +22,9 @@ class BugDescriptionPage1ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        titleTextView.delegate = self
+        initTitle()
         
-        titleTextView.layer.borderWidth = 1
-        titleTextView.layer.borderColor = UIColor.lightGray.cgColor
-        titleTextView.layer.cornerRadius = 5
-        titleTextView.layer.masksToBounds = true
-        
-        // TODO: add custom view for audio?
-        // TODO: enable scroll in report items stack view
-        for screenshot in DebuggIt.sharedInstance.report.screenshots {
-            let view = UIImageView(image: screenshot)
-            view.layer.cornerRadius = 5
-            view.layer.masksToBounds = true
-            reportItemsStackView.addArrangedSubview(view)
-        }
+        loadDataFromReport()
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,18 +34,49 @@ class BugDescriptionPage1ViewController: UIViewController {
     
     // MARK: Methods
     
-    private func deselectOtherButtons(_ buttons: [UIButton], selected: UIButton) {
-        for button in buttons {
-            if button != selected {
-                button.isSelected = false
-            }
+    private func initTitle() {
+        titleTextView.delegate = self
+        
+        titleTextView.layer.borderWidth = 1
+        titleTextView.layer.borderColor = UIColor.lightGray.cgColor
+        titleTextView.layer.cornerRadius = 5
+        titleTextView.layer.masksToBounds = true
+    }
+    
+    private func loadDataFromReport() {
+        let report = DebuggIt.sharedInstance.report
+        if !report.title.isEmpty {
+            titleTextView.text = report.title
+        }
+        selectFromButtons(kindButtons, index: report.kind.rawValue)
+        selectFromButtons(priorityButtons, index: report.priority.rawValue)
+        // TODO: add custom view for audio?
+        // TODO: enable scroll in report items stack view
+        for screenshot in DebuggIt.sharedInstance.report.screenshots {
+            let view = UIImageView(image: screenshot)
+            view.layer.cornerRadius = 5
+            view.layer.masksToBounds = true
+            reportItemsStackView.addArrangedSubview(view)
         }
     }
+    
+    private func selectFromButtons(_ buttons: [UIButton], selected: UIButton) {
+        for button in buttons {
+            button.isSelected = button == selected
+        }
+    }
+    
+    private func selectFromButtons(_ buttons: [UIButton], index: Int) {
+        for (i, button) in buttons.enumerated() {
+            button.isSelected = i == index
+        }
+    }
+
     
     private func setReportKind(selectedButton: UIButton) {
         for (index, button) in kindButtons.enumerated() {
             if(button == selectedButton) {
-                DebuggIt.sharedInstance.report.kind = ReportKind.from(index: index)
+                DebuggIt.sharedInstance.report.kind = ReportKind(rawValue: index)!
             }
         }
     }
@@ -65,7 +84,7 @@ class BugDescriptionPage1ViewController: UIViewController {
     private func setReportPriority(selectedButton: UIButton) {
         for (index, button) in priorityButtons.enumerated() {
             if(button == selectedButton) {
-                DebuggIt.sharedInstance.report.priority = ReportPriority.from(index: index)
+                DebuggIt.sharedInstance.report.priority = ReportPriority(rawValue: index)!
             }
         }
     }
@@ -73,15 +92,13 @@ class BugDescriptionPage1ViewController: UIViewController {
     // MARK: Actions
     
     @IBAction func kindSelected(_ sender: UIButton) {
-        sender.isSelected = true
         setReportKind(selectedButton: sender)
-        deselectOtherButtons(kindButtons, selected: sender)
+        selectFromButtons(kindButtons, selected: sender)
     }
     
     @IBAction func prioritySelected(_ sender: UIButton) {
-        sender.isSelected = true
         setReportPriority(selectedButton: sender)
-        deselectOtherButtons(priorityButtons, selected: sender)
+        selectFromButtons(priorityButtons, selected: sender)
     }
 
     /*
