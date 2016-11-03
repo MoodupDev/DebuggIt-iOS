@@ -9,14 +9,19 @@
 import UIKit
 
 class BugDescriptionPage1ViewController: UIViewController {
+    
+    // MARK: Properties
+    
     @IBOutlet var kindButtons: [UIButton]!
     @IBOutlet var priorityButtons: [UIButton]!
     @IBOutlet weak var titleTextView: UITextView!
+    
+    // MARK: Overriden
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        titleTextView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,7 +29,9 @@ class BugDescriptionPage1ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func deselectOtherButtons(_ buttons: [UIButton], selected: UIButton) {
+    // MARK: Methods
+    
+    private func deselectOtherButtons(_ buttons: [UIButton], selected: UIButton) {
         for button in buttons {
             if button != selected {
                 button.isSelected = false
@@ -54,4 +61,13 @@ class BugDescriptionPage1ViewController: UIViewController {
     }
     */
 
+}
+
+// MARK: TextViewDelegate
+
+extension BugDescriptionPage1ViewController: UITextViewDelegate {
+    func textViewDidEndEditing(_ textView: UITextView) {
+        // TODO: save bug title to report
+        print("bug title")
+    }
 }
