@@ -12,13 +12,13 @@
             <rect key="frame" x="0.0" y="0.0" width="60" height="64"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoBugSmall" translatesAutoresizingMaskIntoConstraints="NO" id="4In-9a-Eoj">
+                <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoBugSmall" translatesAutoresizingMaskIntoConstraints="NO" id="4In-9a-Eoj">
                     <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="Lnr-QF-5TG"/>
                     </constraints>
                 </imageView>
-                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SlT-PT-bd5">
+                <view opaque="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="SlT-PT-bd5">
                     <color key="backgroundColor" red="0.93725490196078431" green="0.25098039215686274" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="5TF-vC-TJp"/>
