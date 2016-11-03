@@ -160,12 +160,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="xvT-q1-Bj6">
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W7Q-7a-icm"/>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GJt-Yc-Gpy"/>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UG3-dO-QHq"/>
-                                </subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="xvT-q1-Bj6" userLabel="Report items">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="182" id="DqW-vt-NVM"/>
                                 </constraints>
@@ -185,6 +180,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="reportItemsStackView" destination="xvT-q1-Bj6" id="Box-4T-EdJ"/>
                         <outlet property="titleTextView" destination="TTH-5D-anf" id="Mdq-Y7-dyW"/>
                         <outletCollection property="kindButtons" destination="sW0-2B-gh9" collectionClass="NSMutableArray" id="tjj-3j-jWp"/>
                         <outletCollection property="kindButtons" destination="xi8-0t-llP" collectionClass="NSMutableArray" id="JGs-i7-WTW"/>
@@ -261,7 +257,11 @@
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="Byw-6J-BOP">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="2bs-1s-M7f"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="2bs-1s-M7f">
+                            <connections>
+                                <action selector="cancelClicked:" destination="mTg-Ni-ERc" id="Hf9-8j-hwK"/>
+                            </connections>
+                        </barButtonItem>
                         <pageControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" id="hH5-Dm-Aey">
                             <rect key="frame" x="75" y="4" width="238" height="37"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

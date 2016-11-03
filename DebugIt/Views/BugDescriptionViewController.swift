@@ -40,6 +40,10 @@ class BugDescriptionPageViewController: UIPageViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    @IBAction func cancelClicked(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+        // TODO: clear report
+    }
     
     private(set) lazy var orderedViewControllers: [UIViewController] = {
         return [self.bugDescriptionPage(1), self.bugDescriptionPage(2)]
