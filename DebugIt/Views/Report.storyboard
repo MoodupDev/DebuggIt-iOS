@@ -244,6 +244,11 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="actualBehaviorTextView" destination="skv-oH-zMN" id="Q8I-IT-g5v"/>
+                        <outlet property="expectedBehaviorTextView" destination="oWa-oh-6II" id="z0m-Lp-BlD"/>
+                        <outlet property="stepsToReproduceTextView" destination="pFf-do-k8E" id="X3g-F4-ASq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wkX-b6-7AQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
