@@ -158,7 +158,7 @@
                                     <constraint firstAttribute="height" constant="128" id="qUk-hW-AZY"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="xvT-q1-Bj6" userLabel="Report items">
                                 <constraints>
@@ -191,7 +191,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DoC-u6-S9H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-153" y="858"/>
+            <point key="canvasLocation" x="-154.40000000000001" y="857.72113943028489"/>
         </scene>
         <!--Bug Description Page2 View Controller-->
         <scene sceneID="ooK-4W-2Kj">

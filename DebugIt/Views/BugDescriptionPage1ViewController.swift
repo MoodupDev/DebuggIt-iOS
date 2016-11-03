@@ -24,6 +24,11 @@ class BugDescriptionPage1ViewController: UIViewController {
 
         titleTextView.delegate = self
         
+        titleTextView.layer.borderWidth = 1
+        titleTextView.layer.borderColor = UIColor.lightGray.cgColor
+        titleTextView.layer.cornerRadius = 5
+        titleTextView.layer.masksToBounds = true
+        
         // TODO: add custom view for audio?
         // TODO: enable scroll in report items stack view
         for screenshot in DebuggIt.sharedInstance.report.screenshots {
@@ -79,5 +84,14 @@ class BugDescriptionPage1ViewController: UIViewController {
 extension BugDescriptionPage1ViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         DebuggIt.sharedInstance.report.title = textView.text
+        if textView.text == "" {
+            textView.text = "What went wrong?"
+        }
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == "What went wrong?" {
+            textView.text = ""
+        }
     }
 }
