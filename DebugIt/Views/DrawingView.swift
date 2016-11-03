@@ -19,11 +19,9 @@ class DrawingView: UIImageView {
     var lastPoint:CGPoint?
     var isDrawing = false
     var isActive = true
-    var type = DrawingType.freedraw
     
-    func active(isActive:Bool, type:DrawingType) {
+    func active(isActive:Bool) {
         self.isActive = isActive
-        self.type = type
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
