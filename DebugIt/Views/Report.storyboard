@@ -165,21 +165,29 @@
                                     <constraint firstAttribute="height" constant="182" id="DqW-vt-NVM"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHT-h7-xg1" userLabel="Record button">
+                                <state key="normal" image="recordMicro"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="xvT-q1-Bj6" firstAttribute="leading" secondItem="yrv-DU-ai8" secondAttribute="leadingMargin" id="0GL-yp-YZh"/>
                             <constraint firstItem="xvT-q1-Bj6" firstAttribute="trailing" secondItem="yrv-DU-ai8" secondAttribute="trailingMargin" id="1cD-cG-tGm"/>
-                            <constraint firstItem="TTH-5D-anf" firstAttribute="trailing" secondItem="yrv-DU-ai8" secondAttribute="trailingMargin" id="Fc7-yl-KBU"/>
+                            <constraint firstItem="pHT-h7-xg1" firstAttribute="top" secondItem="QGd-ND-hOD" secondAttribute="bottom" constant="55" id="BLE-PJ-NFK"/>
+                            <constraint firstItem="TTH-5D-anf" firstAttribute="trailing" secondItem="yrv-DU-ai8" secondAttribute="trailingMargin" constant="-59" id="Fc7-yl-KBU"/>
+                            <constraint firstItem="xvT-q1-Bj6" firstAttribute="top" secondItem="pHT-h7-xg1" secondAttribute="bottom" constant="55" id="GBO-VO-Ysw"/>
                             <constraint firstItem="QGd-ND-hOD" firstAttribute="leading" secondItem="yrv-DU-ai8" secondAttribute="leadingMargin" id="J0e-wA-Ijm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QGd-ND-hOD" secondAttribute="trailing" id="K50-qO-rXf"/>
+                            <constraint firstItem="pHT-h7-xg1" firstAttribute="leading" secondItem="TTH-5D-anf" secondAttribute="trailing" constant="8" id="T2f-fk-F5q"/>
                             <constraint firstItem="TTH-5D-anf" firstAttribute="top" secondItem="QGd-ND-hOD" secondAttribute="bottom" constant="16" id="XaI-1K-Dbv"/>
                             <constraint firstItem="QGd-ND-hOD" firstAttribute="top" secondItem="scV-cd-xNk" secondAttribute="bottom" id="ma7-UO-J5R"/>
                             <constraint firstItem="TTH-5D-anf" firstAttribute="leading" secondItem="yrv-DU-ai8" secondAttribute="leadingMargin" id="maL-Tn-7JG"/>
                             <constraint firstItem="xvT-q1-Bj6" firstAttribute="top" secondItem="TTH-5D-anf" secondAttribute="bottom" constant="8" symbolic="YES" id="poE-2O-DXW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pHT-h7-xg1" secondAttribute="trailing" id="rqw-77-96g"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="recordButton" destination="pHT-h7-xg1" id="EvG-TV-0lb"/>
                         <outlet property="reportItemsStackView" destination="xvT-q1-Bj6" id="Box-4T-EdJ"/>
                         <outlet property="titleTextView" destination="TTH-5D-anf" id="Mdq-Y7-dyW"/>
                         <outletCollection property="kindButtons" destination="sW0-2B-gh9" collectionClass="NSMutableArray" id="tjj-3j-jWp"/>
@@ -369,4 +377,7 @@
             <point key="canvasLocation" x="-1068" y="190"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="recordMicro" width="34" height="34"/>
+    </resources>
 </document>

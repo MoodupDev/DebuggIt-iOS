@@ -16,6 +16,7 @@ class BugDescriptionPage1ViewController: UIViewController {
     @IBOutlet var priorityButtons: [UIButton]!
     @IBOutlet weak var titleTextView: UITextView!
     @IBOutlet weak var reportItemsStackView: UIStackView!
+    @IBOutlet weak var recordButton: UIButton!
     
     // MARK: Overriden
 
@@ -23,7 +24,7 @@ class BugDescriptionPage1ViewController: UIViewController {
         super.viewDidLoad()
 
         initTitle()
-        
+        initRecordButton()
         loadDataFromReport()
     }
 
@@ -41,6 +42,12 @@ class BugDescriptionPage1ViewController: UIViewController {
         titleTextView.layer.borderColor = UIColor.lightGray.cgColor
         titleTextView.layer.cornerRadius = 5
         titleTextView.layer.masksToBounds = true
+    }
+    
+    private func initRecordButton() {
+        recordButton.setImage(UIImage(named: "recordMicroActive"), for: .selected)
+        recordButton.setImage(UIImage(named: "recordMicroActive"), for: .highlighted)
+        recordButton.setImage(UIImage(named: "recordMicro"), for: .normal)
     }
     
     private func loadDataFromReport() {
