@@ -24,22 +24,24 @@ class BugDescriptionPage1ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func deselectOtherButtons(_ buttons: [UIButton], without: UIButton) {
+    func deselectOtherButtons(_ buttons: [UIButton], selected: UIButton) {
         for button in buttons {
-            if button != without {
+            if button != selected {
                 button.isSelected = false
             }
         }
     }
     
+    // MARK: Actions
+    
     @IBAction func kindSelected(_ sender: UIButton) {
         sender.isSelected = true
-        deselectOtherButtons(kindButtons, without: sender)
+        deselectOtherButtons(kindButtons, selected: sender)
     }
     
     @IBAction func prioritySelected(_ sender: UIButton) {
         sender.isSelected = true
-        deselectOtherButtons(priorityButtons, without: sender)
+        deselectOtherButtons(priorityButtons, selected: sender)
     }
 
     /*
