@@ -21,12 +21,30 @@ class BugDescriptionPage2ViewController: UIViewController {
         stepsToReproduceTextView.delegate = self
         actualBehaviorTextView.delegate = self
         expectedBehaviorTextView.delegate = self
+        
+        loadDataFromReport()
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    private func loadDataFromReport() {
+        let report = DebuggIt.sharedInstance.report
+        
+        if !report.stepsToReproduce.isEmpty {
+            stepsToReproduceTextView.text = report.stepsToReproduce
+        }
+        
+        if !report.actualBehavior.isEmpty {
+            actualBehaviorTextView.text = report.actualBehavior
+        }
+        
+        if !report.expectedBehavior.isEmpty {
+            expectedBehaviorTextView.text = report.expectedBehavior
+        }
     }
     
 
