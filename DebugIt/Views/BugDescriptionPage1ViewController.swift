@@ -67,7 +67,6 @@ class BugDescriptionPage1ViewController: UIViewController {
 
 extension BugDescriptionPage1ViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
-        // TODO: save bug title to report
-        print("bug title")
+        DebuggIt.sharedInstance.report.title = textView.text
     }
 }

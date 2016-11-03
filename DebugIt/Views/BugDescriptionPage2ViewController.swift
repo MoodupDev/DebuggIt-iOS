@@ -44,14 +44,11 @@ class BugDescriptionPage2ViewController: UIViewController {
 extension BugDescriptionPage2ViewController : UITextViewDelegate{
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView == stepsToReproduceTextView {
-            print("steps to reproduce")
-            // TODO: save steps to reproduce to report
+            DebuggIt.sharedInstance.report.stepsToReproduce = textView.text
         } else if textView == actualBehaviorTextView {
-            print("actual behavior")
-            // TODO: save actual behavior to report
+            DebuggIt.sharedInstance.report.actualBehavior = textView.text
         } else {
-            print("expected behavior")
-            // TODO: save expected behavior to report
+            DebuggIt.sharedInstance.report.expectedBehavior = textView.text
         }
     }
 }
