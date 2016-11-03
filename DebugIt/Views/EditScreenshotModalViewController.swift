@@ -36,6 +36,7 @@ class EditScreenshotModalViewController: UIViewController {
     
     @IBAction func tapDone(_ sender: UIButton) {
         //todo go to the form modal
+        present(UIStoryboard.init(name: "Report", bundle: nil).instantiateViewController(withIdentifier: "BugDescription"), animated: true, completion: nil)
     }
     
     @IBAction func tapCancel(_ sender: UIButton) {

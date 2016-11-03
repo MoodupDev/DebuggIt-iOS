@@ -9,10 +9,18 @@
 import UIKit
 
 class BugDescriptionPage2ViewController: UIViewController {
+    
+    // MARK: Properties
+    @IBOutlet weak var stepsToReproduceTextView: UITextView!
+    @IBOutlet weak var actualBehaviorTextView: UITextView!
+    @IBOutlet weak var expectedBehaviorTextView: UITextView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        stepsToReproduceTextView.delegate = self
+        actualBehaviorTextView.delegate = self
+        expectedBehaviorTextView.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -31,5 +39,16 @@ class BugDescriptionPage2ViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+}
 
+extension BugDescriptionPage2ViewController : UITextViewDelegate{
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView == stepsToReproduceTextView {
+            DebuggIt.sharedInstance.report.stepsToReproduce = textView.text
+        } else if textView == actualBehaviorTextView {
+            DebuggIt.sharedInstance.report.actualBehavior = textView.text
+        } else {
+            DebuggIt.sharedInstance.report.expectedBehavior = textView.text
+        }
+    }
 }

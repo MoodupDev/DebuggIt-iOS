@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2107BD281DCB2FC400C02C3D /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2107BD271DCB2FC400C02C3D /* RoundedButton.swift */; };
 		21282EEC1DCA0E010001DE66 /* BugDescriptionPage1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21282EEB1DCA0E010001DE66 /* BugDescriptionPage1ViewController.swift */; };
 		21282EEE1DCA0E220001DE66 /* BugDescriptionPage2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21282EED1DCA0E220001DE66 /* BugDescriptionPage2ViewController.swift */; };
 		2196AC0E1DC0C1B1003A7A67 /* String+Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196AC0D1DC0C1B1003A7A67 /* String+Base64.swift */; };
@@ -67,6 +68,7 @@
 /* Begin PBXFileReference section */
 		07E65FF20F8DF49AF438DCE8 /* Pods-DebugItTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugItTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DebugItTests/Pods-DebugItTests.release.xcconfig"; sourceTree = "<group>"; };
 		0B546534046DD8BF92BF6A0A /* Pods_DebugItTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DebugItTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2107BD271DCB2FC400C02C3D /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		21282EEB1DCA0E010001DE66 /* BugDescriptionPage1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BugDescriptionPage1ViewController.swift; sourceTree = "<group>"; };
 		21282EED1DCA0E220001DE66 /* BugDescriptionPage2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BugDescriptionPage2ViewController.swift; sourceTree = "<group>"; };
 		2196AC0D1DC0C1B1003A7A67 /* String+Base64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Base64.swift"; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				21282EEB1DCA0E010001DE66 /* BugDescriptionPage1ViewController.swift */,
 				21282EED1DCA0E220001DE66 /* BugDescriptionPage2ViewController.swift */,
 				98EEEF871DCA044A0018730B /* DrawingView.swift */,
+				2107BD271DCB2FC400C02C3D /* RoundedButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -590,6 +593,7 @@
 				98F184F71DC0BAB8001CB560 /* Constants.swift in Sources */,
 				98F184A41DC0B906001CB560 /* AppDelegate.swift in Sources */,
 				2196AC161DC0CFF7003A7A67 /* String+Replace.swift in Sources */,
+				2107BD281DCB2FC400C02C3D /* RoundedButton.swift in Sources */,
 				98F184DE1DC0BA11001CB560 /* Report.swift in Sources */,
 				21282EEC1DCA0E010001DE66 /* BugDescriptionPage1ViewController.swift in Sources */,
 				2196AC121DC0C23F003A7A67 /* DataResponse+Validation.swift in Sources */,

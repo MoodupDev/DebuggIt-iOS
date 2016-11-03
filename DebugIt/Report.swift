@@ -9,7 +9,13 @@
 import UIKit
 
 class Report {
+    
+    var title = ""
 
+    var stepsToReproduce = ""
+    var actualBehavior = ""
+    var expectedBehavior = ""
+    
     var screenshots = [UIImage]()
     
     init() {

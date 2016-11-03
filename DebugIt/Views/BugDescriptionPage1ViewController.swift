@@ -9,14 +9,35 @@
 import UIKit
 
 class BugDescriptionPage1ViewController: UIViewController {
+    
+    // MARK: Properties
+    
     @IBOutlet var kindButtons: [UIButton]!
     @IBOutlet var priorityButtons: [UIButton]!
     @IBOutlet weak var titleTextView: UITextView!
+    @IBOutlet weak var reportItemsStackView: UIStackView!
+    
+    // MARK: Overriden
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        titleTextView.delegate = self
+        
+        titleTextView.layer.borderWidth = 1
+        titleTextView.layer.borderColor = UIColor.lightGray.cgColor
+        titleTextView.layer.cornerRadius = 5
+        titleTextView.layer.masksToBounds = true
+        
+        // TODO: add custom view for audio?
+        // TODO: enable scroll in report items stack view
+        for screenshot in DebuggIt.sharedInstance.report.screenshots {
+            let view = UIImageView(image: screenshot)
+            view.layer.cornerRadius = 5
+            view.layer.masksToBounds = true
+            reportItemsStackView.addArrangedSubview(view)
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,22 +45,26 @@ class BugDescriptionPage1ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func deselectOtherButtons(_ buttons: [UIButton], without: UIButton) {
+    // MARK: Methods
+    
+    private func deselectOtherButtons(_ buttons: [UIButton], selected: UIButton) {
         for button in buttons {
-            if button != without {
+            if button != selected {
                 button.isSelected = false
             }
         }
     }
     
+    // MARK: Actions
+    
     @IBAction func kindSelected(_ sender: UIButton) {
         sender.isSelected = true
-        deselectOtherButtons(kindButtons, without: sender)
+        deselectOtherButtons(kindButtons, selected: sender)
     }
     
     @IBAction func prioritySelected(_ sender: UIButton) {
         sender.isSelected = true
-        deselectOtherButtons(priorityButtons, without: sender)
+        deselectOtherButtons(priorityButtons, selected: sender)
     }
 
     /*
@@ -52,4 +77,21 @@ class BugDescriptionPage1ViewController: UIViewController {
     }
     */
 
+}
+
+// MARK: TextViewDelegate
+
+extension BugDescriptionPage1ViewController: UITextViewDelegate {
+    func textViewDidEndEditing(_ textView: UITextView) {
+        DebuggIt.sharedInstance.report.title = textView.text
+        if textView.text == "" {
+            textView.text = "What went wrong?"
+        }
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == "What went wrong?" {
+            textView.text = ""
+        }
+    }
 }

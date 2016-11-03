@@ -40,6 +40,10 @@ class BugDescriptionPageViewController: UIPageViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    @IBAction func cancelClicked(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+        // TODO: clear report
+    }
     
     private(set) lazy var orderedViewControllers: [UIViewController] = {
         return [self.bugDescriptionPage(1), self.bugDescriptionPage(2)]
@@ -95,20 +99,6 @@ extension BugDescriptionPageViewController: UIPageViewControllerDataSource {
             return nil
         }
         return orderedViewControllers[nextIndex]
-    }
-    
-    
-    
-    func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        self.pageControl.numberOfPages = orderedViewControllers.count
-        return orderedViewControllers.count
-    }
-    
-    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        guard let firstViewController = viewControllers?.first, let firstViewControllerIndex = orderedViewControllers.index(of: firstViewController) else {
-            return 0
-        }
-        return firstViewControllerIndex
     }
 
 }
