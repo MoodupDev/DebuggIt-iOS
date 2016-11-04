@@ -18,8 +18,8 @@ class BugDescriptionPageViewController: UIPageViewController {
         self.dataSource = self
         self.delegate = self
         
-        if let firstViewController = orderedViewControllers.first {
-            setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
+        if orderedViewControllers.first != nil {
+            openPage(0)
         }
         
         
