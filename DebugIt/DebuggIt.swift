@@ -45,6 +45,7 @@ class DebuggIt {
         self.configType = configType
         self.isInitialized = true
         IQKeyboardManager.sharedManager().enable = true
+        ApiClient.postEvent(.initialized)
     }
     
     func attach(viewController:UIViewController) throws -> Bool {
