@@ -47,6 +47,9 @@ class ApiClient {
     }
     
     static func postEvent(_ event: EventType, value: Int? = nil) {
+        
+        // TODO: update api names to consume system name such as "android" or "ios" and system version
+        
         var params: Parameters = [
             "event_type": event.name(),
             "app_id": Bundle.main.bundleIdentifier ?? "",
@@ -61,6 +64,10 @@ class ApiClient {
             print(response)
         }
         
+    }
+    
+    static func checkVersion() {
+        // TODO: implement checking if version is supported
     }
 }
 
