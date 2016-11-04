@@ -11,6 +11,7 @@ import UIKit
 class BugDescriptionViewController: UIViewController {
     
     @IBOutlet weak var pageControl: UIPageControl!
+    weak var pageViewController : BugDescriptionPageViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,8 @@ class BugDescriptionViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "bugDescriptionPageViewController" {
-            (segue.destination as! BugDescriptionPageViewController).pageControl = self.pageControl
+            pageViewController = segue.destination as? BugDescriptionPageViewController
+            pageViewController?.pageControl = self.pageControl
         }
     }
     
@@ -37,6 +39,10 @@ class BugDescriptionViewController: UIViewController {
     @IBAction func cancelClicked(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
         // TODO: clear report
+    }
+    
+    @IBAction func pageControlTapped(_ sender: UIPageControl) {
+        pageViewController?.openPage(sender.currentPage)
     }
 
 }
