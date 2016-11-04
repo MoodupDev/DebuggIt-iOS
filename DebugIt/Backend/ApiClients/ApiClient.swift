@@ -29,7 +29,7 @@ class ApiClient {
             case .success(let value):
                 let value = JSON(value)
                 if response.isSuccess() {
-                    DebuggIt.sharedInstance.report.screenshotsUrl.append(value["url"].stringValue)
+                    DebuggIt.sharedInstance.report.screenshotsUrls.append(value["url"].stringValue)
                     print(value["url"].stringValue)
                     successBlock()
                 } else {
