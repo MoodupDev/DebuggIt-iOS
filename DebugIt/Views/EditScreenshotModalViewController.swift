@@ -38,7 +38,17 @@ class EditScreenshotModalViewController: UIViewController {
     
     @IBAction func tapDone(_ sender: UIButton) {
         //todo go to the form modal
-        present(UIStoryboard.init(name: "Report", bundle: nil).instantiateViewController(withIdentifier: "BugDescription"), animated: true, completion: nil)
+        let alerController = UIAlertController(title: "Sending screenshot", message: "Wait for end...", preferredStyle: .alert)
+        present(alerController, animated: true, completion: nil)
+        
+        ApiClient.upload(.image, data: screenshotSurface.image!.toBase64String(), successBlock: {
+            alerController.dismiss(animated: true, completion: {
+                self.present(UIStoryboard.init(name: "Report", bundle: nil).instantiateViewController(withIdentifier: "BugDescription"), animated: true, completion: nil)
+            })
+        }, errorBlock: { (statusCode, errorMessage) in
+            alerController.dismiss(animated: false, completion: nil)
+            print(statusCode!, errorMessage!)
+        })
     }
     
     @IBAction func tapCancel(_ sender: UIButton) {
