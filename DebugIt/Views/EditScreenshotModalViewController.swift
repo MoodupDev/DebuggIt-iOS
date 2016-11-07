@@ -37,7 +37,12 @@ class EditScreenshotModalViewController: UIViewController {
     }
     
     @IBAction func tapDone(_ sender: UIButton) {
-        //todo go to the form modal
+        UIGraphicsBeginImageContext(screenshotSurface.bounds.size)
+        screenshotSurface.draw(screenshotSurface.layer, in: UIGraphicsGetCurrentContext()!)
+        DebuggIt.sharedInstance.report.screenshots.removeLast()
+        DebuggIt.sharedInstance.report.screenshots.append(UIGraphicsGetImageFromCurrentImageContext()!)
+        UIGraphicsEndImageContext()
+        
         present(UIStoryboard.init(name: "Report", bundle: nil).instantiateViewController(withIdentifier: "BugDescription"), animated: true, completion: nil)
     }
     
