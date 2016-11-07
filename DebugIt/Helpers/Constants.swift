@@ -10,6 +10,13 @@ struct Constants {
     
     static let debuggItUrl = "http://debugg.it"
     
+    struct Api {
+        private static let baseUrl = "https://debuggit-api-staging.herokuapp.com"
+        static let uploadImageUrl = Api.baseUrl + "/api/v1/upload/image"
+        static let uploadAudioUrl = Api.baseUrl + "/api/v1/upload/audio"
+        static let eventsUrl = Api.baseUrl + "/api/v1/events"
+    }
+    
     struct Bitbucket {
         
         // MARK: URLs

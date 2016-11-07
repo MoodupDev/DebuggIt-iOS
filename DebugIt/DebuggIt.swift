@@ -27,24 +27,25 @@ class DebuggIt {
     }
     
     func initBitbucket(clientId:String, clientSecret:String, repoSlug:String, accountName:String) {
-        self.apiClient = BitbucketApiClient(clientId: clientId, clientSecret: clientSecret, repoSlug: repoSlug, accountName: accountName)
+        apiClient = BitbucketApiClient(clientId: clientId, clientSecret: clientSecret, repoSlug: repoSlug, accountName: accountName)
         initDebugIt(configType: ConfigType.bitbucket)
     }
     
     func initJira(host:String, projectKey:String, usesHttps:Bool = true) {
-        self.apiClient = JiraApiClient(host: host, projectKey: projectKey, usesHttps: usesHttps)
+        apiClient = JiraApiClient(host: host, projectKey: projectKey, usesHttps: usesHttps)
         initDebugIt(configType: ConfigType.jira)
     }
     
     func initGithub(repoSlug:String, accountName:String) {
-        self.apiClient = GitHubApiClient(repoSlug: repoSlug, accountName: accountName)
+        apiClient = GitHubApiClient(repoSlug: repoSlug, accountName: accountName)
         initDebugIt(configType: ConfigType.github)
     }
-    
+        
     private func initDebugIt(configType:ConfigType) {
         self.configType = configType
-        self.isInitialized = true
+        isInitialized = true
         IQKeyboardManager.sharedManager().enable = true
+        ApiClient.postEvent(.initialized)
     }
     
     func attach(viewController:UIViewController) throws -> Bool {
@@ -57,7 +58,7 @@ class DebuggIt {
             }
             //todo add version checking
             
-            self.currentViewController = viewController
+            currentViewController = viewController
             
             registerShakeDetector()
             addReportButton()
@@ -76,11 +77,11 @@ class DebuggIt {
         debuggItButton.imageView.roundCorners(corners: [.topRight, .bottomRight], radius: 5)
         debuggItButton.edge.roundCorners(corners: [.bottomLeft, .topLeft], radius: 5)
 
-        self.currentViewController?.view.addSubview(debuggItButton)
+        currentViewController?.view.addSubview(debuggItButton)
         addConstraints(forView: debuggItButton)
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(self.showReportDialog(_:)))
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action:#selector(self.moveButton(_:)))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(showReportDialog(_:)))
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action:#selector(moveButton(_:)))
         
         debuggItButton.addGestureRecognizer(tapGestureRecognizer)
         debuggItButton.addGestureRecognizer(panGestureRecognizer)
@@ -88,21 +89,21 @@ class DebuggIt {
     
     
     private func addConstraints(forView : UIView) {
-        self.currentViewController?.view.addConstraint(NSLayoutConstraint(item: forView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: self.currentViewController?.view, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: 0.0))
+        currentViewController?.view.addConstraint(NSLayoutConstraint(item: forView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: currentViewController?.view, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: 0.0))
         
-        self.currentViewController?.view.addConstraint(NSLayoutConstraint(item: forView, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: self.currentViewController?.view, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 0.0))
+        currentViewController?.view.addConstraint(NSLayoutConstraint(item: forView, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: currentViewController?.view, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 0.0))
     }
     
     @objc func showReportDialog(_ recognizer: UITapGestureRecognizer) {
         takeScreenshot()
         showModal(viewController:EditScreenshotModalViewController())
         
-        /*if (apiClient?.hasToken())! {
+        if (apiClient?.hasToken())! {
             takeScreenshot()
             showModal(viewController:EditScreenshotModalViewController())
         } else {
             showModal(viewController:LoginModalViewController())
-        }*/
+        }
     }
     
     @objc func moveButton(_ recognizer: UIPanGestureRecognizer) {
@@ -110,7 +111,7 @@ class DebuggIt {
             if let view = recognizer.view {
                 let translation = recognizer.translation(in: view)
                 if(translation.y < 0.0 && view.center.y > (view.frame.height / 2)
-                    || translation.y >= 0.0 && view.center.y < ((self.currentViewController?.view.frame.maxY)! - (view.frame.height/2))) {
+                    || translation.y >= 0.0 && view.center.y < ((currentViewController?.view.frame.maxY)! - (view.frame.height/2))) {
                     view.center = CGPoint(x: view.center.x, y: view.center.y + translation.y)
                     recognizer.setTranslation(CGPoint.zero, in: view)
                 }
@@ -125,7 +126,7 @@ class DebuggIt {
     
     private func showModal(viewController:UIViewController) {
         viewController.modalPresentationStyle = .overCurrentContext
-        self.currentViewController?.present(viewController, animated: true, completion: nil)
+        currentViewController?.present(viewController, animated: true, completion: nil)
     }
     
     private func registerShakeDetector() {

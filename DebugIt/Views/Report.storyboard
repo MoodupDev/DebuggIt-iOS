@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -318,6 +318,9 @@
                                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="mkE-vO-Xot">
                                                 <color key="pageIndicatorTintColor" red="0.95542651414871216" green="0.65559518337249756" blue="0.66193246841430664" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="currentPageIndicatorTintColor" red="0.93139916658401489" green="0.27553075551986694" blue="0.18585780262947083" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="pageControlTapped:" destination="bV9-0k-HiM" eventType="valueChanged" id="281-Ht-gXs"/>
+                                                </connections>
                                             </pageControl>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9UA-hX-t0Z">
                                                 <color key="backgroundColor" red="0.90980392160000001" green="0.41176470590000003" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>

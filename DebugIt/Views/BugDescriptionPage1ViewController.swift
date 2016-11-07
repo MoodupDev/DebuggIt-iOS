@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Nuke
 
 class BugDescriptionPage1ViewController: UIViewController {
     
@@ -18,11 +19,12 @@ class BugDescriptionPage1ViewController: UIViewController {
     @IBOutlet weak var reportItemsStackView: UIStackView!
     @IBOutlet weak var recordButton: UIButton!
     
+    
     // MARK: Overriden
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         initTitle()
         initRecordButton()
         loadDataFromReport()
@@ -59,10 +61,16 @@ class BugDescriptionPage1ViewController: UIViewController {
         selectFromButtons(priorityButtons, index: report.priority.rawValue)
         // TODO: add custom view for audio?
         // TODO: enable scroll in report items stack view
-        for screenshot in DebuggIt.sharedInstance.report.screenshots {
-            let view = UIImageView(image: screenshot)
+        loadScreenshots()
+    }
+    
+    private func loadScreenshots() {
+        for screenshot in DebuggIt.sharedInstance.report.screenshotsUrls {
+            let view = UIImageView()
+            Nuke.loadImage(with: URL(string: screenshot)!, into: view)
             view.layer.cornerRadius = 5
             view.layer.masksToBounds = true
+            view.contentMode = UIViewContentMode.scaleAspectFit
             reportItemsStackView.addArrangedSubview(view)
         }
     }

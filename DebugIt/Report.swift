@@ -20,6 +20,7 @@ class Report {
     var expectedBehavior = ""
     
     var screenshots = [UIImage]()
+    var screenshotsUrls = [String]()
     
     init() {
        
