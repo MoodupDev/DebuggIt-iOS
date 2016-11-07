@@ -26,21 +26,21 @@ class DebuggIt {
         
     }
     
-    func initBitbucket(clientId:String, clientSecret:String, repoSlug:String, accountName:String) {
+    func initBitbucket(clientId: String, clientSecret: String, repoSlug: String, accountName: String) {
         apiClient = BitbucketApiClient(clientId: clientId, clientSecret: clientSecret, repoSlug: repoSlug, accountName: accountName)
         initDebugIt(configType: ConfigType.bitbucket)
     }
     
-    func initJira(host:String, projectKey:String, usesHttps:Bool = true) {
+    func initJira(host: String, projectKey: String, usesHttps: Bool = true) {
         apiClient = JiraApiClient(host: host, projectKey: projectKey, usesHttps: usesHttps)
         initDebugIt(configType: ConfigType.jira)
     }
     
-    func initGithub(repoSlug:String, accountName:String) {
+    func initGithub(repoSlug: String, accountName: String) {
         apiClient = GitHubApiClient(repoSlug: repoSlug, accountName: accountName)
         initDebugIt(configType: ConfigType.github)
     }
-        
+    
     private func initDebugIt(configType:ConfigType) {
         self.configType = configType
         isInitialized = true
@@ -48,7 +48,7 @@ class DebuggIt {
         ApiClient.postEvent(.initialized)
     }
     
-    func attach(viewController:UIViewController) throws -> Bool {
+    func attach(viewController: UIViewController) throws -> Bool {
         if(!isInitialized) {
             throw DebuggItError.notInitialized(message: "Call init before attach")
         } else {
@@ -76,7 +76,7 @@ class DebuggIt {
         
         debuggItButton.imageView.roundCorners(corners: [.topRight, .bottomRight], radius: 5)
         debuggItButton.edge.roundCorners(corners: [.bottomLeft, .topLeft], radius: 5)
-
+        
         currentViewController?.view.addSubview(debuggItButton)
         addConstraints(forView: debuggItButton)
         
@@ -95,9 +95,6 @@ class DebuggIt {
     }
     
     @objc func showReportDialog(_ recognizer: UITapGestureRecognizer) {
-        takeScreenshot()
-        showModal(viewController:EditScreenshotModalViewController())
-        
         if (apiClient?.hasToken())! {
             takeScreenshot()
             showModal(viewController:EditScreenshotModalViewController())
@@ -124,7 +121,7 @@ class DebuggIt {
         report.screenshots.append(window.capture())
     }
     
-    private func showModal(viewController:UIViewController) {
+    private func showModal(viewController: UIViewController) {
         viewController.modalPresentationStyle = .overCurrentContext
         currentViewController?.present(viewController, animated: true, completion: nil)
     }

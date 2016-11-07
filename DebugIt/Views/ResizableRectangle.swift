@@ -10,13 +10,13 @@ import UIKit
 
 class ResizableRectangle: UIView {
     
-    let resizeThumbSize:CGFloat = 45.0
+    let resizeThumbSize: CGFloat = 45.0
     var isResizingLowerRight = false
     var isResizingUpperRight = false
     var isResizingLowerLeft = false
     var isResizingUpperLeft = false
-    var touchStart:CGPoint?
-    var isPinned:Bool = false
+    var touchStart: CGPoint?
+    var isPinned: Bool = false
     
     class func instantiateFromNib() -> ResizableRectangle {
         return UINib(nibName: "ResizableRectangle", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! ResizableRectangle

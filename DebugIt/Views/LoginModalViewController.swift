@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class LoginModalViewController: UIViewController {
     
@@ -37,11 +38,13 @@ class LoginModalViewController: UIViewController {
         let email = emailTextField.text!
         let password = passwordTextField.text!
         DebuggIt.sharedInstance.apiClient?.login(email: email, password: password, successBlock: { (response) in
-                // TODO: show succes popup, then dismiss this view
+        
+            self.present(EditScreenshotModalViewController(), animated: true, completion: nil)
             self.dismiss(animated: true, completion: nil)
             }, errorBlock: { (status, error) in
-                // TODO: show failure popup
-                print(status, error)
+                let json = JSON(error!)
+                //let alertController = UIAlertController(title: "Error", message: json["error_description"], preferredStyle: .alert)
+                self.present(alertController, animated: true, completion: nil)
         })
     }
     
