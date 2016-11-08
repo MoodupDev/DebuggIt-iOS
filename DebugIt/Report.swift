@@ -14,6 +14,7 @@ class Report {
     
     var kind : ReportKind = .bug
     var priority : ReportPriority = .medium
+    var configType : ConfigType?
 
     var stepsToReproduce = ""
     var actualBehavior = ""

@@ -19,6 +19,11 @@ struct Constants {
     
     struct Bitbucket {
         
+        //MARL: Priorities
+        static let minor = "minor"
+        static let major = "major"
+        static let critical = "critical"
+        
         // MARK: URLs
         
         static let authorizeUrl = "https://bitbucket.org/site/oauth2/access_token"

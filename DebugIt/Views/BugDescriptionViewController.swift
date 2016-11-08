@@ -35,11 +35,18 @@ class BugDescriptionViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func doneClicked(_ sender: UIBarButtonItem) {
+        DebuggIt.sharedInstance.sendReport(
+            successBlock: {
+            
+            }, errorBlock: {
+                (status, error) in
+                
+        })
     }
     
     @IBAction func cancelClicked(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
-        // TODO: clear report
+        DebuggIt.sharedInstance.report = Report()
     }
     
     @IBAction func pageControlTapped(_ sender: UIPageControl) {

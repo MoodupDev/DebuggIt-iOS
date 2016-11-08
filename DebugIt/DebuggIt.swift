@@ -16,9 +16,9 @@ class DebuggIt {
     
     private var currentViewController:UIViewController?
     var apiClient:ApiClientProtocol?
+    var configType:ConfigType = .bitbucket
     
     var report:Report = Report()
-    var configType:ConfigType = ConfigType.bitbucket
     private var isInitialized:Bool = false
     private var shouldPostInitializedEvent:Bool = true
     
@@ -28,21 +28,22 @@ class DebuggIt {
     
     func initBitbucket(clientId: String, clientSecret: String, repoSlug: String, accountName: String) {
         apiClient = BitbucketApiClient(clientId: clientId, clientSecret: clientSecret, repoSlug: repoSlug, accountName: accountName)
-        initDebugIt(configType: ConfigType.bitbucket)
+        initDebugIt(configType: .bitbucket)
     }
     
     func initJira(host: String, projectKey: String, usesHttps: Bool = true) {
         apiClient = JiraApiClient(host: host, projectKey: projectKey, usesHttps: usesHttps)
-        initDebugIt(configType: ConfigType.jira)
+        initDebugIt(configType: .jira)
     }
     
     func initGithub(repoSlug: String, accountName: String) {
         apiClient = GitHubApiClient(repoSlug: repoSlug, accountName: accountName)
-        initDebugIt(configType: ConfigType.github)
+        initDebugIt(configType: .github)
     }
     
     private func initDebugIt(configType:ConfigType) {
         self.configType = configType
+        report.configType = configType
         isInitialized = true
         IQKeyboardManager.sharedManager().enable = true
         ApiClient.postEvent(.initialized)
@@ -65,6 +66,10 @@ class DebuggIt {
             
             return true
         }
+    }
+    
+    func sendReport(successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int?,_ message: String?) -> ()) {
+        apiClient?.addIssue(title: report.title, content: report.stepsToReproduce + "\n" + report.expectedBehavior + "\n" + report.actualBehavior, priority: Utils.convert(fromPriority: report.priority), kind: report.kind.rawValue, successBlock: successBlock, errorBlock: errorBlock)
     }
     
     private func addReportButton() {

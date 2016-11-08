@@ -64,7 +64,7 @@
                                     <constraints>
                                         <constraint firstAttribute="width" constant="60" id="ly1-wk-q7O"/>
                                     </constraints>
-                                    <state key="normal" title="Send">
+                                    <state key="normal" title="Next">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <userDefinedRuntimeAttributes>
