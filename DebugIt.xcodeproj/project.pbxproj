@@ -17,6 +17,7 @@
 		214026FF1DCC9EDC00A14715 /* UIImage+Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214026FE1DCC9EDC00A14715 /* UIImage+Base64.swift */; };
 		214027011DCCAFB700A14715 /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214027001DCCAFB700A14715 /* EventType.swift */; };
 		214027051DCCBE1300A14715 /* UIDevice+ModelName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214027041DCCBE1300A14715 /* UIDevice+ModelName.swift */; };
+		21713B511DD1F2770068D025 /* ReportItemsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21713B501DD1F2770068D025 /* ReportItemsCollectionViewController.swift */; };
 		2196AC0E1DC0C1B1003A7A67 /* String+Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196AC0D1DC0C1B1003A7A67 /* String+Base64.swift */; };
 		2196AC101DC0C203003A7A67 /* ApiClientProtocol+Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196AC0F1DC0C203003A7A67 /* ApiClientProtocol+Headers.swift */; };
 		2196AC121DC0C23F003A7A67 /* DataResponse+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196AC111DC0C23F003A7A67 /* DataResponse+Validation.swift */; };
@@ -26,6 +27,8 @@
 		21A81F031DC21F800014FCD7 /* LoginModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A81F011DC21F800014FCD7 /* LoginModalViewController.swift */; };
 		21A81F041DC21F800014FCD7 /* LoginModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21A81F021DC21F800014FCD7 /* LoginModalViewController.xib */; };
 		21BA798C1DC9DCD800D29015 /* BugDescriptionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA798B1DC9DCD800D29015 /* BugDescriptionPageViewController.swift */; };
+		21D389F01DD2114700B8B776 /* ScreenshotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D389EE1DD2114700B8B776 /* ScreenshotCollectionViewCell.swift */; };
+		21D389F11DD2114700B8B776 /* ScreenshotCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21D389EF1DD2114700B8B776 /* ScreenshotCollectionViewCell.xib */; };
 		21ECFF3E1DC38B1E0076FC22 /* Report.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21ECFF3D1DC38B1E0076FC22 /* Report.storyboard */; };
 		981826F31DCB8E0B00122591 /* ResizableRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981826F11DCB8E0B00122591 /* ResizableRectangle.swift */; };
 		981826F41DCB8E0B00122591 /* ResizableRectangle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 981826F21DCB8E0B00122591 /* ResizableRectangle.xib */; };
@@ -86,6 +89,7 @@
 		214026FE1DCC9EDC00A14715 /* UIImage+Base64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Base64.swift"; sourceTree = "<group>"; };
 		214027001DCCAFB700A14715 /* EventType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventType.swift; sourceTree = "<group>"; };
 		214027041DCCBE1300A14715 /* UIDevice+ModelName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+ModelName.swift"; sourceTree = "<group>"; };
+		21713B501DD1F2770068D025 /* ReportItemsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportItemsCollectionViewController.swift; sourceTree = "<group>"; };
 		2196AC0D1DC0C1B1003A7A67 /* String+Base64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Base64.swift"; sourceTree = "<group>"; };
 		2196AC0F1DC0C203003A7A67 /* ApiClientProtocol+Headers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ApiClientProtocol+Headers.swift"; sourceTree = "<group>"; };
 		2196AC111DC0C23F003A7A67 /* DataResponse+Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataResponse+Validation.swift"; sourceTree = "<group>"; };
@@ -95,6 +99,8 @@
 		21A81F011DC21F800014FCD7 /* LoginModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModalViewController.swift; sourceTree = "<group>"; };
 		21A81F021DC21F800014FCD7 /* LoginModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginModalViewController.xib; sourceTree = "<group>"; };
 		21BA798B1DC9DCD800D29015 /* BugDescriptionPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BugDescriptionPageViewController.swift; sourceTree = "<group>"; };
+		21D389EE1DD2114700B8B776 /* ScreenshotCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotCollectionViewCell.swift; sourceTree = "<group>"; };
+		21D389EF1DD2114700B8B776 /* ScreenshotCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScreenshotCollectionViewCell.xib; sourceTree = "<group>"; };
 		21ECFF3D1DC38B1E0076FC22 /* Report.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Report.storyboard; sourceTree = "<group>"; };
 		41EDDC6575F58C14F85B7D2F /* Pods-DebugItUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugItUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DebugItUITests/Pods-DebugItUITests.release.xcconfig"; sourceTree = "<group>"; };
 		953A63AF08C46A826FC22D7D /* Pods-DebugIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugIt.release.xcconfig"; path = "Pods/Target Support Files/Pods-DebugIt/Pods-DebugIt.release.xcconfig"; sourceTree = "<group>"; };
@@ -224,6 +230,9 @@
 				98EEEF871DCA044A0018730B /* DrawingView.swift */,
 				2107BD271DCB2FC400C02C3D /* RoundedButton.swift */,
 				2107BD2C1DCB593400C02C3D /* BugDescriptionViewController.swift */,
+				21713B501DD1F2770068D025 /* ReportItemsCollectionViewController.swift */,
+				21D389EE1DD2114700B8B776 /* ScreenshotCollectionViewCell.swift */,
+				21D389EF1DD2114700B8B776 /* ScreenshotCollectionViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -431,6 +440,7 @@
 				21A81F001DC20EC00014FCD7 /* Images.xcassets in Resources */,
 				21ECFF3E1DC38B1E0076FC22 /* Report.storyboard in Resources */,
 				98F184AB1DC0B906001CB560 /* Assets.xcassets in Resources */,
+				21D389F11DD2114700B8B776 /* ScreenshotCollectionViewCell.xib in Resources */,
 				98F184A91DC0B906001CB560 /* Main.storyboard in Resources */,
 				98BEF4311DC24C1500483759 /* EditScreenshotModalViewController.xib in Resources */,
 				98BEF42D1DC22D9E00483759 /* DebuggItButton.xib in Resources */,
@@ -600,12 +610,14 @@
 				98F184F91DC0BAB8001CB560 /* GitHubApiClient.swift in Sources */,
 				2196AC0E1DC0C1B1003A7A67 /* String+Base64.swift in Sources */,
 				98EEEF8A1DCA3C210018730B /* UIView+RoundedCorners.swift in Sources */,
+				21D389F01DD2114700B8B776 /* ScreenshotCollectionViewCell.swift in Sources */,
 				98F184F41DC0BAB8001CB560 /* ApiClientProtocol.swift in Sources */,
 				98F184F51DC0BAB8001CB560 /* BitbucketApiClient.swift in Sources */,
 				2107BD2D1DCB593400C02C3D /* BugDescriptionViewController.swift in Sources */,
 				21BA798C1DC9DCD800D29015 /* BugDescriptionPageViewController.swift in Sources */,
 				21282EEE1DCA0E220001DE66 /* BugDescriptionPage2ViewController.swift in Sources */,
 				98F3F3291DC9E33A00F3E403 /* UIWindow+Screenshot.swift in Sources */,
+				21713B511DD1F2770068D025 /* ReportItemsCollectionViewController.swift in Sources */,
 				214027051DCCBE1300A14715 /* UIDevice+ModelName.swift in Sources */,
 				98F184DB1DC0BA11001CB560 /* DebuggIt.swift in Sources */,
 				98EEEF881DCA044A0018730B /* DrawingView.swift in Sources */,
