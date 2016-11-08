@@ -335,6 +335,9 @@
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="doneClicked:" destination="bV9-0k-HiM" eventType="touchUpInside" id="fa0-1H-YFv"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>

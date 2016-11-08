@@ -34,6 +34,8 @@ class BugDescriptionViewController: UIViewController {
     }
     
     // MARK: Actions
+    @IBAction func doneClicked(_ sender: UIBarButtonItem) {
+    }
     
     @IBAction func cancelClicked(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
