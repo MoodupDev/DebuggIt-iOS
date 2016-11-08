@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class LoginModalViewController: UIViewController {
     
@@ -23,10 +24,10 @@ class LoginModalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         updateLoginInfoSection()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -36,12 +37,18 @@ class LoginModalViewController: UIViewController {
     @IBAction func signIn(_ sender: UIButton) {
         let email = emailTextField.text!
         let password = passwordTextField.text!
+        
         DebuggIt.sharedInstance.apiClient?.login(email: email, password: password, successBlock: { (response) in
-                // TODO: show succes popup, then dismiss this view
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: {
+                UIApplication.shared.keyWindow?.rootViewController?.present(EditScreenshotModalViewController(), animated: true, completion: nil)
+            })
             }, errorBlock: { (status, error) in
-                // TODO: show failure popup
-                print(status, error)
+                let json = JSON.parse(error!)
+                let alertController = UIAlertController(title: "Error", message: json["error_description"].stringValue, preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: {(action: UIAlertAction!) in
+                    alertController.dismiss(animated: false, completion: nil)
+                }))
+                self.present(alertController, animated: true, completion: nil)
         })
     }
     
@@ -58,5 +65,5 @@ class LoginModalViewController: UIViewController {
             infoLabel.text = String(format: LoginModalViewController.loginText, "JIRA")
         }
     }
-
+    
 }

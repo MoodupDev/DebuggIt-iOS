@@ -6,7 +6,7 @@
 //  Copyright © 2016 MoodUp. All rights reserved.
 //
 
-enum ReportKind: Int {
-    case bug = 0
-    case enhancement
+enum ReportKind: String {
+    case bug = "Bug"
+    case enhancement = "Enhancement"
 }

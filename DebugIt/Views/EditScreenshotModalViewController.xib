@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditScreenshotModalViewController" customModule="DebugIt">
             <connections>
+                <outlet property="containerView" destination="eIw-Bj-oXT" id="Tdz-Ot-8Xa"/>
                 <outlet property="freedrawButton" destination="Yuf-29-eh8" id="Bdt-TJ-Q5f"/>
                 <outlet property="rectangleButton" destination="xaI-5i-RVl" id="rMo-tb-ZDh"/>
                 <outlet property="screenshotSurface" destination="Nj5-3L-GDr" id="6xp-4h-DgF"/>
@@ -17,7 +18,7 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bee-fv-MEP" userLabel="mainArea">
@@ -63,7 +64,7 @@
                                     <constraints>
                                         <constraint firstAttribute="width" constant="60" id="ly1-wk-q7O"/>
                                     </constraints>
-                                    <state key="normal" title="Send">
+                                    <state key="normal" title="Next">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <userDefinedRuntimeAttributes>
@@ -81,7 +82,18 @@
                             </constraints>
                             <edgeInsets key="layoutMargins" top="4" left="4" bottom="4" right="4"/>
                         </stackView>
-                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nj5-3L-GDr" customClass="DrawingView" customModule="DebugIt" customModuleProvider="target"/>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eIw-Bj-oXT">
+                            <subviews>
+                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nj5-3L-GDr" customClass="DrawingView" customModule="DebugIt" customModuleProvider="target"/>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="Nj5-3L-GDr" secondAttribute="trailing" id="HXB-U8-dMl"/>
+                                <constraint firstItem="Nj5-3L-GDr" firstAttribute="leading" secondItem="eIw-Bj-oXT" secondAttribute="leading" id="J19-BJ-dfR"/>
+                                <constraint firstAttribute="bottom" secondItem="Nj5-3L-GDr" secondAttribute="bottom" id="KTY-dy-eMI"/>
+                                <constraint firstItem="Nj5-3L-GDr" firstAttribute="top" secondItem="eIw-Bj-oXT" secondAttribute="top" id="Nuh-1a-INg"/>
+                            </constraints>
+                        </view>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="VwM-po-uZI">
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Izm-RY-fO5">

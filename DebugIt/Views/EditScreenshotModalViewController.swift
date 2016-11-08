@@ -14,8 +14,10 @@ class EditScreenshotModalViewController: UIViewController {
     @IBOutlet weak var rectangleButton: UIButton!
     @IBOutlet weak var freedrawButton: UIButton!
     @IBOutlet weak var undoButton: UIButton!
+    @IBOutlet weak var containerView: UIView!
     
     var currentRectangle:ResizableRectangle?
+    var rectangles = [ResizableRectangle]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,21 +39,37 @@ class EditScreenshotModalViewController: UIViewController {
     }
     
     @IBAction func tapDone(_ sender: UIButton) {
-        //todo go to the form modal
-        let alerController = UIAlertController(title: "Sending screenshot", message: "Wait for end...", preferredStyle: .alert)
-        present(alerController, animated: true, completion: nil)
+        UIGraphicsBeginImageContext(containerView.bounds.size)
+        containerView.layer.render(in: UIGraphicsGetCurrentContext()!)
         
-        ApiClient.upload(.image, data: screenshotSurface.image!.toBase64String(), successBlock: {
-            
+        let image = UIGraphicsGetImageFromCurrentImageContext()!
+        
+        DebuggIt.sharedInstance.report.screenshots.removeLast()
+        DebuggIt.sharedInstance.report.screenshots.append(image)
+        
+        UIGraphicsEndImageContext()
+        
+        let alertController = UIAlertController(title: "Sending screenshot", message: "Wait for end...", preferredStyle: .alert)
+        present(alertController, animated: true, completion: nil)
+        
+        ApiClient.upload(.image, data: image.toBase64String(), successBlock: {
             ApiClient.postEvent(self.freedrawButton.isSelected ? .screenshotAddedDraw : .screenshotAddedRectangle)
-            
-            alerController.dismiss(animated: true, completion: {
-                self.present(UIStoryboard.init(name: "Report", bundle: nil).instantiateViewController(withIdentifier: "BugDescription"), animated: true, completion: nil)
-            })
-        }, errorBlock: { (statusCode, errorMessage) in
-            alerController.dismiss(animated: false, completion: nil)
-            print(statusCode!, errorMessage!)
+            alertController.dismiss(animated: true, completion: self.handleAlertDismissal(viewController: self))
+            }, errorBlock: { (statusCode, errorMessage) in
+                alertController.dismiss(animated: false, completion: nil)
+                print(statusCode!, errorMessage!)
         })
+    }
+    
+    private func handleAlertDismissal(viewController: UIViewController) -> (() -> Void) {
+        func dismissAlert() -> Void {
+            viewController.dismiss(animated: true, completion: {
+                let bugDescriptionViewController = UIStoryboard.init(name: "Report", bundle: nil).instantiateViewController(withIdentifier: "BugDescription") as! BugDescriptionViewController
+                UIApplication.shared.keyWindow?.rootViewController?.present(bugDescriptionViewController, animated: true, completion: nil)
+            })
+        }
+        
+        return dismissAlert
     }
     
     @IBAction func tapCancel(_ sender: UIButton) {
@@ -60,8 +78,10 @@ class EditScreenshotModalViewController: UIViewController {
     
     @IBAction func tapUndo(_ sender: UIButton) {
         screenshotSurface.image = DebuggIt.sharedInstance.report.screenshots.last
-        for view in screenshotSurface.subviews {
-            view.removeFromSuperview()
+        for view in containerView.subviews {
+            if view != screenshotSurface {
+                view.removeFromSuperview()
+            }
         }
     }
     
@@ -78,16 +98,23 @@ class EditScreenshotModalViewController: UIViewController {
             currentRectangle?.layer.borderColor = UIColor(red: 255.0, green: 0.0, blue: 0.0, alpha:1.0).cgColor
             currentRectangle?.layer.borderWidth = 5.0
             
-            screenshotSurface.addSubview(currentRectangle!)
+            containerView.addSubview(currentRectangle!)
         } else {
-            currentRectangle?.pin()
+            finishWithRectangle()
         }
     }
     
     @IBAction func tapFreeDraw(_ sender: UIButton) {
         changeButtonState(sender, secondOptionButton: rectangleButton)
         screenshotSurface.active(isActive: sender.isSelected)
+        finishWithRectangle()
+    }
+    
+    private func finishWithRectangle() {
         currentRectangle?.pin()
+        if currentRectangle != nil {
+            rectangles.append(currentRectangle!)
+        }
     }
     
     private func changeButtonState(_ sender:UIButton, secondOptionButton:UIButton) {

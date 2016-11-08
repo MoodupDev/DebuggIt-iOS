@@ -44,6 +44,7 @@ class ApiClient {
             
         }
         
+        successBlock()
     }
     
     static func postEvent(_ event: EventType, value: Int? = nil) {

@@ -18,11 +18,12 @@ class BugDescriptionPage1ViewController: UIViewController {
     @IBOutlet weak var titleTextView: UITextView!
     @IBOutlet weak var recordButton: UIButton!
     
+    
     // MARK: Overriden
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         initTitle()
         initRecordButton()
         loadDataFromReport()
@@ -65,25 +66,25 @@ class BugDescriptionPage1ViewController: UIViewController {
         }
     }
     
-    private func selectFromButtons(_ buttons: [UIButton], index: Int) {
-        for (i, button) in buttons.enumerated() {
-            button.isSelected = i == index
+    private func selectFromButtons(_ buttons: [UIButton], title: String) {
+        for (_, button) in buttons.enumerated() {
+            button.isSelected = button.titleLabel?.text == title
         }
     }
 
     
     private func setReportKind(selectedButton: UIButton) {
-        for (index, button) in kindButtons.enumerated() {
+        for (_, button) in kindButtons.enumerated() {
             if(button == selectedButton) {
-                DebuggIt.sharedInstance.report.kind = ReportKind(rawValue: index)!
+                DebuggIt.sharedInstance.report.kind = ReportKind(rawValue: (button.titleLabel?.text)!)!
             }
         }
     }
     
     private func setReportPriority(selectedButton: UIButton) {
-        for (index, button) in priorityButtons.enumerated() {
+        for (_, button) in priorityButtons.enumerated() {
             if(button == selectedButton) {
-                DebuggIt.sharedInstance.report.priority = ReportPriority(rawValue: index)!
+                DebuggIt.sharedInstance.report.priority = ReportPriority(rawValue: (button.titleLabel?.text)!)!
             }
         }
     }

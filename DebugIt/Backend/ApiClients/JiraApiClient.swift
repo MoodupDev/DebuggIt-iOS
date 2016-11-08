@@ -108,7 +108,12 @@ class JiraApiClient: ApiClientProtocol {
     }
     
     func hasToken() -> Bool {
-        return self.username != nil && self.password != nil
+        return username != nil && password != nil
+    }
+    
+    func clearTokens() {
+        username = nil
+        password = nil
     }
     
     private func checkUrlProtocol(url: String) -> String {

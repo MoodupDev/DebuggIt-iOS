@@ -15,7 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        DebuggIt.sharedInstance.initJira(host: "testingdebug.atlassian.net", projectKey: "TEST")
+//        DebuggIt.sharedInstance.initBitbucket(clientId: "Jz9hKhxwAWgRNcS6m8", clientSecret: "dzyS7K5mnvcEWFtsS6veUM8RDJxRzwXQ", repoSlug: "bugreporter", accountName: "moodup")
+        DebuggIt.sharedInstance.initGithub(repoSlug: "projekt-na-zaliczenie", accountName: "bartoslaw")
         return true
     }
 

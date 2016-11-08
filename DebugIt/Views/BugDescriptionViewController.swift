@@ -15,7 +15,6 @@ class BugDescriptionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
@@ -35,10 +34,38 @@ class BugDescriptionViewController: UIViewController {
     }
     
     // MARK: Actions
+    @IBAction func doneClicked(_ sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: "Send report", message: "Do you want to send the report?", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: {(action: UIAlertAction!) in
+            alertController.dismiss(animated: false, completion: nil)
+            self.sendReport()
+            
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {(action: UIAlertAction!) in
+            alertController.dismiss(animated: false, completion: nil)
+        }))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    private func sendReport() {
+        let alertController = UIAlertController(title: "Sending report", message: "Wait for end...", preferredStyle: .alert)
+        present(alertController, animated: true, completion: nil)
+        
+        DebuggIt.sharedInstance.sendReport(
+            successBlock: {
+                alertController.dismiss(animated: true, completion: nil)
+                print("Success motherfucker")
+            }, errorBlock: {
+                (status, error) in
+                alertController.dismiss(animated: true, completion: nil)
+                print("Fail motherfucker\n" + error!)
+        })
+    }
     
     @IBAction func cancelClicked(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
-        // TODO: clear report
+        DebuggIt.sharedInstance.report = Report()
     }
     
     @IBAction func pageControlTapped(_ sender: UIPageControl) {

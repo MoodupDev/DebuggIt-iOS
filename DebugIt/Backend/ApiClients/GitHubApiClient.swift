@@ -85,7 +85,7 @@ class GitHubApiClient: ApiClientProtocol {
             "Authorization" : authorizationHeader(prefix: "token", token: accessToken ?? "")
         ]
         
-        Alamofire.request(Constants.Bitbucket.authorizeUrl, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseString { (response) in
+        Alamofire.request(String(format: Constants.GitHub.issuesUrl, accountName, repoSlug), method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseString { (response) in
             switch response.result {
             case .success(let value):
                 if response.isSuccess() {
@@ -105,7 +105,11 @@ class GitHubApiClient: ApiClientProtocol {
     }
     
     func hasToken() -> Bool {
-        return self.accessToken != nil
+        return accessToken != nil
+    }
+    
+    func clearTokens() {
+        accessToken = nil
     }
     
     func refreshToken(token: String, successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
@@ -117,8 +121,8 @@ class GitHubApiClient: ApiClientProtocol {
         self.accessToken = json["token"].stringValue
         
         let defaults = UserDefaults.standard
-        defaults.set(self.accessToken, forKey: Constants.GitHub.accessTokenKey)
-        defaults.set(self.twoFactorAuthCode, forKey: Constants.GitHub.twoFactorAuthCodeKey)
+        defaults.set(accessToken, forKey: Constants.GitHub.accessTokenKey)
+        defaults.set(twoFactorAuthCode, forKey: Constants.GitHub.twoFactorAuthCodeKey)
         defaults.synchronize()
     }
     

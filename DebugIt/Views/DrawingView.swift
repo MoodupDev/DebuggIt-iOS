@@ -20,7 +20,7 @@ class DrawingView: UIImageView {
     var isDrawing = false
     var isActive = true
     
-    func active(isActive:Bool) {
+    func active(isActive: Bool) {
         self.isActive = isActive
     }
     

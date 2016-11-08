@@ -23,14 +23,8 @@ class BugDescriptionPage2ViewController: UIViewController {
         expectedBehaviorTextView.delegate = self
         
         loadDataFromReport()
-        // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     private func loadDataFromReport() {
         let report = DebuggIt.sharedInstance.report
         
