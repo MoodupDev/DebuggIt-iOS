@@ -16,7 +16,6 @@ class BugDescriptionPage1ViewController: UIViewController {
     @IBOutlet var kindButtons: [UIButton]!
     @IBOutlet var priorityButtons: [UIButton]!
     @IBOutlet weak var titleTextView: UITextView!
-    @IBOutlet weak var reportItemsStackView: UIStackView!
     @IBOutlet weak var recordButton: UIButton!
     
     // MARK: Overriden
@@ -58,19 +57,6 @@ class BugDescriptionPage1ViewController: UIViewController {
         }
         selectFromButtons(kindButtons, index: report.kind.rawValue)
         selectFromButtons(priorityButtons, index: report.priority.rawValue)
-        // TODO: add custom view for audio?
-        // TODO: enable scroll in report items stack view
-        loadScreenshots()
-    }
-    
-    private func loadScreenshots() {
-        for screenshot in DebuggIt.sharedInstance.report.screenshotsUrls {
-            let view = UIImageView()
-            Nuke.loadImage(with: URL(string: screenshot)!, into: view)
-            view.layer.cornerRadius = 5
-            view.layer.masksToBounds = true
-            reportItemsStackView.addArrangedSubview(view)
-        }
     }
     
     private func selectFromButtons(_ buttons: [UIButton], selected: UIButton) {
@@ -119,11 +105,9 @@ class BugDescriptionPage1ViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+
     }
     */
-
 }
 
 // MARK: TextViewDelegate
