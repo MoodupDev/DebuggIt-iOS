@@ -69,7 +69,7 @@ class DebuggIt {
     }
     
     func sendReport(successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int?,_ message: String?) -> ()) {
-        apiClient?.addIssue(title: report.title, content: report.stepsToReproduce + "\n" + report.expectedBehavior + "\n" + report.actualBehavior, priority: Utils.convert(fromPriority: report.priority), kind: report.kind.rawValue, successBlock: successBlock, errorBlock: errorBlock)
+        apiClient?.addIssue(title: report.title, content: report.stepsToReproduce + "\n" + report.expectedBehavior + "\n" + report.actualBehavior, priority: Utils.convert(fromPriority: report.priority).lowercased(), kind: report.kind.rawValue.lowercased(), successBlock: successBlock, errorBlock: errorBlock)
     }
     
     private func addReportButton() {
