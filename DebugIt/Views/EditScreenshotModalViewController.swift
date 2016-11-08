@@ -48,22 +48,28 @@ class EditScreenshotModalViewController: UIViewController {
         DebuggIt.sharedInstance.report.screenshots.append(image)
         
         UIGraphicsEndImageContext()
-    
-        let alerController = UIAlertController(title: "Sending screenshot", message: "Wait for end...", preferredStyle: .alert)
-        present(alerController, animated: true, completion: nil)
+        
+        let alertController = UIAlertController(title: "Sending screenshot", message: "Wait for end...", preferredStyle: .alert)
+        present(alertController, animated: true, completion: nil)
         
         ApiClient.upload(.image, data: image.toBase64String(), successBlock: {
             ApiClient.postEvent(self.freedrawButton.isSelected ? .screenshotAddedDraw : .screenshotAddedRectangle)
-            alerController.dismiss(animated: true, completion: {
-                self.dismiss(animated: true, completion: {
-                    let bugDescriptionViewController = UIStoryboard.init(name: "Report", bundle: nil).instantiateViewController(withIdentifier: "BugDescription") as! BugDescriptionViewController
-                    UIApplication.shared.keyWindow?.rootViewController?.present(bugDescriptionViewController, animated: true, completion: nil)
-                })
-            })
+            alertController.dismiss(animated: true, completion: self.handleAlertDismissal(viewController: self))
             }, errorBlock: { (statusCode, errorMessage) in
-                alerController.dismiss(animated: false, completion: nil)
+                alertController.dismiss(animated: false, completion: nil)
                 print(statusCode!, errorMessage!)
         })
+    }
+    
+    private func handleAlertDismissal(viewController: UIViewController) -> (() -> Void) {
+        func dismissAlert() -> Void {
+            viewController.dismiss(animated: true, completion: {
+                let bugDescriptionViewController = UIStoryboard.init(name: "Report", bundle: nil).instantiateViewController(withIdentifier: "BugDescription") as! BugDescriptionViewController
+                UIApplication.shared.keyWindow?.rootViewController?.present(bugDescriptionViewController, animated: true, completion: nil)
+            })
+        }
+        
+        return dismissAlert
     }
     
     @IBAction func tapCancel(_ sender: UIButton) {
