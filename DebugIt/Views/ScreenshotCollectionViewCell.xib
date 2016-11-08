@@ -21,18 +21,22 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uws-t6-F7T" userLabel="ScreenshotImage">
                         <rect key="frame" x="0.0" y="0.0" width="230" height="350"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="attachDelete" translatesAutoresizingMaskIntoConstraints="NO" id="Sn9-W7-4nn">
-                        <rect key="frame" x="212" y="0.0" width="18" height="18"/>
-                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2dx-Sl-YEm">
+                        <rect key="frame" x="212" y="0.0" width="18" height="22"/>
+                        <state key="normal" image="attachDelete"/>
+                        <connections>
+                            <action selector="deleteScreenshot:" destination="gTV-IL-0wX" eventType="touchUpInside" id="yTQ-tD-G1n"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="uws-t6-F7T" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="5kA-Uy-ZjH"/>
-                <constraint firstAttribute="trailing" secondItem="Sn9-W7-4nn" secondAttribute="trailing" id="KKk-Lk-Zzg"/>
-                <constraint firstItem="Sn9-W7-4nn" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="NSq-1n-AkT"/>
                 <constraint firstAttribute="bottom" secondItem="uws-t6-F7T" secondAttribute="bottom" id="YHX-TT-hLU"/>
                 <constraint firstItem="uws-t6-F7T" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="frH-NM-0Ku"/>
                 <constraint firstAttribute="trailing" secondItem="uws-t6-F7T" secondAttribute="trailing" id="geE-Un-L9S"/>
+                <constraint firstItem="2dx-Sl-YEm" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="htE-C3-iQC"/>
+                <constraint firstAttribute="trailing" secondItem="2dx-Sl-YEm" secondAttribute="trailing" id="tVt-af-YyR"/>
             </constraints>
             <size key="customSize" width="223" height="377"/>
             <connections>

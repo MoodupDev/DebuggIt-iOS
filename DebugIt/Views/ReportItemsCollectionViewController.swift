@@ -61,11 +61,12 @@ class ReportItemsCollectionViewController: UICollectionViewController {
     
         let screenshots = DebuggIt.sharedInstance.report.screenshotsUrls
         // Configure the cell
-        print("row", indexPath.row)
         if let url = URL(string: screenshots[indexPath.section]) {
             Nuke.loadImage(with: url, into: cell.screenshotImage)
             print(cell.screenshotImage)
         }
+        cell.index = indexPath.section
+        cell.collectonView = self.collectionView
         
         return cell
     }
