@@ -69,7 +69,19 @@ class DebuggIt {
     }
     
     func sendReport(successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int?,_ message: String?) -> ()) {
-        apiClient?.addIssue(title: report.title, content: report.stepsToReproduce + "\n" + report.expectedBehavior + "\n" + report.actualBehavior, priority: Utils.convert(fromPriority: report.priority).lowercased(), kind: report.kind.rawValue.lowercased(), successBlock: successBlock, errorBlock: errorBlock)
+        let contentString =  report.stepsToReproduce + "\n" + report.expectedBehavior + "\n" + report.actualBehavior + "\n"
+        var urlString = ""
+        for url in report.screenshotsUrls {
+            urlString += url + "\n"
+        }
+        
+        apiClient?.addIssue(
+            title: report.title,
+            content: contentString + urlString,
+            priority: Utils.convert(fromPriority: report.priority).lowercased(),
+            kind: report.kind.rawValue.lowercased(),
+            successBlock: successBlock,
+            errorBlock: errorBlock)
     }
     
     private func addReportButton() {

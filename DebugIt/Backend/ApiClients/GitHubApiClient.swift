@@ -85,7 +85,7 @@ class GitHubApiClient: ApiClientProtocol {
             "Authorization" : authorizationHeader(prefix: "token", token: accessToken ?? "")
         ]
         
-        Alamofire.request(Constants.Bitbucket.authorizeUrl, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseString { (response) in
+        Alamofire.request(String(format: Constants.GitHub.issuesUrl, accountName, repoSlug), method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseString { (response) in
             switch response.result {
             case .success(let value):
                 if response.isSuccess() {
