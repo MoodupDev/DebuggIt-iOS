@@ -133,13 +133,18 @@ class BitbucketApiClient: ApiClientProtocol {
     }
     
     func hasToken() -> Bool {
-        return self.accessToken != nil
+        return accessToken != nil
+    }
+    
+    func clearTokens() {
+        accessToken = nil
+        refreshToken = nil
     }
     
     private func storeTokens(from jsonString: String) {
         let json = JSON.parse(jsonString)
-        self.accessToken = json["access_token"].stringValue
-        self.refreshToken = json["refresh_token"].stringValue
+        accessToken = json["access_token"].stringValue
+        refreshToken = json["refresh_token"].stringValue
         
         let defaults = UserDefaults.standard
         defaults.set(self.accessToken, forKey: Constants.Bitbucket.accessTokenKey)

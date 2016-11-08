@@ -28,4 +28,5 @@ protocol ApiClientProtocol {
     
     func hasToken() -> Bool
     
+    func clearTokens()
 }

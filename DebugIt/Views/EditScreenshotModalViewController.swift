@@ -55,8 +55,10 @@ class EditScreenshotModalViewController: UIViewController {
         ApiClient.upload(.image, data: image.toBase64String(), successBlock: {
             ApiClient.postEvent(self.freedrawButton.isSelected ? .screenshotAddedDraw : .screenshotAddedRectangle)
             alerController.dismiss(animated: true, completion: {
-                let bugDescriptionViewController = UIStoryboard.init(name: "Report", bundle: nil).instantiateViewController(withIdentifier: "BugDescription") as! BugDescriptionViewController
-                self.present(bugDescriptionViewController, animated: true, completion: nil)
+                self.dismiss(animated: true, completion: {
+                    let bugDescriptionViewController = UIStoryboard.init(name: "Report", bundle: nil).instantiateViewController(withIdentifier: "BugDescription") as! BugDescriptionViewController
+                    UIApplication.shared.keyWindow?.rootViewController?.present(bugDescriptionViewController, animated: true, completion: nil)
+                })
             })
             }, errorBlock: { (statusCode, errorMessage) in
                 alerController.dismiss(animated: false, completion: nil)

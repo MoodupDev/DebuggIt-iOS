@@ -39,7 +39,9 @@ class LoginModalViewController: UIViewController {
         let password = passwordTextField.text!
         
         DebuggIt.sharedInstance.apiClient?.login(email: email, password: password, successBlock: { (response) in
-            self.present(EditScreenshotModalViewController(), animated: true, completion: nil)
+            self.dismiss(animated: true, completion: {
+                UIApplication.shared.keyWindow?.rootViewController?.present(EditScreenshotModalViewController(), animated: true, completion: nil)
+            })
             }, errorBlock: { (status, error) in
                 let json = JSON.parse(error!)
                 let alertController = UIAlertController(title: "Error", message: json["error_description"].stringValue, preferredStyle: .alert)

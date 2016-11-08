@@ -82,9 +82,11 @@ class DebuggIt {
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(showReportDialog(_:)))
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action:#selector(moveButton(_:)))
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action:#selector(handleLongPress(_:)))
         
         debuggItButton.addGestureRecognizer(tapGestureRecognizer)
         debuggItButton.addGestureRecognizer(panGestureRecognizer)
+        debuggItButton.addGestureRecognizer(longPressGestureRecognizer)
     }
     
     
@@ -94,9 +96,39 @@ class DebuggIt {
         currentViewController?.view.addConstraint(NSLayoutConstraint(item: forView, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: currentViewController?.view, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 0.0))
     }
     
+    private func logout() {
+        let defaults = UserDefaults.standard
+        
+        defaults.set(nil, forKey: Constants.Bitbucket.accessTokenKey)
+        defaults.set(nil, forKey: Constants.Bitbucket.refreshTokenKey)
+        defaults.set(nil, forKey: Constants.GitHub.accessTokenKey)
+        defaults.set(nil, forKey: Constants.GitHub.twoFactorAuthCodeKey)
+        defaults.set(nil, forKey: Constants.Jira.usernameKey)
+        defaults.set(nil, forKey: Constants.Jira.passwordKey)
+        
+        apiClient?.clearTokens()
+        
+        defaults.synchronize()
+    }
+    
+    @objc func handleLongPress(_ recognizer: UILongPressGestureRecognizer) {
+        let alertController = UIAlertController(title: "Logout", message: "Do you want to logout?", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: {(action: UIAlertAction!) in
+            self.logout()
+            alertController.dismiss(animated: false, completion: nil)
+        }))
+        
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {(action: UIAlertAction!) in
+            alertController.dismiss(animated: false, completion: nil)
+        }))
+        
+        currentViewController?.present(alertController, animated: true, completion: nil)
+    }
+    
+    
     @objc func showReportDialog(_ recognizer: UITapGestureRecognizer) {
+        takeScreenshot()
         if (apiClient?.hasToken())! {
-            takeScreenshot()
             showModal(viewController:EditScreenshotModalViewController())
         } else {
             showModal(viewController:LoginModalViewController())
