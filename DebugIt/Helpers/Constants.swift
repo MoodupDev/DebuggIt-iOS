@@ -55,6 +55,9 @@ struct Constants {
     
     struct Jira {
         
+        //MARK: Kinds
+        static let task = "Task"
+        
         // MARK: URLs
         
         static let configurationUrl = "https://%@/rest/api/2/configuration"
