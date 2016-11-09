@@ -35,31 +35,20 @@ class BugDescriptionViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func doneClicked(_ sender: UIBarButtonItem) {
-        let alertController = UIAlertController(title: "Send report", message: "Do you want to send the report?", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: {(action: UIAlertAction!) in
-            alertController.dismiss(animated: false, completion: nil)
-            self.sendReport()
-            
-        }))
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {(action: UIAlertAction!) in
-            alertController.dismiss(animated: false, completion: nil)
-        }))
-        
-        self.present(alertController, animated: true, completion: nil)
+        self.present(Utils.createAlert(title: "Send report", message: "Do you want to send the report", positiveAction: self.sendReport(), negativeAction: ()), animated: true, completion: nil)
     }
     
     private func sendReport() {
-        let alertController = UIAlertController(title: "Sending report", message: "Wait for end...", preferredStyle: .alert)
+        let alertController = Utils.createLoadingAlert(title: "Sending report", message: "Wait for the end")
         present(alertController, animated: true, completion: nil)
         
         DebuggIt.sharedInstance.sendReport(
             successBlock: {
-                alertController.dismiss(animated: true, completion: nil)
-                print("Success motherfucker")
+                alertController.dismiss(animated: false, completion: nil)
+                self.present(Utils.createAlert(title: "Succes", message: "Report saved succesfully", positiveAction: nil, negativeAction: nil), animated: true, completion: nil)
             }, errorBlock: {
                 (status, error) in
-                alertController.dismiss(animated: true, completion: nil)
-                print("Fail motherfucker\n" + error!)
+                self.present(Utils.createAlert(title: "Error", message: error!, positiveAction: nil, negativeAction: nil), animated: true, completion: nil)
         })
     }
     
