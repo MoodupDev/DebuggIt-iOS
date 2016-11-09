@@ -12,14 +12,11 @@ import SwiftyJSON
 class ApiClient {
     static func upload(_ type: MediaType, data base64EncodedString: String, successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int?, _ errorMessage: String?) -> ()) {
         var url: String
-        var locations: [String]
         switch type {
         case .image:
             url = Constants.Api.uploadImageUrl
-            locations = DebuggIt.sharedInstance.report.screenshotsUrls
         default:
             url = Constants.Api.uploadAudioUrl
-            locations = DebuggIt.sharedInstance.report.audioUrls
         }
         
         let params : Parameters = [
@@ -32,7 +29,12 @@ class ApiClient {
             case .success(let value):
                 let value = JSON(value)
                 if response.isSuccess() {
-                    locations.append(value["url"].stringValue)
+                    switch(type) {
+                    case .image:
+                        DebuggIt.sharedInstance.report.screenshotsUrls.append(value["url"].stringValue)
+                    case .audio:
+                        DebuggIt.sharedInstance.report.audioUrls.append(value["url"].stringValue)
+                    }
                     print(value["url"].stringValue)
                     successBlock()
                 } else {
