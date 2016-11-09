@@ -43,8 +43,6 @@ class ApiClient {
             }
             
         }
-        
-        successBlock()
     }
     
     static func postEvent(_ event: EventType, value: Int? = nil) {
@@ -62,7 +60,6 @@ class ApiClient {
         }
         
         Alamofire.request(Constants.Api.eventsUrl, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).response { (response) in
-            print(response)
         }
         
     }
