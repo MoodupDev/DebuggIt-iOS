@@ -28,6 +28,7 @@
 		21A81F001DC20EC00014FCD7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21A81EFF1DC20EC00014FCD7 /* Images.xcassets */; };
 		21A81F031DC21F800014FCD7 /* LoginModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A81F011DC21F800014FCD7 /* LoginModalViewController.swift */; };
 		21A81F041DC21F800014FCD7 /* LoginModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21A81F021DC21F800014FCD7 /* LoginModalViewController.xib */; };
+		21B0ECB01DD339C800B896F6 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B0ECAF1DD339C800B896F6 /* RecordViewController.swift */; };
 		21BA798C1DC9DCD800D29015 /* BugDescriptionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA798B1DC9DCD800D29015 /* BugDescriptionPageViewController.swift */; };
 		21D389F01DD2114700B8B776 /* ScreenshotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D389EE1DD2114700B8B776 /* ScreenshotCollectionViewCell.swift */; };
 		21D389F11DD2114700B8B776 /* ScreenshotCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21D389EF1DD2114700B8B776 /* ScreenshotCollectionViewCell.xib */; };
@@ -103,6 +104,7 @@
 		21A81EFF1DC20EC00014FCD7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		21A81F011DC21F800014FCD7 /* LoginModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModalViewController.swift; sourceTree = "<group>"; };
 		21A81F021DC21F800014FCD7 /* LoginModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginModalViewController.xib; sourceTree = "<group>"; };
+		21B0ECAF1DD339C800B896F6 /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		21BA798B1DC9DCD800D29015 /* BugDescriptionPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BugDescriptionPageViewController.swift; sourceTree = "<group>"; };
 		21D389EE1DD2114700B8B776 /* ScreenshotCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotCollectionViewCell.swift; sourceTree = "<group>"; };
 		21D389EF1DD2114700B8B776 /* ScreenshotCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScreenshotCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 				21D389EF1DD2114700B8B776 /* ScreenshotCollectionViewCell.xib */,
 				21361A2D1DD308CA001CD729 /* NewScreenshotCollectionViewCell.swift */,
 				21361A2E1DD308CA001CD729 /* NewScreenshotCollectionViewCell.xib */,
+				21B0ECAF1DD339C800B896F6 /* RecordViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 				98F184A61DC0B906001CB560 /* ViewController.swift in Sources */,
 				98F184FE1DC0BB09001CB560 /* ConfigType.swift in Sources */,
 				98F184FA1DC0BAB8001CB560 /* JiraApiClient.swift in Sources */,
+				21B0ECB01DD339C800B896F6 /* RecordViewController.swift in Sources */,
 				98BEF4301DC24C1500483759 /* EditScreenshotModalViewController.swift in Sources */,
 				214026FF1DCC9EDC00A14715 /* UIImage+Base64.swift in Sources */,
 				98F184F71DC0BAB8001CB560 /* Constants.swift in Sources */,
