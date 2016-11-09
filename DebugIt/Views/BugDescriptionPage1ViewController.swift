@@ -56,8 +56,8 @@ class BugDescriptionPage1ViewController: UIViewController {
         if !report.title.isEmpty {
             titleTextView.text = report.title
         }
-        selectFromButtons(kindButtons, index: report.kind.rawValue)
-        selectFromButtons(priorityButtons, index: report.priority.rawValue)
+        selectFromButtons(kindButtons, title: report.kind.rawValue)
+        selectFromButtons(priorityButtons, title: report.priority.rawValue)
     }
     
     private func selectFromButtons(_ buttons: [UIButton], selected: UIButton) {
