@@ -49,16 +49,17 @@ class EditScreenshotModalViewController: UIViewController {
         
         UIGraphicsEndImageContext()
         
-        let alertController = UIAlertController(title: "Sending screenshot", message: "Wait for end...", preferredStyle: .alert)
+        let alertController = Utils.createLoadingAlert(title: "Sending screenshot", message: "Wait for the end...")
         present(alertController, animated: true, completion: nil)
         
-        ApiClient.upload(.image, data: image.toBase64String(), successBlock: {
-            ApiClient.postEvent(self.freedrawButton.isSelected ? .screenshotAddedDraw : .screenshotAddedRectangle)
-            alertController.dismiss(animated: true, completion: self.handleAlertDismissal(viewController: self))
-            }, errorBlock: { (statusCode, errorMessage) in
+        ApiClient.upload(.image, data: image.toBase64String(),
+            successBlock: {
+                ApiClient.postEvent(self.freedrawButton.isSelected ? .screenshotAddedDraw : .screenshotAddedRectangle)
+                alertController.dismiss(animated: true, completion: self.handleAlertDismissal(viewController: self))
+            }, errorBlock: {
+                (statusCode, errorMessage) in
                 alertController.dismiss(animated: false, completion: nil)
-                print(statusCode!, errorMessage!)
-        })
+            })
     }
     
     private func handleAlertDismissal(viewController: UIViewController) -> (() -> Void) {

@@ -44,11 +44,7 @@ class LoginModalViewController: UIViewController {
             })
             }, errorBlock: { (status, error) in
                 let json = JSON.parse(error!)
-                let alertController = UIAlertController(title: "Error", message: json["error_description"].stringValue, preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: {(action: UIAlertAction!) in
-                    alertController.dismiss(animated: false, completion: nil)
-                }))
-                self.present(alertController, animated: true, completion: nil)
+                self.present(Utils.createAlert(title: "Error", message: json["error_description"].stringValue, positiveAction: nil, negativeAction: nil), animated: true, completion: nil)
         })
     }
     

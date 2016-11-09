@@ -178,6 +178,7 @@
 		2196AC0A1DC0BE91003A7A67 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				989736E21DD1EAF60057A742 /* Utils.swift */,
 				98F184FD1DC0BB09001CB560 /* ConfigType.swift */,
 				2196AC131DC0C3F9003A7A67 /* DebuggItError.swift */,
 				98F184D91DC0BA11001CB560 /* Report.swift */,
@@ -241,7 +242,6 @@
 				21D389EF1DD2114700B8B776 /* ScreenshotCollectionViewCell.xib */,
 				21361A2D1DD308CA001CD729 /* NewScreenshotCollectionViewCell.swift */,
 				21361A2E1DD308CA001CD729 /* NewScreenshotCollectionViewCell.xib */,
-				989736E21DD1EAF60057A742 /* Utils.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
