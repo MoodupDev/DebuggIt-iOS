@@ -177,9 +177,9 @@
                                 <state key="normal" image="recordMicro"/>
                             </button>
                             <containerView opaque="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="vuT-qr-bkD">
-                                <rect key="frame" x="20" y="244" width="374" height="304"/>
+                                <rect key="frame" x="20" y="244" width="374" height="300"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="304" id="eGP-fL-mnA"/>
+                                    <constraint firstAttribute="height" constant="300" id="eGP-fL-mnA"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="a4P-IX-1Is" kind="embed" identifier="reportItemsCollection" id="eNe-bU-eFn"/>
@@ -410,29 +410,70 @@
             </objects>
             <point key="canvasLocation" x="-1068" y="190"/>
         </scene>
-        <!--Report Items Collection View Controller-->
+        <!--Report Items View Controller-->
         <scene sceneID="cyi-B8-DGH">
             <objects>
-                <viewController id="a4P-IX-1Is" customClass="ReportItemsCollectionViewController" customModule="DebugIt" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceHorizontal="YES" dataMode="prototypes" id="cJe-IY-fkr">
-                        <rect key="frame" x="0.0" y="0.0" width="374" height="304"/>
+                <viewController id="a4P-IX-1Is" customClass="ReportItemsViewController" customModule="DebugIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="M0k-cJ-440"/>
+                        <viewControllerLayoutGuide type="bottom" id="2y4-vQ-yrn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bEe-nF-1su">
+                        <rect key="frame" x="0.0" y="0.0" width="374" height="300"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TnN-Zv-F0o">
+                                <rect key="frame" x="0.0" y="0.0" width="374" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="r2F-fH-RJ6">
+                                    <size key="itemSize" width="230" height="300"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="dEe-rt-VYq">
+                                        <rect key="frame" x="5" y="0.0" width="230" height="300"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="230" height="300"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="t8u-Xy-bXs">
+                                        <rect key="frame" x="245" y="0.0" width="230" height="300"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="230" height="300"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="4a0-jn-gfb">
+                                        <rect key="frame" x="485" y="0.0" width="230" height="300"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="230" height="300"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bJM-tv-cIT">
-                            <size key="itemSize" width="117" height="202"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells/>
-                    </collectionView>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="TnN-Zv-F0o" secondAttribute="trailing" id="DWK-vW-g65"/>
+                            <constraint firstItem="TnN-Zv-F0o" firstAttribute="leading" secondItem="bEe-nF-1su" secondAttribute="leading" id="FY9-5m-92v"/>
+                            <constraint firstItem="TnN-Zv-F0o" firstAttribute="top" secondItem="bEe-nF-1su" secondAttribute="top" id="J7J-Ii-9N6"/>
+                            <constraint firstAttribute="bottom" secondItem="TnN-Zv-F0o" secondAttribute="bottom" id="aO2-JQ-SR5"/>
+                        </constraints>
+                    </view>
                     <connections>
-                        <outlet property="flowLayout" destination="bJM-tv-cIT" id="j0u-TL-tF1"/>
+                        <outlet property="collectionView" destination="TnN-Zv-F0o" id="89f-nh-6Lo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDL-NT-Dtx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-156" y="1483"/>
+            <point key="canvasLocation" x="-156.52173913043478" y="1482.8804347826087"/>
         </scene>
     </scenes>
     <resources>
