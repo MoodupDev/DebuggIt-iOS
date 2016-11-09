@@ -74,8 +74,8 @@ class BitbucketApiClient: ApiClientProtocol {
         let params: Parameters = [
             "title": title,
             "content": content,
-            "priority": priority,
-            "kind": kind
+            "priority": priority.lowercased(),
+            "kind": kind.lowercased()
         ]
         
         let headers : HTTPHeaders = [

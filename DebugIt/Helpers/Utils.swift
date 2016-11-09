@@ -26,6 +26,19 @@ class Utils {
         }
     }
     
+    static func convert(fromKind: ReportKind) -> String {
+        if(DebuggIt.sharedInstance.configType == .jira) {
+            switch fromKind {
+            case .enhancement:
+                return Constants.Jira.task
+            default:
+                return fromKind.rawValue
+            }
+        } else {
+            return fromKind.rawValue
+        }
+    }
+    
     static func createAlert(title: String, message: String, positiveAction: (())? = nil, negativeAction: (())? = nil) -> UIAlertController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         

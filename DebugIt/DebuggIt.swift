@@ -78,8 +78,8 @@ class DebuggIt {
         apiClient?.addIssue(
             title: report.title,
             content: contentString + urlString,
-            priority: Utils.convert(fromPriority: report.priority).lowercased(),
-            kind: report.kind.rawValue.lowercased(),
+            priority: Utils.convert(fromPriority: report.priority),
+            kind: Utils.convert(fromKind: report.kind),
             successBlock: successBlock,
             errorBlock: errorBlock)
     }
