@@ -16,8 +16,6 @@ private let newScreenshotCellNib = "NewScreenshotCollectionViewCell"
 
 class ReportItemsViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    fileprivate let sectionInsets = UIEdgeInsets(top: 0.0, left: 5.0, bottom: 0.0, right: 5.0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,12 +56,12 @@ extension ReportItemsViewController : UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: screenshotReuseIdentifier, for: indexPath) as! ScreenshotCollectionViewCell
             
             let screenshots = DebuggIt.sharedInstance.report.screenshotsUrls
-            // Configure the cell
+            
             if let url = URL(string: screenshots[indexPath.section]) {
                 Nuke.loadImage(with: url, into: cell.screenshotImage)
             }
             cell.index = indexPath.section
-            cell.collectonView = self.collectionView
+            
             return cell
         }
     }
