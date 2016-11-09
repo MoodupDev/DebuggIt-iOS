@@ -108,7 +108,14 @@ class BugDescriptionPage1ViewController: UIViewController {
     }
 
     @IBAction func recordUploaded(segue: UIStoryboardSegue) {
+        recordButton.isSelected = false
         self.reloadReportItems()
+    }
+    @IBAction func recordTapped(_ sender: UIButton) {
+        sender.isSelected = true
+        let recordViewController = self.storyboard?.instantiateViewController(withIdentifier: "RecordViewController")
+        recordViewController?.modalPresentationStyle = .overCurrentContext
+        self.present(recordViewController!, animated: true, completion: nil)
     }
     
     // MARK: - Navigation
