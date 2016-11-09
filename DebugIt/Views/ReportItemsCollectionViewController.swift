@@ -9,7 +9,8 @@
 import UIKit
 import Nuke
 
-private let reuseIdentifier = "ScreenshotCell"
+private let screenshotReuseIdentifier = "ScreenshotCell"
+private let newScreenshotReuseIdentifier = "NewScreenshotCell"
 
 class ReportItemsCollectionViewController: UICollectionViewController {
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
@@ -21,7 +22,8 @@ class ReportItemsCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UINib(nibName: "ScreenshotCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(UINib(nibName: "ScreenshotCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: screenshotReuseIdentifier)
+        self.collectionView!.register(UINib(nibName: "NewScreenshotCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: newScreenshotReuseIdentifier)
 
         // Do any additional setup after loading the view.
         flowLayout.minimumLineSpacing = 100
@@ -47,7 +49,7 @@ class ReportItemsCollectionViewController: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return DebuggIt.sharedInstance.report.screenshotsUrls.count
+        return DebuggIt.sharedInstance.report.screenshotsUrls.count + 1
     }
 
 
@@ -57,17 +59,21 @@ class ReportItemsCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ScreenshotCollectionViewCell
-    
-        let screenshots = DebuggIt.sharedInstance.report.screenshotsUrls
-        // Configure the cell
-        if let url = URL(string: screenshots[indexPath.section]) {
-            Nuke.loadImage(with: url, into: cell.screenshotImage)
-        }
-        cell.index = indexPath.section
-        cell.collectonView = self.collectionView
         
-        return cell
+        if indexPath.section == DebuggIt.sharedInstance.report.screenshotsUrls.count {
+            return collectionView.dequeueReusableCell(withReuseIdentifier: newScreenshotReuseIdentifier, for: indexPath) as! NewScreenshotCollectionViewCell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: screenshotReuseIdentifier, for: indexPath) as! ScreenshotCollectionViewCell
+            
+            let screenshots = DebuggIt.sharedInstance.report.screenshotsUrls
+            // Configure the cell
+            if let url = URL(string: screenshots[indexPath.section]) {
+                Nuke.loadImage(with: url, into: cell.screenshotImage)
+            }
+            cell.index = indexPath.section
+            cell.collectonView = self.collectionView
+            return cell
+        }
     }
     
 

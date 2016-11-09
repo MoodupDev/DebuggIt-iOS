@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,10 +23,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="QGd-ND-hOD">
+                                <rect key="frame" x="20" y="20" width="374" height="72"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="8uj-Jy-Hvr" userLabel="Kind buttons">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sW0-2B-gh9" customClass="RoundedButton" customModule="DebugIt" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="181" height="30"/>
                                                 <state key="normal" title="Bug"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
@@ -169,12 +172,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="xvT-q1-Bj6" userLabel="Report items">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="182" id="DqW-vt-NVM"/>
-                                </constraints>
-                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHT-h7-xg1" userLabel="Record button">
+                                <rect key="frame" x="343" y="147" width="51" height="34"/>
                                 <state key="normal" image="recordMicro"/>
                             </button>
                             <containerView opaque="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="vuT-qr-bkD">
@@ -230,8 +229,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="k98-j0-jFQ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Steps to reproduce" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pFf-do-k8E" userLabel="Steps to reproduce">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="239.33333333333334"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next"/>
@@ -327,6 +328,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T6r-UG-2RC">
+                                                <rect key="frame" x="4" y="4" width="60" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="uTo-TP-0Mj"/>
                                                 </constraints>
