@@ -307,24 +307,23 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gPF-mH-vW9">
-                                <rect key="frame" x="82" y="243" width="250" height="250"/>
+                                <rect key="frame" x="121" y="285.66666666666669" width="172" height="165"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dbd-uA-2hb" userLabel="Stop record">
-                                        <rect key="frame" x="98" y="98" width="54" height="54"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dbd-uA-2hb" userLabel="Stop record">
+                                        <rect key="frame" x="59" y="55.666666666666629" width="54" height="54"/>
                                         <state key="normal" image="recordStop"/>
                                         <connections>
                                             <action selector="recordStopped:" destination="toH-Ei-VBk" eventType="touchUpInside" id="cIm-zr-L21"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yty-44-a8L">
-                                        <rect key="frame" x="95.333333333333343" y="28" width="59.666666666666657" height="20.333333333333314"/>
+                                        <rect key="frame" x="56" y="16" width="61.333333333333343" height="20.333333333333314"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circleActive" translatesAutoresizingMaskIntoConstraints="NO" id="Wh9-xm-1Ka">
                                                 <rect key="frame" x="0.0" y="6.3333333333333144" width="8" height="8"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zY0-vd-K0V">
-                                                <rect key="frame" x="18" y="0.0" width="41.666666666666657" height="20.333333333333314"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zY0-vd-K0V" userLabel="Time to end">
+                                                <rect key="frame" x="18" y="0.0" width="43.333333333333343" height="20.333333333333314"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -334,23 +333,27 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="9o6-l6-rsr"/>
-                                    <constraint firstItem="yty-44-a8L" firstAttribute="top" secondItem="gPF-mH-vW9" secondAttribute="topMargin" constant="20" id="nEK-lP-Xzz"/>
-                                    <constraint firstAttribute="height" constant="250" id="rdT-1Y-HMP"/>
-                                    <constraint firstItem="yty-44-a8L" firstAttribute="centerX" secondItem="gPF-mH-vW9" secondAttribute="centerX" id="vOg-Cr-WHl"/>
+                                    <constraint firstAttribute="width" constant="172" id="9o6-l6-rsr"/>
+                                    <constraint firstItem="Dbd-uA-2hb" firstAttribute="centerY" secondItem="gPF-mH-vW9" secondAttribute="centerY" id="LFp-TD-9ju"/>
+                                    <constraint firstItem="Dbd-uA-2hb" firstAttribute="centerX" secondItem="gPF-mH-vW9" secondAttribute="centerX" id="ePq-5H-2UW"/>
+                                    <constraint firstItem="yty-44-a8L" firstAttribute="top" secondItem="gPF-mH-vW9" secondAttribute="topMargin" constant="8" id="nEK-lP-Xzz"/>
+                                    <constraint firstAttribute="height" constant="165" id="rdT-1Y-HMP"/>
+                                    <constraint firstItem="yty-44-a8L" firstAttribute="centerX" secondItem="gPF-mH-vW9" secondAttribute="centerX" constant="0.5" id="vOg-Cr-WHl"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <constraints>
                             <constraint firstItem="7nD-VE-os2" firstAttribute="top" secondItem="UEX-mL-A0e" secondAttribute="bottom" id="5m0-cm-GgC"/>
                             <constraint firstItem="UEX-mL-A0e" firstAttribute="leading" secondItem="ZR9-UZ-dpF" secondAttribute="leading" id="9Il-Pv-YYF"/>
-                            <constraint firstItem="gPF-mH-vW9" firstAttribute="centerX" secondItem="ZR9-UZ-dpF" secondAttribute="centerX" id="9hs-1u-Q5f"/>
-                            <constraint firstItem="gPF-mH-vW9" firstAttribute="centerY" secondItem="ZR9-UZ-dpF" secondAttribute="centerY" id="cCe-I7-iUC"/>
+                            <constraint firstItem="gPF-mH-vW9" firstAttribute="centerX" secondItem="ZR9-UZ-dpF" secondAttribute="centerX" id="Wts-At-vzG"/>
                             <constraint firstItem="UEX-mL-A0e" firstAttribute="top" secondItem="z1g-Du-fYH" secondAttribute="bottom" id="d2A-Co-wq3"/>
                             <constraint firstAttribute="trailing" secondItem="UEX-mL-A0e" secondAttribute="trailing" id="dxY-ax-cp4"/>
+                            <constraint firstItem="gPF-mH-vW9" firstAttribute="centerY" secondItem="ZR9-UZ-dpF" secondAttribute="centerY" id="gsd-MN-faQ"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="recordCircle" destination="Wh9-xm-1Ka" id="Xjj-8P-ZSm"/>
+                        <outlet property="remainingTimeLabel" destination="zY0-vd-K0V" id="Hq3-ac-W3T"/>
                         <segue destination="hQi-nL-MpC" kind="unwind" identifier="recordUploaded" unwindAction="recordUploadedWithSegue:" id="CLq-fy-PJD"/>
                     </connections>
                 </viewController>
