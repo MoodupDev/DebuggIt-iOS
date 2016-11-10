@@ -9,10 +9,8 @@
 import UIKit
 import Nuke
 
-private let screenshotReuseIdentifier = "ScreenshotCell"
-private let newScreenshotReuseIdentifier = "NewScreenshotCell"
-private let screenshotCellNib = "ScreenshotCollectionViewCell"
-private let newScreenshotCellNib = "NewScreenshotCollectionViewCell"
+private let screenshotReuseIdentifier = "ScreenshotCollectionViewCell"
+private let newScreenshotReuseIdentifier = "NewScreenshotCollectionViewCell"
 
 class ReportItemsViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
@@ -26,8 +24,8 @@ class ReportItemsViewController: UIViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView.register(UINib(nibName: screenshotCellNib, bundle: nil), forCellWithReuseIdentifier: screenshotReuseIdentifier)
-        self.collectionView.register(UINib(nibName: newScreenshotCellNib, bundle: nil), forCellWithReuseIdentifier: newScreenshotReuseIdentifier)
+        self.collectionView.register(UINib(nibName: screenshotReuseIdentifier, bundle: nil), forCellWithReuseIdentifier: screenshotReuseIdentifier)
+        self.collectionView.register(UINib(nibName: newScreenshotReuseIdentifier, bundle: nil), forCellWithReuseIdentifier: newScreenshotReuseIdentifier)
     }
 
     override func didReceiveMemoryWarning() {
