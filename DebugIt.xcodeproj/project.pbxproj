@@ -36,6 +36,8 @@
 		21D389F01DD2114700B8B776 /* ScreenshotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D389EE1DD2114700B8B776 /* ScreenshotCollectionViewCell.swift */; };
 		21D389F11DD2114700B8B776 /* ScreenshotCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21D389EF1DD2114700B8B776 /* ScreenshotCollectionViewCell.xib */; };
 		21ECFF3E1DC38B1E0076FC22 /* Report.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21ECFF3D1DC38B1E0076FC22 /* Report.storyboard */; };
+		21F36E4C1DD4A77800709BD2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 21F36E4B1DD4A77800709BD2 /* Localizable.strings */; };
+		21F36E4E1DD4A8D600709BD2 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F36E4D1DD4A8D600709BD2 /* String+Localized.swift */; };
 		981826F31DCB8E0B00122591 /* ResizableRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981826F11DCB8E0B00122591 /* ResizableRectangle.swift */; };
 		981826F41DCB8E0B00122591 /* ResizableRectangle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 981826F21DCB8E0B00122591 /* ResizableRectangle.xib */; };
 		989736E31DD1EAF60057A742 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989736E21DD1EAF60057A742 /* Utils.swift */; };
@@ -115,6 +117,8 @@
 		21D389EE1DD2114700B8B776 /* ScreenshotCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotCollectionViewCell.swift; sourceTree = "<group>"; };
 		21D389EF1DD2114700B8B776 /* ScreenshotCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScreenshotCollectionViewCell.xib; sourceTree = "<group>"; };
 		21ECFF3D1DC38B1E0076FC22 /* Report.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Report.storyboard; sourceTree = "<group>"; };
+		21F36E4B1DD4A77800709BD2 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		21F36E4D1DD4A8D600709BD2 /* String+Localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
 		41EDDC6575F58C14F85B7D2F /* Pods-DebugItUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugItUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DebugItUITests/Pods-DebugItUITests.release.xcconfig"; sourceTree = "<group>"; };
 		953A63AF08C46A826FC22D7D /* Pods-DebugIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugIt.release.xcconfig"; path = "Pods/Target Support Files/Pods-DebugIt/Pods-DebugIt.release.xcconfig"; sourceTree = "<group>"; };
 		981826F11DCB8E0B00122591 /* ResizableRectangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizableRectangle.swift; sourceTree = "<group>"; };
@@ -186,6 +190,7 @@
 		2196AC0A1DC0BE91003A7A67 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				21F36E4B1DD4A77800709BD2 /* Localizable.strings */,
 				21F36E4A1DD48E9B00709BD2 /* Extensions */,
 				989736E21DD1EAF60057A742 /* Utils.swift */,
 				98F184FD1DC0BB09001CB560 /* ConfigType.swift */,
@@ -278,6 +283,7 @@
 				98EEEF891DCA3C210018730B /* UIView+RoundedCorners.swift */,
 				214026FE1DCC9EDC00A14715 /* UIImage+Base64.swift */,
 				214027041DCCBE1300A14715 /* UIDevice+ModelName.swift */,
+				21F36E4D1DD4A8D600709BD2 /* String+Localized.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -489,6 +495,7 @@
 				98F184AB1DC0B906001CB560 /* Assets.xcassets in Resources */,
 				21D389F11DD2114700B8B776 /* ScreenshotCollectionViewCell.xib in Resources */,
 				98F184A91DC0B906001CB560 /* Main.storyboard in Resources */,
+				21F36E4C1DD4A77800709BD2 /* Localizable.strings in Resources */,
 				21361A301DD308CA001CD729 /* NewScreenshotCollectionViewCell.xib in Resources */,
 				98BEF4311DC24C1500483759 /* EditScreenshotModalViewController.xib in Resources */,
 				98BEF42D1DC22D9E00483759 /* DebuggItButton.xib in Resources */,
@@ -679,6 +686,7 @@
 				2196AC141DC0C3F9003A7A67 /* DebuggItError.swift in Sources */,
 				98F184A61DC0B906001CB560 /* ViewController.swift in Sources */,
 				98F184FE1DC0BB09001CB560 /* ConfigType.swift in Sources */,
+				21F36E4E1DD4A8D600709BD2 /* String+Localized.swift in Sources */,
 				98F184FA1DC0BAB8001CB560 /* JiraApiClient.swift in Sources */,
 				21B0ECB01DD339C800B896F6 /* RecordViewController.swift in Sources */,
 				98BEF4301DC24C1500483759 /* EditScreenshotModalViewController.swift in Sources */,
@@ -852,7 +860,7 @@
 				DEVELOPMENT_TEAM = 98YJ95K3V9;
 				INFOPLIST_FILE = DebugIt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.moodup.DebugIt;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moodup.DebuggIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -867,7 +875,7 @@
 				DEVELOPMENT_TEAM = 98YJ95K3V9;
 				INFOPLIST_FILE = DebugIt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.moodup.DebugIt;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moodup.DebuggIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

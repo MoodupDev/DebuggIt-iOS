@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  DebugIt
+
+  Created by Arkadiusz Żmudzin on 10.11.2016.
+  Copyright © 2016 MoodUp. All rights reserved.
+*/
+
+login.text = "Sign in to %@ account and report bugs from the phone";
