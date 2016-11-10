@@ -69,14 +69,10 @@ class DebuggIt {
     
     func sendReport(successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int?,_ message: String?) -> ()) {
         let contentString =  report.stepsToReproduce + "\n" + report.expectedBehavior + "\n" + report.actualBehavior + "\n"
-        var urlString = ""
-        for url in report.screenshotsUrls {
-            urlString += url + "\n"
-        }
         
         apiClient?.addIssue(
             title: report.title,
-            content: contentString + urlString,
+            content: contentString + report.screenshotsUrls.reduce("", {$0 + "\n" + $1}),
             priority: Utils.convert(fromPriority: report.priority),
             kind: Utils.convert(fromKind: report.kind),
             successBlock: successBlock,

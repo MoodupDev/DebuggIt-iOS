@@ -1,11 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina5_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,17 +16,14 @@
                         <viewControllerLayoutGuide type="bottom" id="zH1-mu-yXj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="yrv-DU-ai8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="QGd-ND-hOD">
-                                <rect key="frame" x="20" y="20" width="374" height="72"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="8uj-Jy-Hvr" userLabel="Kind buttons">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sW0-2B-gh9" customClass="RoundedButton" customModule="DebugIt" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="181" height="30"/>
                                                 <state key="normal" title="Bug"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
@@ -56,7 +50,6 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xi8-0t-llP" customClass="RoundedButton" customModule="DebugIt" customModuleProvider="target">
-                                                <rect key="frame" x="193" y="0.0" width="181" height="30"/>
                                                 <state key="normal" title="Enhancement"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="selectedBackgroundColor">
@@ -85,10 +78,8 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="bpy-Zf-Wpj" userLabel="Priority buttons">
-                                        <rect key="frame" x="0.0" y="42" width="374" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJF-Bh-B4Q" customClass="RoundedButton" customModule="DebugIt" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="116.66666666666666" height="30"/>
                                                 <state key="normal" title="Low"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
@@ -112,7 +103,6 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rI9-87-mZU" customClass="RoundedButton" customModule="DebugIt" customModuleProvider="target">
-                                                <rect key="frame" x="128.66666666666669" y="0.0" width="116.66666666666666" height="30"/>
                                                 <state key="normal" title="Medium"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="selectedBackgroundColor">
@@ -136,7 +126,6 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A5v-Wz-lN9" customClass="RoundedButton" customModule="DebugIt" customModuleProvider="target">
-                                                <rect key="frame" x="257.33333333333326" y="0.0" width="116.66666666666669" height="30"/>
                                                 <state key="normal" title="High"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
@@ -164,7 +153,6 @@
                                 </subviews>
                             </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TTH-5D-anf" customClass="KMPlaceholderTextView" customModule="KMPlaceholderTextView">
-                                <rect key="frame" x="20" y="108" width="315" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="qUk-hW-AZY"/>
@@ -176,14 +164,12 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHT-h7-xg1" userLabel="Record button">
-                                <rect key="frame" x="343" y="147" width="51" height="34"/>
                                 <state key="normal" image="recordMicro"/>
                                 <connections>
                                     <action selector="recordTapped:" destination="jou-oo-RbY" eventType="touchUpInside" id="UMb-LU-9n7"/>
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="vuT-qr-bkD">
-                                <rect key="frame" x="20" y="244" width="374" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="eGP-fL-mnA"/>
                                 </constraints>
@@ -231,14 +217,12 @@
                         <viewControllerLayoutGuide type="bottom" id="85H-Iq-nO4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="orb-6B-Le8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="k98-j0-jFQ">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pFf-do-k8E" userLabel="Steps to reproduce" customClass="KMPlaceholderTextView" customModule="KMPlaceholderTextView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="239.33333333333334"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next"/>
@@ -247,7 +231,6 @@
                                         </userDefinedRuntimeAttributes>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="skv-oH-zMN" userLabel="Actual behavior" customClass="KMPlaceholderTextView" customModule="KMPlaceholderTextView">
-                                        <rect key="frame" x="0.0" y="248.33333333333331" width="414" height="239.33333333333331"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -256,7 +239,6 @@
                                         </userDefinedRuntimeAttributes>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="oWa-oh-6II" userLabel="Expected behavior" customClass="KMPlaceholderTextView" customModule="KMPlaceholderTextView">
-                                        <rect key="frame" x="0.0" y="496.66666666666674" width="414" height="239.33333333333326"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -311,31 +293,24 @@
                         <viewControllerLayoutGuide type="bottom" id="7nD-VE-os2"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ZR9-UZ-dpF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UEX-mL-A0e">
-                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gPF-mH-vW9">
-                                <rect key="frame" x="121" y="286" width="172" height="165"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dbd-uA-2hb" userLabel="Stop record">
-                                        <rect key="frame" x="59" y="55" width="54" height="54"/>
                                         <state key="normal" image="recordStopBigger"/>
                                         <connections>
                                             <action selector="recordStopped:" destination="toH-Ei-VBk" eventType="touchUpInside" id="cIm-zr-L21"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yty-44-a8L">
-                                        <rect key="frame" x="56.333333333333343" y="16" width="61.333333333333314" height="20.333333333333314"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circleActive" translatesAutoresizingMaskIntoConstraints="NO" id="Wh9-xm-1Ka">
-                                                <rect key="frame" x="0.0" y="6.3333333333333144" width="8" height="8"/>
-                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circleActive" translatesAutoresizingMaskIntoConstraints="NO" id="Wh9-xm-1Ka"/>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zY0-vd-K0V" userLabel="Time to end">
-                                                <rect key="frame" x="18" y="0.0" width="43.333333333333314" height="20.333333333333314"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -383,15 +358,13 @@
                         <viewControllerLayoutGuide type="bottom" id="QD2-eR-RjW"/>
                     </layoutGuides>
                     <view key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Vkc-t5-dfB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IML-Q8-Xul" userLabel="mainArea">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PlO-IC-LNd" userLabel="redEdges">
-                                <rect key="frame" x="30" y="35" width="354" height="666"/>
                                 <color key="backgroundColor" red="0.90980392160000001" green="0.41176470590000003" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -400,7 +373,6 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dSE-2U-Hra" userLabel="whiteArea">
-                                <rect key="frame" x="30" y="40" width="354" height="656"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -409,13 +381,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Llw-mg-dtQ">
-                                <rect key="frame" x="40" y="40" width="334" height="656"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DlE-UC-eId">
-                                        <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T6r-UG-2RC">
-                                                <rect key="frame" x="4" y="4" width="60" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="uTo-TP-0Mj"/>
                                                 </constraints>
@@ -428,7 +397,6 @@
                                                 </connections>
                                             </button>
                                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="mkE-vO-Xot">
-                                                <rect key="frame" x="155.66666666666666" y="4" width="23" height="32"/>
                                                 <color key="pageIndicatorTintColor" red="0.95542651414871216" green="0.65559518337249756" blue="0.66193246841430664" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="currentPageIndicatorTintColor" red="0.93139916658401489" green="0.27553075551986694" blue="0.18585780262947083" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
@@ -436,7 +404,6 @@
                                                 </connections>
                                             </pageControl>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9UA-hX-t0Z">
-                                                <rect key="frame" x="270" y="4" width="60" height="32"/>
                                                 <color key="backgroundColor" red="0.90980392160000001" green="0.41176470590000003" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="wFZ-Vg-dMl"/>
@@ -460,7 +427,6 @@
                                         <edgeInsets key="layoutMargins" top="4" left="4" bottom="4" right="4"/>
                                     </stackView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AOR-QA-lqb">
-                                        <rect key="frame" x="0.0" y="40" width="334" height="616"/>
                                         <connections>
                                             <segue destination="mTg-Ni-ERc" kind="embed" identifier="bugDescriptionPageViewController" id="hko-ou-gce"/>
                                         </connections>
@@ -506,11 +472,10 @@
                         <viewControllerLayoutGuide type="bottom" id="2y4-vQ-yrn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bEe-nF-1su">
-                        <rect key="frame" x="0.0" y="0.0" width="374" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="300"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TnN-Zv-F0o">
-                                <rect key="frame" x="0.0" y="0.0" width="374" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="r2F-fH-RJ6">
                                     <size key="itemSize" width="200" height="300"/>
