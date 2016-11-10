@@ -80,6 +80,7 @@ extension ReportItemsViewController : UICollectionViewDataSource {
     
     func createAudioCell(for indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: audioReuseIdentifier, for: indexPath) as! AudioCollectionViewCell
+        cell.index = indexPath.section
         return cell
     }
 }

@@ -39,7 +39,7 @@
                                 <rect key="frame" x="82" y="132.5" width="36" height="35"/>
                                 <state key="normal" image="recordPlay"/>
                                 <connections>
-                                    <action selector="playAudio:" destination="gTV-IL-0wX" eventType="touchUpInside" id="ZU7-KZ-5w3"/>
+                                    <action selector="togglePlayAudio:" destination="gTV-IL-0wX" eventType="touchUpInside" id="lHy-h9-WJX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0IN-mn-3sa" userLabel="Delete button">
