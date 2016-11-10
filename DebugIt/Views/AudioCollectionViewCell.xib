@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AudioCollectionViewCell" id="gTV-IL-0wX" customClass="AudioCollectionViewCell" customModule="DebugIt" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cTE-nv-cUX">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recordBackground" translatesAutoresizingMaskIntoConstraints="NO" id="cwM-iO-JUS" customClass="RoundedImageView" customModule="DebugIt" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8R1-ls-u3j" userLabel="Play button">
+                                <rect key="frame" x="82" y="132.5" width="36" height="35"/>
+                                <state key="normal" image="recordPlay"/>
+                                <connections>
+                                    <action selector="playAudio:" destination="gTV-IL-0wX" eventType="touchUpInside" id="ZU7-KZ-5w3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0IN-mn-3sa" userLabel="Delete button">
+                                <rect key="frame" x="182" y="0.0" width="18" height="22"/>
+                                <state key="normal" image="attachDelete"/>
+                                <connections>
+                                    <action selector="removeAudio:" destination="gTV-IL-0wX" eventType="touchUpInside" id="89c-VD-mOc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0IN-mn-3sa" firstAttribute="top" secondItem="cTE-nv-cUX" secondAttribute="top" id="78q-NV-eAz"/>
+                            <constraint firstItem="8R1-ls-u3j" firstAttribute="centerX" secondItem="cTE-nv-cUX" secondAttribute="centerX" id="Ktb-T8-bNv"/>
+                            <constraint firstAttribute="bottom" secondItem="cwM-iO-JUS" secondAttribute="bottom" id="Pde-iT-eJo"/>
+                            <constraint firstItem="cwM-iO-JUS" firstAttribute="leading" secondItem="cTE-nv-cUX" secondAttribute="leading" id="a4J-cF-NNO"/>
+                            <constraint firstAttribute="trailing" secondItem="0IN-mn-3sa" secondAttribute="trailing" id="bov-e3-7iA"/>
+                            <constraint firstItem="8R1-ls-u3j" firstAttribute="centerY" secondItem="cTE-nv-cUX" secondAttribute="centerY" id="dxe-By-UrK"/>
+                            <constraint firstAttribute="trailing" secondItem="cwM-iO-JUS" secondAttribute="trailing" id="qDm-yG-Cof"/>
+                            <constraint firstItem="cwM-iO-JUS" firstAttribute="top" secondItem="cTE-nv-cUX" secondAttribute="top" id="tC9-qt-zpf"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="cTE-nv-cUX" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Gjp-La-Pc3"/>
+                <constraint firstAttribute="trailing" secondItem="cTE-nv-cUX" secondAttribute="trailing" id="SJP-W2-OVk"/>
+                <constraint firstItem="cTE-nv-cUX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Sqq-xp-YJW"/>
+                <constraint firstAttribute="bottom" secondItem="cTE-nv-cUX" secondAttribute="bottom" id="ziA-Pa-sgi"/>
+            </constraints>
+            <connections>
+                <outlet property="playButton" destination="8R1-ls-u3j" id="65B-QE-A3F"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="attachDelete" width="18" height="18"/>
+        <image name="recordBackground" width="57" height="60"/>
+        <image name="recordPlay" width="36" height="35"/>
+    </resources>
+</document>

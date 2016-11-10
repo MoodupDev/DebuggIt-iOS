@@ -307,23 +307,23 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gPF-mH-vW9">
-                                <rect key="frame" x="121" y="285.66666666666669" width="172" height="165"/>
+                                <rect key="frame" x="121" y="286" width="172" height="165"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dbd-uA-2hb" userLabel="Stop record">
-                                        <rect key="frame" x="59" y="55.666666666666629" width="54" height="54"/>
-                                        <state key="normal" image="recordStop"/>
+                                        <rect key="frame" x="59" y="55" width="54" height="54"/>
+                                        <state key="normal" image="recordStopBigger"/>
                                         <connections>
                                             <action selector="recordStopped:" destination="toH-Ei-VBk" eventType="touchUpInside" id="cIm-zr-L21"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yty-44-a8L">
-                                        <rect key="frame" x="56" y="16" width="61.333333333333343" height="20.333333333333314"/>
+                                        <rect key="frame" x="56.333333333333343" y="16" width="61.333333333333314" height="20.333333333333314"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circleActive" translatesAutoresizingMaskIntoConstraints="NO" id="Wh9-xm-1Ka">
                                                 <rect key="frame" x="0.0" y="6.3333333333333144" width="8" height="8"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zY0-vd-K0V" userLabel="Time to end">
-                                                <rect key="frame" x="18" y="0.0" width="43.333333333333343" height="20.333333333333314"/>
+                                                <rect key="frame" x="18" y="0.0" width="43.333333333333314" height="20.333333333333314"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -554,6 +554,6 @@
     <resources>
         <image name="circleActive" width="8" height="8"/>
         <image name="recordMicro" width="34" height="34"/>
-        <image name="recordStop" width="54" height="54"/>
+        <image name="recordStopBigger" width="54" height="54"/>
     </resources>
 </document>

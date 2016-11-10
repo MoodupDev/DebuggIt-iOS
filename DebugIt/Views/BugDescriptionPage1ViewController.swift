@@ -18,7 +18,7 @@ class BugDescriptionPage1ViewController: UIViewController {
     @IBOutlet weak var titleTextView: UITextView!
     @IBOutlet weak var recordButton: UIButton!
     
-    weak var reportItemsCollection: UICollectionView?
+    weak var reportItemsCollection: ReportItemsViewController!
     
     
     // MARK: - Overriden
@@ -92,7 +92,7 @@ class BugDescriptionPage1ViewController: UIViewController {
     }
     
     func reloadReportItems() {
-        self.reportItemsCollection?.reloadData()
+        self.reportItemsCollection.collectionView.reloadData()
     }
     
     // MARK: - Actions
@@ -109,7 +109,7 @@ class BugDescriptionPage1ViewController: UIViewController {
 
     @IBAction func recordUploaded(segue: UIStoryboardSegue) {
         recordButton.isSelected = false
-        self.reloadReportItems()
+        reloadReportItems()
     }
     @IBAction func recordTapped(_ sender: UIButton) {
         sender.isSelected = true
@@ -123,7 +123,7 @@ class BugDescriptionPage1ViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "reportItemsCollection" {
-            self.reportItemsCollection = (segue.destination as! ReportItemsViewController).collectionView
+            self.reportItemsCollection = (segue.destination as! ReportItemsViewController)
         }
     }
  

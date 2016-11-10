@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "recordMicro.png",
+      "filename" : "recordMicroActive.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "recordMicro@2x.png.png",
+      "filename" : "recordMicroActive@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "recordMicro@3x.png.png",
+      "filename" : "recordMicroActive@3x.png",
       "scale" : "3x"
     }
   ],
