@@ -191,16 +191,9 @@
 				2196AC131DC0C3F9003A7A67 /* DebuggItError.swift */,
 				98F184D91DC0BA11001CB560 /* Report.swift */,
 				98F184F01DC0BAB8001CB560 /* Constants.swift */,
-				2196AC0D1DC0C1B1003A7A67 /* String+Base64.swift */,
-				2196AC0F1DC0C203003A7A67 /* ApiClientProtocol+Headers.swift */,
-				2196AC111DC0C23F003A7A67 /* DataResponse+Validation.swift */,
-				2196AC151DC0CFF7003A7A67 /* String+Replace.swift */,
-				98F3F3281DC9E33A00F3E403 /* UIWindow+Screenshot.swift */,
-				98EEEF891DCA3C210018730B /* UIView+RoundedCorners.swift */,
+				21F36E4A1DD48E9B00709BD2 /* Extensions */,
 				2107BD2E1DCB5F1E00C02C3D /* ReportKind.swift */,
 				2107BD301DCB5F5300C02C3D /* ReportPriority.swift */,
-				214026FE1DCC9EDC00A14715 /* UIImage+Base64.swift */,
-				214027041DCCBE1300A14715 /* UIDevice+ModelName.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -272,6 +265,21 @@
 				21A1E0CD1DD46DBC00AD466F /* RoundedImageView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		21F36E4A1DD48E9B00709BD2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2196AC0D1DC0C1B1003A7A67 /* String+Base64.swift */,
+				2196AC0F1DC0C203003A7A67 /* ApiClientProtocol+Headers.swift */,
+				2196AC111DC0C23F003A7A67 /* DataResponse+Validation.swift */,
+				2196AC151DC0CFF7003A7A67 /* String+Replace.swift */,
+				98F3F3281DC9E33A00F3E403 /* UIWindow+Screenshot.swift */,
+				98EEEF891DCA3C210018730B /* UIView+RoundedCorners.swift */,
+				214026FE1DCC9EDC00A14715 /* UIImage+Base64.swift */,
+				214027041DCCBE1300A14715 /* UIDevice+ModelName.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		98F184971DC0B906001CB560 = {
