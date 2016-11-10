@@ -46,12 +46,16 @@ class BugDescriptionViewController: UIViewController {
         DebuggIt.sharedInstance.sendReport(
             successBlock: {
                 alertController.dismiss(animated: false, completion: nil)
-                self.present(Utils.createAlert(title: "Succes", message: "Report saved succesfully", positiveAction: nil, negativeAction: nil), animated: true, completion: nil)
+                self.present(Utils.createAlert(title: "Succes", message: "Report saved succesfully", positiveAction: self.dissmissDebuggIt(), negativeAction: nil), animated: true, completion: nil)
                 IQKeyboardManager.sharedManager().enable = false
             }, errorBlock: {
                 (status, error) in
                 self.present(Utils.createAlert(title: "Error", message: error!, positiveAction: nil, negativeAction: nil), animated: true, completion: nil)
         })
+    }
+    
+    private func dissmissDebuggIt() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func cancelClicked(_ sender: UIBarButtonItem) {
