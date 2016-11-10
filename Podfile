@@ -10,6 +10,7 @@ target 'DebugIt' do
     pod 'SwiftyJSON'
     pod 'IQKeyboardManagerSwift', '4.0.6'
     pod 'Nuke', '~> 4.0'
+    pod 'KMPlaceholderTextView', '~> 1.3.0'
     
   target 'DebugItTests' do
     inherit! :search_paths
