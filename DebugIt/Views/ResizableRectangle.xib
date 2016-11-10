@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -11,9 +14,51 @@
         <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB" customClass="ResizableRectangle" customModule="DebugIt" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O7h-ZO-VSU">
+                    <rect key="frame" x="5" y="5" width="90" height="90"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="corner" translatesAutoresizingMaskIntoConstraints="NO" id="g5J-yi-bJW">
+                    <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="corner" translatesAutoresizingMaskIntoConstraints="NO" id="An5-uV-v3B">
+                    <rect key="frame" x="84" y="0.0" width="16" height="16"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="corner" translatesAutoresizingMaskIntoConstraints="NO" id="uST-zA-d8d">
+                    <rect key="frame" x="84" y="84" width="16" height="16"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="corner" translatesAutoresizingMaskIntoConstraints="NO" id="zLp-E9-I6C">
+                    <rect key="frame" x="0.0" y="84" width="16" height="16"/>
+                </imageView>
+            </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="g5J-yi-bJW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1aw-FC-D0r"/>
+                <constraint firstAttribute="trailing" secondItem="An5-uV-v3B" secondAttribute="trailing" id="70G-gr-i4w"/>
+                <constraint firstAttribute="trailing" secondItem="uST-zA-d8d" secondAttribute="trailing" id="KbY-NY-TvH"/>
+                <constraint firstItem="O7h-ZO-VSU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="Lab-U8-979"/>
+                <constraint firstAttribute="bottom" secondItem="O7h-ZO-VSU" secondAttribute="bottom" constant="5" id="W1e-dm-qVD"/>
+                <constraint firstAttribute="bottom" secondItem="uST-zA-d8d" secondAttribute="bottom" id="ZPl-ZE-KTu"/>
+                <constraint firstItem="zLp-E9-I6C" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hWT-bG-W8o"/>
+                <constraint firstAttribute="trailing" secondItem="O7h-ZO-VSU" secondAttribute="trailing" constant="5" id="na4-ct-mcn"/>
+                <constraint firstItem="An5-uV-v3B" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="oFV-XZ-CkS"/>
+                <constraint firstItem="O7h-ZO-VSU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="oT2-Rr-coh"/>
+                <constraint firstItem="g5J-yi-bJW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="woI-PZ-fNY"/>
+                <constraint firstAttribute="bottom" secondItem="zLp-E9-I6C" secondAttribute="bottom" id="xpX-pa-SMM"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="backgroundView" destination="O7h-ZO-VSU" id="oCh-1V-50u"/>
+                <outletCollection property="corners" destination="g5J-yi-bJW" collectionClass="NSMutableArray" id="a3s-10-ShW"/>
+                <outletCollection property="corners" destination="An5-uV-v3B" collectionClass="NSMutableArray" id="8a0-9n-rMX"/>
+                <outletCollection property="corners" destination="uST-zA-d8d" collectionClass="NSMutableArray" id="na3-wC-9cP"/>
+                <outletCollection property="corners" destination="zLp-E9-I6C" collectionClass="NSMutableArray" id="xet-Oz-EAL"/>
+            </connections>
             <point key="canvasLocation" x="-102" y="337"/>
         </view>
     </objects>
+    <resources>
+        <image name="corner" width="16" height="16"/>
+    </resources>
 </document>

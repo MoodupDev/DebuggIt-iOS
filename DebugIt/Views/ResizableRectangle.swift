@@ -9,6 +9,8 @@
 import UIKit
 
 class ResizableRectangle: UIView {
+    @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet var corners: [UIImageView]!
     
     let resizeThumbSize: CGFloat = 45.0
     var isResizingLowerRight = false
@@ -24,6 +26,9 @@ class ResizableRectangle: UIView {
     
     func pin() {
         isPinned = true
+        corners.forEach { (corner) in
+            corner.isHidden = true
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
