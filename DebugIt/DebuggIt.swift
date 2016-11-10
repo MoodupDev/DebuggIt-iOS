@@ -45,7 +45,6 @@ class DebuggIt {
         self.configType = configType
         report.configType = configType
         isInitialized = true
-        IQKeyboardManager.sharedManager().enable = true
         ApiClient.postEvent(.initialized)
     }
     
@@ -148,6 +147,7 @@ class DebuggIt {
         if (apiClient?.hasToken())! {
             showModal(viewController:EditScreenshotModalViewController())
         } else {
+            IQKeyboardManager.sharedManager().enable = true
             showModal(viewController:LoginModalViewController())
         }
     }

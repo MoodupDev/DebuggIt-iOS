@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 class BugDescriptionViewController: UIViewController {
     
@@ -46,6 +47,7 @@ class BugDescriptionViewController: UIViewController {
             successBlock: {
                 alertController.dismiss(animated: false, completion: nil)
                 self.present(Utils.createAlert(title: "Succes", message: "Report saved succesfully", positiveAction: nil, negativeAction: nil), animated: true, completion: nil)
+                IQKeyboardManager.sharedManager().enable = false
             }, errorBlock: {
                 (status, error) in
                 self.present(Utils.createAlert(title: "Error", message: error!, positiveAction: nil, negativeAction: nil), animated: true, completion: nil)
@@ -55,6 +57,7 @@ class BugDescriptionViewController: UIViewController {
     @IBAction func cancelClicked(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
         DebuggIt.sharedInstance.report = Report()
+        IQKeyboardManager.sharedManager().enable = false
     }
     
     @IBAction func pageControlTapped(_ sender: UIPageControl) {
