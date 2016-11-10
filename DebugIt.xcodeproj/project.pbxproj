@@ -226,33 +226,49 @@
 			path = ApiClients;
 			sourceTree = "<group>";
 		};
+		21A1E0D01DD48B2900AD466F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				21B0ECAF1DD339C800B896F6 /* RecordViewController.swift */,
+				21A81F011DC21F800014FCD7 /* LoginModalViewController.swift */,
+				21BA798B1DC9DCD800D29015 /* BugDescriptionPageViewController.swift */,
+				98BEF42E1DC24C1500483759 /* EditScreenshotModalViewController.swift */,
+				21282EEB1DCA0E010001DE66 /* BugDescriptionPage1ViewController.swift */,
+				21282EED1DCA0E220001DE66 /* BugDescriptionPage2ViewController.swift */,
+				2107BD2C1DCB593400C02C3D /* BugDescriptionViewController.swift */,
+				21713B501DD1F2770068D025 /* ReportItemsViewController.swift */,
+			);
+			name = Controllers;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		21A1E0D11DD48B6100AD466F /* CollectionCells */ = {
+			isa = PBXGroup;
+			children = (
+				21D389EE1DD2114700B8B776 /* ScreenshotCollectionViewCell.swift */,
+				21D389EF1DD2114700B8B776 /* ScreenshotCollectionViewCell.xib */,
+				21361A2D1DD308CA001CD729 /* NewScreenshotCollectionViewCell.swift */,
+				21361A2E1DD308CA001CD729 /* NewScreenshotCollectionViewCell.xib */,
+				21A1E0C91DD46B2200AD466F /* AudioCollectionViewCell.swift */,
+				21A1E0CA1DD46B2200AD466F /* AudioCollectionViewCell.xib */,
+			);
+			name = CollectionCells;
+			sourceTree = "<group>";
+		};
 		21A81EFA1DC204DC0014FCD7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				21A1E0D11DD48B6100AD466F /* CollectionCells */,
+				21A81F021DC21F800014FCD7 /* LoginModalViewController.xib */,
+				98BEF42F1DC24C1500483759 /* EditScreenshotModalViewController.xib */,
 				981826F11DCB8E0B00122591 /* ResizableRectangle.swift */,
 				981826F21DCB8E0B00122591 /* ResizableRectangle.xib */,
 				98BEF42A1DC22D9E00483759 /* DebuggItButton.swift */,
 				98BEF42B1DC22D9E00483759 /* DebuggItButton.xib */,
 				21A81EFF1DC20EC00014FCD7 /* Images.xcassets */,
-				21A81F011DC21F800014FCD7 /* LoginModalViewController.swift */,
-				21A81F021DC21F800014FCD7 /* LoginModalViewController.xib */,
 				21ECFF3D1DC38B1E0076FC22 /* Report.storyboard */,
-				21BA798B1DC9DCD800D29015 /* BugDescriptionPageViewController.swift */,
-				98BEF42E1DC24C1500483759 /* EditScreenshotModalViewController.swift */,
-				98BEF42F1DC24C1500483759 /* EditScreenshotModalViewController.xib */,
-				21282EEB1DCA0E010001DE66 /* BugDescriptionPage1ViewController.swift */,
-				21282EED1DCA0E220001DE66 /* BugDescriptionPage2ViewController.swift */,
 				98EEEF871DCA044A0018730B /* DrawingView.swift */,
 				2107BD271DCB2FC400C02C3D /* RoundedButton.swift */,
-				2107BD2C1DCB593400C02C3D /* BugDescriptionViewController.swift */,
-				21713B501DD1F2770068D025 /* ReportItemsViewController.swift */,
-				21D389EE1DD2114700B8B776 /* ScreenshotCollectionViewCell.swift */,
-				21D389EF1DD2114700B8B776 /* ScreenshotCollectionViewCell.xib */,
-				21361A2D1DD308CA001CD729 /* NewScreenshotCollectionViewCell.swift */,
-				21361A2E1DD308CA001CD729 /* NewScreenshotCollectionViewCell.xib */,
-				21B0ECAF1DD339C800B896F6 /* RecordViewController.swift */,
-				21A1E0C91DD46B2200AD466F /* AudioCollectionViewCell.swift */,
-				21A1E0CA1DD46B2200AD466F /* AudioCollectionViewCell.xib */,
 				21A1E0CD1DD46DBC00AD466F /* RoundedImageView.swift */,
 			);
 			path = Views;
@@ -283,6 +299,7 @@
 		98F184A21DC0B906001CB560 /* DebugIt */ = {
 			isa = PBXGroup;
 			children = (
+				21A1E0D01DD48B2900AD466F /* Controllers */,
 				21A81EFA1DC204DC0014FCD7 /* Views */,
 				2196AC0B1DC0BE98003A7A67 /* Backend */,
 				2196AC0A1DC0BE91003A7A67 /* Helpers */,
