@@ -71,7 +71,7 @@ extension ReportItemsViewController : UICollectionViewDataSource {
         let screenshots = report.screenshotsUrls
         
         if let url = URL(string: screenshots[indexPath.section - report.audioUrls.count]) {
-            Nuke.loadImage(with: url, into: cell.screenshotImage)
+            cell.screenshotImage.loadFrom(url: url)
         }
         cell.index = indexPath.section
         

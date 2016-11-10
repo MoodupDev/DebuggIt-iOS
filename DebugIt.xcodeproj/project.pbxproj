@@ -41,6 +41,7 @@
 		981826F31DCB8E0B00122591 /* ResizableRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981826F11DCB8E0B00122591 /* ResizableRectangle.swift */; };
 		981826F41DCB8E0B00122591 /* ResizableRectangle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 981826F21DCB8E0B00122591 /* ResizableRectangle.xib */; };
 		989736E31DD1EAF60057A742 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989736E21DD1EAF60057A742 /* Utils.swift */; };
+		98AE47721DD4BC0400E504F1 /* UIImageView+UrlLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AE47711DD4BC0400E504F1 /* UIImageView+UrlLoading.swift */; };
 		98BEF42C1DC22D9E00483759 /* DebuggItButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BEF42A1DC22D9E00483759 /* DebuggItButton.swift */; };
 		98BEF42D1DC22D9E00483759 /* DebuggItButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98BEF42B1DC22D9E00483759 /* DebuggItButton.xib */; };
 		98BEF4301DC24C1500483759 /* EditScreenshotModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BEF42E1DC24C1500483759 /* EditScreenshotModalViewController.swift */; };
@@ -124,6 +125,7 @@
 		981826F11DCB8E0B00122591 /* ResizableRectangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizableRectangle.swift; sourceTree = "<group>"; };
 		981826F21DCB8E0B00122591 /* ResizableRectangle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResizableRectangle.xib; sourceTree = "<group>"; };
 		989736E21DD1EAF60057A742 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = DebugIt/Helpers/Utils.swift; sourceTree = SOURCE_ROOT; };
+		98AE47711DD4BC0400E504F1 /* UIImageView+UrlLoading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+UrlLoading.swift"; sourceTree = "<group>"; };
 		98BEF42A1DC22D9E00483759 /* DebuggItButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebuggItButton.swift; sourceTree = "<group>"; };
 		98BEF42B1DC22D9E00483759 /* DebuggItButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DebuggItButton.xib; sourceTree = "<group>"; };
 		98BEF42E1DC24C1500483759 /* EditScreenshotModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditScreenshotModalViewController.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 				214026FE1DCC9EDC00A14715 /* UIImage+Base64.swift */,
 				214027041DCCBE1300A14715 /* UIDevice+ModelName.swift */,
 				21F36E4D1DD4A8D600709BD2 /* String+Localized.swift */,
+				98AE47711DD4BC0400E504F1 /* UIImageView+UrlLoading.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -700,6 +703,7 @@
 				2107BD311DCB5F5300C02C3D /* ReportPriority.swift in Sources */,
 				21282EEC1DCA0E010001DE66 /* BugDescriptionPage1ViewController.swift in Sources */,
 				2196AC121DC0C23F003A7A67 /* DataResponse+Validation.swift in Sources */,
+				98AE47721DD4BC0400E504F1 /* UIImageView+UrlLoading.swift in Sources */,
 				214026FD1DCC9B1F00A14715 /* ApiClient.swift in Sources */,
 				21A1E0CB1DD46B2200AD466F /* AudioCollectionViewCell.swift in Sources */,
 			);

@@ -9,7 +9,6 @@ target 'DebugIt' do
     pod 'Alamofire', '~> 4.0'
     pod 'SwiftyJSON'
     pod 'IQKeyboardManagerSwift', '4.0.6'
-    pod 'Nuke', '~> 4.0'
     pod 'KMPlaceholderTextView', '~> 1.3.0'
     
   target 'DebugItTests' do
