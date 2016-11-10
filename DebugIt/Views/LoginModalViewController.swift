@@ -14,8 +14,6 @@ class LoginModalViewController: UIViewController {
     
     // MARK: Properties
     
-    static let loginText = "Sign in to %@ account and report bugs from the phone"
-    
     @IBOutlet weak var serviceImageView: UIImageView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -53,13 +51,13 @@ class LoginModalViewController: UIViewController {
         switch DebuggIt.sharedInstance.configType {
         case .bitbucket:
             serviceImageView.image = UIImage(named: "bitbucket")
-            infoLabel.text = String(format: LoginModalViewController.loginText, "Bitbucket")
+            infoLabel.text = String(format: "login.text".localized(), "Bitbucket")
         case .github:
             serviceImageView.image = UIImage(named: "github")
-            infoLabel.text = String(format: LoginModalViewController.loginText, "GitHub")
+            infoLabel.text = String(format: "login.text".localized(), "GitHub")
         case .jira:
             serviceImageView.image = UIImage(named: "jira")
-            infoLabel.text = String(format: LoginModalViewController.loginText, "JIRA")
+            infoLabel.text = String(format: "login.text".localized(), "JIRA")
         }
     }
     
