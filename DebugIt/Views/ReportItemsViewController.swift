@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Nuke
 
 private let screenshotReuseIdentifier = "ScreenshotCollectionViewCell"
 private let newScreenshotReuseIdentifier = "NewScreenshotCollectionViewCell"
