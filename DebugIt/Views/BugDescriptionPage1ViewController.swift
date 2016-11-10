@@ -11,15 +11,17 @@ import Nuke
 
 class BugDescriptionPage1ViewController: UIViewController {
     
-    // MARK: Properties
+    // MARK: - Properties
     
     @IBOutlet var kindButtons: [UIButton]!
     @IBOutlet var priorityButtons: [UIButton]!
     @IBOutlet weak var titleTextView: UITextView!
     @IBOutlet weak var recordButton: UIButton!
     
+    weak var reportItemsCollection: ReportItemsViewController!
     
-    // MARK: Overriden
+    
+    // MARK: - Overriden
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +36,7 @@ class BugDescriptionPage1ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: Methods
+    // MARK: - Methods
     
     private func initTitle() {
         titleTextView.delegate = self
@@ -89,7 +91,11 @@ class BugDescriptionPage1ViewController: UIViewController {
         }
     }
     
-    // MARK: Actions
+    func reloadReportItems() {
+        self.reportItemsCollection.collectionView.reloadData()
+    }
+    
+    // MARK: - Actions
     
     @IBAction func kindSelected(_ sender: UIButton) {
         setReportKind(selectedButton: sender)
@@ -101,17 +107,29 @@ class BugDescriptionPage1ViewController: UIViewController {
         selectFromButtons(priorityButtons, selected: sender)
     }
 
-    /*
+    @IBAction func recordUploaded(segue: UIStoryboardSegue) {
+        recordButton.isSelected = false
+        reloadReportItems()
+    }
+    @IBAction func recordTapped(_ sender: UIButton) {
+        sender.isSelected = true
+        let recordViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.ViewControllers.record)
+        recordViewController?.modalPresentationStyle = .overCurrentContext
+        self.present(recordViewController!, animated: true, completion: nil)
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        if segue.identifier == "reportItemsCollection" {
+            self.reportItemsCollection = (segue.destination as! ReportItemsViewController)
+        }
     }
-    */
+ 
 }
 
-// MARK: TextViewDelegate
+// MARK: - TextViewDelegate
 
 extension BugDescriptionPage1ViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {

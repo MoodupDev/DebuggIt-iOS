@@ -35,8 +35,8 @@ class BugDescriptionPageViewController: UIPageViewController {
     }()
     
     private func bugDescriptionPage(_ page: Int) -> UIViewController {
-        return UIStoryboard(name: "Report", bundle: nil) .
-            instantiateViewController(withIdentifier: "BugDescriptionPage\(page)")
+        return UIStoryboard(name: Constants.Storyboards.report, bundle: nil) .
+            instantiateViewController(withIdentifier: "\(Constants.ViewControllers.bugDescriptionPage)\(page)")
     }
 }
 

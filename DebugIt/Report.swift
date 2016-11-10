@@ -22,6 +22,7 @@ class Report {
     
     var screenshots = [UIImage]()
     var screenshotsUrls = [String]()
+    var audioUrls = [String]()
     
     init() {
        

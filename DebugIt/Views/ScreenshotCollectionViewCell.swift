@@ -13,7 +13,6 @@ class ScreenshotCollectionViewCell: UICollectionViewCell {
     // MARK: - Properties
     
     @IBOutlet weak var screenshotImage: UIImageView!
-    weak var collectonView: UICollectionView?
     var index: Int?
 
     override func awakeFromNib() {
@@ -26,7 +25,9 @@ class ScreenshotCollectionViewCell: UICollectionViewCell {
     @IBAction func deleteScreenshot(_ sender: UIButton) {
         if let index = index {
             DebuggIt.sharedInstance.report.screenshotsUrls.remove(at: index)
-            collectonView?.reloadData()
+            if let viewController = self.viewController() as? ReportItemsViewController {
+                viewController.collectionView.reloadData()
+            }
         }
     }
 

@@ -29,7 +29,12 @@ class ApiClient {
             case .success(let value):
                 let value = JSON(value)
                 if response.isSuccess() {
-                    DebuggIt.sharedInstance.report.screenshotsUrls.append(value["url"].stringValue)
+                    switch(type) {
+                    case .image:
+                        DebuggIt.sharedInstance.report.screenshotsUrls.append(value["url"].stringValue)
+                    case .audio:
+                        DebuggIt.sharedInstance.report.audioUrls.append(value["url"].stringValue)
+                    }
                     print(value["url"].stringValue)
                     successBlock()
                 } else {
@@ -43,8 +48,6 @@ class ApiClient {
             }
             
         }
-        
-        successBlock()
     }
     
     static func postEvent(_ event: EventType, value: Int? = nil) {
@@ -62,7 +65,6 @@ class ApiClient {
         }
         
         Alamofire.request(Constants.Api.eventsUrl, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).response { (response) in
-            print(response)
         }
         
     }

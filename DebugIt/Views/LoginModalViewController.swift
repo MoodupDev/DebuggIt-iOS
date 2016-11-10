@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import IQKeyboardManagerSwift
 
 class LoginModalViewController: UIViewController {
     
@@ -28,8 +29,8 @@ class LoginModalViewController: UIViewController {
         updateLoginInfoSection()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    override func viewDidDisappear(_ animated: Bool) {
+        IQKeyboardManager.sharedManager().enable = false
     }
     
     // MARK: Actions

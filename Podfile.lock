@@ -1,21 +1,24 @@
 PODS:
   - Alamofire (4.0.1)
   - IQKeyboardManagerSwift (4.0.6)
+  - KMPlaceholderTextView (1.3.0)
   - Nuke (4.1.2)
   - SwiftyJSON (3.1.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
   - IQKeyboardManagerSwift (= 4.0.6)
+  - KMPlaceholderTextView (~> 1.3.0)
   - Nuke (~> 4.0)
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
   IQKeyboardManagerSwift: b3015e819559ca76381f87a0833f44d178564603
+  KMPlaceholderTextView: 2bbcd19a273648a80a61e1e48f9743a24d8930e3
   Nuke: 7cfd2acdf90c36f66e6ea40795bac0d851a9afe0
   SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
 
-PODFILE CHECKSUM: 0e8f6d1e6e8d672a0a90bbc3ed280754a246a2f0
+PODFILE CHECKSUM: 8d2600374fe0780ce97d51716114f26e05ad1ea0
 
 COCOAPODS: 1.1.1

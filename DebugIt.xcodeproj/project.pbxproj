@@ -25,9 +25,13 @@
 		2196AC121DC0C23F003A7A67 /* DataResponse+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196AC111DC0C23F003A7A67 /* DataResponse+Validation.swift */; };
 		2196AC141DC0C3F9003A7A67 /* DebuggItError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196AC131DC0C3F9003A7A67 /* DebuggItError.swift */; };
 		2196AC161DC0CFF7003A7A67 /* String+Replace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196AC151DC0CFF7003A7A67 /* String+Replace.swift */; };
+		21A1E0CB1DD46B2200AD466F /* AudioCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A1E0C91DD46B2200AD466F /* AudioCollectionViewCell.swift */; };
+		21A1E0CC1DD46B2200AD466F /* AudioCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21A1E0CA1DD46B2200AD466F /* AudioCollectionViewCell.xib */; };
+		21A1E0CE1DD46DBC00AD466F /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A1E0CD1DD46DBC00AD466F /* RoundedImageView.swift */; };
 		21A81F001DC20EC00014FCD7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21A81EFF1DC20EC00014FCD7 /* Images.xcassets */; };
 		21A81F031DC21F800014FCD7 /* LoginModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A81F011DC21F800014FCD7 /* LoginModalViewController.swift */; };
 		21A81F041DC21F800014FCD7 /* LoginModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21A81F021DC21F800014FCD7 /* LoginModalViewController.xib */; };
+		21B0ECB01DD339C800B896F6 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B0ECAF1DD339C800B896F6 /* RecordViewController.swift */; };
 		21BA798C1DC9DCD800D29015 /* BugDescriptionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA798B1DC9DCD800D29015 /* BugDescriptionPageViewController.swift */; };
 		21D389F01DD2114700B8B776 /* ScreenshotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D389EE1DD2114700B8B776 /* ScreenshotCollectionViewCell.swift */; };
 		21D389F11DD2114700B8B776 /* ScreenshotCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21D389EF1DD2114700B8B776 /* ScreenshotCollectionViewCell.xib */; };
@@ -100,9 +104,13 @@
 		2196AC111DC0C23F003A7A67 /* DataResponse+Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataResponse+Validation.swift"; sourceTree = "<group>"; };
 		2196AC131DC0C3F9003A7A67 /* DebuggItError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebuggItError.swift; path = ../DebuggItError.swift; sourceTree = "<group>"; };
 		2196AC151DC0CFF7003A7A67 /* String+Replace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Replace.swift"; sourceTree = "<group>"; };
+		21A1E0C91DD46B2200AD466F /* AudioCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioCollectionViewCell.swift; sourceTree = "<group>"; };
+		21A1E0CA1DD46B2200AD466F /* AudioCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioCollectionViewCell.xib; sourceTree = "<group>"; };
+		21A1E0CD1DD46DBC00AD466F /* RoundedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		21A81EFF1DC20EC00014FCD7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		21A81F011DC21F800014FCD7 /* LoginModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModalViewController.swift; sourceTree = "<group>"; };
 		21A81F021DC21F800014FCD7 /* LoginModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginModalViewController.xib; sourceTree = "<group>"; };
+		21B0ECAF1DD339C800B896F6 /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		21BA798B1DC9DCD800D29015 /* BugDescriptionPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BugDescriptionPageViewController.swift; sourceTree = "<group>"; };
 		21D389EE1DD2114700B8B776 /* ScreenshotCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotCollectionViewCell.swift; sourceTree = "<group>"; };
 		21D389EF1DD2114700B8B776 /* ScreenshotCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScreenshotCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -178,21 +186,14 @@
 		2196AC0A1DC0BE91003A7A67 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				21F36E4A1DD48E9B00709BD2 /* Extensions */,
 				989736E21DD1EAF60057A742 /* Utils.swift */,
 				98F184FD1DC0BB09001CB560 /* ConfigType.swift */,
 				2196AC131DC0C3F9003A7A67 /* DebuggItError.swift */,
 				98F184D91DC0BA11001CB560 /* Report.swift */,
 				98F184F01DC0BAB8001CB560 /* Constants.swift */,
-				2196AC0D1DC0C1B1003A7A67 /* String+Base64.swift */,
-				2196AC0F1DC0C203003A7A67 /* ApiClientProtocol+Headers.swift */,
-				2196AC111DC0C23F003A7A67 /* DataResponse+Validation.swift */,
-				2196AC151DC0CFF7003A7A67 /* String+Replace.swift */,
-				98F3F3281DC9E33A00F3E403 /* UIWindow+Screenshot.swift */,
-				98EEEF891DCA3C210018730B /* UIView+RoundedCorners.swift */,
 				2107BD2E1DCB5F1E00C02C3D /* ReportKind.swift */,
 				2107BD301DCB5F5300C02C3D /* ReportPriority.swift */,
-				214026FE1DCC9EDC00A14715 /* UIImage+Base64.swift */,
-				214027041DCCBE1300A14715 /* UIDevice+ModelName.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -218,32 +219,67 @@
 			path = ApiClients;
 			sourceTree = "<group>";
 		};
+		21A1E0D01DD48B2900AD466F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				21B0ECAF1DD339C800B896F6 /* RecordViewController.swift */,
+				21A81F011DC21F800014FCD7 /* LoginModalViewController.swift */,
+				21BA798B1DC9DCD800D29015 /* BugDescriptionPageViewController.swift */,
+				98BEF42E1DC24C1500483759 /* EditScreenshotModalViewController.swift */,
+				21282EEB1DCA0E010001DE66 /* BugDescriptionPage1ViewController.swift */,
+				21282EED1DCA0E220001DE66 /* BugDescriptionPage2ViewController.swift */,
+				2107BD2C1DCB593400C02C3D /* BugDescriptionViewController.swift */,
+				21713B501DD1F2770068D025 /* ReportItemsViewController.swift */,
+			);
+			name = Controllers;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		21A1E0D11DD48B6100AD466F /* CollectionCells */ = {
+			isa = PBXGroup;
+			children = (
+				21D389EE1DD2114700B8B776 /* ScreenshotCollectionViewCell.swift */,
+				21D389EF1DD2114700B8B776 /* ScreenshotCollectionViewCell.xib */,
+				21361A2D1DD308CA001CD729 /* NewScreenshotCollectionViewCell.swift */,
+				21361A2E1DD308CA001CD729 /* NewScreenshotCollectionViewCell.xib */,
+				21A1E0C91DD46B2200AD466F /* AudioCollectionViewCell.swift */,
+				21A1E0CA1DD46B2200AD466F /* AudioCollectionViewCell.xib */,
+			);
+			name = CollectionCells;
+			sourceTree = "<group>";
+		};
 		21A81EFA1DC204DC0014FCD7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				21A1E0D11DD48B6100AD466F /* CollectionCells */,
+				21A81F021DC21F800014FCD7 /* LoginModalViewController.xib */,
+				98BEF42F1DC24C1500483759 /* EditScreenshotModalViewController.xib */,
 				981826F11DCB8E0B00122591 /* ResizableRectangle.swift */,
 				981826F21DCB8E0B00122591 /* ResizableRectangle.xib */,
 				98BEF42A1DC22D9E00483759 /* DebuggItButton.swift */,
 				98BEF42B1DC22D9E00483759 /* DebuggItButton.xib */,
 				21A81EFF1DC20EC00014FCD7 /* Images.xcassets */,
-				21A81F011DC21F800014FCD7 /* LoginModalViewController.swift */,
-				21A81F021DC21F800014FCD7 /* LoginModalViewController.xib */,
 				21ECFF3D1DC38B1E0076FC22 /* Report.storyboard */,
-				21BA798B1DC9DCD800D29015 /* BugDescriptionPageViewController.swift */,
-				98BEF42E1DC24C1500483759 /* EditScreenshotModalViewController.swift */,
-				98BEF42F1DC24C1500483759 /* EditScreenshotModalViewController.xib */,
-				21282EEB1DCA0E010001DE66 /* BugDescriptionPage1ViewController.swift */,
-				21282EED1DCA0E220001DE66 /* BugDescriptionPage2ViewController.swift */,
 				98EEEF871DCA044A0018730B /* DrawingView.swift */,
 				2107BD271DCB2FC400C02C3D /* RoundedButton.swift */,
-				2107BD2C1DCB593400C02C3D /* BugDescriptionViewController.swift */,
-				21713B501DD1F2770068D025 /* ReportItemsViewController.swift */,
-				21D389EE1DD2114700B8B776 /* ScreenshotCollectionViewCell.swift */,
-				21D389EF1DD2114700B8B776 /* ScreenshotCollectionViewCell.xib */,
-				21361A2D1DD308CA001CD729 /* NewScreenshotCollectionViewCell.swift */,
-				21361A2E1DD308CA001CD729 /* NewScreenshotCollectionViewCell.xib */,
+				21A1E0CD1DD46DBC00AD466F /* RoundedImageView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		21F36E4A1DD48E9B00709BD2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2196AC0D1DC0C1B1003A7A67 /* String+Base64.swift */,
+				2196AC0F1DC0C203003A7A67 /* ApiClientProtocol+Headers.swift */,
+				2196AC111DC0C23F003A7A67 /* DataResponse+Validation.swift */,
+				2196AC151DC0CFF7003A7A67 /* String+Replace.swift */,
+				98F3F3281DC9E33A00F3E403 /* UIWindow+Screenshot.swift */,
+				98EEEF891DCA3C210018730B /* UIView+RoundedCorners.swift */,
+				214026FE1DCC9EDC00A14715 /* UIImage+Base64.swift */,
+				214027041DCCBE1300A14715 /* UIDevice+ModelName.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		98F184971DC0B906001CB560 = {
@@ -271,6 +307,7 @@
 		98F184A21DC0B906001CB560 /* DebugIt */ = {
 			isa = PBXGroup;
 			children = (
+				21A1E0D01DD48B2900AD466F /* Controllers */,
 				21A81EFA1DC204DC0014FCD7 /* Views */,
 				2196AC0B1DC0BE98003A7A67 /* Backend */,
 				2196AC0A1DC0BE91003A7A67 /* Helpers */,
@@ -444,6 +481,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				981826F41DCB8E0B00122591 /* ResizableRectangle.xib in Resources */,
+				21A1E0CC1DD46B2200AD466F /* AudioCollectionViewCell.xib in Resources */,
 				98F184AE1DC0B906001CB560 /* LaunchScreen.storyboard in Resources */,
 				21A81F041DC21F800014FCD7 /* LoginModalViewController.xib in Resources */,
 				21A81F001DC20EC00014FCD7 /* Images.xcassets in Resources */,
@@ -632,6 +670,7 @@
 				214027051DCCBE1300A14715 /* UIDevice+ModelName.swift in Sources */,
 				98F184DB1DC0BA11001CB560 /* DebuggIt.swift in Sources */,
 				98EEEF881DCA044A0018730B /* DrawingView.swift in Sources */,
+				21A1E0CE1DD46DBC00AD466F /* RoundedImageView.swift in Sources */,
 				21A81F031DC21F800014FCD7 /* LoginModalViewController.swift in Sources */,
 				981826F31DCB8E0B00122591 /* ResizableRectangle.swift in Sources */,
 				214027011DCCAFB700A14715 /* EventType.swift in Sources */,
@@ -641,6 +680,7 @@
 				98F184A61DC0B906001CB560 /* ViewController.swift in Sources */,
 				98F184FE1DC0BB09001CB560 /* ConfigType.swift in Sources */,
 				98F184FA1DC0BAB8001CB560 /* JiraApiClient.swift in Sources */,
+				21B0ECB01DD339C800B896F6 /* RecordViewController.swift in Sources */,
 				98BEF4301DC24C1500483759 /* EditScreenshotModalViewController.swift in Sources */,
 				214026FF1DCC9EDC00A14715 /* UIImage+Base64.swift in Sources */,
 				98F184F71DC0BAB8001CB560 /* Constants.swift in Sources */,
@@ -653,6 +693,7 @@
 				21282EEC1DCA0E010001DE66 /* BugDescriptionPage1ViewController.swift in Sources */,
 				2196AC121DC0C23F003A7A67 /* DataResponse+Validation.swift in Sources */,
 				214026FD1DCC9B1F00A14715 /* ApiClient.swift in Sources */,
+				21A1E0CB1DD46B2200AD466F /* AudioCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

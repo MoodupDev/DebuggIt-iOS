@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 class NewScreenshotCollectionViewCell: UICollectionViewCell {
 
@@ -19,6 +20,7 @@ class NewScreenshotCollectionViewCell: UICollectionViewCell {
     
     @IBAction func addNewScreenshot(_ sender: UIButton) {
         self.viewController()?.presentingViewController?.dismiss(animated: true, completion: nil)
+        IQKeyboardManager.sharedManager().enable = false
     }
 
 }
