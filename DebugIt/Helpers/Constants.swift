@@ -68,4 +68,14 @@ struct Constants {
         static let usernameKey = "jira_username"
         static let passwordKey = "jira_password"
     }
+    
+    struct Storyboards {
+        static let report = "Report"
+    }
+    
+    struct ViewControllers {
+        static let bugDescriptionPage = "BugDescriptionPage"
+        static let record = "RecordViewController"
+        static let bugDescription = "BugDescription"
+    }
 }

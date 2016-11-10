@@ -186,12 +186,12 @@
 		2196AC0A1DC0BE91003A7A67 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				21F36E4A1DD48E9B00709BD2 /* Extensions */,
 				989736E21DD1EAF60057A742 /* Utils.swift */,
 				98F184FD1DC0BB09001CB560 /* ConfigType.swift */,
 				2196AC131DC0C3F9003A7A67 /* DebuggItError.swift */,
 				98F184D91DC0BA11001CB560 /* Report.swift */,
 				98F184F01DC0BAB8001CB560 /* Constants.swift */,
-				21F36E4A1DD48E9B00709BD2 /* Extensions */,
 				2107BD2E1DCB5F1E00C02C3D /* ReportKind.swift */,
 				2107BD301DCB5F5300C02C3D /* ReportPriority.swift */,
 			);

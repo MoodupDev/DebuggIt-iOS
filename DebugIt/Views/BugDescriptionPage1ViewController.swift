@@ -113,7 +113,7 @@ class BugDescriptionPage1ViewController: UIViewController {
     }
     @IBAction func recordTapped(_ sender: UIButton) {
         sender.isSelected = true
-        let recordViewController = self.storyboard?.instantiateViewController(withIdentifier: "RecordViewController")
+        let recordViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.ViewControllers.record)
         recordViewController?.modalPresentationStyle = .overCurrentContext
         self.present(recordViewController!, animated: true, completion: nil)
     }

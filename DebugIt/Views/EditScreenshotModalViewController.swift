@@ -65,7 +65,7 @@ class EditScreenshotModalViewController: UIViewController {
     private func handleAlertDismissal(viewController: UIViewController) -> (() -> Void) {
         func dismissAlert() -> Void {
             viewController.dismiss(animated: true, completion: {
-                let bugDescriptionViewController = UIStoryboard.init(name: "Report", bundle: nil).instantiateViewController(withIdentifier: "BugDescription") as! BugDescriptionViewController
+                let bugDescriptionViewController = UIStoryboard.init(name: Constants.Storyboards.report, bundle: nil).instantiateViewController(withIdentifier: Constants.ViewControllers.bugDescription) as! BugDescriptionViewController
                 UIApplication.shared.keyWindow?.rootViewController?.present(bugDescriptionViewController, animated: true, completion: nil)
             })
         }
