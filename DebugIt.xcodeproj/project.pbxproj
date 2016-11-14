@@ -53,8 +53,6 @@
 		98F184A91DC0B906001CB560 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98F184A71DC0B906001CB560 /* Main.storyboard */; };
 		98F184AB1DC0B906001CB560 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98F184AA1DC0B906001CB560 /* Assets.xcassets */; };
 		98F184AE1DC0B906001CB560 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98F184AC1DC0B906001CB560 /* LaunchScreen.storyboard */; };
-		98F184B91DC0B906001CB560 /* DebugItTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184B81DC0B906001CB560 /* DebugItTests.swift */; };
-		98F184C41DC0B906001CB560 /* DebugItUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184C31DC0B906001CB560 /* DebugItUITests.swift */; };
 		98F184DB1DC0BA11001CB560 /* DebuggIt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184D61DC0BA11001CB560 /* DebuggIt.swift */; };
 		98F184DE1DC0BA11001CB560 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184D91DC0BA11001CB560 /* Report.swift */; };
 		98F184F41DC0BAB8001CB560 /* ApiClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F184ED1DC0BAB8001CB560 /* ApiClientProtocol.swift */; };
@@ -140,10 +138,8 @@
 		98F184AD1DC0B906001CB560 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		98F184AF1DC0B906001CB560 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98F184B41DC0B906001CB560 /* DebugItTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DebugItTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		98F184B81DC0B906001CB560 /* DebugItTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugItTests.swift; sourceTree = "<group>"; };
 		98F184BA1DC0B906001CB560 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98F184BF1DC0B906001CB560 /* DebugItUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DebugItUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		98F184C31DC0B906001CB560 /* DebugItUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugItUITests.swift; sourceTree = "<group>"; };
 		98F184C51DC0B906001CB560 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98F184D61DC0BA11001CB560 /* DebuggIt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebuggIt.swift; sourceTree = "<group>"; };
 		98F184D91DC0BA11001CB560 /* Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Report.swift; path = ../Report.swift; sourceTree = "<group>"; };
@@ -334,7 +330,6 @@
 		98F184B71DC0B906001CB560 /* DebugItTests */ = {
 			isa = PBXGroup;
 			children = (
-				98F184B81DC0B906001CB560 /* DebugItTests.swift */,
 				98F184BA1DC0B906001CB560 /* Info.plist */,
 			);
 			path = DebugItTests;
@@ -343,7 +338,6 @@
 		98F184C21DC0B906001CB560 /* DebugItUITests */ = {
 			isa = PBXGroup;
 			children = (
-				98F184C31DC0B906001CB560 /* DebugItUITests.swift */,
 				98F184C51DC0B906001CB560 /* Info.plist */,
 			);
 			path = DebugItUITests;
@@ -713,7 +707,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98F184B91DC0B906001CB560 /* DebugItTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -721,7 +714,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98F184C41DC0B906001CB560 /* DebugItUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
