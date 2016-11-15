@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginModalViewController" customModule="DebugIt" customModuleProvider="target">
+            <connections>
+                <outlet property="emailTextField" destination="fbn-us-RWg" id="mMP-gx-LS7"/>
+                <outlet property="infoLabel" destination="QVw-1E-PM3" id="EqJ-yD-ME7"/>
+                <outlet property="passwordTextField" destination="Qj9-rD-bF1" id="Iyi-Zf-g14"/>
+                <outlet property="serviceImageView" destination="lEZ-fp-Qe0" id="AHH-KM-Ee0"/>
+                <outlet property="view" destination="GSf-yY-Kuq" id="f2y-uG-e2l"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="GSf-yY-Kuq">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I42-EJ-IBb">
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="R17-f2-gQl">
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bitbucket" translatesAutoresizingMaskIntoConstraints="NO" id="lEZ-fp-Qe0" userLabel="service logo"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in to Bitbucket account and report bugs from the phone" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVw-1E-PM3" userLabel="login info">
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fbn-us-RWg" userLabel="email">
+                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                </textField>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Qj9-rD-bF1" userLabel="password">
+                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                </textField>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOV-a8-qUN" userLabel="sign in">
+                                    <state key="normal" title="Sign in"/>
+                                    <connections>
+                                        <action selector="signIn:" destination="-1" eventType="touchUpInside" id="hfB-kP-UKo"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="QVw-1E-PM3" firstAttribute="leading" secondItem="R17-f2-gQl" secondAttribute="leading" id="8Lc-In-0Yt"/>
+                                <constraint firstAttribute="height" constant="400" id="i8v-e6-i3O"/>
+                                <constraint firstAttribute="trailing" secondItem="QVw-1E-PM3" secondAttribute="trailing" id="rw4-r7-On2"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="R17-f2-gQl" secondAttribute="trailing" constant="12" id="5fz-Xm-0Ib"/>
+                        <constraint firstItem="R17-f2-gQl" firstAttribute="leading" secondItem="I42-EJ-IBb" secondAttribute="leading" constant="12" id="Oo7-Ui-MVB"/>
+                        <constraint firstItem="R17-f2-gQl" firstAttribute="centerX" secondItem="I42-EJ-IBb" secondAttribute="centerX" constant="75.5" id="Z4s-TV-xGp"/>
+                        <constraint firstItem="R17-f2-gQl" firstAttribute="centerY" secondItem="I42-EJ-IBb" secondAttribute="centerY" id="ter-DR-VlF"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Z4s-TV-xGp"/>
+                        </mask>
+                    </variation>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="I42-EJ-IBb" firstAttribute="centerX" secondItem="GSf-yY-Kuq" secondAttribute="centerX" id="K1R-mF-QZ9"/>
+                <constraint firstItem="I42-EJ-IBb" firstAttribute="centerY" secondItem="GSf-yY-Kuq" secondAttribute="centerY" id="cz0-os-6hI"/>
+                <constraint firstAttribute="trailingMargin" secondItem="I42-EJ-IBb" secondAttribute="trailing" constant="12" id="jMi-Ly-7Eu"/>
+                <constraint firstItem="I42-EJ-IBb" firstAttribute="leading" secondItem="GSf-yY-Kuq" secondAttribute="leadingMargin" constant="12" id="xFO-n7-oPl"/>
+                <constraint firstItem="I42-EJ-IBb" firstAttribute="top" secondItem="GSf-yY-Kuq" secondAttribute="top" constant="100" id="xQN-OY-BOa"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="bitbucket" width="144" height="50"/>
+    </resources>
+</document>
