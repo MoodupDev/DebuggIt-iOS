@@ -11,33 +11,48 @@ import UIKit
 class DrawingView: UIImageView {
     
     var active = true
-    var type: DrawingType = .free
+    var type: DrawingType = .free {
+        didSet {
+            pinCurrentRectangle()
+        }
+    }
     
-    private var lastPoint: CGPoint?
+    private var lastPoint: CGPoint!
     
     private var paths = [UIBezierPath]()
     private var currentPath: UIBezierPath!
     
+    var currentRectangle: ResizableRectangle!
+    var rectangles = [ResizableRectangle]()
+    
     private var lastDrawings = [DrawingType]()
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if(active) {
-            lastPoint = (touches.first?.location(in: self))!
+        lastPoint = (touches.first?.location(in: self))!
+        switch type {
+        case .free:
             currentPath = initBezierPath()
+        case .rectangle:
+            pinCurrentRectangle()
+            currentRectangle = createRectangle(at: lastPoint)
+            self.addSubview(currentRectangle)
         }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if(active) {
-            let touch = touches.first
-            let currentPoint:CGPoint = (touch?.location(in: self))!
+        let touch = touches.first
+        switch(type) {
+        case .free:
+            let currentPoint: CGPoint = (touch?.location(in: self))!
             
-            currentPath.move(to: lastPoint!)
+            currentPath.move(to: lastPoint)
             currentPath.addLine(to: currentPoint)
             
             draw(currentPath)
             
             lastPoint = currentPoint
+        case .rectangle:
+            break
         }
     }
     
@@ -48,7 +63,6 @@ class DrawingView: UIImageView {
                 paths.append(currentPath)
             default:
                 break
-                
             }
             lastDrawings.append(type)
         }
@@ -61,19 +75,50 @@ class DrawingView: UIImageView {
         return path
     }
     
+    private func createRectangle(at point: CGPoint) -> ResizableRectangle {
+        let rectangle = ResizableRectangle.instantiateFromNib()
+        
+        rectangle.backgroundView.layer.borderColor = UIColor.red.cgColor
+        rectangle.backgroundView.layer.borderWidth = 5.0
+        
+        rectangle.center.y = point.y
+        rectangle.center.x = point.x
+    
+        return rectangle
+    }
+    
     func undo() {
         if let lastDrawing =  lastDrawings.last {
             switch lastDrawing {
             case .free:
                 paths.removeLast()
-                paths.forEach({ (path) in
-                    draw(path)
-                })
-            default:
-                break
+            case .rectangle:
+                pinCurrentRectangle()
+                rectangles.removeLast()
             }
+            redraw()
             lastDrawings.removeLast()
         }
+    }
+    
+    private func pinCurrentRectangle() {
+        if currentRectangle != nil && !currentRectangle.isPinned {
+            currentRectangle.pin()
+            rectangles.append(currentRectangle)
+            currentRectangle = nil
+        }
+    }
+    
+    private func redraw() {
+        self.subviews.forEach({ (view) in
+            view.removeFromSuperview()
+        })
+        rectangles.forEach({ (rectangle) in
+            self.addSubview(rectangle)
+        })
+        paths.forEach({ (path) in
+            draw(path)
+        })
     }
     
     private func draw(_ path: UIBezierPath) {

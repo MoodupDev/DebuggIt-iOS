@@ -16,9 +16,6 @@ class EditScreenshotModalViewController: UIViewController {
     @IBOutlet weak var undoButton: UIButton!
     @IBOutlet weak var containerView: UIView!
     
-    var currentRectangle:ResizableRectangle?
-    var rectangles = [ResizableRectangle]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         screenshotSurface.image = DebuggIt.sharedInstance.report.screenshots.last
@@ -39,9 +36,6 @@ class EditScreenshotModalViewController: UIViewController {
     }
     
     @IBAction func tapDone(_ sender: UIButton) {
-        if currentRectangle != nil {
-            finishWithRectangle()
-        }
         UIGraphicsBeginImageContext(containerView.bounds.size)
         containerView.layer.render(in: UIGraphicsGetCurrentContext()!)
         
@@ -87,38 +81,12 @@ class EditScreenshotModalViewController: UIViewController {
     
     @IBAction func tapRectangle(_ sender: UIButton) {
         changeButtonState(sender, secondOptionButton: freedrawButton)
-        screenshotSurface.active = !sender.isSelected
-        
-        if currentRectangle != nil {
-            finishWithRectangle()
-        }
-        
-        if(sender.isSelected) {
-            currentRectangle = ResizableRectangle.instantiateFromNib()
-            
-            currentRectangle?.center.y = screenshotSurface.center.y
-            currentRectangle?.center.x = screenshotSurface.center.x
-            
-            currentRectangle?.backgroundView.layer.borderColor = UIColor(red: 255.0, green: 0.0, blue: 0.0, alpha:1.0).cgColor
-            currentRectangle?.backgroundView.layer.borderWidth = 5.0
-            
-            containerView.addSubview(currentRectangle!)
-        } else {
-            finishWithRectangle()
-        }
+        screenshotSurface.type = sender.isSelected ? .rectangle : .free
     }
     
     @IBAction func tapFreeDraw(_ sender: UIButton) {
         changeButtonState(sender, secondOptionButton: rectangleButton)
-        screenshotSurface.active = sender.isSelected
-        finishWithRectangle()
-    }
-    
-    private func finishWithRectangle() {
-        currentRectangle?.pin()
-        if currentRectangle != nil {
-            rectangles.append(currentRectangle!)
-        }
+        screenshotSurface.type = sender.isSelected ? .free : .rectangle
     }
     
     private func changeButtonState(_ sender:UIButton, secondOptionButton:UIButton) {
