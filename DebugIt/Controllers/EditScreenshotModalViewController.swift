@@ -82,16 +82,12 @@ class EditScreenshotModalViewController: UIViewController {
     
     @IBAction func tapUndo(_ sender: UIButton) {
         screenshotSurface.image = DebuggIt.sharedInstance.report.screenshots.last
-        for view in containerView.subviews {
-            if view != screenshotSurface {
-                view.removeFromSuperview()
-            }
-        }
+        screenshotSurface.undo()
     }
     
     @IBAction func tapRectangle(_ sender: UIButton) {
         changeButtonState(sender, secondOptionButton: freedrawButton)
-        screenshotSurface.active(isActive: !sender.isSelected)
+        screenshotSurface.active = !sender.isSelected
         
         if currentRectangle != nil {
             finishWithRectangle()
@@ -114,7 +110,7 @@ class EditScreenshotModalViewController: UIViewController {
     
     @IBAction func tapFreeDraw(_ sender: UIButton) {
         changeButtonState(sender, secondOptionButton: rectangleButton)
-        screenshotSurface.active(isActive: sender.isSelected)
+        screenshotSurface.active = sender.isSelected
         finishWithRectangle()
     }
     

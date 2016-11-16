@@ -21,6 +21,7 @@
 		214027051DCCBE1300A14715 /* UIDevice+ModelName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214027041DCCBE1300A14715 /* UIDevice+ModelName.swift */; };
 		21483F991DDC3ED200BBB47F /* BackgroundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21483F981DDC3ED200BBB47F /* BackgroundView.xib */; };
 		21483F9B1DDC495D00BBB47F /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21483F9A1DDC495D00BBB47F /* BackgroundView.swift */; };
+		21483F9F1DDC93E800BBB47F /* CGContext+DrawPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21483F9E1DDC93E800BBB47F /* CGContext+DrawPath.swift */; };
 		21713B511DD1F2770068D025 /* ReportItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21713B501DD1F2770068D025 /* ReportItemsViewController.swift */; };
 		2196AC0E1DC0C1B1003A7A67 /* String+Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196AC0D1DC0C1B1003A7A67 /* String+Base64.swift */; };
 		2196AC101DC0C203003A7A67 /* ApiClientProtocol+Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196AC0F1DC0C203003A7A67 /* ApiClientProtocol+Headers.swift */; };
@@ -103,6 +104,7 @@
 		214027041DCCBE1300A14715 /* UIDevice+ModelName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+ModelName.swift"; sourceTree = "<group>"; };
 		21483F981DDC3ED200BBB47F /* BackgroundView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackgroundView.xib; sourceTree = "<group>"; };
 		21483F9A1DDC495D00BBB47F /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		21483F9E1DDC93E800BBB47F /* CGContext+DrawPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGContext+DrawPath.swift"; sourceTree = "<group>"; };
 		21713B501DD1F2770068D025 /* ReportItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportItemsViewController.swift; sourceTree = "<group>"; };
 		2196AC0D1DC0C1B1003A7A67 /* String+Base64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Base64.swift"; sourceTree = "<group>"; };
 		2196AC0F1DC0C203003A7A67 /* ApiClientProtocol+Headers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ApiClientProtocol+Headers.swift"; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				214027041DCCBE1300A14715 /* UIDevice+ModelName.swift */,
 				21F36E4D1DD4A8D600709BD2 /* String+Localized.swift */,
 				98AE47711DD4BC0400E504F1 /* UIImageView+UrlLoading.swift */,
+				21483F9E1DDC93E800BBB47F /* CGContext+DrawPath.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -664,6 +667,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21483F9F1DDC93E800BBB47F /* CGContext+DrawPath.swift in Sources */,
 				2196AC101DC0C203003A7A67 /* ApiClientProtocol+Headers.swift in Sources */,
 				98F184F91DC0BAB8001CB560 /* GitHubApiClient.swift in Sources */,
 				2196AC0E1DC0C1B1003A7A67 /* String+Base64.swift in Sources */,

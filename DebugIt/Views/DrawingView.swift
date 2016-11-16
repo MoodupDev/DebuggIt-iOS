@@ -10,72 +10,86 @@ import UIKit
 
 class DrawingView: UIImageView {
     
-    let red:CGFloat = 255.0
-    let green:CGFloat = 0.0
-    let blue:CGFloat = 0.0
-    let paintAlpha:CGFloat = 1.0
-    let lineWidth:CGFloat = 5.0
+    var active = true
+    var type: DrawingType = .free
     
-    var lastPoint:CGPoint?
-    var isDrawing = false
-    var isActive = true
+    private var lastPoint: CGPoint?
     
-    func active(isActive: Bool) {
-        self.isActive = isActive
-    }
+    private var paths = [UIBezierPath]()
+    private var currentPath: UIBezierPath!
+    
+    private var lastDrawings = [DrawingType]()
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if(isActive) {
-            isDrawing = true;
+        if(active) {
             lastPoint = (touches.first?.location(in: self))!
+            currentPath = initBezierPath()
         }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if(isActive) {
-            isDrawing = true
+        if(active) {
             let touch = touches.first
             let currentPoint:CGPoint = (touch?.location(in: self))!
             
-            UIGraphicsBeginImageContext(self.frame.size)
-            let context = UIGraphicsGetCurrentContext()
+            currentPath.move(to: lastPoint!)
+            currentPath.addLine(to: currentPoint)
             
-            self.draw(CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
-            
-            context?.move(to: lastPoint!)
-            context?.addLine(to: currentPoint)
-            context?.setLineWidth(lineWidth)
-            context?.setStrokeColor(red: red, green: green, blue: blue, alpha: paintAlpha)
-            context?.setBlendMode(CGBlendMode.normal)
-            context?.setLineCap(CGLineCap.round)
-            context?.strokePath()
-            
-            self.image = UIGraphicsGetImageFromCurrentImageContext()
-            
-            UIGraphicsEndImageContext()
+            draw(currentPath)
             
             lastPoint = currentPoint
         }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if(!isDrawing && isActive) {
-            UIGraphicsBeginImageContext(self.frame.size)
-            let context = UIGraphicsGetCurrentContext()
-            
-            self.draw(CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
-            
-            context?.setLineCap(CGLineCap.round)
-            context?.setLineWidth(lineWidth)
-            context?.setStrokeColor(red: red, green: green, blue: blue, alpha: paintAlpha)
-            context?.move(to: lastPoint!)
-            context?.addLine(to: lastPoint!)
-            context?.strokePath()
-            context?.flush()
-            
-            self.image = UIGraphicsGetImageFromCurrentImageContext()
-            
-            UIGraphicsEndImageContext()
+        if(active) {
+            switch type {
+            case .free:
+                paths.append(currentPath)
+            default:
+                break
+                
+            }
+            lastDrawings.append(type)
         }
     }
+    
+    private func initBezierPath(lineWidth: CGFloat = 5.0, lineCapStyle: CGLineCap = .round) -> UIBezierPath {
+        let path = UIBezierPath()
+        path.lineWidth = lineWidth
+        path.lineCapStyle = lineCapStyle
+        return path
+    }
+    
+    func undo() {
+        if let lastDrawing =  lastDrawings.last {
+            switch lastDrawing {
+            case .free:
+                paths.removeLast()
+                paths.forEach({ (path) in
+                    draw(path)
+                })
+            default:
+                break
+            }
+            lastDrawings.removeLast()
+        }
+    }
+    
+    private func draw(_ path: UIBezierPath) {
+        UIGraphicsBeginImageContext(self.frame.size)
+        let context = UIGraphicsGetCurrentContext()
+        
+        self.draw(CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
+        
+        context?.draw(path)
+        
+        self.image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+    }
+}
+
+enum DrawingType : Int {
+    case free
+    case rectangle
 }
