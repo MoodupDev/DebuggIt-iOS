@@ -19,6 +19,8 @@
 		214026FF1DCC9EDC00A14715 /* UIImage+Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214026FE1DCC9EDC00A14715 /* UIImage+Base64.swift */; };
 		214027011DCCAFB700A14715 /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214027001DCCAFB700A14715 /* EventType.swift */; };
 		214027051DCCBE1300A14715 /* UIDevice+ModelName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214027041DCCBE1300A14715 /* UIDevice+ModelName.swift */; };
+		21483F991DDC3ED200BBB47F /* BackgroundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21483F981DDC3ED200BBB47F /* BackgroundView.xib */; };
+		21483F9B1DDC495D00BBB47F /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21483F9A1DDC495D00BBB47F /* BackgroundView.swift */; };
 		21713B511DD1F2770068D025 /* ReportItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21713B501DD1F2770068D025 /* ReportItemsViewController.swift */; };
 		2196AC0E1DC0C1B1003A7A67 /* String+Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196AC0D1DC0C1B1003A7A67 /* String+Base64.swift */; };
 		2196AC101DC0C203003A7A67 /* ApiClientProtocol+Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196AC0F1DC0C203003A7A67 /* ApiClientProtocol+Headers.swift */; };
@@ -99,6 +101,8 @@
 		214026FE1DCC9EDC00A14715 /* UIImage+Base64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Base64.swift"; sourceTree = "<group>"; };
 		214027001DCCAFB700A14715 /* EventType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventType.swift; sourceTree = "<group>"; };
 		214027041DCCBE1300A14715 /* UIDevice+ModelName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+ModelName.swift"; sourceTree = "<group>"; };
+		21483F981DDC3ED200BBB47F /* BackgroundView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackgroundView.xib; sourceTree = "<group>"; };
+		21483F9A1DDC495D00BBB47F /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		21713B501DD1F2770068D025 /* ReportItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportItemsViewController.swift; sourceTree = "<group>"; };
 		2196AC0D1DC0C1B1003A7A67 /* String+Base64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Base64.swift"; sourceTree = "<group>"; };
 		2196AC0F1DC0C203003A7A67 /* ApiClientProtocol+Headers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ApiClientProtocol+Headers.swift"; sourceTree = "<group>"; };
@@ -265,6 +269,8 @@
 				98EEEF871DCA044A0018730B /* DrawingView.swift */,
 				2107BD271DCB2FC400C02C3D /* RoundedButton.swift */,
 				21A1E0CD1DD46DBC00AD466F /* RoundedImageView.swift */,
+				21483F981DDC3ED200BBB47F /* BackgroundView.xib */,
+				21483F9A1DDC495D00BBB47F /* BackgroundView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -482,6 +488,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21483F991DDC3ED200BBB47F /* BackgroundView.xib in Resources */,
 				981826F41DCB8E0B00122591 /* ResizableRectangle.xib in Resources */,
 				21A1E0CC1DD46B2200AD466F /* AudioCollectionViewCell.xib in Resources */,
 				98F184AE1DC0B906001CB560 /* LaunchScreen.storyboard in Resources */,
@@ -690,6 +697,7 @@
 				98F184F71DC0BAB8001CB560 /* Constants.swift in Sources */,
 				98F184A41DC0B906001CB560 /* AppDelegate.swift in Sources */,
 				2196AC161DC0CFF7003A7A67 /* String+Replace.swift in Sources */,
+				21483F9B1DDC495D00BBB47F /* BackgroundView.swift in Sources */,
 				21361A2F1DD308CA001CD729 /* NewScreenshotCollectionViewCell.swift in Sources */,
 				2107BD281DCB2FC400C02C3D /* RoundedButton.swift in Sources */,
 				98F184DE1DC0BA11001CB560 /* Report.swift in Sources */,

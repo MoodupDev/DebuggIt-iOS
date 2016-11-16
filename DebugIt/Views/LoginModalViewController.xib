@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginModalViewController" customModule="DebugIt" customModuleProvider="target">
             <connections>
+                <outlet property="background" destination="I42-EJ-IBb" id="B6A-G6-NNc"/>
                 <outlet property="emailTextField" destination="fbn-us-RWg" id="mMP-gx-LS7"/>
                 <outlet property="infoLabel" destination="QVw-1E-PM3" id="EqJ-yD-ME7"/>
                 <outlet property="passwordTextField" destination="Qj9-rD-bF1" id="Iyi-Zf-g14"/>
@@ -21,27 +24,39 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I42-EJ-IBb">
+                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyG-5G-FhY">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I42-EJ-IBb" userLabel="ModalBackground" customClass="BackgroundView" customModule="DebugIt" customModuleProvider="target">
+                    <rect key="frame" x="16" y="210" width="343" height="248"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="R17-f2-gQl">
+                            <rect key="frame" x="8" y="20" width="327" height="208"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bitbucket" translatesAutoresizingMaskIntoConstraints="NO" id="lEZ-fp-Qe0" userLabel="service logo"/>
+                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bitbucket" translatesAutoresizingMaskIntoConstraints="NO" id="lEZ-fp-Qe0" userLabel="service logo">
+                                    <rect key="frame" x="0.0" y="0.0" width="327" height="50"/>
+                                </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in to Bitbucket account and report bugs from the phone" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVw-1E-PM3" userLabel="login info">
+                                    <rect key="frame" x="0.0" y="62" width="327" height="20"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fbn-us-RWg" userLabel="email">
+                                    <rect key="frame" x="0.0" y="94" width="327" height="30"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Qj9-rD-bF1" userLabel="password">
+                                    <rect key="frame" x="0.0" y="136" width="327" height="30"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOV-a8-qUN" userLabel="sign in">
+                                    <rect key="frame" x="0.0" y="178" width="327" height="30"/>
                                     <state key="normal" title="Sign in"/>
                                     <connections>
                                         <action selector="signIn:" destination="-1" eventType="touchUpInside" id="hfB-kP-UKo"/>
@@ -50,15 +65,16 @@
                             </subviews>
                             <constraints>
                                 <constraint firstItem="QVw-1E-PM3" firstAttribute="leading" secondItem="R17-f2-gQl" secondAttribute="leading" id="8Lc-In-0Yt"/>
-                                <constraint firstAttribute="height" constant="400" id="i8v-e6-i3O"/>
                                 <constraint firstAttribute="trailing" secondItem="QVw-1E-PM3" secondAttribute="trailing" id="rw4-r7-On2"/>
                             </constraints>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="R17-f2-gQl" secondAttribute="trailing" constant="12" id="5fz-Xm-0Ib"/>
-                        <constraint firstItem="R17-f2-gQl" firstAttribute="leading" secondItem="I42-EJ-IBb" secondAttribute="leading" constant="12" id="Oo7-Ui-MVB"/>
+                        <constraint firstAttribute="trailing" secondItem="R17-f2-gQl" secondAttribute="trailing" constant="8" id="D1w-Gh-QH7"/>
+                        <constraint firstItem="R17-f2-gQl" firstAttribute="leading" secondItem="I42-EJ-IBb" secondAttribute="leading" constant="8" id="IEy-y1-N2T"/>
+                        <constraint firstAttribute="bottom" secondItem="R17-f2-gQl" secondAttribute="bottom" constant="20" id="Jyd-dI-mgw"/>
+                        <constraint firstItem="R17-f2-gQl" firstAttribute="top" secondItem="I42-EJ-IBb" secondAttribute="top" constant="20" id="Xnd-dp-Gsq"/>
                         <constraint firstItem="R17-f2-gQl" firstAttribute="centerX" secondItem="I42-EJ-IBb" secondAttribute="centerX" constant="75.5" id="Z4s-TV-xGp"/>
                         <constraint firstItem="R17-f2-gQl" firstAttribute="centerY" secondItem="I42-EJ-IBb" secondAttribute="centerY" id="ter-DR-VlF"/>
                     </constraints>
@@ -71,12 +87,16 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="I42-EJ-IBb" firstAttribute="centerX" secondItem="GSf-yY-Kuq" secondAttribute="centerX" id="K1R-mF-QZ9"/>
-                <constraint firstItem="I42-EJ-IBb" firstAttribute="centerY" secondItem="GSf-yY-Kuq" secondAttribute="centerY" id="cz0-os-6hI"/>
-                <constraint firstAttribute="trailingMargin" secondItem="I42-EJ-IBb" secondAttribute="trailing" constant="12" id="jMi-Ly-7Eu"/>
-                <constraint firstItem="I42-EJ-IBb" firstAttribute="leading" secondItem="GSf-yY-Kuq" secondAttribute="leadingMargin" constant="12" id="xFO-n7-oPl"/>
-                <constraint firstItem="I42-EJ-IBb" firstAttribute="top" secondItem="GSf-yY-Kuq" secondAttribute="top" constant="100" id="xQN-OY-BOa"/>
+                <constraint firstAttribute="trailing" secondItem="hyG-5G-FhY" secondAttribute="trailing" id="0HL-4w-g3G"/>
+                <constraint firstItem="I42-EJ-IBb" firstAttribute="centerX" secondItem="GSf-yY-Kuq" secondAttribute="centerX" id="Dki-E1-hxH"/>
+                <constraint firstAttribute="trailing" secondItem="I42-EJ-IBb" secondAttribute="trailing" constant="16" id="Jrp-q6-XQ4"/>
+                <constraint firstItem="I42-EJ-IBb" firstAttribute="centerY" secondItem="GSf-yY-Kuq" secondAttribute="centerY" id="K0R-5C-s7N"/>
+                <constraint firstAttribute="bottom" secondItem="hyG-5G-FhY" secondAttribute="bottom" id="bRP-iD-BiE"/>
+                <constraint firstItem="hyG-5G-FhY" firstAttribute="top" secondItem="GSf-yY-Kuq" secondAttribute="top" id="hM5-Fy-LLd"/>
+                <constraint firstItem="I42-EJ-IBb" firstAttribute="leading" secondItem="GSf-yY-Kuq" secondAttribute="leading" constant="16" id="vHI-Dw-Btp"/>
+                <constraint firstItem="hyG-5G-FhY" firstAttribute="leading" secondItem="GSf-yY-Kuq" secondAttribute="leading" id="zyp-YK-zLN"/>
             </constraints>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
     </objects>
     <resources>
