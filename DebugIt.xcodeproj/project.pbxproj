@@ -31,7 +31,7 @@
 		21A81F001DC20EC00014FCD7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21A81EFF1DC20EC00014FCD7 /* Images.xcassets */; };
 		21A81F031DC21F800014FCD7 /* LoginModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A81F011DC21F800014FCD7 /* LoginModalViewController.swift */; };
 		21A81F041DC21F800014FCD7 /* LoginModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21A81F021DC21F800014FCD7 /* LoginModalViewController.xib */; };
-		21B0ECB01DD339C800B896F6 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B0ECAF1DD339C800B896F6 /* RecordViewController.swift */; };
+		21B0ECB01DD339C800B896F6 /* Controllers in Sources */ = {isa = PBXBuildFile; fileRef = 21B0ECAF1DD339C800B896F6 /* Controllers */; };
 		21BA798C1DC9DCD800D29015 /* BugDescriptionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA798B1DC9DCD800D29015 /* BugDescriptionPageViewController.swift */; };
 		21D389F01DD2114700B8B776 /* ScreenshotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D389EE1DD2114700B8B776 /* ScreenshotCollectionViewCell.swift */; };
 		21D389F11DD2114700B8B776 /* ScreenshotCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21D389EF1DD2114700B8B776 /* ScreenshotCollectionViewCell.xib */; };
@@ -111,7 +111,7 @@
 		21A81EFF1DC20EC00014FCD7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		21A81F011DC21F800014FCD7 /* LoginModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModalViewController.swift; sourceTree = "<group>"; };
 		21A81F021DC21F800014FCD7 /* LoginModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginModalViewController.xib; sourceTree = "<group>"; };
-		21B0ECAF1DD339C800B896F6 /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		21B0ECAF1DD339C800B896F6 /* Controllers */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; name = Controllers; path = ../Controllers; sourceTree = "<group>"; };
 		21BA798B1DC9DCD800D29015 /* BugDescriptionPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BugDescriptionPageViewController.swift; sourceTree = "<group>"; };
 		21D389EE1DD2114700B8B776 /* ScreenshotCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotCollectionViewCell.swift; sourceTree = "<group>"; };
 		21D389EF1DD2114700B8B776 /* ScreenshotCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScreenshotCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -225,7 +225,7 @@
 		21A1E0D01DD48B2900AD466F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				21B0ECAF1DD339C800B896F6 /* RecordViewController.swift */,
+				21B0ECAF1DD339C800B896F6 /* Controllers */,
 				21A81F011DC21F800014FCD7 /* LoginModalViewController.swift */,
 				21BA798B1DC9DCD800D29015 /* BugDescriptionPageViewController.swift */,
 				98BEF42E1DC24C1500483759 /* EditScreenshotModalViewController.swift */,
@@ -234,8 +234,7 @@
 				2107BD2C1DCB593400C02C3D /* BugDescriptionViewController.swift */,
 				21713B501DD1F2770068D025 /* ReportItemsViewController.swift */,
 			);
-			name = Controllers;
-			path = Views;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		21A1E0D11DD48B6100AD466F /* CollectionCells */ = {
@@ -685,7 +684,7 @@
 				98F184FE1DC0BB09001CB560 /* ConfigType.swift in Sources */,
 				21F36E4E1DD4A8D600709BD2 /* String+Localized.swift in Sources */,
 				98F184FA1DC0BAB8001CB560 /* JiraApiClient.swift in Sources */,
-				21B0ECB01DD339C800B896F6 /* RecordViewController.swift in Sources */,
+				21B0ECB01DD339C800B896F6 /* Controllers in Sources */,
 				98BEF4301DC24C1500483759 /* EditScreenshotModalViewController.swift in Sources */,
 				214026FF1DCC9EDC00A14715 /* UIImage+Base64.swift in Sources */,
 				98F184F71DC0BAB8001CB560 /* Constants.swift in Sources */,
