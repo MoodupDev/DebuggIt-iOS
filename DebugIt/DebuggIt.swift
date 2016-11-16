@@ -139,7 +139,9 @@ class DebuggIt {
     
     
     @objc func showReportDialog(_ recognizer: UITapGestureRecognizer) {
+        debuggItButton.isHidden = true
         takeScreenshot()
+        debuggItButton.isHidden = false
         if (apiClient?.hasToken())! {
             showModal(viewController:EditScreenshotModalViewController())
         } else {
