@@ -63,6 +63,7 @@ class EditScreenshotModalViewController: UIViewController {
         func dismissAlert() -> Void {
             viewController.dismiss(animated: true, completion: {
                 let bugDescriptionViewController = UIStoryboard.init(name: Constants.Storyboards.report, bundle: nil).instantiateViewController(withIdentifier: Constants.ViewControllers.bugDescription) as! BugDescriptionViewController
+                bugDescriptionViewController.modalPresentationStyle = .overCurrentContext
                 UIApplication.shared.keyWindow?.rootViewController?.present(bugDescriptionViewController, animated: true, completion: nil)
             })
         }
