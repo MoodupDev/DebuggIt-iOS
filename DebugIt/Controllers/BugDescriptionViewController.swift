@@ -50,6 +50,7 @@ class BugDescriptionViewController: UIViewController {
                 IQKeyboardManager.sharedManager().enable = false
             }, errorBlock: {
                 (status, error) in
+                alertController.dismiss(animated: false, completion: nil)
                 self.present(Utils.createAlert(title: "Error", message: error!, positiveAction: nil, negativeAction: nil), animated: true, completion: nil)
         })
     }

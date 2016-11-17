@@ -131,16 +131,8 @@ class BugDescriptionPage1ViewController: UIViewController {
 // MARK: - TextViewDelegate
 
 extension BugDescriptionPage1ViewController: UITextViewDelegate {
-    func textViewDidEndEditing(_ textView: UITextView) {
-        DebuggIt.sharedInstance.report.title = textView.text
-        if textView.text == "" {
-            textView.text = "What went wrong?"
-        }
-    }
     
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == "What went wrong?" {
-            textView.text = ""
-        }
+    func textViewDidChange(_ textView: UITextView) {
+        DebuggIt.sharedInstance.report.title = textView.text
     }
 }
