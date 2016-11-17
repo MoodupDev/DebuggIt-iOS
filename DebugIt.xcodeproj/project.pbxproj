@@ -31,6 +31,7 @@
 		21A1E0CB1DD46B2200AD466F /* AudioCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A1E0C91DD46B2200AD466F /* AudioCollectionViewCell.swift */; };
 		21A1E0CC1DD46B2200AD466F /* AudioCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21A1E0CA1DD46B2200AD466F /* AudioCollectionViewCell.xib */; };
 		21A1E0CE1DD46DBC00AD466F /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A1E0CD1DD46DBC00AD466F /* RoundedImageView.swift */; };
+		21A64ED91DDDF64A00A8537D /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A64ED81DDDF64A00A8537D /* RecordViewController.swift */; };
 		21A81F001DC20EC00014FCD7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21A81EFF1DC20EC00014FCD7 /* Images.xcassets */; };
 		21A81F031DC21F800014FCD7 /* LoginModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A81F011DC21F800014FCD7 /* LoginModalViewController.swift */; };
 		21A81F041DC21F800014FCD7 /* LoginModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21A81F021DC21F800014FCD7 /* LoginModalViewController.xib */; };
@@ -114,6 +115,7 @@
 		21A1E0C91DD46B2200AD466F /* AudioCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioCollectionViewCell.swift; sourceTree = "<group>"; };
 		21A1E0CA1DD46B2200AD466F /* AudioCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioCollectionViewCell.xib; sourceTree = "<group>"; };
 		21A1E0CD1DD46DBC00AD466F /* RoundedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
+		21A64ED81DDDF64A00A8537D /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		21A81EFF1DC20EC00014FCD7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		21A81F011DC21F800014FCD7 /* LoginModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModalViewController.swift; sourceTree = "<group>"; };
 		21A81F021DC21F800014FCD7 /* LoginModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginModalViewController.xib; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				21282EEB1DCA0E010001DE66 /* BugDescriptionPage1ViewController.swift */,
 				21282EED1DCA0E220001DE66 /* BugDescriptionPage2ViewController.swift */,
 				2107BD2C1DCB593400C02C3D /* BugDescriptionViewController.swift */,
+				21A64ED81DDDF64A00A8537D /* RecordViewController.swift */,
 				21713B501DD1F2770068D025 /* ReportItemsViewController.swift */,
 			);
 			path = Controllers;
@@ -679,6 +682,7 @@
 				21BA798C1DC9DCD800D29015 /* BugDescriptionPageViewController.swift in Sources */,
 				21282EEE1DCA0E220001DE66 /* BugDescriptionPage2ViewController.swift in Sources */,
 				989736E31DD1EAF60057A742 /* Utils.swift in Sources */,
+				21A64ED91DDDF64A00A8537D /* RecordViewController.swift in Sources */,
 				98F3F3291DC9E33A00F3E403 /* UIWindow+Screenshot.swift in Sources */,
 				21713B511DD1F2770068D025 /* ReportItemsViewController.swift in Sources */,
 				214027051DCCBE1300A14715 /* UIDevice+ModelName.swift in Sources */,

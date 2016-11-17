@@ -305,7 +305,7 @@
         <!--Record View Controller-->
         <scene sceneID="SU6-4s-CG8">
             <objects>
-                <viewController storyboardIdentifier="RecordViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="toH-Ei-VBk" customClass="RecordViewController" customModule="DebugIt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecordViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="toH-Ei-VBk" customClass="RecordViewController" customModule="DebugIt" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="z1g-Du-fYH"/>
                         <viewControllerLayoutGuide type="bottom" id="7nD-VE-os2"/>
