@@ -41,7 +41,7 @@ class BugDescriptionViewController: UIViewController {
     
     private func sendReport() {
         if DebuggIt.sharedInstance.report.title.isEmpty {
-            present(Utils.createAlert(title: "alert.title.failure".localized(), message: "alert.message.title.empty".localized()), animated: true, completion: nil)
+            present(Utils.createAlert(title: "alert.title.failure".localized(), message: "alert.message.title.empty".localized(), positiveAction: {}), animated: true, completion: nil)
         } else {
             let alertController = Utils.createAlert(title: "alert.title.sending.screenshot".localized(), message: "alert.message.wait".localized())
             present(alertController, animated: true, completion: nil)
