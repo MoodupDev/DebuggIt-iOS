@@ -46,7 +46,7 @@ class EditScreenshotModalViewController: UIViewController {
         
         UIGraphicsEndImageContext()
         
-        let alertController = Utils.createLoadingAlert(title: "Sending screenshot", message: "Wait for the end...")
+        let alertController = Utils.createAlert(title: "alert.title.sending.screenshot".localized(), message: "alert.message.wait".localized())
         present(alertController, animated: true, completion: nil)
         
         ApiClient.upload(.image, data: image.toBase64String(),
