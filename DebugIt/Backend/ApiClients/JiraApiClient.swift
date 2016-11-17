@@ -103,7 +103,7 @@ class JiraApiClient: ApiClientProtocol {
         
     }
     
-    func refreshToken(token: String, successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
+    func refreshAccessToken(successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
         // do nothing
     }
     

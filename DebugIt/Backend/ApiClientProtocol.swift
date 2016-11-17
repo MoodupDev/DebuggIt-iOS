@@ -21,8 +21,7 @@ protocol ApiClientProtocol {
                   errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()
     )
     
-    func refreshToken(token: String,
-                      successBlock: @escaping () -> (),
+    func refreshAccessToken(successBlock: @escaping () -> (),
                       errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()
     )
     
