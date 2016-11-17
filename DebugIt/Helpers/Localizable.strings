@@ -7,3 +7,31 @@
 */
 
 login.text = "Sign in to %@ account and report bugs from the phone";
+
+/* Alert titles */
+
+alert.title.send.report = "Send report";
+alert.title.send.screenshot = "Send screenshot";
+alert.title.send.audio = "Send audio";
+
+alert.title.sending.report = "Sending report";
+alert.title.sending.screenshot = "Sending screenshot";
+alert.title.sending.audio = "Sending audio";
+
+alert.title.success = "Success";
+alert.title.failure = "Error";
+
+/* Alert messages */
+
+alert.message.saved.report = "Report saved successfully";
+alert.message.saved.screenshot = "Screenshot saved successfully";
+alert.message.saved.audio = "Audio saved successfully";
+
+alert.message.wait = "Wait for the end...";
+
+alert.message.title.empty = "Issue title can't be empty";
+
+/* Alert buttons */
+
+alert.button.ok = "Ok";
+alert.button.cancel = "Cancel";
