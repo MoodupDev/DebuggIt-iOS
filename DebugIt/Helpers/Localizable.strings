@@ -36,3 +36,7 @@ alert.message.two-factor.needed = "Please enter your two-factor authorization co
 
 alert.button.ok = "Ok";
 alert.button.cancel = "Cancel";
+
+/* Errors */
+
+error.general = "Something went wrong"
