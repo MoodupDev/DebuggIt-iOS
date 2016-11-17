@@ -43,13 +43,17 @@ class LoginModalViewController: UIViewController {
                 UIApplication.shared.keyWindow?.rootViewController?.present(EditScreenshotModalViewController(), animated: true, completion: nil)
             })
             }, errorBlock: { [unowned self] (status, error) in
-                let message = Utils.parseError(error)
-                if message.contains("two-factor") {
-                    self.twoFactorCodeTextField.superview?.isHidden = false
-                    self.present(Utils.createAlert(title: "alert.title.failure".localized(), message: "alert.message.two-factor.needed".localized(), positiveAction: {}), animated: true, completion: nil)
+                if let errorMessage = error {
+                    let message = Utils.parseError(errorMessage, defaultMessage: "error.login.wrong.credentials".localized())
+                    if message.contains("two-factor") {
+                        self.twoFactorCodeTextField.superview?.isHidden = false
+                        self.present(Utils.createAlert(title: "alert.title.failure".localized(), message: "error.2fa.needed".localized(), positiveAction: {}), animated: true, completion: nil)
+                    } else {
+                        self.present(Utils.createAlert(title: "alert.title.failure".localized(), message: message, positiveAction: {}), animated: true, completion: nil)
+                        
+                    }
                 } else {
-                    self.present(Utils.createAlert(title: "alert.title.failure".localized(), message: message, positiveAction: {}), animated: true, completion: nil)
-
+                    self.present(Utils.createAlert(title: "alert.title.failure".localized(), message: "error.general".localized(), positiveAction: {}), animated: true, completion: nil)
                 }
         })
     }

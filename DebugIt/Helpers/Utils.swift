@@ -61,7 +61,7 @@ class Utils {
         return alertController
     }
     
-    static func parseError(_ error: String?, withDefaultMessage message: String = "error.general".localized()) -> String {
+    static func parseError(_ error: String?, defaultMessage message: String = "error.general".localized()) -> String {
         if let errorString = error {
             let json = JSON.parse(errorString)
             if let error = json["error_description"].string {

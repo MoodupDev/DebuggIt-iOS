@@ -29,9 +29,6 @@ alert.message.saved.audio = "Audio saved successfully";
 
 alert.message.wait = "Wait for the end...";
 
-alert.message.title.empty = "Issue title can't be empty";
-alert.message.two-factor.needed = "Please enter your two-factor authorization code";
-
 /* Alert buttons */
 
 alert.button.ok = "Ok";
@@ -39,4 +36,9 @@ alert.button.cancel = "Cancel";
 
 /* Errors */
 
-error.general = "Something went wrong";
+error.general = "Something went wrong\nCheck your Internet connection";
+error.login = "It\'s not possible to sign you in!\nCheck your Internet connection";
+error.login.wrong.credentials = "Invalid email or password,\ncan\'t log in";
+error.title.empty = "Issue title can't be empty";
+error.2fa.code = "Please enter your two-factor authorization code";
+
