@@ -18,12 +18,13 @@ class LoginModalViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var twoFactorCodeTextField: UITextField!
     
     // MARK: Overriden
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        twoFactorCodeTextField.delegate = self
         updateLoginInfoSection()
     }
     
@@ -41,9 +42,15 @@ class LoginModalViewController: UIViewController {
             self.dismiss(animated: true, completion: {
                 UIApplication.shared.keyWindow?.rootViewController?.present(EditScreenshotModalViewController(), animated: true, completion: nil)
             })
-            }, errorBlock: { (status, error) in
-                let json = JSON.parse(error!)
-                self.present(Utils.createAlert(title: "Error", message: json["error_description"].stringValue, positiveAction: nil, negativeAction: nil), animated: true, completion: nil)
+            }, errorBlock: { [unowned self] (status, error) in
+                let message = Utils.parseError(error)
+                if message.contains("two-factor") {
+                    self.twoFactorCodeTextField.superview?.isHidden = false
+                    self.present(Utils.createAlert(title: "alert.title.failure".localized(), message: "alert.message.two-factor.needed".localized(), positiveAction: {}), animated: true, completion: nil)
+                } else {
+                    self.present(Utils.createAlert(title: "alert.title.failure".localized(), message: message, positiveAction: {}), animated: true, completion: nil)
+
+                }
         })
     }
     
@@ -61,4 +68,10 @@ class LoginModalViewController: UIViewController {
         }
     }
     
+}
+
+extension LoginModalViewController : UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        (DebuggIt.sharedInstance.apiClient as! GitHubApiClient).twoFactorAuthCode = textField.text
+    }
 }

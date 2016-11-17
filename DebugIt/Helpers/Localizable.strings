@@ -30,6 +30,7 @@ alert.message.saved.audio = "Audio saved successfully";
 alert.message.wait = "Wait for the end...";
 
 alert.message.title.empty = "Issue title can't be empty";
+alert.message.two-factor.needed = "Please enter your two-factor authorization code";
 
 /* Alert buttons */
 

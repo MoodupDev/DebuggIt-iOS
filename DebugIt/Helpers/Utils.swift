@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftyJSON
 
 class Utils {
     
@@ -58,5 +59,19 @@ class Utils {
         }
         
         return alertController
+    }
+    
+    static func parseError(_ error: String?, withDefaultMessage message: String = "error.general".localized()) -> String {
+        if let errorString = error {
+            let json = JSON.parse(errorString)
+            if let error = json["error_description"].string {
+                return error
+            } else if let error = json["message"].string {
+                return error
+            }
+            return message
+        } else {
+            return message
+        }
     }
 }
