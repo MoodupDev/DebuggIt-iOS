@@ -38,16 +38,25 @@ class LoginModalViewController: UIViewController {
         let email = emailTextField.text!
         let password = passwordTextField.text!
         
-        DebuggIt.sharedInstance.apiClient?.login(email: email, password: password, successBlock: { (response) in
-            self.dismiss(animated: true, completion: {
-                UIApplication.shared.keyWindow?.rootViewController?.present(EditScreenshotModalViewController(), animated: true, completion: nil)
-            })
+        let loadingAlert = Utils.createAlert(title: "alert.title.login".localized(), message: "alert.message.login".localized())
+        
+        self.present(loadingAlert, animated: true, completion: nil)
+        
+        DebuggIt.sharedInstance.apiClient?.login(email: email, password: password, successBlock: { [unowned self] (response) in
+            loadingAlert.dismiss(animated: true, completion: nil)
+            self.present(Utils.createAlert(title: "alert.title.login".localized(), message: "alert.message.login.successful".localized(), positiveAction: {
+                self.dismiss(animated: true, completion: nil)
+                let editScreenshotViewController = EditScreenshotModalViewController()
+                editScreenshotViewController.modalPresentationStyle = .overCurrentContext
+                UIApplication.shared.keyWindow?.rootViewController?.present(editScreenshotViewController, animated: true, completion: nil)
+            }), animated: true, completion: nil)
             }, errorBlock: { [unowned self] (status, error) in
+                loadingAlert.dismiss(animated: true, completion: nil)
                 if let errorMessage = error {
                     let message = Utils.parseError(errorMessage, defaultMessage: "error.login.wrong.credentials".localized())
                     if message.contains("two-factor") {
                         self.twoFactorCodeTextField.superview?.isHidden = false
-                        self.present(Utils.createAlert(title: "alert.title.failure".localized(), message: "error.2fa.needed".localized(), positiveAction: {}), animated: true, completion: nil)
+                        self.present(Utils.createAlert(title: "alert.title.failure".localized(), message: "error.2fa.code".localized(), positiveAction: {}), animated: true, completion: nil)
                     } else {
                         self.present(Utils.createAlert(title: "alert.title.failure".localized(), message: message, positiveAction: {}), animated: true, completion: nil)
                         

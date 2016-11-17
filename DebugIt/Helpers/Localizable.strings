@@ -21,6 +21,8 @@ alert.title.sending.audio = "Sending audio";
 alert.title.success = "Success";
 alert.title.failure = "Error";
 
+alert.title.login = "Sign in";
+
 /* Alert messages */
 
 alert.message.saved.report = "Report saved successfully";
@@ -28,6 +30,8 @@ alert.message.saved.screenshot = "Screenshot saved successfully";
 alert.message.saved.audio = "Audio saved successfully";
 
 alert.message.wait = "Wait for the end...";
+alert.message.login = "Signing in to account...";
+alert.message.login.successful = "Signed in!\nNow let\'s smash some bugs";
 
 /* Alert buttons */
 
