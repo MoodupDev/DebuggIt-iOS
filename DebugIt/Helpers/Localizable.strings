@@ -39,4 +39,4 @@ alert.button.cancel = "Cancel";
 
 /* Errors */
 
-error.general = "Something went wrong"
+error.general = "Something went wrong";
