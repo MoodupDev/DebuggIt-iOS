@@ -10,7 +10,6 @@ import UIKit
 
 class DrawingView: UIImageView {
     
-    var active = true
     var type: DrawingType = .free {
         didSet {
             pinCurrentRectangle()
@@ -57,15 +56,13 @@ class DrawingView: UIImageView {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if(active) {
-            switch type {
-            case .free:
-                paths.append(currentPath)
-            default:
-                break
-            }
-            lastDrawings.append(type)
+        switch type {
+        case .free:
+            paths.append(currentPath)
+        default:
+            break
         }
+        lastDrawings.append(type)
     }
     
     private func initBezierPath(lineWidth: CGFloat = 5.0, lineCapStyle: CGLineCap = .round) -> UIBezierPath {
@@ -104,17 +101,17 @@ class DrawingView: UIImageView {
     private func pinCurrentRectangle() {
         if currentRectangle != nil && !currentRectangle.isPinned {
             currentRectangle.pin()
+            draw(currentRectangle)
             rectangles.append(currentRectangle)
+            currentRectangle.removeFromSuperview()
             currentRectangle = nil
         }
     }
     
     private func redraw() {
-        self.subviews.forEach({ (view) in
-            view.removeFromSuperview()
-        })
+        self.image = DebuggIt.sharedInstance.report.screenshots.last
         rectangles.forEach({ (rectangle) in
-            self.addSubview(rectangle)
+            draw(rectangle)
         })
         paths.forEach({ (path) in
             draw(path)
@@ -131,6 +128,32 @@ class DrawingView: UIImageView {
         
         self.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+    }
+    
+    private func draw(_ rectangle: ResizableRectangle) {
+        let path = initBezierPath()
+        
+        let rectangleRect = self.convert(rectangle.frame, to: self)
+        let backgroundRect = self.convert(rectangle.backgroundView.frame, to: self)
+        
+        let size = backgroundRect.size
+        
+        var topLeft = rectangleRect.origin
+        topLeft.x += backgroundRect.origin.x
+        topLeft.y += backgroundRect.origin.y
+        let bottomLeft = CGPoint(x: topLeft.x, y: topLeft.y + size.height)
+        let topRight = CGPoint(x: topLeft.x + size.width, y: topLeft.y)
+        let bottomRight = CGPoint(x: topRight.x, y: bottomLeft.y)
+        
+        path.move(to: topLeft)
+        path.addLine(to: topRight)
+        path.addLine(to: bottomRight)
+        path.addLine(to: bottomLeft)
+        path.addLine(to: topLeft)
+        
+        draw(path)
+        
+        rectangle.removeFromSuperview()
     }
 }
 

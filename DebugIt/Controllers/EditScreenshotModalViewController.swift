@@ -75,7 +75,6 @@ class EditScreenshotModalViewController: UIViewController {
     }
     
     @IBAction func tapUndo(_ sender: UIButton) {
-        screenshotSurface.image = DebuggIt.sharedInstance.report.screenshots.last
         screenshotSurface.undo()
     }
     
