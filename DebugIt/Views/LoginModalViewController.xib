@@ -28,10 +28,10 @@
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I42-EJ-IBb" userLabel="ModalBackground" customClass="BackgroundView" customModule="DebugIt" customModuleProvider="target">
-                    <rect key="frame" x="16" y="210" width="343" height="247.5"/>
+                    <rect key="frame" x="16" y="189" width="343" height="289.5"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="R17-f2-gQl">
-                            <rect key="frame" x="8" y="20" width="327" height="207.5"/>
+                            <rect key="frame" x="8" y="20" width="327" height="249.5"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bitbucket" translatesAutoresizingMaskIntoConstraints="NO" id="lEZ-fp-Qe0" userLabel="service logo">
                                     <rect key="frame" x="0.0" y="0.0" width="327" height="50"/>
@@ -42,20 +42,50 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fbn-us-RWg" userLabel="email">
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="1UH-yy-oAb">
                                     <rect key="frame" x="0.0" y="94" width="327" height="30"/>
-                                    <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                                </textField>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Qj9-rD-bF1" userLabel="password">
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginEmail" translatesAutoresizingMaskIntoConstraints="NO" id="LxB-Pu-d5H">
+                                            <rect key="frame" x="0.0" y="0.0" width="17" height="30"/>
+                                        </imageView>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fbn-us-RWg" userLabel="email">
+                                            <rect key="frame" x="21" y="0.0" width="306" height="30"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                        </textField>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="hfJ-QW-qrJ">
                                     <rect key="frame" x="0.0" y="136" width="327" height="30"/>
-                                    <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                </textField>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginPassword" translatesAutoresizingMaskIntoConstraints="NO" id="1KD-Mc-y6B">
+                                            <rect key="frame" x="0.0" y="0.0" width="17" height="30"/>
+                                        </imageView>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Qj9-rD-bF1" userLabel="password">
+                                            <rect key="frame" x="21" y="0.0" width="306" height="30"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        </textField>
+                                    </subviews>
+                                </stackView>
+                                <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="cDL-kg-Jhk" userLabel="Two factor code">
+                                    <rect key="frame" x="0.0" y="178" width="327" height="30"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginPassword" translatesAutoresizingMaskIntoConstraints="NO" id="ZLc-NT-SFK">
+                                            <rect key="frame" x="0.0" y="0.0" width="17" height="30"/>
+                                        </imageView>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Two factor auth code" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="WdX-xu-kdM" userLabel="password">
+                                            <rect key="frame" x="21" y="0.0" width="306" height="30"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        </textField>
+                                    </subviews>
+                                </stackView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QOV-a8-qUN" userLabel="sign in">
-                                    <rect key="frame" x="0.0" y="178" width="327" height="29.5"/>
+                                    <rect key="frame" x="0.0" y="220" width="327" height="29.5"/>
                                     <state key="normal">
                                         <attributedString key="attributedTitle">
                                             <fragment content="Sign in">
@@ -74,6 +104,8 @@
                             </subviews>
                             <constraints>
                                 <constraint firstItem="QVw-1E-PM3" firstAttribute="leading" secondItem="R17-f2-gQl" secondAttribute="leading" id="8Lc-In-0Yt"/>
+                                <constraint firstItem="1KD-Mc-y6B" firstAttribute="width" secondItem="LxB-Pu-d5H" secondAttribute="width" id="IFE-fm-a2Z"/>
+                                <constraint firstItem="ZLc-NT-SFK" firstAttribute="width" secondItem="LxB-Pu-d5H" secondAttribute="width" id="ZlZ-gO-vxY"/>
                                 <constraint firstAttribute="trailing" secondItem="QVw-1E-PM3" secondAttribute="trailing" id="rw4-r7-On2"/>
                             </constraints>
                         </stackView>
@@ -110,5 +142,7 @@
     </objects>
     <resources>
         <image name="bitbucket" width="144" height="50"/>
+        <image name="loginEmail" width="17" height="14"/>
+        <image name="loginPassword" width="13" height="17"/>
     </resources>
 </document>
