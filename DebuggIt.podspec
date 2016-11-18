@@ -80,7 +80,7 @@ DebuggIt is a simple, yet powerful tool that helps you get reports of the bugs d
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://bsmektal@bitbucket.org/moodup/debugg.it-ios.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://moodup-tester@bitbucket.org/moodup/debugg.it-ios.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
