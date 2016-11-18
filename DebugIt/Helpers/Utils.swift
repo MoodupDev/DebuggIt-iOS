@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftyJSON
 
 class Utils {
     
@@ -39,19 +40,20 @@ class Utils {
         }
     }
     
-    static func createAlert(title: String, message: String, positiveAction: (())? = nil, negativeAction: (())? = nil) -> UIAlertController {
+    static func createAlert(title: String, message: String, positiveAction: (() -> Void)? = nil, negativeAction: (() -> Void)? = nil) -> UIAlertController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: {
-            (action: UIAlertAction!) in
-            positiveAction
-            alertController.dismiss(animated: false, completion: nil)
-        }))
-        
-        if negativeAction != nil {            
-            alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {
+        if let positiveAction = positiveAction {
+            alertController.addAction(UIAlertAction(title: "alert.button.ok".localized(), style: .default, handler: {
                 (action: UIAlertAction!) in
-                negativeAction
+                positiveAction()
+                alertController.dismiss(animated: false, completion: nil)
+            }))
+        }
+        
+        if let negativeAction = negativeAction {
+            alertController.addAction(UIAlertAction(title: "alert.button.cancel".localized(), style: .default, handler: {
+                (action: UIAlertAction!) in
+                negativeAction()
                 alertController.dismiss(animated: false, completion: nil)
             }))
         }
@@ -59,10 +61,17 @@ class Utils {
         return alertController
     }
     
-    static func createLoadingAlert(title: String, message: String) -> UIAlertController {
-    
-        return UIAlertController(title: title, message: message, preferredStyle: .alert)
+    static func parseError(_ error: String?, defaultMessage message: String = "error.general".localized()) -> String {
+        if let errorString = error {
+            let json = JSON.parse(errorString)
+            if let error = json["error_description"].string {
+                return error
+            } else if let error = json["message"].string {
+                return error
+            }
+            return message
+        } else {
+            return message
+        }
     }
-
-    
 }

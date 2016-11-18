@@ -10,11 +10,6 @@ import UIKit
 import IQKeyboardManagerSwift
 
 class NewScreenshotCollectionViewCell: UICollectionViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
     
     // MARK: - Actions
     

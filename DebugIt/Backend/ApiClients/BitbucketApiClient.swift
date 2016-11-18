@@ -88,7 +88,15 @@ class BitbucketApiClient: ApiClientProtocol {
                 if response.isSuccess() {
                     successBlock()
                 } else {
-                    errorBlock(response.responseCode, value)
+                    if response.responseCode == 401 {
+                        self.refreshAccessToken(successBlock: {
+                            self.addIssue(title: title, content: content, priority: priority, kind: kind, successBlock: successBlock, errorBlock: errorBlock)
+                        }, errorBlock: { (code, message) in
+                            errorBlock(code, message)
+                        })
+                    } else {
+                        errorBlock(response.responseCode, value)
+                    }
                 }
             case .failure(let error as AFError):
                 errorBlock(nil, error.errorDescription)
@@ -100,20 +108,18 @@ class BitbucketApiClient: ApiClientProtocol {
         
     }
     
-    func refreshToken(token: String, successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
+    func refreshAccessToken(successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int?, _ body: String?) -> ()) {
         
         let params: Parameters = [
             "grant_type": "refresh_token",
-            "refresh_token": token
+            "refresh_token": refreshToken ?? ""
         ]
         
-        var headers : [String: String] = [:]
+        let headers: HTTPHeaders = [
+            "Authorization": authorizationHeader(username: clientId, password: clientSecret)
+        ]
         
-        if let accessToken = accessToken {
-            headers["Authorization"] = authorizationHeader(token: accessToken)
-        }
-        
-        Alamofire.request(Constants.Bitbucket.issuesUrl, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseString { (response) in
+        Alamofire.request(Constants.Bitbucket.authorizeUrl, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseString { (response) in
             switch response.result {
             case .success(let value):
                 if response.isSuccess() {

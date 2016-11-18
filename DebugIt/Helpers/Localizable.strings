@@ -7,3 +7,42 @@
 */
 
 login.text = "Sign in to %@ account and report bugs from the phone";
+
+/* Alert titles */
+
+alert.title.send.report = "Send report";
+alert.title.send.screenshot = "Send screenshot";
+alert.title.send.audio = "Send audio";
+
+alert.title.sending.report = "Sending report";
+alert.title.sending.screenshot = "Sending screenshot";
+alert.title.sending.audio = "Sending audio";
+
+alert.title.success = "Success";
+alert.title.failure = "Error";
+
+alert.title.login = "Sign in";
+
+/* Alert messages */
+
+alert.message.saved.report = "Report saved successfully";
+alert.message.saved.screenshot = "Screenshot saved successfully";
+alert.message.saved.audio = "Audio saved successfully";
+
+alert.message.wait = "Wait for the end...";
+alert.message.login = "Signing in to account...";
+alert.message.login.successful = "Signed in!\nNow let\'s smash some bugs";
+
+/* Alert buttons */
+
+alert.button.ok = "Ok";
+alert.button.cancel = "Cancel";
+
+/* Errors */
+
+error.general = "Something went wrong\nCheck your Internet connection";
+error.login = "It\'s not possible to sign you in!\nCheck your Internet connection";
+error.login.wrong.credentials = "Invalid email or password,\ncan\'t log in";
+error.title.empty = "Issue title can't be empty";
+error.2fa.code = "Please enter your two-factor authorization code";
+

@@ -14,11 +14,6 @@ class ScreenshotCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var screenshotImage: UIImageView!
     var index: Int?
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
     
     // MARK: - Actions
     

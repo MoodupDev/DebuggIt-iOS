@@ -86,14 +86,18 @@ class RecordViewController: UIViewController {
         
         if success {
             if let fileData = FileManager().contents(atPath: audioFilename!.relativePath) {
-                let alert = Utils.createLoadingAlert(title: "Uploading audio", message: "Wait for end...")
+                let alert = Utils.createAlert(title: "alert.title.sending.audio".localized(), message: "alert.message.wait".localized())
                 self.present(alert, animated: true, completion: nil)
                 ApiClient.upload(.audio, data: fileData.base64EncodedString(), successBlock: {
                     alert.dismiss(animated: true, completion: nil)
-                    self.performSegue(withIdentifier: "recordUploaded", sender: self)
+                    self.present(Utils.createAlert(title: "alert.title.send.audio".localized(), message: "alert.message.saved.audio".localized(), positiveAction: {
+                        self.performSegue(withIdentifier: "recordUploaded", sender: self)
+                    }), animated: true, completion: nil)
                 }, errorBlock: { (code, message) in
                     alert.dismiss(animated: true, completion: nil)
-                    // TODO: show error message 
+                    self.present(Utils.createAlert(title: "alert.title.send.audio".localized(), message: "error.general".localized(), positiveAction: {
+                        self.performSegue(withIdentifier: "recordUploaded", sender: self)
+                    }), animated: true, completion: nil)
                 })
             }
         } else {

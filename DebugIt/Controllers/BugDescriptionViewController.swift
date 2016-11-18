@@ -36,22 +36,27 @@ class BugDescriptionViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func doneClicked(_ sender: UIBarButtonItem) {
-        self.present(Utils.createAlert(title: "Send report", message: "Do you want to send the report", positiveAction: self.sendReport(), negativeAction: ()), animated: true, completion: nil)
+        self.present(Utils.createAlert(title: "alert.title.send.report".localized(), message: "Do you want to send the report?", positiveAction: self.sendReport, negativeAction: {}), animated: true, completion: nil)
     }
     
     private func sendReport() {
-        let alertController = Utils.createLoadingAlert(title: "Sending report", message: "Wait for the end")
-        present(alertController, animated: true, completion: nil)
-        
-        DebuggIt.sharedInstance.sendReport(
-            successBlock: {
-                alertController.dismiss(animated: false, completion: nil)
-                self.present(Utils.createAlert(title: "Succes", message: "Report saved succesfully", positiveAction: self.dissmissDebuggIt(), negativeAction: nil), animated: true, completion: nil)
-                IQKeyboardManager.sharedManager().enable = false
+        if DebuggIt.sharedInstance.report.title.isEmpty {
+            present(Utils.createAlert(title: "alert.title.failure".localized(), message: "error.title.empty".localized(), positiveAction: {}), animated: true, completion: nil)
+        } else {
+            let alertController = Utils.createAlert(title: "alert.title.sending.screenshot".localized(), message: "alert.message.wait".localized())
+            present(alertController, animated: true, completion: nil)
+            
+            DebuggIt.sharedInstance.sendReport(
+                successBlock: {
+                    alertController.dismiss(animated: false, completion: nil)
+                    self.present(Utils.createAlert(title: "alert.title.success".localized(), message: "alert.message.saved.report".localized(), positiveAction: self.dissmissDebuggIt, negativeAction: nil), animated: true, completion: nil)
+                    IQKeyboardManager.sharedManager().enable = false
             }, errorBlock: {
                 (status, error) in
-                self.present(Utils.createAlert(title: "Error", message: error!, positiveAction: nil, negativeAction: nil), animated: true, completion: nil)
-        })
+                alertController.dismiss(animated: false, completion: nil)
+                self.present(Utils.createAlert(title: "alert.title.failure".localized(), message: error!, positiveAction: nil, negativeAction: nil), animated: true, completion: nil)
+            })
+        }
     }
     
     private func dissmissDebuggIt() {

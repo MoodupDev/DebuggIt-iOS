@@ -54,7 +54,7 @@ class BugDescriptionPage2ViewController: UIViewController {
 }
 
 extension BugDescriptionPage2ViewController : UITextViewDelegate{
-    func textViewDidEndEditing(_ textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         if textView == stepsToReproduceTextView {
             DebuggIt.sharedInstance.report.stepsToReproduce = textView.text
         } else if textView == actualBehaviorTextView {
