@@ -1,4 +1,4 @@
-//
+
 //  GitHubApiClient.swift
 //  DebuggIt
 //
@@ -18,6 +18,8 @@ class GitHubApiClient: ApiClientProtocol {
     var accessToken: String?
     var twoFactorAuthCode: String?
     
+    var loginUrl: String = "\(Constants.GitHub.authorizeUrl)?client_id=\(Constants.GitHub.clientId)&scope=repo"
+    
     // MARK: Initialization
     
     init(repoSlug: String, accountName: String) {
@@ -28,47 +30,6 @@ class GitHubApiClient: ApiClientProtocol {
     }
     
     // MARK: ApiClient
-    
-    func login(email: String, password: String, successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
-        
-        let params: Parameters = [
-            "scopes": [
-                "repo"
-            ],
-            "note": "\(Constants.GitHub.note) at \(NSDate())",
-            "note_url" : Constants.debuggItUrl
-        ]
-        
-        var headers: HTTPHeaders = [
-            "Accept" : Constants.GitHub.jsonFormat,
-            "Authorization" : authorizationHeader(username: email, password: password)
-        ]
-        
-        if let twoFactorCode = twoFactorAuthCode {
-            headers["X-Github-OTP"] = twoFactorCode
-            
-        }
-        
-        Alamofire.request(Constants.GitHub.authorizeUrl, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseString { (response) in
-            switch response.result {
-            case .success(let value):
-                if response.isSuccess() {
-                    self.storeTokens(from: value)
-                    successBlock()
-                } else {
-                    errorBlock(response.responseCode, value)
-                }
-            case .failure(let error as AFError):
-                errorBlock(nil, error.errorDescription)
-            default:
-                errorBlock(nil, nil)
-                
-            }
-            
-        }
-
-        
-    }
     
     func addIssue(title: String, content: String, priority: String, kind: String, successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
         
@@ -116,9 +77,40 @@ class GitHubApiClient: ApiClientProtocol {
         // do nothing
     }
     
+    internal func exchangeAuthCodeForToken(_ code: String, successBlock: @escaping () -> (), errorBlock: @escaping (Int?, String?) -> ()) {
+        
+        let headers: HTTPHeaders = [
+            "Accept": "application/json"
+        ]
+        
+        let params : Parameters = [
+            "client_id": Constants.GitHub.clientId,
+            "client_secret": Constants.GitHub.clientSecret,
+            "code": code
+        ]
+        
+        Alamofire.request(Constants.GitHub.accessTokenUrl, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseString { (response) in
+            switch response.result {
+            case .success(let value):
+                if response.isSuccess() {
+                    self.storeTokens(from: value)
+                    successBlock()
+                } else {
+                    errorBlock(response.responseCode, value)
+                }
+            case .failure(let error as AFError):
+                errorBlock(nil, error.errorDescription)
+            default:
+                errorBlock(nil, nil)
+                
+            }
+        }
+
+    }
+    
     private func storeTokens(from jsonString: String) {
         let json = JSON.parse(jsonString)
-        self.accessToken = json["token"].stringValue
+        self.accessToken = json["access_token"].stringValue
         
         let defaults = UserDefaults.standard
         defaults.set(accessToken, forKey: Constants.GitHub.accessTokenKey)

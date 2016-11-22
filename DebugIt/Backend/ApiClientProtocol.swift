@@ -7,11 +7,8 @@
 //
 
 protocol ApiClientProtocol {
-    func login(email: String,
-               password: String,
-               successBlock: @escaping () -> (),
-               errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()
-    )
+    
+    var loginUrl: String { get }
     
     func addIssue(title: String,
                   content: String,
@@ -28,4 +25,8 @@ protocol ApiClientProtocol {
     func hasToken() -> Bool
     
     func clearTokens()
+    
+    func exchangeAuthCodeForToken(_ code: String,
+                              successBlock: @escaping () -> (),
+                              errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ())
 }

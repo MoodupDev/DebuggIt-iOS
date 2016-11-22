@@ -13,6 +13,8 @@ class BitbucketApiClient: ApiClientProtocol {
     
     // MARK: Properties
     
+    var loginUrl: String = "\(Constants.Bitbucket.authorizeUrl)?client_id=\(Constants.Bitbucket.clientId)&response_type=code"
+    
     var clientId: String
     var clientSecret: String
     var repoSlug: String
@@ -32,42 +34,6 @@ class BitbucketApiClient: ApiClientProtocol {
     }
     
     // MARK: ApiClient
-    
-    func login(
-        email: String,
-        password: String,
-        successBlock: @escaping () -> (),
-        errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
-        
-        let params: Parameters = [
-            "grant_type" : "password",
-            "username" : email,
-            "password" : password
-        ]
-        
-        let headers = [
-            "Authorization": authorizationHeader(username: clientId, password: clientSecret)
-        ]
-        
-        Alamofire.request(Constants.Bitbucket.authorizeUrl, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseString { (response) in
-            switch response.result {
-            case .success(let value):
-                if response.isSuccess() {
-                    self.storeTokens(from: value)
-                    successBlock()
-                } else {
-                    errorBlock(response.responseCode, value)
-                }
-            case .failure(let error as AFError):
-                errorBlock(nil, error.errorDescription)
-            default:
-                errorBlock(nil, nil)
-                
-            }
-            
-        }
-        
-    }
     
     func addIssue(title: String, content: String, priority: String, kind: String, successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
         
@@ -145,6 +111,36 @@ class BitbucketApiClient: ApiClientProtocol {
     func clearTokens() {
         accessToken = nil
         refreshToken = nil
+    }
+    
+    internal func exchangeAuthCodeForToken(_ code: String, successBlock: @escaping () -> (), errorBlock: @escaping (Int?, String?) -> ()) {
+        
+        let headers: HTTPHeaders = [
+            "Authorization": authorizationHeader(username: clientId, password: clientSecret)
+        ]
+        
+        let params: Parameters = [
+            "grant_type": "authorization_code",
+            "code": code
+        ]
+        
+        Alamofire.request(Constants.Bitbucket.accessTokenUrl, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseString { (response) in
+            switch response.result {
+            case .success(let value):
+                if response.isSuccess() {
+                    self.storeTokens(from: value)
+                    successBlock()
+                } else {
+                    errorBlock(response.responseCode, value)
+                }
+            case .failure(let error as AFError):
+                errorBlock(nil, error.errorDescription)
+            default:
+                errorBlock(nil, nil)
+                
+            }
+        }
+        
     }
     
     private func storeTokens(from jsonString: String) {
