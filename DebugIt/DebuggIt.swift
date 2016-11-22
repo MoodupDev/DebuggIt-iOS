@@ -21,6 +21,7 @@ class DebuggIt {
     var report:Report = Report()
     private var isInitialized:Bool = false
     private var shouldPostInitializedEvent:Bool = true
+    var recordingEnabled = false
     
     private init() {
         
@@ -188,6 +189,8 @@ class DebuggIt {
         viewController.modalPresentationStyle = .overCurrentContext
         currentViewController?.present(viewController, animated: true, completion: nil)
     }
+    
+    
     
     private func registerShakeDetector() {
         //todo add shake gesture listener
