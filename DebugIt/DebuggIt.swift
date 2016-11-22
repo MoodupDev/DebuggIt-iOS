@@ -145,9 +145,25 @@ class DebuggIt {
         if (apiClient?.hasToken())! {
             showModal(viewController:EditScreenshotModalViewController())
         } else {
-            IQKeyboardManager.sharedManager().enable = true
-            showModal(viewController:LoginModalViewController())
+            showLoginWebView()
         }
+    }
+    
+    func showLoginWebView() {
+        IQKeyboardManager.sharedManager().enable = true
+        
+        let loginViewController = WebViewViewController()
+        loginViewController.url = apiClient?.loginUrl
+        
+        let navigationController = UINavigationController(rootViewController: loginViewController)
+        navigationController.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(DebuggIt.cancelLogin))
+        navigationController.navigationBar.topItem?.title = "Sign in"
+        
+        showModal(viewController: navigationController)
+    }
+    
+    @objc func cancelLogin() {
+        currentViewController?.presentedViewController?.dismiss(animated: true, completion: nil)
     }
     
     @objc func moveButton(_ recognizer: UIPanGestureRecognizer) {
