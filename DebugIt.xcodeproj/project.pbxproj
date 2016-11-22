@@ -13,6 +13,8 @@
 		2107BD311DCB5F5300C02C3D /* ReportPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2107BD301DCB5F5300C02C3D /* ReportPriority.swift */; };
 		21282EEC1DCA0E010001DE66 /* BugDescriptionPage1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21282EEB1DCA0E010001DE66 /* BugDescriptionPage1ViewController.swift */; };
 		21282EEE1DCA0E220001DE66 /* BugDescriptionPage2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21282EED1DCA0E220001DE66 /* BugDescriptionPage2ViewController.swift */; };
+		213266521DDF4F6900AB23AF /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213266501DDF4F6900AB23AF /* WebViewViewController.swift */; };
+		213266531DDF4F6900AB23AF /* WebViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 213266511DDF4F6900AB23AF /* WebViewViewController.xib */; };
 		21361A2F1DD308CA001CD729 /* NewScreenshotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21361A2D1DD308CA001CD729 /* NewScreenshotCollectionViewCell.swift */; };
 		21361A301DD308CA001CD729 /* NewScreenshotCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21361A2E1DD308CA001CD729 /* NewScreenshotCollectionViewCell.xib */; };
 		214026FD1DCC9B1F00A14715 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214026FC1DCC9B1F00A14715 /* ApiClient.swift */; };
@@ -28,13 +30,12 @@
 		2196AC121DC0C23F003A7A67 /* DataResponse+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196AC111DC0C23F003A7A67 /* DataResponse+Validation.swift */; };
 		2196AC141DC0C3F9003A7A67 /* DebuggItError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196AC131DC0C3F9003A7A67 /* DebuggItError.swift */; };
 		2196AC161DC0CFF7003A7A67 /* String+Replace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196AC151DC0CFF7003A7A67 /* String+Replace.swift */; };
+		21971E671DDF588D0063EF92 /* URL+QueryParamsDict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21971E661DDF588D0063EF92 /* URL+QueryParamsDict.swift */; };
 		21A1E0CB1DD46B2200AD466F /* AudioCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A1E0C91DD46B2200AD466F /* AudioCollectionViewCell.swift */; };
 		21A1E0CC1DD46B2200AD466F /* AudioCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21A1E0CA1DD46B2200AD466F /* AudioCollectionViewCell.xib */; };
 		21A1E0CE1DD46DBC00AD466F /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A1E0CD1DD46DBC00AD466F /* RoundedImageView.swift */; };
 		21A64ED91DDDF64A00A8537D /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A64ED81DDDF64A00A8537D /* RecordViewController.swift */; };
 		21A81F001DC20EC00014FCD7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21A81EFF1DC20EC00014FCD7 /* Images.xcassets */; };
-		21A81F031DC21F800014FCD7 /* LoginModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A81F011DC21F800014FCD7 /* LoginModalViewController.swift */; };
-		21A81F041DC21F800014FCD7 /* LoginModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21A81F021DC21F800014FCD7 /* LoginModalViewController.xib */; };
 		21B0ECB01DD339C800B896F6 /* Controllers in Sources */ = {isa = PBXBuildFile; fileRef = 21B0ECAF1DD339C800B896F6 /* Controllers */; };
 		21BA798C1DC9DCD800D29015 /* BugDescriptionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA798B1DC9DCD800D29015 /* BugDescriptionPageViewController.swift */; };
 		21D389F01DD2114700B8B776 /* ScreenshotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D389EE1DD2114700B8B776 /* ScreenshotCollectionViewCell.swift */; };
@@ -97,6 +98,8 @@
 		2107BD301DCB5F5300C02C3D /* ReportPriority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportPriority.swift; sourceTree = "<group>"; };
 		21282EEB1DCA0E010001DE66 /* BugDescriptionPage1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BugDescriptionPage1ViewController.swift; sourceTree = "<group>"; };
 		21282EED1DCA0E220001DE66 /* BugDescriptionPage2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BugDescriptionPage2ViewController.swift; sourceTree = "<group>"; };
+		213266501DDF4F6900AB23AF /* WebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
+		213266511DDF4F6900AB23AF /* WebViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WebViewViewController.xib; path = ../Controllers/WebViewViewController.xib; sourceTree = "<group>"; };
 		21361A2D1DD308CA001CD729 /* NewScreenshotCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewScreenshotCollectionViewCell.swift; sourceTree = "<group>"; };
 		21361A2E1DD308CA001CD729 /* NewScreenshotCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewScreenshotCollectionViewCell.xib; sourceTree = "<group>"; };
 		214026FC1DCC9B1F00A14715 /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
@@ -112,13 +115,12 @@
 		2196AC111DC0C23F003A7A67 /* DataResponse+Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataResponse+Validation.swift"; sourceTree = "<group>"; };
 		2196AC131DC0C3F9003A7A67 /* DebuggItError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebuggItError.swift; path = ../DebuggItError.swift; sourceTree = "<group>"; };
 		2196AC151DC0CFF7003A7A67 /* String+Replace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Replace.swift"; sourceTree = "<group>"; };
+		21971E661DDF588D0063EF92 /* URL+QueryParamsDict.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+QueryParamsDict.swift"; sourceTree = "<group>"; };
 		21A1E0C91DD46B2200AD466F /* AudioCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioCollectionViewCell.swift; sourceTree = "<group>"; };
 		21A1E0CA1DD46B2200AD466F /* AudioCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioCollectionViewCell.xib; sourceTree = "<group>"; };
 		21A1E0CD1DD46DBC00AD466F /* RoundedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		21A64ED81DDDF64A00A8537D /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		21A81EFF1DC20EC00014FCD7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		21A81F011DC21F800014FCD7 /* LoginModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModalViewController.swift; sourceTree = "<group>"; };
-		21A81F021DC21F800014FCD7 /* LoginModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginModalViewController.xib; sourceTree = "<group>"; };
 		21B0ECAF1DD339C800B896F6 /* Controllers */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; name = Controllers; path = ../Controllers; sourceTree = "<group>"; };
 		21BA798B1DC9DCD800D29015 /* BugDescriptionPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BugDescriptionPageViewController.swift; sourceTree = "<group>"; };
 		21D389EE1DD2114700B8B776 /* ScreenshotCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -234,7 +236,6 @@
 			isa = PBXGroup;
 			children = (
 				21B0ECAF1DD339C800B896F6 /* Controllers */,
-				21A81F011DC21F800014FCD7 /* LoginModalViewController.swift */,
 				21BA798B1DC9DCD800D29015 /* BugDescriptionPageViewController.swift */,
 				98BEF42E1DC24C1500483759 /* EditScreenshotModalViewController.swift */,
 				21282EEB1DCA0E010001DE66 /* BugDescriptionPage1ViewController.swift */,
@@ -242,6 +243,7 @@
 				2107BD2C1DCB593400C02C3D /* BugDescriptionViewController.swift */,
 				21A64ED81DDDF64A00A8537D /* RecordViewController.swift */,
 				21713B501DD1F2770068D025 /* ReportItemsViewController.swift */,
+				213266501DDF4F6900AB23AF /* WebViewViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -263,7 +265,6 @@
 			isa = PBXGroup;
 			children = (
 				21A1E0D11DD48B6100AD466F /* CollectionCells */,
-				21A81F021DC21F800014FCD7 /* LoginModalViewController.xib */,
 				98BEF42F1DC24C1500483759 /* EditScreenshotModalViewController.xib */,
 				981826F11DCB8E0B00122591 /* ResizableRectangle.swift */,
 				981826F21DCB8E0B00122591 /* ResizableRectangle.xib */,
@@ -276,6 +277,7 @@
 				21A1E0CD1DD46DBC00AD466F /* RoundedImageView.swift */,
 				21483F981DDC3ED200BBB47F /* BackgroundView.xib */,
 				21483F9A1DDC495D00BBB47F /* BackgroundView.swift */,
+				213266511DDF4F6900AB23AF /* WebViewViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -294,6 +296,7 @@
 				21F36E4D1DD4A8D600709BD2 /* String+Localized.swift */,
 				98AE47711DD4BC0400E504F1 /* UIImageView+UrlLoading.swift */,
 				21483F9E1DDC93E800BBB47F /* CGContext+DrawPath.swift */,
+				21971E661DDF588D0063EF92 /* URL+QueryParamsDict.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -494,11 +497,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				213266531DDF4F6900AB23AF /* WebViewViewController.xib in Resources */,
 				21483F991DDC3ED200BBB47F /* BackgroundView.xib in Resources */,
 				981826F41DCB8E0B00122591 /* ResizableRectangle.xib in Resources */,
 				21A1E0CC1DD46B2200AD466F /* AudioCollectionViewCell.xib in Resources */,
 				98F184AE1DC0B906001CB560 /* LaunchScreen.storyboard in Resources */,
-				21A81F041DC21F800014FCD7 /* LoginModalViewController.xib in Resources */,
 				21A81F001DC20EC00014FCD7 /* Images.xcassets in Resources */,
 				21ECFF3E1DC38B1E0076FC22 /* Report.storyboard in Resources */,
 				98F184AB1DC0B906001CB560 /* Assets.xcassets in Resources */,
@@ -676,6 +679,7 @@
 				2196AC0E1DC0C1B1003A7A67 /* String+Base64.swift in Sources */,
 				98EEEF8A1DCA3C210018730B /* UIView+RoundedCorners.swift in Sources */,
 				21D389F01DD2114700B8B776 /* ScreenshotCollectionViewCell.swift in Sources */,
+				21971E671DDF588D0063EF92 /* URL+QueryParamsDict.swift in Sources */,
 				98F184F41DC0BAB8001CB560 /* ApiClientProtocol.swift in Sources */,
 				98F184F51DC0BAB8001CB560 /* BitbucketApiClient.swift in Sources */,
 				2107BD2D1DCB593400C02C3D /* BugDescriptionViewController.swift in Sources */,
@@ -689,9 +693,9 @@
 				98F184DB1DC0BA11001CB560 /* DebuggIt.swift in Sources */,
 				98EEEF881DCA044A0018730B /* DrawingView.swift in Sources */,
 				21A1E0CE1DD46DBC00AD466F /* RoundedImageView.swift in Sources */,
-				21A81F031DC21F800014FCD7 /* LoginModalViewController.swift in Sources */,
 				981826F31DCB8E0B00122591 /* ResizableRectangle.swift in Sources */,
 				214027011DCCAFB700A14715 /* EventType.swift in Sources */,
+				213266521DDF4F6900AB23AF /* WebViewViewController.swift in Sources */,
 				98BEF42C1DC22D9E00483759 /* DebuggItButton.swift in Sources */,
 				2107BD2F1DCB5F1E00C02C3D /* ReportKind.swift in Sources */,
 				2196AC141DC0C3F9003A7A67 /* DebuggItError.swift in Sources */,
