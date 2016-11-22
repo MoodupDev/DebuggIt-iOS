@@ -15,8 +15,6 @@ class BitbucketApiClient: ApiClientProtocol {
     
     var loginUrl: String = "\(Constants.Bitbucket.authorizeUrl)?client_id=\(Constants.Bitbucket.clientId)&response_type=code"
     
-    var clientId: String
-    var clientSecret: String
     var repoSlug: String
     var accountName: String
     var accessToken: String?
@@ -24,9 +22,7 @@ class BitbucketApiClient: ApiClientProtocol {
     
     // MARK: Initialization
     
-    init(clientId: String, clientSecret: String, repoSlug: String, accountName: String) {
-        self.clientId = clientId
-        self.clientSecret = clientSecret
+    init(repoSlug: String, accountName: String) {
         self.repoSlug = repoSlug.lowercased()
         self.accountName = accountName
         
@@ -82,7 +78,10 @@ class BitbucketApiClient: ApiClientProtocol {
         ]
         
         let headers: HTTPHeaders = [
-            "Authorization": authorizationHeader(username: clientId, password: clientSecret)
+            "Authorization": authorizationHeader(
+                                username: Constants.Bitbucket.clientId,
+                                password: Constants.Bitbucket.clientSecret
+                            )
         ]
         
         Alamofire.request(Constants.Bitbucket.authorizeUrl, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseString { (response) in
@@ -116,7 +115,10 @@ class BitbucketApiClient: ApiClientProtocol {
     internal func exchangeAuthCodeForToken(_ code: String, successBlock: @escaping () -> (), errorBlock: @escaping (Int?, String?) -> ()) {
         
         let headers: HTTPHeaders = [
-            "Authorization": authorizationHeader(username: clientId, password: clientSecret)
+            "Authorization": authorizationHeader(
+                                username: Constants.Bitbucket.clientId,
+                                password: Constants.Bitbucket.clientSecret
+                            )
         ]
         
         let params: Parameters = [
