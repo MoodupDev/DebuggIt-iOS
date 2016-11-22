@@ -26,7 +26,7 @@ class DebuggIt {
         
     }
     
-    func initBitbucket(String, repoSlug: String, accountName: String) {
+    func initBitbucket(repoSlug: String, accountName: String) {
         apiClient = BitbucketApiClient(repoSlug: repoSlug, accountName: accountName)
         initDebugIt(configType: .bitbucket)
     }
