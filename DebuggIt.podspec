@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "DebuggIt"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "Tool that will help QA and clients report bugs easily directly from the device"
 
   # This description is used to generate tags and improve search results.
@@ -80,7 +80,7 @@ DebuggIt is a simple, yet powerful tool that helps you get reports of the bugs d
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://bsmektal@bitbucket.org/moodup/debugg.it-ios.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://moodup-tester@bitbucket.org/moodup/debugg.it-ios.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
