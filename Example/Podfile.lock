@@ -1,0 +1,25 @@
+PODS:
+  - Alamofire (4.2.0)
+  - DebuggIt (0.0.5):
+    - Alamofire (~> 4.0)
+    - IQKeyboardManagerSwift (= 4.0.6)
+    - SwiftyJSON
+  - IQKeyboardManagerSwift (4.0.6)
+  - SwiftyJSON (3.1.3)
+
+DEPENDENCIES:
+  - DebuggIt (from `../`)
+
+EXTERNAL SOURCES:
+  DebuggIt:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
+  DebuggIt: 3ef2459f8c24a1f8433e6a039de0f5689c1d3de2
+  IQKeyboardManagerSwift: b3015e819559ca76381f87a0833f44d178564603
+  SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
+
+PODFILE CHECKSUM: 41ef20af91e86a23acbf52b7bc830b2ac4219971
+
+COCOAPODS: 1.1.1
