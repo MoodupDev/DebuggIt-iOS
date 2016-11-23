@@ -153,7 +153,7 @@ public class DebuggIt {
     func showLoginWebView() {
         IQKeyboardManager.sharedManager().enable = true
         
-        let loginViewController = WebViewViewController()
+        let loginViewController: WebViewViewController = Utils.initViewController(WebViewViewController.self)
         loginViewController.url = apiClient?.loginUrl
         
         let navigationController = UINavigationController(rootViewController: loginViewController)

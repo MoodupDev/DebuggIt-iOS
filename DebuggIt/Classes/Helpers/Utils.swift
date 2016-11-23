@@ -82,4 +82,7 @@ class Utils {
         return Bundle(url: bundleURL!)!
     }
     
+    static func initViewController<T: UIViewController>(_ withClass: UIViewController.Type) -> T {
+        return withClass.init(nibName: String(describing: withClass), bundle: getBundle(forClass: withClass)) as! T
+    }
 }
