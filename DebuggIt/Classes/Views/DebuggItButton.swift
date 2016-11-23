@@ -18,11 +18,7 @@ class DebuggItButton: UIView {
     }
     
     class func instantiateFromNib() -> DebuggItButton {
-        let podBundle = Bundle(for: DebuggItButton.self)
-        
-        let bundleURL = podBundle.url(forResource: "DebuggIt", withExtension: "bundle")
-        let bundle = Bundle(url: bundleURL!)!
-        return UINib(nibName: "DebuggItButton", bundle: bundle).instantiate(withOwner: nil, options: nil)[0] as! DebuggItButton
+        return UINib(nibName: "DebuggItButton", bundle: Utils.getBundle(forClass: DebuggItButton.self)).instantiate(withOwner: nil, options: nil)[0] as! DebuggItButton
     }
 
 }

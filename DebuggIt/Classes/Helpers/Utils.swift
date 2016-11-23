@@ -74,4 +74,12 @@ class Utils {
             return message
         }
     }
+    
+    static func getBundle(forClass: AnyClass) -> Bundle {
+        let podBundle = Bundle(for: forClass)
+        
+        let bundleURL = podBundle.url(forResource: "DebuggIt", withExtension: "bundle")
+        return Bundle(url: bundleURL!)!
+    }
+    
 }
