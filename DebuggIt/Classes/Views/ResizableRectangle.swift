@@ -21,7 +21,7 @@ class ResizableRectangle: UIView {
     var isPinned: Bool = false
     
     class func instantiateFromNib() -> ResizableRectangle {
-        return UINib(nibName: "ResizableRectangle", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! ResizableRectangle
+        return Initializer.view(ResizableRectangle.self) as! ResizableRectangle
     }
     
     func pin() {

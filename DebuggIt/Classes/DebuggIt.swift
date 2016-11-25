@@ -144,7 +144,7 @@ public class DebuggIt {
         takeScreenshot()
         debuggItButton.isHidden = false
         if (apiClient?.hasToken())! {
-            showModal(viewController:EditScreenshotModalViewController())
+            showModal(viewController: Initializer.viewController(EditScreenshotModalViewController))
         } else {
             showLoginWebView()
         }
@@ -153,7 +153,7 @@ public class DebuggIt {
     func showLoginWebView() {
         IQKeyboardManager.sharedManager().enable = true
         
-        let loginViewController: WebViewViewController = Utils.initViewController(WebViewViewController.self)
+        let loginViewController = Initializer.viewController(WebViewViewController)
         loginViewController.url = apiClient?.loginUrl
         
         let navigationController = UINavigationController(rootViewController: loginViewController)

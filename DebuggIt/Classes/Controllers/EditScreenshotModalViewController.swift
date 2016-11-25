@@ -23,14 +23,14 @@ class EditScreenshotModalViewController: UIViewController {
     }
     
     private func initButtons() {
-        undoButton.setImage(UIImage.init(named: "undoActive"), for: UIControlState.highlighted)
-        undoButton.setImage(UIImage.init(named: "undo"), for: UIControlState.normal)
+        undoButton.setImage(Initializer.image(named: "undoActive" ), for: UIControlState.highlighted)
+        undoButton.setImage(Initializer.image(named: "undo"), for: UIControlState.normal)
         
-        rectangleButton.setImage(UIImage.init(named: "rectangleActive"), for: UIControlState.selected)
-        rectangleButton.setImage(UIImage.init(named: "rectangle"), for: UIControlState.normal)
+        rectangleButton.setImage(Initializer.image(named: "rectangleActive"), for: UIControlState.selected)
+        rectangleButton.setImage(Initializer.image(named: "rectangle"), for: UIControlState.normal)
         
-        freedrawButton.setImage(UIImage.init(named: "drawActive"), for: UIControlState.selected)
-        freedrawButton.setImage(UIImage.init(named: "draw"), for: UIControlState.normal)
+        freedrawButton.setImage(Initializer.image(named: "drawActive"), for: UIControlState.selected)
+        freedrawButton.setImage(Initializer.image(named: "draw"), for: UIControlState.normal)
         
         freedrawButton.isSelected = true
     }
@@ -62,7 +62,7 @@ class EditScreenshotModalViewController: UIViewController {
     private func handleAlertDismissal(viewController: UIViewController) -> (() -> Void) {
         func dismissAlert() -> Void {
             viewController.dismiss(animated: true, completion: {
-                let bugDescriptionViewController = UIStoryboard.init(name: Constants.Storyboards.report, bundle: nil).instantiateViewController(withIdentifier: Constants.ViewControllers.bugDescription) as! BugDescriptionViewController
+                let bugDescriptionViewController = Initializer.viewController(BugDescriptionViewController.self)
                 bugDescriptionViewController.modalPresentationStyle = .overCurrentContext
                 UIApplication.shared.keyWindow?.rootViewController?.present(bugDescriptionViewController, animated: true, completion: nil)
             })

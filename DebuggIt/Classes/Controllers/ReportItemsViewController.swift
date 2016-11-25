@@ -24,9 +24,9 @@ class ReportItemsViewController: UIViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView.register(UINib(nibName: screenshotReuseIdentifier, bundle: nil), forCellWithReuseIdentifier: screenshotReuseIdentifier)
-        self.collectionView.register(UINib(nibName: newScreenshotReuseIdentifier, bundle: nil), forCellWithReuseIdentifier: newScreenshotReuseIdentifier)
-        self.collectionView.register(UINib(nibName: audioReuseIdentifier, bundle: nil), forCellWithReuseIdentifier: audioReuseIdentifier)
+        self.collectionView.register(Initializer.nib(named: screenshotReuseIdentifier), forCellWithReuseIdentifier: screenshotReuseIdentifier)
+        self.collectionView.register(Initializer.nib(named: newScreenshotReuseIdentifier), forCellWithReuseIdentifier: newScreenshotReuseIdentifier)
+        self.collectionView.register(Initializer.nib(named: audioReuseIdentifier), forCellWithReuseIdentifier: audioReuseIdentifier)
     }
 
     override func didReceiveMemoryWarning() {

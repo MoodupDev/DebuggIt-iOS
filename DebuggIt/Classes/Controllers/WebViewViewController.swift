@@ -59,7 +59,7 @@ extension WebViewViewController : UIWebViewDelegate {
             loadingAlert.dismiss(animated: true, completion: nil)
             self.present(Utils.createAlert(title: "alert.title.login".localized(), message: "alert.message.login.successful".localized(), positiveAction: {
                 self.dismiss(animated: true, completion: nil)
-                let editScreenshotViewController = EditScreenshotModalViewController()
+                let editScreenshotViewController = Initializer.viewController(EditScreenshotModalViewController.self)
                 editScreenshotViewController.modalPresentationStyle = .overCurrentContext
                 UIApplication.shared.keyWindow?.rootViewController?.present(editScreenshotViewController, animated: true, completion: nil)
             }), animated: true, completion: nil)

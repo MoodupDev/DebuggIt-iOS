@@ -31,13 +31,11 @@ class BugDescriptionPageViewController: UIPageViewController {
     }
     
     private(set) lazy var orderedViewControllers: [UIViewController] = {
-        return [self.bugDescriptionPage(1), self.bugDescriptionPage(2)]
+        return [
+            Initializer.viewController(BugDescriptionPage1ViewController.self),
+            Initializer.viewController(BugDescriptionPage2ViewController.self),
+        ]
     }()
-    
-    private func bugDescriptionPage(_ page: Int) -> UIViewController {
-        return UIStoryboard(name: Constants.Storyboards.report, bundle: nil) .
-            instantiateViewController(withIdentifier: "\(Constants.ViewControllers.bugDescriptionPage)\(page)")
-    }
 }
 
 extension BugDescriptionPageViewController: UIPageViewControllerDataSource {

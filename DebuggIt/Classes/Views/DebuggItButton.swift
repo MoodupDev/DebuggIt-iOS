@@ -18,7 +18,7 @@ class DebuggItButton: UIView {
     }
     
     class func instantiateFromNib() -> DebuggItButton {
-        return UINib(nibName: "DebuggItButton", bundle: Utils.getBundle(forClass: DebuggItButton.self)).instantiate(withOwner: nil, options: nil)[0] as! DebuggItButton
+        return Initializer.view(DebuggItButton.self) as! DebuggItButton
     }
 
 }
