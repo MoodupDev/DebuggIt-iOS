@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BugDescriptionPage2ViewController" customModule="DebuggIt" customModuleProvider="target">
+            <connections>
+                <outlet property="actualBehaviorTextView" destination="m9F-14-2JI" id="pKQ-aM-1Op"/>
+                <outlet property="expectedBehaviorTextView" destination="pjr-5d-pml" id="S4E-es-nED"/>
+                <outlet property="stepsToReproduceTextView" destination="CHd-nB-zLQ" id="RfR-uX-PLi"/>
+                <outlet property="view" destination="Rb5-wA-8lZ" id="iJZ-LA-RzL"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Rb5-wA-8lZ">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="FQb-V6-MNR">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="CHd-nB-zLQ" userLabel="Steps to reproduce" customClass="KMPlaceholderTextView" customModule="KMPlaceholderTextView">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="216.5"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Steps to reproduce"/>
+                            </userDefinedRuntimeAttributes>
+                        </textView>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="m9F-14-2JI" userLabel="Actual behavior" customClass="KMPlaceholderTextView" customModule="KMPlaceholderTextView">
+                            <rect key="frame" x="0.0" y="225.5" width="375" height="216"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Actual behaviour"/>
+                            </userDefinedRuntimeAttributes>
+                        </textView>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pjr-5d-pml" userLabel="Expected behavior" customClass="KMPlaceholderTextView" customModule="KMPlaceholderTextView">
+                            <rect key="frame" x="0.0" y="450.5" width="375" height="216.5"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Expected behavior"/>
+                            </userDefinedRuntimeAttributes>
+                        </textView>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="FQb-V6-MNR" firstAttribute="centerX" secondItem="Rb5-wA-8lZ" secondAttribute="centerX" id="9No-hZ-45S"/>
+                <constraint firstItem="FQb-V6-MNR" firstAttribute="top" secondItem="Rb5-wA-8lZ" secondAttribute="top" id="9YT-bU-buW"/>
+                <constraint firstItem="FQb-V6-MNR" firstAttribute="height" secondItem="Rb5-wA-8lZ" secondAttribute="height" id="ZbF-0r-u5t"/>
+                <constraint firstItem="FQb-V6-MNR" firstAttribute="width" secondItem="Rb5-wA-8lZ" secondAttribute="width" id="n06-vl-Mvg"/>
+                <constraint firstItem="FQb-V6-MNR" firstAttribute="centerY" secondItem="Rb5-wA-8lZ" secondAttribute="centerY" id="pb9-1i-cZs"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="ZbF-0r-u5t"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+</document>

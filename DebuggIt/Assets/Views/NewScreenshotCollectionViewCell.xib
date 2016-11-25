@@ -11,14 +11,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NewScreenshotCollectionViewCell" id="gTV-IL-0wX" customClass="NewScreenshotCollectionViewCell" customModule="DebugIt" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NewScreenshotCollectionViewCell" id="gTV-IL-0wX" customClass="NewScreenshotCollectionViewCell" customModule="DebuggIt" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="230" height="350"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="230" height="350"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFq-rR-oBJ" customClass="RoundedButton" customModule="DebugIt" customModuleProvider="target">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFq-rR-oBJ" customClass="RoundedButton" customModule="DebuggIt" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="230" height="351"/>
                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                         <state key="normal" title="+">
