@@ -16,14 +16,19 @@ class BugDescriptionPage1ViewController: UIViewController {
     @IBOutlet var priorityButtons: [UIButton]!
     @IBOutlet weak var titleTextView: UITextView!
     @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var reportItemsContainer: UIView!
     
-    weak var reportItemsCollection: ReportItemsViewController!
+    var reportItemsController: ReportItemsViewController!
     
     
     // MARK: - Overriden
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        reportItemsController = Initializer.viewController(ReportItemsViewController.self)
+        
+        self.embed(reportItemsController, in: reportItemsContainer)
         
         initTitle()
         initRecordButton()
@@ -91,7 +96,7 @@ class BugDescriptionPage1ViewController: UIViewController {
     }
     
     func reloadReportItems() {
-        self.reportItemsCollection.collectionView.reloadData()
+        self.reportItemsController.collectionView.reloadData()
     }
     
     // MARK: - Actions
@@ -118,15 +123,6 @@ class BugDescriptionPage1ViewController: UIViewController {
             self.present(recordViewController!, animated: true, completion: nil)
         } else {
             self.present(Utils.createAlert(title: "alert.title.recording.disabled".localized(), message: "alert.message.recording.disabled".localized(), positiveAction: {}), animated: true, completion: nil)
-        }
-    }
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "reportItemsCollection" {
-            self.reportItemsCollection = (segue.destination as! ReportItemsViewController)
         }
     }
  

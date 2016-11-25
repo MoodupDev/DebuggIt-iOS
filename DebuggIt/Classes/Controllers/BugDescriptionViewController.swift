@@ -12,26 +12,22 @@ import IQKeyboardManagerSwift
 class BugDescriptionViewController: UIViewController {
     
     @IBOutlet weak var pageControl: UIPageControl!
-    weak var pageViewController : BugDescriptionPageViewController?
+    @IBOutlet weak var container: UIView!
+    var pageViewController : BugDescriptionPageViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        pageViewController = BugDescriptionPageViewController()
+        pageViewController.pageControl = self.pageControl
+        
+        self.embed(pageViewController, in: container)
+        
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-
-    // MARK: Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "bugDescriptionPageViewController" {
-            pageViewController = segue.destination as? BugDescriptionPageViewController
-            pageViewController?.pageControl = self.pageControl
-        }
     }
     
     // MARK: Actions
@@ -70,7 +66,7 @@ class BugDescriptionViewController: UIViewController {
     }
     
     @IBAction func pageControlTapped(_ sender: UIPageControl) {
-        pageViewController?.openPage(sender.currentPage)
+        pageViewController.openPage(sender.currentPage)
     }
 
 }
