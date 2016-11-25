@@ -52,9 +52,9 @@ class BugDescriptionPage1ViewController: UIViewController {
     }
     
     private func initRecordButton() {
-        recordButton.setImage(UIImage(named: "recordMicroActive"), for: .selected)
-        recordButton.setImage(UIImage(named: "recordMicroActive"), for: .highlighted)
-        recordButton.setImage(UIImage(named: "recordMicro"), for: .normal)
+        recordButton.setImage(Initializer.image(named: "recordMicroActive"), for: .selected)
+        recordButton.setImage(Initializer.image(named: "recordMicroActive"), for: .highlighted)
+        recordButton.setImage(Initializer.image(named: "recordMicro"), for: .normal)
     }
     
     private func loadDataFromReport() {
@@ -118,9 +118,9 @@ class BugDescriptionPage1ViewController: UIViewController {
     @IBAction func recordTapped(_ sender: UIButton) {
         if DebuggIt.sharedInstance.recordingEnabled {
             sender.isSelected = true
-            let recordViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.ViewControllers.record) as? RecordViewController
-            recordViewController?.modalPresentationStyle = .overCurrentContext
-            self.present(recordViewController!, animated: true, completion: nil)
+            let recordViewController = Initializer.viewController(RecordViewController)
+            recordViewController.modalPresentationStyle = .overCurrentContext
+            self.present(recordViewController, animated: true, completion: nil)
         } else {
             self.present(Utils.createAlert(title: "alert.title.recording.disabled".localized(), message: "alert.message.recording.disabled".localized(), positiveAction: {}), animated: true, completion: nil)
         }
