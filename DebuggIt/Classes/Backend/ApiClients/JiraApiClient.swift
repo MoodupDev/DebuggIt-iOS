@@ -88,6 +88,13 @@ class JiraApiClient: ApiClientProtocol {
     func clearTokens() {
         username = nil
         password = nil
+        
+        let defaults = UserDefaults.standard
+        
+        defaults.set(nil, forKey: Constants.Jira.usernameKey)
+        defaults.set(nil, forKey: Constants.Jira.passwordKey)
+        
+        defaults.synchronize()
     }
     
     internal func exchangeAuthCodeForToken(_ code: String, successBlock: @escaping () -> (), errorBlock: @escaping (Int?, String?) -> ()) {

@@ -54,7 +54,7 @@ public class DebuggIt {
             throw DebuggItError.notInitialized(message: "Call init before attach")
         } else {
             if(shouldPostInitializedEvent) {
-                //todo post event that initialized
+                ApiClient.postEvent(.initialized)
                 shouldPostInitializedEvent = false
             }
             //todo add version checking
@@ -110,18 +110,7 @@ public class DebuggIt {
     }
     
     private func logout() {
-        let defaults = UserDefaults.standard
-        
-        defaults.set(nil, forKey: Constants.Bitbucket.accessTokenKey)
-        defaults.set(nil, forKey: Constants.Bitbucket.refreshTokenKey)
-        defaults.set(nil, forKey: Constants.GitHub.accessTokenKey)
-        defaults.set(nil, forKey: Constants.GitHub.twoFactorAuthCodeKey)
-        defaults.set(nil, forKey: Constants.Jira.usernameKey)
-        defaults.set(nil, forKey: Constants.Jira.passwordKey)
-        
         apiClient?.clearTokens()
-        
-        defaults.synchronize()
     }
     
     @objc func handleLongPress(_ recognizer: UILongPressGestureRecognizer) {

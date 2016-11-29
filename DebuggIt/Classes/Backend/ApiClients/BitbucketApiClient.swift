@@ -110,6 +110,13 @@ class BitbucketApiClient: ApiClientProtocol {
     func clearTokens() {
         accessToken = nil
         refreshToken = nil
+        
+        let defaults = UserDefaults.standard
+        
+        defaults.set(nil, forKey: Constants.Bitbucket.accessTokenKey)
+        defaults.set(nil, forKey: Constants.Bitbucket.refreshTokenKey)
+        
+        defaults.synchronize()
     }
     
     internal func exchangeAuthCodeForToken(_ code: String, successBlock: @escaping () -> (), errorBlock: @escaping (Int?, String?) -> ()) {

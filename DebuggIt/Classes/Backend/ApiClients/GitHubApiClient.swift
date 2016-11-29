@@ -71,6 +71,13 @@ class GitHubApiClient: ApiClientProtocol {
     
     func clearTokens() {
         accessToken = nil
+        
+        let defaults = UserDefaults.standard
+        
+        defaults.set(nil, forKey: Constants.GitHub.accessTokenKey)
+        defaults.set(nil, forKey: Constants.GitHub.twoFactorAuthCodeKey)
+        
+        defaults.synchronize()
     }
     
     func refreshAccessToken(successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
