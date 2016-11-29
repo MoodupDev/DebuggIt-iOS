@@ -19,7 +19,7 @@ class Initializer {
     }
 
     static func viewController<T: UIViewController>(_ withClass: T.Type) -> T {
-        return withClass.init(nibName: String(describing: withClass), bundle: bundle(forClass: withClass)) as! T
+        return withClass.init(nibName: String(describing: withClass), bundle: bundle(forClass: withClass))
     }
     
     static func view<T: UIView>(_ withClass: T.Type, owner: Any? = nil) -> UIView {
