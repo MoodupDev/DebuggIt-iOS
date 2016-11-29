@@ -30,7 +30,7 @@ DebuggIt is a simple, yet powerful tool that helps you get reports of the bugs d
 
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 
   s.source_files = 'DebuggIt/Classes/**/*.swift'
   # s.resources = "DebuggIt/**/*.{png,jpeg,jpg,storyboard,xib}"
