@@ -61,7 +61,7 @@ extension WebViewViewController : UIWebViewDelegate {
                 self.dismiss(animated: true, completion: nil)
                 let editScreenshotViewController = Initializer.viewController(EditScreenshotModalViewController.self)
                 editScreenshotViewController.modalPresentationStyle = .overCurrentContext
-                UIApplication.shared.keyWindow?.rootViewController?.present(editScreenshotViewController, animated: true, completion: nil)
+                UIApplication.shared.keyWindow?.currentViewController()?.present(editScreenshotViewController, animated: true, completion: nil)
             }), animated: true, completion: nil)
             }, errorBlock: { (status, errorMessage) in
                 print(status ?? "status", errorMessage ?? "error")
