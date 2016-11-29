@@ -188,28 +188,40 @@
                         <action selector="recordTapped:" destination="-1" eventType="touchUpInside" id="XSn-gL-KOf"/>
                     </connections>
                 </button>
-                <containerView opaque="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="pdm-hT-x2c">
-                    <rect key="frame" x="8" y="244" width="359" height="300"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Os6-AB-mH2">
+                    <rect key="frame" x="8" y="244" width="359" height="415"/>
+                    <subviews>
+                        <containerView opaque="NO" clipsSubviews="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="pdm-hT-x2c">
+                            <rect key="frame" x="0.0" y="0.0" width="359" height="415"/>
+                        </containerView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="300" id="o4P-QD-Q6t"/>
+                        <constraint firstItem="pdm-hT-x2c" firstAttribute="leading" secondItem="Os6-AB-mH2" secondAttribute="leading" id="TGm-4j-C9N"/>
+                        <constraint firstItem="pdm-hT-x2c" firstAttribute="top" secondItem="Os6-AB-mH2" secondAttribute="top" id="W2d-UX-DvW"/>
+                        <constraint firstAttribute="trailing" secondItem="pdm-hT-x2c" secondAttribute="trailing" id="hmX-9S-CgI"/>
+                        <constraint firstAttribute="bottom" secondItem="pdm-hT-x2c" secondAttribute="bottom" id="jdi-Dt-yFc"/>
+                        <constraint firstItem="pdm-hT-x2c" firstAttribute="centerX" secondItem="Os6-AB-mH2" secondAttribute="centerX" id="je6-5r-Ae7"/>
                     </constraints>
-                </containerView>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailingMargin" secondItem="N11-zk-MET" secondAttribute="trailing" id="8aW-mx-rGM"/>
+                <constraint firstItem="Os6-AB-mH2" firstAttribute="leading" secondItem="wwm-cq-uWO" secondAttribute="leading" constant="8" id="9SJ-qo-WJb"/>
                 <constraint firstItem="2Gc-AC-FDh" firstAttribute="trailing" secondItem="wwm-cq-uWO" secondAttribute="trailingMargin" constant="-59" id="Aeu-j5-ra0"/>
-                <constraint firstItem="pdm-hT-x2c" firstAttribute="top" secondItem="2Gc-AC-FDh" secondAttribute="bottom" constant="8" id="An1-Mt-EWM"/>
-                <constraint firstItem="pdm-hT-x2c" firstAttribute="trailing" secondItem="wwm-cq-uWO" secondAttribute="trailingMargin" id="L0g-do-hsA"/>
                 <constraint firstAttribute="trailingMargin" secondItem="28T-Sq-gfZ" secondAttribute="trailing" id="P8Y-WT-Gsw"/>
+                <constraint firstAttribute="bottom" secondItem="Os6-AB-mH2" secondAttribute="bottom" constant="8" id="RWN-LC-2Xd"/>
                 <constraint firstItem="28T-Sq-gfZ" firstAttribute="top" secondItem="N11-zk-MET" secondAttribute="bottom" constant="55" id="Rc9-5l-bme"/>
                 <constraint firstItem="28T-Sq-gfZ" firstAttribute="leading" secondItem="2Gc-AC-FDh" secondAttribute="trailing" constant="8" id="UPr-w1-qyJ"/>
                 <constraint firstItem="N11-zk-MET" firstAttribute="top" secondItem="wwm-cq-uWO" secondAttribute="top" constant="20" id="Ww0-b3-eQB"/>
                 <constraint firstItem="2Gc-AC-FDh" firstAttribute="top" secondItem="N11-zk-MET" secondAttribute="bottom" constant="16" id="bv8-iB-PrU"/>
                 <constraint firstItem="N11-zk-MET" firstAttribute="leading" secondItem="wwm-cq-uWO" secondAttribute="leadingMargin" id="hf6-fD-Cl6"/>
                 <constraint firstItem="2Gc-AC-FDh" firstAttribute="leading" secondItem="wwm-cq-uWO" secondAttribute="leadingMargin" id="jMZ-rh-0rT"/>
-                <constraint firstItem="pdm-hT-x2c" firstAttribute="leading" secondItem="wwm-cq-uWO" secondAttribute="leadingMargin" id="r03-2T-Czd"/>
+                <constraint firstAttribute="trailing" secondItem="Os6-AB-mH2" secondAttribute="trailing" constant="8" id="jZO-8Y-rFW"/>
+                <constraint firstItem="Os6-AB-mH2" firstAttribute="top" secondItem="2Gc-AC-FDh" secondAttribute="bottom" constant="8" id="rL5-c4-Dse"/>
             </constraints>
+            <point key="canvasLocation" x="32.5" y="52.5"/>
         </view>
     </objects>
     <resources>
