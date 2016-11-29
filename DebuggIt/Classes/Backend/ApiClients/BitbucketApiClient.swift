@@ -84,7 +84,7 @@ class BitbucketApiClient: ApiClientProtocol {
                             )
         ]
         
-        Alamofire.request(Constants.Bitbucket.authorizeUrl, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseString { (response) in
+        Alamofire.request(Constants.Bitbucket.accessTokenUrl, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseString { (response) in
             switch response.result {
             case .success(let value):
                 if response.isSuccess() {

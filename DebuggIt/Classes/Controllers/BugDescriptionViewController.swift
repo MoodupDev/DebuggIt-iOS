@@ -39,7 +39,7 @@ class BugDescriptionViewController: UIViewController {
         if DebuggIt.sharedInstance.report.title.isEmpty {
             present(Utils.createAlert(title: "alert.title.failure".localized(), message: "error.title.empty".localized(), positiveAction: {}), animated: true, completion: nil)
         } else {
-            let alertController = Utils.createAlert(title: "alert.title.sending.screenshot".localized(), message: "alert.message.wait".localized())
+            let alertController = Utils.createAlert(title: "alert.title.sending.report".localized(), message: "alert.message.wait".localized())
             present(alertController, animated: true, completion: nil)
             
             DebuggIt.sharedInstance.sendReport(
@@ -50,7 +50,7 @@ class BugDescriptionViewController: UIViewController {
             }, errorBlock: {
                 (status, error) in
                 alertController.dismiss(animated: false, completion: nil)
-                self.present(Utils.createAlert(title: "alert.title.failure".localized(), message: error!, positiveAction: nil, negativeAction: nil), animated: true, completion: nil)
+                self.present(Utils.createAlert(title: "alert.title.failure".localized(), message: Utils.parseError(error), positiveAction: {}, negativeAction: nil), animated: true, completion: nil)
             })
         }
     }
