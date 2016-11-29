@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (4.2.0)
-  - DebuggIt (0.0.5):
+  - DebuggIt (0.0.6):
     - Alamofire (~> 4.0)
     - IQKeyboardManagerSwift (= 4.0.6)
     - KMPlaceholderTextView (~> 1.3.0)
@@ -18,7 +18,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
-  DebuggIt: e200faf0ebe870fb6e2d71b2dfb4a6db84e320dc
+  DebuggIt: 94a7d1ce50f2d0b0b63b6412d2e7d56ebc5f7ed2
   IQKeyboardManagerSwift: b3015e819559ca76381f87a0833f44d178564603
   KMPlaceholderTextView: 2bbcd19a273648a80a61e1e48f9743a24d8930e3
   SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf

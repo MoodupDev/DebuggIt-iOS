@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "DebuggIt"
-  s.version      = "0.0.5"
+  s.version      = "0.0.6"
   s.summary      = "Tool that will help QA and clients report bugs easily directly from the device"
 
 
@@ -37,7 +37,7 @@ DebuggIt is a simple, yet powerful tool that helps you get reports of the bugs d
 
   
   s.resource_bundles = {
-    'DebuggIt' => ['DebuggIt/Assets/**/*.{xcassets,storyboard,xib}', 'DebuggIt/Localization/*.lproj']
+    'DebuggIt' => ['DebuggIt/Assets/**/*.{xcassets,xib}', 'DebuggIt/Localization/*.lproj']
   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
