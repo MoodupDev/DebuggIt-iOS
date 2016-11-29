@@ -10,8 +10,27 @@ import UIKit
 
 class BugDescriptionPageViewController: UIPageViewController {
     
+    // MARK: - Properties
+    
     weak var pageControl: UIPageControl?
+    
+    private(set) lazy var orderedViewControllers: [UIViewController] = {
+        return [
+            Initializer.viewController(BugDescriptionPage1ViewController.self),
+            Initializer.viewController(BugDescriptionPage2ViewController.self),
+            ]
+    }()
+    
+    // MARK: - Initialization
 
+    override init(transitionStyle style: UIPageViewControllerTransitionStyle, navigationOrientation: UIPageViewControllerNavigationOrientation, options: [String : Any]? = nil) {
+        super.init(transitionStyle: .scroll, navigationOrientation: navigationOrientation, options: options)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,22 +40,10 @@ class BugDescriptionPageViewController: UIPageViewController {
         if orderedViewControllers.first != nil {
             openPage(0)
         }
-        
-        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    private(set) lazy var orderedViewControllers: [UIViewController] = {
-        return [
-            Initializer.viewController(BugDescriptionPage1ViewController.self),
-            Initializer.viewController(BugDescriptionPage2ViewController.self),
-        ]
-    }()
 }
+
+// MARK: - UIPageViewControllerDataSource
 
 extension BugDescriptionPageViewController: UIPageViewControllerDataSource {
     
@@ -85,6 +92,8 @@ extension BugDescriptionPageViewController: UIPageViewControllerDataSource {
     }
 
 }
+
+// MARK: - UIPageViewControllerDelegate
 
 extension BugDescriptionPageViewController: UIPageViewControllerDelegate {
     
