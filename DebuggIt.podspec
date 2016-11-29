@@ -37,7 +37,7 @@ DebuggIt is a simple, yet powerful tool that helps you get reports of the bugs d
 
   
   s.resource_bundles = {
-    'DebuggIt' => ['DebuggIt/Assets/**/*.{xcassets,storyboard,xib}']
+    'DebuggIt' => ['DebuggIt/Assets/**/*.{xcassets,storyboard,xib}', 'DebuggIt/Localization/*.lproj']
   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'

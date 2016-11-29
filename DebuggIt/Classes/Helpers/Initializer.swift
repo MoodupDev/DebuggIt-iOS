@@ -11,7 +11,7 @@ import UIKit
 
 class Initializer {
     
-    private static func bundle(forClass: AnyClass) -> Bundle {
+    static func bundle(forClass: AnyClass) -> Bundle {
         let podBundle = Bundle(for: forClass)
         
         let bundleURL = podBundle.url(forResource: "DebuggIt", withExtension: "bundle")
