@@ -91,13 +91,12 @@ class RecordViewController: UIViewController, DebuggItViewControllerProtocol {
                 ApiClient.upload(.audio, data: fileData.base64EncodedString(), successBlock: {
                     alert.dismiss(animated: true, completion: nil)
                     self.present(Utils.createAlert(title: "alert.title.send.audio".localized(), message: "alert.message.saved.audio".localized(), positiveAction: {
-                        self.performSegue(withIdentifier: "recordUploaded", sender: self)
+                        self.dismiss(animated: true, completion: nil)
+                        // todo: warning! it does not refresh report items
                     }), animated: true, completion: nil)
                 }, errorBlock: { (code, message) in
                     alert.dismiss(animated: true, completion: nil)
-                    self.present(Utils.createAlert(title: "alert.title.send.audio".localized(), message: "error.general".localized(), positiveAction: {
-                        self.performSegue(withIdentifier: "recordUploaded", sender: self)
-                    }), animated: true, completion: nil)
+                    self.present(Utils.createAlert(title: "alert.title.send.audio".localized(), message: "error.general".localized(), positiveAction: {}), animated: true, completion: nil)
                 })
             }
         } else {

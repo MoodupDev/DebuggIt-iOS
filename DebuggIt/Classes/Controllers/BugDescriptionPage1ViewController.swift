@@ -111,10 +111,6 @@ class BugDescriptionPage1ViewController: UIViewController, DebuggItViewControlle
         selectFromButtons(priorityButtons, selected: sender)
     }
 
-    @IBAction func recordUploaded(segue: UIStoryboardSegue) {
-        recordButton.isSelected = false
-        reloadReportItems()
-    }
     @IBAction func recordTapped(_ sender: UIButton) {
         if DebuggIt.sharedInstance.recordingEnabled {
             sender.isSelected = true
