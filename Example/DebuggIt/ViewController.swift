@@ -13,13 +13,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        do {
-            try DebuggIt.sharedInstance.attach(viewController: self)
-        } catch DebuggItError.notInitialized(let message) {
-            print(message)
-        } catch {
-            
-        }
         // Do any additional setup after loading the view, typically from a nib.
     }
 
