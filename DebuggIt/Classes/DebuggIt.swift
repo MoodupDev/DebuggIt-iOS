@@ -9,9 +9,10 @@
 import UIKit
 import IQKeyboardManagerSwift
 
-public class DebuggIt {
+@objc
+public class DebuggIt: NSObject {
     
-    public static let sharedInstance = DebuggIt()
+    @objc public static let sharedInstance = DebuggIt()
     let debuggItButton = DebuggItButton.instantiateFromNib()
     
     private var currentViewController:UIViewController?
@@ -21,23 +22,24 @@ public class DebuggIt {
     var report:Report = Report()
     private var isInitialized:Bool = false
     private var shouldPostInitializedEvent:Bool = true
-    public var recordingEnabled = false
     
-    private init() {
+    @objc public var recordingEnabled = false
+    
+    private override init() {
         
     }
     
-    public func initBitbucket(repoSlug: String, accountName: String) {
+    @objc public func initBitbucket(repoSlug: String, accountName: String) {
         apiClient = BitbucketApiClient(repoSlug: repoSlug, accountName: accountName)
         initDebugIt(configType: .bitbucket)
     }
     
-    public func initJira(host: String, projectKey: String, usesHttps: Bool = true) {
+    @objc public func initJira(host: String, projectKey: String, usesHttps: Bool = true) {
         apiClient = JiraApiClient(host: host, projectKey: projectKey, usesHttps: usesHttps)
         initDebugIt(configType: .jira)
     }
     
-    public func initGithub(repoSlug: String, accountName: String) {
+    @objc public func initGithub(repoSlug: String, accountName: String) {
         apiClient = GitHubApiClient(repoSlug: repoSlug, accountName: accountName)
         initDebugIt(configType: .github)
     }
@@ -49,7 +51,7 @@ public class DebuggIt {
         ApiClient.postEvent(.initialized)
     }
     
-    public func attach(viewController: UIViewController) throws -> Bool {
+    @objc public func attach(viewController: UIViewController) throws -> Void {
         if(!isInitialized) {
             throw DebuggItError.notInitialized(message: "Call init before attach")
         } else {
@@ -63,8 +65,6 @@ public class DebuggIt {
             
             registerShakeDetector()
             addReportButton()
-            
-            return true
         }
     }
     
