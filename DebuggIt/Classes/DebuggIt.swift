@@ -132,7 +132,7 @@ public class DebuggIt: NSObject {
         debuggItButton.isHidden = true
         takeScreenshot()
         debuggItButton.isHidden = false
-        if (apiClient?.hasToken())! {
+        if (apiClient?.hasToken)! {
             showModal(viewController: Initializer.viewController(EditScreenshotModalViewController.self))
         } else {
             showLoginWebView()

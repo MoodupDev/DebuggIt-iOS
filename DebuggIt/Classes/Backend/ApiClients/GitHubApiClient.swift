@@ -19,6 +19,11 @@ class GitHubApiClient: ApiClientProtocol {
     var twoFactorAuthCode: String?
     
     var loginUrl: String = "\(Constants.GitHub.authorizeUrl)?client_id=\(Constants.GitHub.clientId)&scope=repo"
+    var hasToken: Bool {
+        get {
+            return accessToken != nil
+        }
+    }
     
     // MARK: Initialization
     
@@ -63,10 +68,6 @@ class GitHubApiClient: ApiClientProtocol {
             
         }
         
-    }
-    
-    func hasToken() -> Bool {
-        return accessToken != nil
     }
     
     func clearTokens() {

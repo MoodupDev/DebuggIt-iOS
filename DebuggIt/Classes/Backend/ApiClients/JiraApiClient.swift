@@ -14,6 +14,11 @@ class JiraApiClient: ApiClientProtocol {
     // MARK: Properties
     
     internal var loginUrl: String = ""
+    var hasToken: Bool {
+        get {
+            return username != nil && password != nil
+        }
+    }
     
     var host: String
     var projectKey: String
@@ -79,10 +84,6 @@ class JiraApiClient: ApiClientProtocol {
     
     func refreshAccessToken(successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
         // do nothing
-    }
-    
-    func hasToken() -> Bool {
-        return username != nil && password != nil
     }
     
     func clearTokens() {
