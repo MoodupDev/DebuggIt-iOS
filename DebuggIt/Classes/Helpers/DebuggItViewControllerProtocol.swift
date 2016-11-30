@@ -9,3 +9,5 @@
 import Foundation
 
 protocol DebuggItViewControllerProtocol {}
+
+class DebuggItViewController : UIViewController, DebuggItViewControllerProtocol {}

@@ -124,7 +124,7 @@ public class DebuggIt: NSObject {
             alertController.dismiss(animated: false, completion: nil)
         }))
         
-        currentViewController?.present(alertController, animated: true, completion: nil)
+        showModal(viewController: alertController)
     }
     
     
@@ -174,9 +174,13 @@ public class DebuggIt: NSObject {
         report.screenshots.append(window.capture())
     }
     
-    private func showModal(viewController: UIViewController) {
+    func showModal(viewController: UIViewController, animated: Bool = true, completion: (() -> Void)? = nil) {
         viewController.modalPresentationStyle = .overCurrentContext
-        currentViewController?.present(viewController, animated: true, completion: nil)
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.rootViewController = DebuggItViewController()
+        window.windowLevel = UIWindowLevelAlert + 1
+        window.makeKeyAndVisible()
+        window.rootViewController?.present(viewController, animated: animated, completion: completion)
     }
     
     
