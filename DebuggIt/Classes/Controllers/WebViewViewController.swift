@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WebViewViewController: UIViewController {
+class WebViewViewController: UIViewController, DebuggItViewControllerProtocol {
     
     @IBOutlet weak var webView: UIWebView!
     

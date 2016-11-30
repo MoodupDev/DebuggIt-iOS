@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditScreenshotModalViewController: UIViewController {
+class EditScreenshotModalViewController: UIViewController, DebuggItViewControllerProtocol {
     
     @IBOutlet weak var screenshotSurface: DrawingView!
     @IBOutlet weak var rectangleButton: UIButton!
