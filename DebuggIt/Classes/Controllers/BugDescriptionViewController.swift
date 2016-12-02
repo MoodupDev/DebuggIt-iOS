@@ -27,6 +27,7 @@ class BugDescriptionViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func doneClicked(_ sender: UIBarButtonItem) {
+        self.resignFirstResponder()
         self.present(Utils.createAlert(title: "alert.title.send.report".localized(), message: "Do you want to send the report?", positiveAction: self.sendReport, negativeAction: {}), animated: true, completion: nil)
     }
     
@@ -41,6 +42,7 @@ class BugDescriptionViewController: UIViewController {
                 successBlock: {
                     alertController.dismiss(animated: false, completion: nil)
                     self.present(Utils.createAlert(title: "alert.title.success".localized(), message: "alert.message.saved.report".localized(), positiveAction: self.dissmissDebuggIt, negativeAction: nil), animated: true, completion: nil)
+                    DebuggIt.sharedInstance.report = Report()
                     IQKeyboardManager.sharedManager().enable = false
             }, errorBlock: {
                 (status, error) in
