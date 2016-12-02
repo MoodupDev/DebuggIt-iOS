@@ -24,11 +24,6 @@ class BugDescriptionViewController: UIViewController, DebuggItViewControllerProt
         
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     // MARK: Actions
     @IBAction func doneClicked(_ sender: UIBarButtonItem) {
@@ -50,7 +45,7 @@ class BugDescriptionViewController: UIViewController, DebuggItViewControllerProt
             }, errorBlock: {
                 (status, error) in
                 alertController.dismiss(animated: false, completion: nil)
-                self.present(Utils.createAlert(title: "alert.title.failure".localized(), message: Utils.parseError(error), positiveAction: {}, negativeAction: nil), animated: true, completion: nil)
+                self.present(Utils.createAlert(title: "alert.title.failure".localized(), message: Utils.parseError(error), positiveAction: self.dissmissDebuggIt, negativeAction: nil), animated: true, completion: nil)
             })
         }
     }

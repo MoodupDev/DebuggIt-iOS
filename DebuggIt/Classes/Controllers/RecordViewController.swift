@@ -25,6 +25,8 @@ class RecordViewController: UIViewController, DebuggItViewControllerProtocol {
     
     var audioFilename: URL!
     
+    var delegate: RecordViewControllerDelegate?
+    
     // MARK: - Overriden methods
 
     override func viewDidLoad() {
@@ -41,12 +43,12 @@ class RecordViewController: UIViewController, DebuggItViewControllerProtocol {
                         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(RecordViewController.updateUi), userInfo: nil, repeats: true)
                         self.startRecording()
                     } else {
-                        print("failed to record!")
+                        delegate?.recordFailed()
                     }
                 }
             }
         } catch {
-            print("catch: failed to record!")
+            delegate?.recordFailed()
         }
     }
     
@@ -92,7 +94,7 @@ class RecordViewController: UIViewController, DebuggItViewControllerProtocol {
                     alert.dismiss(animated: true, completion: nil)
                     self.present(Utils.createAlert(title: "alert.title.send.audio".localized(), message: "alert.message.saved.audio".localized(), positiveAction: {
                         self.dismiss(animated: true, completion: nil)
-                        // todo: warning! it does not refresh report items
+                        self.delegate?.recordUploaded()
                     }), animated: true, completion: nil)
                 }, errorBlock: { (code, message) in
                     alert.dismiss(animated: true, completion: nil)
@@ -100,7 +102,7 @@ class RecordViewController: UIViewController, DebuggItViewControllerProtocol {
                 })
             }
         } else {
-            print("finishRecording: failed to record!")
+            delegate?.recordFailed()
         }
     }
     
@@ -137,4 +139,11 @@ extension RecordViewController : AVAudioRecorderDelegate {
             finishRecording(success: false)
         }
     }
+}
+
+// MARK: - RecordViewControllerDelegate
+
+protocol RecordViewControllerDelegate {
+    func recordUploaded()
+    func recordFailed()
 }
