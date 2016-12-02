@@ -8,7 +8,12 @@
 
 protocol ApiClientProtocol {
     
+    // MARK: - Properties
+    
     var loginUrl: String { get }
+    var hasToken: Bool { get }
+    
+    // MARK: - Methods
     
     func addIssue(title: String,
                   content: String,
@@ -22,11 +27,10 @@ protocol ApiClientProtocol {
                       errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()
     )
     
-    func hasToken() -> Bool
-    
     func clearTokens()
     
     func exchangeAuthCodeForToken(_ code: String,
                               successBlock: @escaping () -> (),
                               errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ())
+    
 }

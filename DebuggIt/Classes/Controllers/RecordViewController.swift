@@ -25,6 +25,8 @@ class RecordViewController: UIViewController {
     
     var audioFilename: URL!
     
+    var delegate: RecordViewControllerDelegate?
+    
     // MARK: - Overriden methods
 
     override func viewDidLoad() {
@@ -41,12 +43,12 @@ class RecordViewController: UIViewController {
                         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(RecordViewController.updateUi), userInfo: nil, repeats: true)
                         self.startRecording()
                     } else {
-                        print("failed to record!")
+                        self.delegate?.recordFailed()
                     }
                 }
             }
         } catch {
-            print("catch: failed to record!")
+            delegate?.recordFailed()
         }
     }
     
@@ -91,17 +93,16 @@ class RecordViewController: UIViewController {
                 ApiClient.upload(.audio, data: fileData.base64EncodedString(), successBlock: {
                     alert.dismiss(animated: true, completion: nil)
                     self.present(Utils.createAlert(title: "alert.title.send.audio".localized(), message: "alert.message.saved.audio".localized(), positiveAction: {
-                        self.performSegue(withIdentifier: "recordUploaded", sender: self)
+                        self.dismiss(animated: true, completion: nil)
+                        self.delegate?.recordUploaded()
                     }), animated: true, completion: nil)
                 }, errorBlock: { (code, message) in
                     alert.dismiss(animated: true, completion: nil)
-                    self.present(Utils.createAlert(title: "alert.title.send.audio".localized(), message: "error.general".localized(), positiveAction: {
-                        self.performSegue(withIdentifier: "recordUploaded", sender: self)
-                    }), animated: true, completion: nil)
+                    self.present(Utils.createAlert(title: "alert.title.send.audio".localized(), message: "error.general".localized(), positiveAction: {}), animated: true, completion: nil)
                 })
             }
         } else {
-            print("finishRecording: failed to record!")
+            delegate?.recordFailed()
         }
     }
     
@@ -138,4 +139,11 @@ extension RecordViewController : AVAudioRecorderDelegate {
             finishRecording(success: false)
         }
     }
+}
+
+// MARK: - RecordViewControllerDelegate
+
+protocol RecordViewControllerDelegate {
+    func recordUploaded()
+    func recordFailed()
 }

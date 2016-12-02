@@ -9,17 +9,10 @@
 import UIKit
 import DebuggIt
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, DebuggItViewControllerProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        do {
-            try DebuggIt.sharedInstance.attach(viewController: self)
-        } catch DebuggItError.notInitialized(let message) {
-            print(message)
-        } catch {
-            
-        }
         // Do any additional setup after loading the view, typically from a nib.
     }
 

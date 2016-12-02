@@ -24,14 +24,10 @@ class BugDescriptionViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     // MARK: Actions
     @IBAction func doneClicked(_ sender: UIBarButtonItem) {
+        self.resignFirstResponder()
         self.present(Utils.createAlert(title: "alert.title.send.report".localized(), message: "Do you want to send the report?", positiveAction: self.sendReport, negativeAction: {}), animated: true, completion: nil)
     }
     
@@ -46,11 +42,12 @@ class BugDescriptionViewController: UIViewController {
                 successBlock: {
                     alertController.dismiss(animated: false, completion: nil)
                     self.present(Utils.createAlert(title: "alert.title.success".localized(), message: "alert.message.saved.report".localized(), positiveAction: self.dissmissDebuggIt, negativeAction: nil), animated: true, completion: nil)
+                    DebuggIt.sharedInstance.report = Report()
                     IQKeyboardManager.sharedManager().enable = false
             }, errorBlock: {
                 (status, error) in
                 alertController.dismiss(animated: false, completion: nil)
-                self.present(Utils.createAlert(title: "alert.title.failure".localized(), message: Utils.parseError(error), positiveAction: {}, negativeAction: nil), animated: true, completion: nil)
+                self.present(Utils.createAlert(title: "alert.title.failure".localized(), message: Utils.parseError(error), positiveAction: self.dissmissDebuggIt, negativeAction: nil), animated: true, completion: nil)
             })
         }
     }

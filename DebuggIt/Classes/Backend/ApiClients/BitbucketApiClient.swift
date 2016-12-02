@@ -20,6 +20,12 @@ class BitbucketApiClient: ApiClientProtocol {
     var accessToken: String?
     var refreshToken: String?
     
+    var hasToken: Bool {
+        get {
+            return self.accessToken != nil
+        }
+    }
+    
     // MARK: Initialization
     
     init(repoSlug: String, accountName: String) {
@@ -101,10 +107,6 @@ class BitbucketApiClient: ApiClientProtocol {
             }
         }
         
-    }
-    
-    func hasToken() -> Bool {
-        return accessToken != nil
     }
     
     func clearTokens() {

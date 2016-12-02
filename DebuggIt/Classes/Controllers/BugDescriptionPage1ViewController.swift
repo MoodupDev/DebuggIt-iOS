@@ -111,14 +111,11 @@ class BugDescriptionPage1ViewController: UIViewController {
         selectFromButtons(priorityButtons, selected: sender)
     }
 
-    @IBAction func recordUploaded(segue: UIStoryboardSegue) {
-        recordButton.isSelected = false
-        reloadReportItems()
-    }
     @IBAction func recordTapped(_ sender: UIButton) {
         if DebuggIt.sharedInstance.recordingEnabled {
             sender.isSelected = true
             let recordViewController = Initializer.viewController(RecordViewController.self)
+            recordViewController.delegate = self
             recordViewController.modalPresentationStyle = .overCurrentContext
             self.present(recordViewController, animated: true, completion: nil)
         } else {
@@ -134,5 +131,19 @@ extension BugDescriptionPage1ViewController: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         DebuggIt.sharedInstance.report.title = textView.text
+    }
+}
+
+// MARK: - RecordViewControllerDelegate
+
+extension BugDescriptionPage1ViewController: RecordViewControllerDelegate {
+    
+    func recordUploaded() {
+        recordButton.isSelected = false
+        reloadReportItems()
+    }
+    
+    func recordFailed() {
+        recordButton.isSelected = false
     }
 }

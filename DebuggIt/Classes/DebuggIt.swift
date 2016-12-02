@@ -9,9 +9,10 @@
 import UIKit
 import IQKeyboardManagerSwift
 
-public class DebuggIt {
+@objc
+public class DebuggIt: NSObject {
     
-    public static let sharedInstance = DebuggIt()
+    @objc public static let sharedInstance = DebuggIt()
     let debuggItButton = DebuggItButton.instantiateFromNib()
     
     private var currentViewController:UIViewController?
@@ -21,23 +22,26 @@ public class DebuggIt {
     var report:Report = Report()
     private var isInitialized:Bool = false
     private var shouldPostInitializedEvent:Bool = true
-    public var recordingEnabled = false
     
-    private init() {
-        
+    @objc public var recordingEnabled = false
+    
+    private var logoutShown = false
+    
+    private override init() {
+
     }
     
-    public func initBitbucket(repoSlug: String, accountName: String) {
+    @objc public func initBitbucket(repoSlug: String, accountName: String) {
         apiClient = BitbucketApiClient(repoSlug: repoSlug, accountName: accountName)
         initDebugIt(configType: .bitbucket)
     }
     
-    public func initJira(host: String, projectKey: String, usesHttps: Bool = true) {
+    @objc public func initJira(host: String, projectKey: String, usesHttps: Bool = true) {
         apiClient = JiraApiClient(host: host, projectKey: projectKey, usesHttps: usesHttps)
         initDebugIt(configType: .jira)
     }
     
-    public func initGithub(repoSlug: String, accountName: String) {
+    @objc public func initGithub(repoSlug: String, accountName: String) {
         apiClient = GitHubApiClient(repoSlug: repoSlug, accountName: accountName)
         initDebugIt(configType: .github)
     }
@@ -49,7 +53,7 @@ public class DebuggIt {
         ApiClient.postEvent(.initialized)
     }
     
-    public func attach(viewController: UIViewController) throws -> Bool {
+    @objc public func attach(viewController: UIViewController) throws -> Void {
         if(!isInitialized) {
             throw DebuggItError.notInitialized(message: "Call init before attach")
         } else {
@@ -63,17 +67,14 @@ public class DebuggIt {
             
             registerShakeDetector()
             addReportButton()
-            
-            return true
         }
     }
     
     func sendReport(successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int?,_ message: String?) -> ()) {
-        let contentString =  report.stepsToReproduce + "\n" + report.expectedBehavior + "\n" + report.actualBehavior + "\n"
         
         apiClient?.addIssue(
             title: report.title,
-            content: contentString + report.screenshotsUrls.reduce("", {$0 + "\n" + $1}),
+            content: IssueContentProvider.createContent(from: report),
             priority: Utils.convert(fromPriority: report.priority),
             kind: Utils.convert(fromKind: report.kind),
             successBlock: successBlock,
@@ -114,17 +115,15 @@ public class DebuggIt {
     }
     
     @objc func handleLongPress(_ recognizer: UILongPressGestureRecognizer) {
-        let alertController = UIAlertController(title: "Logout", message: "Do you want to logout?", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: {(action: UIAlertAction!) in
-            self.logout()
-            alertController.dismiss(animated: false, completion: nil)
-        }))
-        
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {(action: UIAlertAction!) in
-            alertController.dismiss(animated: false, completion: nil)
-        }))
-        
-        currentViewController?.present(alertController, animated: true, completion: nil)
+        if !logoutShown {
+            logoutShown = true
+            showModal(viewController: Utils.createAlert(title: "Logout", message: "Do you want to logout?", positiveAction: {
+                self.logout()
+                self.logoutShown = false
+            }, negativeAction: {
+                self.logoutShown = false
+            }))
+        }
     }
     
     
@@ -132,7 +131,7 @@ public class DebuggIt {
         debuggItButton.isHidden = true
         takeScreenshot()
         debuggItButton.isHidden = false
-        if (apiClient?.hasToken())! {
+        if (apiClient?.hasToken)! {
             showModal(viewController: Initializer.viewController(EditScreenshotModalViewController.self))
         } else {
             showLoginWebView()
@@ -142,18 +141,14 @@ public class DebuggIt {
     func showLoginWebView() {
         IQKeyboardManager.sharedManager().enable = true
         
-        let loginViewController = Initializer.viewController(WebViewViewController.self)
+        let loginViewController = Initializer.viewController(WebViewController.self)
         loginViewController.url = apiClient?.loginUrl
         
         let navigationController = UINavigationController(rootViewController: loginViewController)
-        navigationController.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(DebuggIt.cancelLogin))
+        navigationController.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: loginViewController, action: #selector(loginViewController.dismiss(_:)))
         navigationController.navigationBar.topItem?.title = "Sign in"
         
         showModal(viewController: navigationController)
-    }
-    
-    @objc func cancelLogin() {
-        currentViewController?.presentedViewController?.dismiss(animated: true, completion: nil)
     }
     
     @objc func moveButton(_ recognizer: UIPanGestureRecognizer) {
@@ -174,9 +169,13 @@ public class DebuggIt {
         report.screenshots.append(window.capture())
     }
     
-    private func showModal(viewController: UIViewController) {
+    func showModal(viewController: UIViewController, animated: Bool = true, completion: (() -> Void)? = nil) {
         viewController.modalPresentationStyle = .overCurrentContext
-        currentViewController?.present(viewController, animated: true, completion: nil)
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.rootViewController = UIViewController()
+        window.windowLevel = UIWindowLevelAlert + 1
+        window.makeKeyAndVisible()
+        window.rootViewController?.present(viewController, animated: animated, completion: completion)
     }
     
     
