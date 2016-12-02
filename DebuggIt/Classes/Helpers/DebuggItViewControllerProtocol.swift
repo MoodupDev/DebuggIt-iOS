@@ -10,4 +10,5 @@ import Foundation
 
 protocol DebuggItViewControllerProtocol {}
 
-class DebuggItViewController : UIViewController, DebuggItViewControllerProtocol {}
+class DIViewController : UIViewController, DebuggItViewControllerProtocol {}
+class DINavigationController : UINavigationController, DebuggItViewControllerProtocol {}

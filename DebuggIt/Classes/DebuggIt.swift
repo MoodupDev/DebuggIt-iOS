@@ -25,8 +25,10 @@ public class DebuggIt: NSObject {
     
     @objc public var recordingEnabled = false
     
+    private var logoutShown = false
+    
     private override init() {
-        
+
     }
     
     @objc public func initBitbucket(repoSlug: String, accountName: String) {
@@ -114,17 +116,15 @@ public class DebuggIt: NSObject {
     }
     
     @objc func handleLongPress(_ recognizer: UILongPressGestureRecognizer) {
-        let alertController = UIAlertController(title: "Logout", message: "Do you want to logout?", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: {(action: UIAlertAction!) in
-            self.logout()
-            alertController.dismiss(animated: false, completion: nil)
-        }))
-        
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {(action: UIAlertAction!) in
-            alertController.dismiss(animated: false, completion: nil)
-        }))
-        
-        showModal(viewController: alertController)
+        if !logoutShown {
+            logoutShown = true
+            showModal(viewController: Utils.createAlert(title: "Logout", message: "Do you want to logout?", positiveAction: {
+                self.logout()
+                self.logoutShown = false
+            }, negativeAction: {
+                self.logoutShown = false
+            }))
+        }
     }
     
     
@@ -142,18 +142,14 @@ public class DebuggIt: NSObject {
     func showLoginWebView() {
         IQKeyboardManager.sharedManager().enable = true
         
-        let loginViewController = Initializer.viewController(WebViewViewController.self)
+        let loginViewController = Initializer.viewController(WebViewController.self)
         loginViewController.url = apiClient?.loginUrl
         
-        let navigationController = UINavigationController(rootViewController: loginViewController)
-        navigationController.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(DebuggIt.cancelLogin))
+        let navigationController = DINavigationController(rootViewController: loginViewController)
+        navigationController.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: loginViewController, action: #selector(loginViewController.dismiss(_:)))
         navigationController.navigationBar.topItem?.title = "Sign in"
         
         showModal(viewController: navigationController)
-    }
-    
-    @objc func cancelLogin() {
-        currentViewController?.presentedViewController?.dismiss(animated: true, completion: nil)
     }
     
     @objc func moveButton(_ recognizer: UIPanGestureRecognizer) {
@@ -177,7 +173,7 @@ public class DebuggIt: NSObject {
     func showModal(viewController: UIViewController, animated: Bool = true, completion: (() -> Void)? = nil) {
         viewController.modalPresentationStyle = .overCurrentContext
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = DebuggItViewController()
+        window.rootViewController = DIViewController()
         window.windowLevel = UIWindowLevelAlert + 1
         window.makeKeyAndVisible()
         window.rootViewController?.present(viewController, animated: animated, completion: completion)
