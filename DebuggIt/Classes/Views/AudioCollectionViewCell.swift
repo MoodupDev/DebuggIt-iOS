@@ -24,8 +24,8 @@ class AudioCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        playButton.setImage(UIImage(named: "recordPlay"), for: .normal)
-        playButton.setImage(UIImage(named: "recordStop"), for: .selected)
+        playButton.setImage(Initializer.image(named: "recordPlay"), for: .normal)
+        playButton.setImage(Initializer.image(named: "recordStop"), for: .selected)
     }
     
     // MARK: - Methods
