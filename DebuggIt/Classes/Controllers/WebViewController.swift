@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WebViewViewController: UIViewController, DebuggItViewControllerProtocol {
+class WebViewController: UIViewController, DebuggItViewControllerProtocol {
     
     @IBOutlet weak var webView: UIWebView!
     
@@ -20,21 +20,14 @@ class WebViewViewController: UIViewController, DebuggItViewControllerProtocol {
         webView.delegate = self
         
         self.webView.loadRequest(URLRequest(url: URL(string: url!)!))
-        // Do any additional setup after loading the view.
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func dismiss(_ sender: AnyObject?) {
+        self.dismiss(animated: true, completion: nil)
     }
-    */
 }
 
-extension WebViewViewController : UIWebViewDelegate {
+extension WebViewController : UIWebViewDelegate {
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         if isCallback(request.url) {
             if let code = request.url?.queryParams()["code"] {
@@ -61,7 +54,7 @@ extension WebViewViewController : UIWebViewDelegate {
                 self.dismiss(animated: true, completion: nil)
                 let editScreenshotViewController = Initializer.viewController(EditScreenshotModalViewController.self)
                 editScreenshotViewController.modalPresentationStyle = .overCurrentContext
-                UIApplication.shared.keyWindow?.currentViewController()?.present(editScreenshotViewController, animated: true, completion: nil)
+                DebuggIt.sharedInstance.showModal(viewController: editScreenshotViewController)
             }), animated: true, completion: nil)
             }, errorBlock: { (status, errorMessage) in
                 print(status ?? "status", errorMessage ?? "error")
