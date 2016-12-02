@@ -145,7 +145,7 @@ public class DebuggIt: NSObject {
         let loginViewController = Initializer.viewController(WebViewController.self)
         loginViewController.url = apiClient?.loginUrl
         
-        let navigationController = DINavigationController(rootViewController: loginViewController)
+        let navigationController = UINavigationController(rootViewController: loginViewController)
         navigationController.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: loginViewController, action: #selector(loginViewController.dismiss(_:)))
         navigationController.navigationBar.topItem?.title = "Sign in"
         
@@ -173,7 +173,7 @@ public class DebuggIt: NSObject {
     func showModal(viewController: UIViewController, animated: Bool = true, completion: (() -> Void)? = nil) {
         viewController.modalPresentationStyle = .overCurrentContext
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = DIViewController()
+        window.rootViewController = UIViewController()
         window.windowLevel = UIWindowLevelAlert + 1
         window.makeKeyAndVisible()
         window.rootViewController?.present(viewController, animated: animated, completion: completion)
