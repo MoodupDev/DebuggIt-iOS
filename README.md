@@ -8,15 +8,24 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-## Requirements
+## Development
+
+To develop this project open `DebuggIt.xcworkspace` located in *Example* directory.
+
+```shell
+cd Example
+open DebuggIt.xcworkspace
+```
+
+All source files are located in `Development Pods` group under `Pods` project.
 
 ## Installation
 
-DebuggIt is available through [CocoaPods](http://cocoapods.org). To install
+Currently DebuggIt is available only through this repository. To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "DebuggIt"
+pod "DebuggIt", :git => "https://bitbucket.org/moodup/debugg.it-ios.git"
 ```
 
 ## Author
