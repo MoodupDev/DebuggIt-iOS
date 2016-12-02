@@ -43,7 +43,7 @@ class RecordViewController: UIViewController, DebuggItViewControllerProtocol {
                         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(RecordViewController.updateUi), userInfo: nil, repeats: true)
                         self.startRecording()
                     } else {
-                        delegate?.recordFailed()
+                        self.delegate?.recordFailed()
                     }
                 }
             }
