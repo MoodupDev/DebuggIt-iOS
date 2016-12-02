@@ -30,21 +30,23 @@ pod "DebuggIt", :git => "https://bitbucket.org/moodup/debugg.it-ios.git"
 
 Then in your `AppDelegate` file add this line to initialize debugg.it:
 
-- *Swift*:
-	- Bitbucket
+*Swift*:
+
+- Bitbucket
 ```swift
 DebuggIt.sharedInstance.initBitbucket(repoSlug: "your-repo-name", accountName: "your-username")
 ```
-	- Github
+- Github
 ```swift
 DebuggIt.sharedInstance.initGithub(repoSlug: "your-repo-name", accountName: "your-username")
 ```
-- *Objective-C*:
-	- Bitbucket
+
+*Objective-C*:
+- Bitbucket
 ```
 [[DebuggIt sharedInstance] initBitbucketWithRepoSlug: @"your-repo-name" accountName:@"your-username"];
 ```
-	- Github
+- Github
 ```
 [[DebuggIt sharedInstance] initGithubWithRepoSlug: @"your-repo-name" accountName:@"your-username"];
 ```
@@ -70,7 +72,7 @@ class ViewController: UIViewController, DebuggItViewControllerProtocol {
 
 @interface ViewController () <DebuggItViewControllerProtocol>
 
-@implementation BaseViewController
+@implementation ViewController
 ```
 
 ## Author
