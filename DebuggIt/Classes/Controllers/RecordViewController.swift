@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class RecordViewController: UIViewController, DebuggItViewControllerProtocol {
+class RecordViewController: UIViewController {
     
     // MARK: - Properties
     

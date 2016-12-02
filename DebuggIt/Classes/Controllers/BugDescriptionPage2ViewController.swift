@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BugDescriptionPage2ViewController: UIViewController, DebuggItViewControllerProtocol {
+class BugDescriptionPage2ViewController: UIViewController {
     
     // MARK: Properties
     @IBOutlet weak var stepsToReproduceTextView: UITextView!

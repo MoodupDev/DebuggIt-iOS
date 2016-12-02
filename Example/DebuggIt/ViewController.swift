@@ -9,7 +9,7 @@
 import UIKit
 import DebuggIt
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, DebuggItViewControllerProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BugDescriptionPage1ViewController: UIViewController, DebuggItViewControllerProtocol {
+class BugDescriptionPage1ViewController: UIViewController {
     
     // MARK: - Properties
     

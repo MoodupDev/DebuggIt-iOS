@@ -12,7 +12,7 @@ private let screenshotReuseIdentifier = "ScreenshotCollectionViewCell"
 private let newScreenshotReuseIdentifier = "NewScreenshotCollectionViewCell"
 private let audioReuseIdentifier = "AudioCollectionViewCell"
 
-class ReportItemsViewController: UIViewController, DebuggItViewControllerProtocol {
+class ReportItemsViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
 
     override func viewDidLoad() {

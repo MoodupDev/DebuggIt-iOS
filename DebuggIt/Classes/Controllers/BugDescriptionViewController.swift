@@ -9,7 +9,7 @@
 import UIKit
 import IQKeyboardManagerSwift
 
-class BugDescriptionViewController: UIViewController, DebuggItViewControllerProtocol {
+class BugDescriptionViewController: UIViewController {
     
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var container: UIView!
