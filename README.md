@@ -33,20 +33,27 @@ Then in your `AppDelegate` file add this line to initialize debugg.it:
 *Swift*:
 
 - Bitbucket
+
 ```swift
 DebuggIt.sharedInstance.initBitbucket(repoSlug: "your-repo-name", accountName: "your-username")
 ```
+
 - Github
+
 ```swift
 DebuggIt.sharedInstance.initGithub(repoSlug: "your-repo-name", accountName: "your-username")
 ```
 
 *Objective-C*:
+
 - Bitbucket
+
 ```
 [[DebuggIt sharedInstance] initBitbucketWithRepoSlug: @"your-repo-name" accountName:@"your-username"];
 ```
+
 - Github
+
 ```
 [[DebuggIt sharedInstance] initGithubWithRepoSlug: @"your-repo-name" accountName:@"your-username"];
 ```
