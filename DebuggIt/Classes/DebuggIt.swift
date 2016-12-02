@@ -71,11 +71,10 @@ public class DebuggIt: NSObject {
     }
     
     func sendReport(successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int?,_ message: String?) -> ()) {
-        let contentString =  report.stepsToReproduce + "\n" + report.expectedBehavior + "\n" + report.actualBehavior + "\n"
         
         apiClient?.addIssue(
             title: report.title,
-            content: contentString + report.screenshotsUrls.reduce("", {$0 + "\n" + $1}),
+            content: IssueContentProvider.createContent(from: report),
             priority: Utils.convert(fromPriority: report.priority),
             kind: Utils.convert(fromKind: report.kind),
             successBlock: successBlock,
