@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         DebuggIt.sharedInstance.initBitbucket(repoSlug: "bugreporter", accountName: "moodup")
+//        DebuggIt.sharedInstance.initGithub(repoSlug: "test", accountName: "MoodupDev")
+        DebuggIt.sharedInstance.recordingEnabled = true
         // Override point for customization after application launch.
         return true
     }
