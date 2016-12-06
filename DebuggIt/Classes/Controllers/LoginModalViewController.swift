@@ -19,6 +19,7 @@ class LoginModalViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var twoFactorCodeTextField: UITextField!
+    @IBOutlet weak var background: UIView!
     
     // MARK: Overriden
     
@@ -26,6 +27,8 @@ class LoginModalViewController: UIViewController {
         super.viewDidLoad()
         twoFactorCodeTextField.delegate = self
         updateLoginInfoSection()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(close(_:)))
+        background.addGestureRecognizer(tapGesture)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -33,6 +36,12 @@ class LoginModalViewController: UIViewController {
     }
     
     // MARK: Actions
+    
+    func close(_ sender: UITapGestureRecognizer) {
+        self.dismiss(animated: true, completion: nil)
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
+        DebuggIt.sharedInstance.applicationWindow?.makeKey()
+    }
     
     @IBAction func signIn(_ sender: UIButton) {
         let email = emailTextField.text!
@@ -70,13 +79,13 @@ class LoginModalViewController: UIViewController {
     func updateLoginInfoSection() {
         switch DebuggIt.sharedInstance.configType {
         case .bitbucket:
-            serviceImageView.image = UIImage(named: "bitbucket")
+            serviceImageView.image = Initializer.image(named: "bitbucket")
             infoLabel.text = String(format: "login.text".localized(), "Bitbucket")
         case .github:
-            serviceImageView.image = UIImage(named: "github")
+            serviceImageView.image = Initializer.image(named: "github")
             infoLabel.text = String(format: "login.text".localized(), "GitHub")
         case .jira:
-            serviceImageView.image = UIImage(named: "jira")
+            serviceImageView.image = Initializer.image(named: "jira")
             infoLabel.text = String(format: "login.text".localized(), "JIRA")
         }
     }

@@ -16,6 +16,7 @@ public class DebuggIt: NSObject {
     let debuggItButton = DebuggItButton.instantiateFromNib()
     
     private var currentViewController:UIViewController?
+    var applicationWindow: UIWindow?
     var apiClient:ApiClientProtocol?
     var configType:ConfigType = .bitbucket
     
@@ -134,21 +135,25 @@ public class DebuggIt: NSObject {
         if (apiClient?.hasToken)! {
             showModal(viewController: Initializer.viewController(EditScreenshotModalViewController.self))
         } else {
-            showLoginWebView()
+            showLoginModal()
         }
     }
     
-    func showLoginWebView() {
+    func showLoginModal() {
         IQKeyboardManager.sharedManager().enable = true
         
-        let loginViewController = Initializer.viewController(WebViewController.self)
-        loginViewController.url = apiClient?.loginUrl
-        
-        let navigationController = UINavigationController(rootViewController: loginViewController)
-        navigationController.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: loginViewController, action: #selector(loginViewController.dismiss(_:)))
-        navigationController.navigationBar.topItem?.title = "Sign in"
-        
-        showModal(viewController: navigationController)
+        if configType == .jira {
+            showModal(viewController: Initializer.viewController(LoginModalViewController.self))
+        } else {
+            let loginViewController = Initializer.viewController(WebViewController.self)
+            loginViewController.url = apiClient?.loginUrl
+            
+            let navigationController = UINavigationController(rootViewController: loginViewController)
+            navigationController.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: loginViewController, action: #selector(loginViewController.dismiss(_:)))
+            navigationController.navigationBar.topItem?.title = "Sign in"
+            
+            showModal(viewController: navigationController)
+        }
     }
     
     @objc func moveButton(_ recognizer: UIPanGestureRecognizer) {
@@ -170,6 +175,7 @@ public class DebuggIt: NSObject {
     }
     
     func showModal(viewController: UIViewController, animated: Bool = true, completion: (() -> Void)? = nil) {
+        applicationWindow = UIApplication.shared.keyWindow
         viewController.modalPresentationStyle = .overCurrentContext
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = UIViewController()
