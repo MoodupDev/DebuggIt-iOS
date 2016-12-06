@@ -33,4 +33,20 @@ protocol ApiClientProtocol {
                               successBlock: @escaping () -> (),
                               errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ())
     
+    func login(email: String,
+               password: String,
+               successBlock: @escaping () -> (),
+               errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()
+    )
+    
+}
+
+extension ApiClientProtocol {
+    func login(email: String,
+               password: String,
+               successBlock: @escaping () -> (),
+               errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()
+        ) {
+        
+    }
 }

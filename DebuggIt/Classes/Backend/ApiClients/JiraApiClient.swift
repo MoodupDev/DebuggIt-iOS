@@ -102,6 +102,34 @@ class JiraApiClient: ApiClientProtocol {
         
     }
     
+    func login(email: String, password: String, successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : authorizationHeader(username: email, password: password)
+        ]
+        
+        let url = checkUrlProtocol(url: String(format: Constants.Jira.configurationUrl, host))
+        
+        Alamofire.request(url, method: .get, encoding: URLEncoding.default, headers: headers).responseString { (response) in
+            switch response.result {
+            case .success(let value):
+                if response.isSuccess() {
+                    self.storeUserCredentials(email: email, password: password)
+                    successBlock()
+                } else {
+                    errorBlock(response.responseCode, value)
+                }
+            case .failure(let error as AFError):
+                errorBlock(nil, error.errorDescription)
+            default:
+                errorBlock(nil, nil)
+                
+            }
+            
+        }
+        
+    }
+    
     private func checkUrlProtocol(url: String) -> String {
         if !usesHttps {
             return url.replaceFirst(replace: "s", with: "")
