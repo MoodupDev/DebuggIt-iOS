@@ -64,8 +64,8 @@ class AudioCollectionViewCell: UICollectionViewCell {
     
     @IBAction func removeAudio(_ sender: UIButton) {
         DebuggIt.sharedInstance.report.audioUrls.remove(at: index)
-        if let viewController = self.viewController() as? ReportItemsViewController {
-            viewController.collectionView.reloadData()
+        if let viewController = self.viewController() as? BugDescriptionPage1ViewController {
+            viewController.reportItemsCollection.reloadData()
         }
     }
 

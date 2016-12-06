@@ -11,10 +11,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AudioCollectionViewCell" id="gTV-IL-0wX" customClass="AudioCollectionViewCell" customModule="DebuggIt" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
+            <rect key="frame" x="0.0" y="0.0" width="115" height="200"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
+                <rect key="frame" x="0.0" y="0.0" width="115" height="200"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cTE-nv-cUX">
@@ -57,8 +57,10 @@
                             <constraint firstItem="cwM-iO-JUS" firstAttribute="leading" secondItem="cTE-nv-cUX" secondAttribute="leading" id="a4J-cF-NNO"/>
                             <constraint firstAttribute="trailing" secondItem="0IN-mn-3sa" secondAttribute="trailing" id="bov-e3-7iA"/>
                             <constraint firstItem="8R1-ls-u3j" firstAttribute="centerY" secondItem="cTE-nv-cUX" secondAttribute="centerY" id="dxe-By-UrK"/>
+                            <constraint firstAttribute="height" constant="200" id="g8D-5A-emr"/>
                             <constraint firstAttribute="trailing" secondItem="cwM-iO-JUS" secondAttribute="trailing" id="qDm-yG-Cof"/>
                             <constraint firstItem="cwM-iO-JUS" firstAttribute="top" secondItem="cTE-nv-cUX" secondAttribute="top" id="tC9-qt-zpf"/>
+                            <constraint firstAttribute="width" constant="115" id="uMM-1n-4n7"/>
                         </constraints>
                     </view>
                 </subviews>

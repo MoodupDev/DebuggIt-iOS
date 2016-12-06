@@ -8,6 +8,10 @@
 
 import UIKit
 
+private let screenshotReuseIdentifier = "ScreenshotCollectionViewCell"
+private let newScreenshotReuseIdentifier = "NewScreenshotCollectionViewCell"
+private let audioReuseIdentifier = "AudioCollectionViewCell"
+
 class BugDescriptionPage1ViewController: UIViewController {
     
     // MARK: - Properties
@@ -16,23 +20,18 @@ class BugDescriptionPage1ViewController: UIViewController {
     @IBOutlet var priorityButtons: [UIButton]!
     @IBOutlet weak var titleTextView: UITextView!
     @IBOutlet weak var recordButton: UIButton!
-    @IBOutlet weak var reportItemsContainer: UIView!
     
-    var reportItemsController: ReportItemsViewController!
-    
+    @IBOutlet weak var reportItemsCollection: UICollectionView!
     
     // MARK: - Overriden
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        reportItemsController = Initializer.viewController(ReportItemsViewController.self)
-        
-        self.embed(reportItemsController, in: reportItemsContainer)
-        
         initTitle()
         initRecordButton()
         loadDataFromReport()
+        initReportItemsCollection()
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,6 +65,14 @@ class BugDescriptionPage1ViewController: UIViewController {
         selectFromButtons(priorityButtons, title: report.priority.rawValue)
     }
     
+    private func initReportItemsCollection() {
+        self.reportItemsCollection.dataSource = self
+        
+        self.reportItemsCollection.register(Initializer.nib(named: screenshotReuseIdentifier), forCellWithReuseIdentifier: screenshotReuseIdentifier)
+        self.reportItemsCollection.register(Initializer.nib(named: newScreenshotReuseIdentifier), forCellWithReuseIdentifier: newScreenshotReuseIdentifier)
+        self.reportItemsCollection.register(Initializer.nib(named: audioReuseIdentifier), forCellWithReuseIdentifier: audioReuseIdentifier)
+    }
+    
     private func selectFromButtons(_ buttons: [UIButton], selected: UIButton) {
         for button in buttons {
             button.isSelected = button == selected
@@ -96,7 +103,7 @@ class BugDescriptionPage1ViewController: UIViewController {
     }
     
     func reloadReportItems() {
-        self.reportItemsController.collectionView.reloadData()
+        self.reportItemsCollection.reloadData()
     }
     
     // MARK: - Actions
@@ -145,5 +152,60 @@ extension BugDescriptionPage1ViewController: RecordViewControllerDelegate {
     
     func recordFailed() {
         recordButton.isSelected = false
+    }
+}
+
+extension BugDescriptionPage1ViewController : UICollectionViewDataSource {
+    
+    var itemsCount: Int {
+        let report = DebuggIt.sharedInstance.report
+        return report.screenshotsUrls.count + report.audioUrls.count + 1
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return itemsCount
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if indexPath.row == itemsCount - 1 {
+            print("collectionView.contentSize:", collectionView.collectionViewLayout.collectionViewContentSize)
+            print(String(describing: self), "size:", self.view.frame.size)
+            print("collectionView.frame.size:", collectionView.frame.size)
+            return collectionView.dequeueReusableCell(withReuseIdentifier: newScreenshotReuseIdentifier, for: indexPath) as! NewScreenshotCollectionViewCell
+        } else {
+            let report = DebuggIt.sharedInstance.report
+            
+            if indexPath.row < report.audioUrls.count {
+                return createAudioCell(for: indexPath)
+            } else {
+                return createScreenshotCell(for: indexPath)
+            }
+        }
+    }
+    
+    func createScreenshotCell(for indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = reportItemsCollection.dequeueReusableCell(withReuseIdentifier: screenshotReuseIdentifier, for: indexPath) as! ScreenshotCollectionViewCell
+        
+        let report = DebuggIt.sharedInstance.report
+        let screenshots = report.screenshotsUrls
+        let index = indexPath.row - report.audioUrls.count
+        if let url = URL(string: screenshots[index]) {
+            cell.screenshotImage.loadFrom(url: url)
+        }
+        cell.index = index
+        
+        return cell
+    }
+    
+    func createAudioCell(for indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = reportItemsCollection.dequeueReusableCell(withReuseIdentifier: audioReuseIdentifier, for: indexPath) as! AudioCollectionViewCell
+        cell.index = indexPath.row
+        return cell
     }
 }

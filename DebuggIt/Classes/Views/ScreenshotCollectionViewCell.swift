@@ -20,8 +20,8 @@ class ScreenshotCollectionViewCell: UICollectionViewCell {
     @IBAction func deleteScreenshot(_ sender: UIButton) {
         if let index = index {
             DebuggIt.sharedInstance.report.screenshotsUrls.remove(at: index)
-            if let viewController = self.viewController() as? ReportItemsViewController {
-                viewController.collectionView.reloadData()
+            if let viewController = self.viewController() as? BugDescriptionPage1ViewController {
+                viewController.reportItemsCollection.reloadData()
             }
         }
     }

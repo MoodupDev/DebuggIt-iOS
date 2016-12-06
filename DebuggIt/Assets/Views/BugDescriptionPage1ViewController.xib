@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BugDescriptionPage1ViewController" customModule="DebuggIt" customModuleProvider="target">
             <connections>
                 <outlet property="recordButton" destination="28T-Sq-gfZ" id="rKC-e9-5WU"/>
-                <outlet property="reportItemsContainer" destination="pdm-hT-x2c" id="Dm6-KM-XlC"/>
+                <outlet property="reportItemsCollection" destination="S9b-dF-pQ7" id="qpa-aC-6BL"/>
                 <outlet property="titleTextView" destination="2Gc-AC-FDh" id="Rcg-CL-a6W"/>
                 <outlet property="view" destination="wwm-cq-uWO" id="8YQ-g8-LPY"/>
                 <outletCollection property="kindButtons" destination="iLG-uh-1wi" collectionClass="NSMutableArray" id="jJ7-B4-e1M"/>
@@ -191,17 +190,27 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Os6-AB-mH2">
                     <rect key="frame" x="8" y="244" width="359" height="415"/>
                     <subviews>
-                        <containerView opaque="NO" clipsSubviews="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="pdm-hT-x2c">
-                            <rect key="frame" x="0.0" y="0.0" width="359" height="415"/>
-                        </containerView>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="S9b-dF-pQ7">
+                            <rect key="frame" x="-8" y="92" width="375" height="230"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="230" id="vhN-Uj-S5v"/>
+                            </constraints>
+                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fsU-in-udd">
+                                <size key="itemSize" width="115" height="200"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                            <cells/>
+                        </collectionView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="pdm-hT-x2c" firstAttribute="leading" secondItem="Os6-AB-mH2" secondAttribute="leading" id="TGm-4j-C9N"/>
-                        <constraint firstItem="pdm-hT-x2c" firstAttribute="top" secondItem="Os6-AB-mH2" secondAttribute="top" id="W2d-UX-DvW"/>
-                        <constraint firstAttribute="trailing" secondItem="pdm-hT-x2c" secondAttribute="trailing" id="hmX-9S-CgI"/>
-                        <constraint firstAttribute="bottom" secondItem="pdm-hT-x2c" secondAttribute="bottom" id="jdi-Dt-yFc"/>
-                        <constraint firstItem="pdm-hT-x2c" firstAttribute="centerX" secondItem="Os6-AB-mH2" secondAttribute="centerX" id="je6-5r-Ae7"/>
+                        <constraint firstItem="S9b-dF-pQ7" firstAttribute="top" secondItem="Os6-AB-mH2" secondAttribute="top" id="Se7-8E-dzS"/>
+                        <constraint firstItem="S9b-dF-pQ7" firstAttribute="leading" secondItem="Os6-AB-mH2" secondAttribute="leading" id="dDM-y5-A6M"/>
+                        <constraint firstAttribute="trailing" secondItem="S9b-dF-pQ7" secondAttribute="trailing" id="gzd-ig-icY"/>
+                        <constraint firstAttribute="bottom" secondItem="S9b-dF-pQ7" secondAttribute="bottom" id="vib-vG-rKE"/>
                     </constraints>
                 </view>
             </subviews>
