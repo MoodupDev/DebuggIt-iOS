@@ -21,6 +21,15 @@ class IssueContentProvider {
         }
     }
     
+    private static var cellSeparator: String {
+        switch DebuggIt.sharedInstance.configType {
+        case .jira:
+            return "|"
+        default:
+            return " | "
+        }
+    }
+    
     private static var deviceInfo: [String : String] {
         var info =  [
             "Device": UIDevice.current.modelName,
@@ -90,21 +99,41 @@ class IssueContentProvider {
     
     private static func createInfoTable() -> String {
         var content = createTableHeader() + "\n"
-        var lineCounter = 0
+        var cellCounter = 0
+        
+        if DebuggIt.sharedInstance.configType == .jira {
+            content += cellSeparator
+        }
+        
         for (key, value) in deviceInfo {
-            content += [boldTitle(key), value].reduce("", { !$0.isEmpty ? $0  + " | " + $1 : $0 + $1})
-            content += lineCounter % 2 == 1 ? "\n" : " | "
-            lineCounter += 1
+            content += cellContent(key: key, value: value)
+            content += endOfCell(counter: cellCounter)
+            cellCounter += 1
         }
         return content
+    }
+    
+    private static func cellContent(key: String, value: String) -> String {
+        return [boldTitle(key), value].reduce("", { !$0.isEmpty ? $0  + cellSeparator + $1 : $0 + $1})
+    }
+    
+    private static func endOfCell(counter cellCounter: Int) -> String {
+        switch DebuggIt.sharedInstance.configType {
+        case .jira:
+            return cellCounter % 2 == 1 ? cellSeparator + "\n" + cellSeparator : cellSeparator
+        default:
+            return cellCounter % 2 == 1 ? "\n" : cellSeparator
+        }
     }
     
     private static func createTableHeader() -> String {
         switch DebuggIt.sharedInstance.configType {
         case .bitbucket:
             return [" | | | ", "---|---|---|---"].reduce("", {$0 + "\n" + $1})
-        default:
+        case .github:
             return ["Key | Value | Key | Value ", "---|---|---|---"].reduce("", {$0 + "\n" + $1})
+        default:
+            return "|| Key || Value || Key || Value ||"
         }
     }
 }
