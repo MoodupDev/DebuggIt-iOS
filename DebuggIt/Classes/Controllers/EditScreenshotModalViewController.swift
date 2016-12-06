@@ -73,6 +73,7 @@ class EditScreenshotModalViewController: UIViewController {
     
     @IBAction func tapCancel(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
+        DebuggIt.sharedInstance.moveApplicationWindowToFront()
     }
     
     @IBAction func tapUndo(_ sender: UIButton) {

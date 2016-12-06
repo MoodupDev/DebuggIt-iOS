@@ -58,6 +58,7 @@ class BugDescriptionViewController: UIViewController {
     
     @IBAction func cancelClicked(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
+        DebuggIt.sharedInstance.moveApplicationWindowToFront()
         DebuggIt.sharedInstance.report = Report()
         IQKeyboardManager.sharedManager().enable = false
     }

@@ -17,6 +17,7 @@ public class DebuggIt: NSObject {
     
     private var currentViewController:UIViewController?
     var applicationWindow: UIWindow?
+    var window: UIWindow?
     var apiClient:ApiClientProtocol?
     var configType:ConfigType = .bitbucket
     
@@ -175,15 +176,24 @@ public class DebuggIt: NSObject {
     }
     
     func showModal(viewController: UIViewController, animated: Bool = true, completion: (() -> Void)? = nil) {
-        applicationWindow = UIApplication.shared.keyWindow
+        if window == nil {
+            applicationWindow = UIApplication.shared.keyWindow
+            
+            window = UIWindow(frame: UIScreen.main.bounds)
+            window?.rootViewController = UIViewController()
+            window?.windowLevel = UIWindowLevelAlert + 1
+            window?.makeKeyAndVisible()
+        }
+        
         viewController.modalPresentationStyle = .overCurrentContext
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = UIViewController()
-        window.windowLevel = UIWindowLevelAlert + 1
-        window.makeKeyAndVisible()
-        window.rootViewController?.present(viewController, animated: animated, completion: completion)
+        window?.rootViewController?.present(viewController, animated: animated, completion: completion)
     }
     
+    func moveApplicationWindowToFront() {
+        self.window?.isHidden = true
+        self.window = nil
+        self.applicationWindow?.makeKeyAndVisible()
+    }
     
     
     private func registerShakeDetector() {
