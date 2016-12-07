@@ -174,7 +174,7 @@ public class DebuggIt: NSObject {
             
             let navigationController = UINavigationController(rootViewController: loginViewController)
             navigationController.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: loginViewController, action: #selector(loginViewController.dismiss(_:)))
-            navigationController.navigationBar.topItem?.title = "Sign in"
+            navigationController.navigationBar.topItem?.title = "alert.title.login".localized()
             
             showModal(viewController: navigationController)
         }

@@ -48,13 +48,14 @@ extension WebViewController : UIWebViewDelegate {
         let loadingAlert = Utils.createAlert(title: "alert.title.login".localized(), message: "alert.message.login".localized())
         self.present(loadingAlert, animated: true, completion: nil)
         DebuggIt.sharedInstance.apiClient?.exchangeAuthCodeForToken(code, successBlock: { [unowned self] in
-            loadingAlert.dismiss(animated: true, completion: nil)
-            self.present(Utils.createAlert(title: "alert.title.login".localized(), message: "alert.message.login.successful".localized(), positiveAction: {
-                self.dismiss(animated: true, completion: nil)
-                let editScreenshotViewController = Initializer.viewController(EditScreenshotModalViewController.self)
-                editScreenshotViewController.modalPresentationStyle = .overCurrentContext
-                DebuggIt.sharedInstance.showModal(viewController: editScreenshotViewController)
-            }), animated: true, completion: nil)
+            loadingAlert.dismiss(animated: true, completion: {
+                self.present(Utils.createAlert(title: "alert.title.login.successful".localized(), message: "alert.message.login.successful".localized(), positiveAction: {
+                    self.dismiss(animated: true, completion: nil)
+                    let editScreenshotViewController = Initializer.viewController(EditScreenshotModalViewController.self)
+                    editScreenshotViewController.modalPresentationStyle = .overCurrentContext
+                    DebuggIt.sharedInstance.showModal(viewController: editScreenshotViewController)
+                }), animated: true, completion: nil)
+            })
             }, errorBlock: nil)
     }
 }

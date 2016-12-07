@@ -21,8 +21,6 @@ class BugDescriptionViewController: UIViewController {
         pageViewController.pageControl = self.pageControl
         
         self.embed(pageViewController, in: container)
-        
-        // Do any additional setup after loading the view.
     }
     
     // MARK: Actions
@@ -40,13 +38,15 @@ class BugDescriptionViewController: UIViewController {
             
             DebuggIt.sharedInstance.sendReport(
                 successBlock: {
-                    alertController.dismiss(animated: false, completion: nil)
-                    self.present(Utils.createAlert(title: "alert.title.success".localized(), message: "alert.message.saved.report".localized(), positiveAction: self.dissmissDebuggIt, negativeAction: nil), animated: true, completion: nil)
+                    alertController.dismiss(animated: false, completion: {
+                        self.present(Utils.createAlert(title: "alert.title.success".localized(), message: "alert.message.saved.report".localized(), positiveAction: self.dissmissDebuggIt, negativeAction: nil), animated: true, completion: nil)
+                    })
                     DebuggIt.sharedInstance.report = Report()
             }, errorBlock: {
                 (status, error) in
-                alertController.dismiss(animated: false, completion: nil)
-                self.present(Utils.createAlert(title: "alert.title.failure".localized(), message: Utils.parseError(error), positiveAction: self.dissmissDebuggIt, negativeAction: nil), animated: true, completion: nil)
+                alertController.dismiss(animated: false, completion:  {
+                    self.present(Utils.createAlert(title: "alert.title.failure".localized(), message: Utils.parseError(error), positiveAction: self.dissmissDebuggIt, negativeAction: nil), animated: true, completion: nil)
+                })
             })
         }
     }

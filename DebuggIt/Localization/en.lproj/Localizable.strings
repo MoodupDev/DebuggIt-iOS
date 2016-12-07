@@ -22,6 +22,7 @@ alert.title.success = "Success";
 alert.title.failure = "Error";
 
 alert.title.login = "Sign in";
+alert.title.login.successful = "Signed in!";
 
 alert.title.recording.disabled = "Recording is disabled";
 
@@ -33,7 +34,7 @@ alert.message.saved.audio = "Audio saved successfully";
 
 alert.message.wait = "Wait for the end...";
 alert.message.login = "Signing in to account...";
-alert.message.login.successful = "Signed in!\nNow let\'s smash some bugs";
+alert.message.login.successful = "Now let\'s smash some bugs";
 
 alert.message.recording.disabled = "Please ask your developer to enable this feature";
 
