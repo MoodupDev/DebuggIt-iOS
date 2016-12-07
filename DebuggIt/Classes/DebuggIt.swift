@@ -13,7 +13,7 @@ import IQKeyboardManagerSwift
 public class DebuggIt: NSObject {
     
     @objc public static let sharedInstance = DebuggIt()
-    let debuggItButton = DebuggItButton.instantiateFromNib()
+    var debuggItButton: DebuggItButton!
     
     private var currentViewController:UIViewController?
     var applicationWindow: UIWindow?
@@ -106,6 +106,8 @@ public class DebuggIt: NSObject {
     }
     
     private func addReportButton() {
+        removeReportButtonIfExists()
+        let debuggItButton = DebuggItButton.instantiateFromNib()
         debuggItButton.clipsToBounds = true
         debuggItButton.translatesAutoresizingMaskIntoConstraints = false
         debuggItButton.isUserInteractionEnabled = true
@@ -125,6 +127,16 @@ public class DebuggIt: NSObject {
         debuggItButton.addGestureRecognizer(tapGestureRecognizer)
         debuggItButton.addGestureRecognizer(panGestureRecognizer)
         debuggItButton.addGestureRecognizer(longPressGestureRecognizer)
+        
+        self.debuggItButton = debuggItButton
+    }
+    
+    private func removeReportButtonIfExists() {
+        for subview in currentViewController!.view.subviews {
+            if subview is DebuggItButton {
+                subview.removeFromSuperview()
+            }
+        }
     }
     
     
