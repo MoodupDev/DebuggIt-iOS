@@ -43,7 +43,6 @@ class BugDescriptionViewController: UIViewController {
                     alertController.dismiss(animated: false, completion: nil)
                     self.present(Utils.createAlert(title: "alert.title.success".localized(), message: "alert.message.saved.report".localized(), positiveAction: self.dissmissDebuggIt, negativeAction: nil), animated: true, completion: nil)
                     DebuggIt.sharedInstance.report = Report()
-                    IQKeyboardManager.sharedManager().enable = false
             }, errorBlock: {
                 (status, error) in
                 alertController.dismiss(animated: false, completion: nil)
@@ -61,7 +60,6 @@ class BugDescriptionViewController: UIViewController {
         dismiss(animated: true, completion: nil)
         DebuggIt.sharedInstance.moveApplicationWindowToFront()
         DebuggIt.sharedInstance.report = Report()
-        IQKeyboardManager.sharedManager().enable = false
     }
     
     @IBAction func pageControlTapped(_ sender: UIPageControl) {

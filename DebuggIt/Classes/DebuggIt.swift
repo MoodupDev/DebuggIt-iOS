@@ -122,8 +122,10 @@ public class DebuggIt: NSObject {
             showModal(viewController: Utils.createAlert(title: "Logout", message: "Do you want to logout?", positiveAction: {
                 self.logout()
                 self.logoutShown = false
+                self.moveApplicationWindowToFront()
             }, negativeAction: {
                 self.logoutShown = false
+                self.moveApplicationWindowToFront()
             }))
         }
     }
@@ -141,7 +143,6 @@ public class DebuggIt: NSObject {
     }
     
     func showLoginModal() {
-        IQKeyboardManager.sharedManager().enable = true
         
         if configType == .jira {
             showModal(viewController: Initializer.viewController(LoginModalViewController.self))
@@ -184,12 +185,13 @@ public class DebuggIt: NSObject {
             window?.windowLevel = UIWindowLevelAlert + 1
             window?.makeKeyAndVisible()
         }
-        
+        IQKeyboardManager.sharedManager().enable = true
         viewController.modalPresentationStyle = .overCurrentContext
         window?.rootViewController?.present(viewController, animated: animated, completion: completion)
     }
     
     func moveApplicationWindowToFront() {
+        IQKeyboardManager.sharedManager().enable = false
         self.window?.isHidden = true
         self.window = nil
         self.applicationWindow?.makeKeyAndVisible()

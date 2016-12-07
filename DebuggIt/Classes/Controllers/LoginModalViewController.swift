@@ -31,10 +31,6 @@ class LoginModalViewController: UIViewController {
         background.addGestureRecognizer(tapGesture)
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        IQKeyboardManager.sharedManager().enable = false
-    }
-    
     // MARK: Actions
     
     func close(_ sender: UITapGestureRecognizer) {
@@ -57,7 +53,7 @@ class LoginModalViewController: UIViewController {
                 self.dismiss(animated: true, completion: nil)
                 let editScreenshotViewController = EditScreenshotModalViewController()
                 editScreenshotViewController.modalPresentationStyle = .overCurrentContext
-                UIApplication.shared.keyWindow?.rootViewController?.present(editScreenshotViewController, animated: true, completion: nil)
+                DebuggIt.sharedInstance.showModal(viewController: editScreenshotViewController)
             }), animated: true, completion: nil)
             }, errorBlock: { [unowned self] (status, error) in
                 loadingAlert.dismiss(animated: true, completion: nil)

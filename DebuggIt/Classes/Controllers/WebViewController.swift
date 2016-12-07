@@ -24,6 +24,7 @@ class WebViewController: UIViewController {
     
     func dismiss(_ sender: AnyObject?) {
         self.dismiss(animated: true, completion: nil)
+        DebuggIt.sharedInstance.moveApplicationWindowToFront()
     }
 }
 
