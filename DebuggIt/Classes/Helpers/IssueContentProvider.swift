@@ -67,9 +67,9 @@ class IssueContentProvider {
     
     static func createContent(from report: Report) -> String {
         var lines = [String]()
-        lines.append(boldTitle(stepsToReproduce) + report.stepsToReproduce)
-        lines.append(boldTitle(actualBehavior) + report.actualBehavior)
-        lines.append(boldTitle(expectedBehavior) + report.expectedBehavior)
+        lines.append(boldTitle(stepsToReproduce) + report.stepsToReproduce.replacingOccurrences(of: "\n", with: "\n\n"))
+        lines.append(boldTitle(actualBehavior) + report.actualBehavior.replacingOccurrences(of: "\n", with: "\n\n"))
+        lines.append(boldTitle(expectedBehavior) + report.expectedBehavior.replacingOccurrences(of: "\n", with: "\n\n"))
         if DebuggIt.sharedInstance.configType == .github {
             lines.append(boldTitle(kind) + Utils.convert(fromKind: report.kind))
             lines.append(boldTitle(priority) + Utils.convert(fromPriority: report.priority))
