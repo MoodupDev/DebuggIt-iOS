@@ -64,7 +64,7 @@ class EditScreenshotModalViewController: UIViewController {
             viewController.dismiss(animated: true, completion: {
                 let bugDescriptionViewController = Initializer.viewController(BugDescriptionViewController.self)
                 bugDescriptionViewController.modalPresentationStyle = .overCurrentContext
-                DebuggIt.sharedInstance.showModal(viewController: bugDescriptionViewController);
+                DebuggIt.sharedInstance.showModal(viewController: bugDescriptionViewController)
             })
         }
         
