@@ -40,10 +40,7 @@ extension WebViewController : UIWebViewDelegate {
     }
     
     func isCallback(_ url: URL?) -> Bool {
-        if let url = url {
-            return url.queryParams()["code"] != nil
-        }
-        return false
+        return url?.queryParams()["code"] != nil
     }
     
     func exchangeCodeForAccessToken(_ code: String) {
