@@ -23,7 +23,7 @@ private let isDebuggItViewController: (UIViewController.Type) -> Bool = { viewCo
 private func attachDebuggIt(to viewController: UIViewController?) {
     if let viewController = viewController, isDebuggItViewController(type(of: viewController)) {
         do {
-            try DebuggIt.sharedInstance.attach(viewController: viewController)
+            try DebuggIt.sharedInstance.attach(to: viewController)
         } catch {
             print(#function, error)
         }

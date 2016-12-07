@@ -67,7 +67,7 @@ public class DebuggIt: NSObject {
         ApiClient.postEvent(.initialized)
     }
     
-    @objc public func attach(viewController: UIViewController) throws -> Void {
+    func attach(to viewController: UIViewController) throws -> Void {
         if(!isInitialized) {
             throw DebuggItError.notInitialized(message: "Call init before attach")
         } else {
