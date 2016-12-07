@@ -9,6 +9,7 @@
 struct Constants {
     
     static let debuggItUrl = "http://debugg.it"
+    static let firstRunKey = "debuggit_first_run"
     
     struct Api {
         private static let baseUrl = "https://debuggit-api-staging.herokuapp.com"

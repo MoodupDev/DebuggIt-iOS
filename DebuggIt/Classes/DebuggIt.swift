@@ -29,6 +29,18 @@ public class DebuggIt: NSObject {
     
     private var logoutShown = false
     
+    var isFirstRun: Bool {
+        get {
+            let defaults = UserDefaults.standard
+            return !defaults.bool(forKey: Constants.firstRunKey)
+        }
+        set {
+            let defaults = UserDefaults.standard
+            defaults.set(isFirstRun, forKey: Constants.firstRunKey)
+            defaults.synchronize()
+        }
+    }
+    
     private override init() {
 
     }
@@ -63,12 +75,22 @@ public class DebuggIt: NSObject {
                 ApiClient.postEvent(.initialized)
                 shouldPostInitializedEvent = false
             }
-            //todo add version checking
+            //TODO: add version checking
             
             currentViewController = viewController
             
             registerShakeDetector()
             addReportButton()
+            
+            if isFirstRun {
+                do {
+                    try apiClient?.keychain.removeAll()
+                } catch let error {
+                    print("\(#function): error when removing all keychain keys: \(error)")
+                }
+                //TODO: open first run dialog
+                isFirstRun = false
+            }
         }
     }
     
