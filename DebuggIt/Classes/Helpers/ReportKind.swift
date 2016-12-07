@@ -9,4 +9,17 @@
 enum ReportKind: String {
     case bug = "Bug"
     case enhancement = "Enhancement"
+    
+    func name() -> String {
+        if DebuggIt.sharedInstance.configType == .jira {
+            switch self {
+            case .enhancement:
+                return Constants.Jira.task
+            default:
+                return self.rawValue
+            }
+        } else {
+            return self.rawValue
+        }
+    }
 }

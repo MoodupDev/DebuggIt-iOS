@@ -12,34 +12,6 @@ import SwiftyJSON
 
 class Utils {
     
-    static func convert(fromPriority: ReportPriority) -> String {
-        if DebuggIt.sharedInstance.configType == .bitbucket {
-            switch fromPriority {
-            case .low:
-                return Constants.Bitbucket.minor
-            case .medium:
-                return Constants.Bitbucket.major
-            case .high:
-                return Constants.Bitbucket.critical
-            }
-        } else {
-            return fromPriority.rawValue
-        }
-    }
-    
-    static func convert(fromKind: ReportKind) -> String {
-        if(DebuggIt.sharedInstance.configType == .jira) {
-            switch fromKind {
-            case .enhancement:
-                return Constants.Jira.task
-            default:
-                return fromKind.rawValue
-            }
-        } else {
-            return fromKind.rawValue
-        }
-    }
-    
     static func createAlert(title: String, message: String, positiveAction: (() -> Void)? = nil, negativeAction: (() -> Void)? = nil) -> UIAlertController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         if let positiveAction = positiveAction {

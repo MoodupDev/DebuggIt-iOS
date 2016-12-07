@@ -71,8 +71,8 @@ class IssueContentProvider {
         lines.append(boldTitle(actualBehavior) + report.actualBehavior.replacingOccurrences(of: "\n", with: "\n\n"))
         lines.append(boldTitle(expectedBehavior) + report.expectedBehavior.replacingOccurrences(of: "\n", with: "\n\n"))
         if DebuggIt.sharedInstance.configType == .github {
-            lines.append(boldTitle(kind) + Utils.convert(fromKind: report.kind))
-            lines.append(boldTitle(priority) + Utils.convert(fromPriority: report.priority))
+            lines.append(boldTitle(kind) + report.kind.name())
+            lines.append(boldTitle(priority) + report.priority.name())
         }
         report.screenshotsUrls.forEach { (url) in
             lines.append(getScreenshotLink(url: url))

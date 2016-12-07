@@ -99,8 +99,8 @@ public class DebuggIt: NSObject {
         apiClient?.addIssue(
             title: report.title,
             content: IssueContentProvider.createContent(from: report),
-            priority: Utils.convert(fromPriority: report.priority),
-            kind: Utils.convert(fromKind: report.kind),
+            priority: report.priority.name(),
+            kind: report.kind.name(),
             successBlock: successBlock,
             errorBlock: errorBlock)
     }
