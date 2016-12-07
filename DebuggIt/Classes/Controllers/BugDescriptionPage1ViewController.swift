@@ -155,6 +155,8 @@ extension BugDescriptionPage1ViewController: RecordViewControllerDelegate {
     }
 }
 
+// MARK: - UICollectionViewDataSource
+
 extension BugDescriptionPage1ViewController : UICollectionViewDataSource {
     
     var itemsCount: Int {
@@ -174,9 +176,6 @@ extension BugDescriptionPage1ViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if indexPath.row == itemsCount - 1 {
-            print("collectionView.contentSize:", collectionView.collectionViewLayout.collectionViewContentSize)
-            print(String(describing: self), "size:", self.view.frame.size)
-            print("collectionView.frame.size:", collectionView.frame.size)
             return collectionView.dequeueReusableCell(withReuseIdentifier: newScreenshotReuseIdentifier, for: indexPath) as! NewScreenshotCollectionViewCell
         } else {
             let report = DebuggIt.sharedInstance.report
