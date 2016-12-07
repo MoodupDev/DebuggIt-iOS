@@ -47,6 +47,6 @@ DebuggIt is a simple, yet powerful tool that helps you get reports of the bugs d
   s.dependency "SwiftyJSON"
   s.dependency "IQKeyboardManagerSwift", "~> 4.0.6"
   s.dependency 'KMPlaceholderTextView', '~> 1.3.0'
-
+  s.dependency 'KeychainAccess'
 
 end

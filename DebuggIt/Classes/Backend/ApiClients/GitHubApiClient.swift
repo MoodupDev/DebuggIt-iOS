@@ -72,13 +72,8 @@ class GitHubApiClient: ApiClientProtocol {
     
     func clearTokens() {
         accessToken = nil
-        
-        let defaults = UserDefaults.standard
-        
-        defaults.set(nil, forKey: Constants.GitHub.accessTokenKey)
-        defaults.set(nil, forKey: Constants.GitHub.twoFactorAuthCodeKey)
-        
-        defaults.synchronize()
+        self.keychain[Constants.GitHub.accessTokenKey] = nil
+        self.keychain[Constants.GitHub.twoFactorAuthCodeKey] = nil
     }
     
     func refreshAccessToken(successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
@@ -120,19 +115,17 @@ class GitHubApiClient: ApiClientProtocol {
         let json = JSON.parse(jsonString)
         self.accessToken = json["access_token"].stringValue
         
-        let defaults = UserDefaults.standard
-        defaults.set(accessToken, forKey: Constants.GitHub.accessTokenKey)
-        defaults.set(twoFactorAuthCode, forKey: Constants.GitHub.twoFactorAuthCodeKey)
-        defaults.synchronize()
+        self.keychain[Constants.GitHub.accessTokenKey] = self.accessToken
+        self.keychain[Constants.GitHub.twoFactorAuthCodeKey] = self.twoFactorAuthCode
     }
     
     private func loadTokens() {
-        let defaults = UserDefaults.standard
-        if let accessToken = defaults.string(forKey: Constants.GitHub.accessTokenKey) {
+        if let accessToken = try? self.keychain.get(Constants.GitHub.accessTokenKey) {
             self.accessToken = accessToken
         }
-        if let accessToken = defaults.string(forKey: Constants.GitHub.accessTokenKey) {
-            self.accessToken = accessToken
+        if let twoFactorAuthCode = try? self.keychain.get(Constants.GitHub.twoFactorAuthCodeKey) {
+            self.twoFactorAuthCode = twoFactorAuthCode
         }
+
     }
 }

@@ -6,12 +6,15 @@
 //  Copyright © 2016 Mood Up. All rights reserved.
 //
 
+import KeychainAccess
+
 protocol ApiClientProtocol {
     
     // MARK: - Properties
     
     var loginUrl: String { get }
     var hasToken: Bool { get }
+    var keychain: Keychain { get }
     
     // MARK: - Methods
     
@@ -41,6 +44,8 @@ protocol ApiClientProtocol {
     
 }
 
+// MARK: - Defaults
+
 extension ApiClientProtocol {
     func login(email: String,
                password: String,
@@ -48,5 +53,9 @@ extension ApiClientProtocol {
                errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()
         ) {
         
+    }
+    
+    var keychain: Keychain {
+        return Keychain(service: "com.moodup.debuggit")
     }
 }

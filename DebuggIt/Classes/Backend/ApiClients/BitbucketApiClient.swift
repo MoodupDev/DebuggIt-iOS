@@ -113,12 +113,8 @@ class BitbucketApiClient: ApiClientProtocol {
         accessToken = nil
         refreshToken = nil
         
-        let defaults = UserDefaults.standard
-        
-        defaults.set(nil, forKey: Constants.Bitbucket.accessTokenKey)
-        defaults.set(nil, forKey: Constants.Bitbucket.refreshTokenKey)
-        
-        defaults.synchronize()
+        self.keychain[Constants.Bitbucket.accessTokenKey] = nil
+        self.keychain[Constants.Bitbucket.refreshTokenKey] = nil
     }
     
     internal func exchangeAuthCodeForToken(_ code: String, successBlock: @escaping () -> (), errorBlock: @escaping (Int?, String?) -> ()) {
@@ -156,21 +152,18 @@ class BitbucketApiClient: ApiClientProtocol {
     
     private func storeTokens(from jsonString: String) {
         let json = JSON.parse(jsonString)
-        accessToken = json["access_token"].stringValue
-        refreshToken = json["refresh_token"].stringValue
+        self.accessToken = json["access_token"].stringValue
+        self.refreshToken = json["refresh_token"].stringValue
         
-        let defaults = UserDefaults.standard
-        defaults.set(self.accessToken, forKey: Constants.Bitbucket.accessTokenKey)
-        defaults.set(self.refreshToken, forKey: Constants.Bitbucket.refreshTokenKey)
-        defaults.synchronize()
+        self.keychain[Constants.Bitbucket.accessTokenKey] = self.accessToken
+        self.keychain[Constants.Bitbucket.refreshTokenKey] = self.refreshToken
     }
     
     private func loadTokens() {
-        let defaults = UserDefaults.standard
-        if let accessToken = defaults.string(forKey: Constants.Bitbucket.accessTokenKey) {
+        if let accessToken = try? self.keychain.get(Constants.Bitbucket.accessTokenKey) {
             self.accessToken = accessToken
         }
-        if let refreshToken = defaults.string(forKey: Constants.Bitbucket.refreshTokenKey) {
+        if let refreshToken = try? self.keychain.get(Constants.Bitbucket.refreshTokenKey) {
             self.refreshToken = refreshToken
         }
     }
