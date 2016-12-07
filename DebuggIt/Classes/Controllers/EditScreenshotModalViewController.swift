@@ -18,7 +18,7 @@ class EditScreenshotModalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        screenshotSurface.image = DebuggIt.sharedInstance.report.screenshots.last
+        screenshotSurface.image = DebuggIt.sharedInstance.report.currentScreenshot
         initButtons()
     }
     
@@ -41,8 +41,7 @@ class EditScreenshotModalViewController: UIViewController {
         
         let image = UIGraphicsGetImageFromCurrentImageContext()!
         
-        DebuggIt.sharedInstance.report.screenshots.removeLast()
-        DebuggIt.sharedInstance.report.screenshots.append(image)
+        DebuggIt.sharedInstance.report.currentScreenshot = image
         
         UIGraphicsEndImageContext()
         

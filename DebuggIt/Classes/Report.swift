@@ -20,7 +20,7 @@ class Report {
     var actualBehavior = ""
     var expectedBehavior = ""
     
-    var screenshots = [UIImage]()
+    var currentScreenshot: UIImage?
     var screenshotsUrls = [String]()
     var audioUrls = [String]()
     

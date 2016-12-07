@@ -109,7 +109,7 @@ class DrawingView: UIImageView {
     }
     
     private func redraw() {
-        self.image = DebuggIt.sharedInstance.report.screenshots.last
+        self.image = DebuggIt.sharedInstance.report.currentScreenshot
         rectangles.forEach({ (rectangle) in
             draw(rectangle)
         })
