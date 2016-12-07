@@ -14,8 +14,9 @@ class NewScreenshotCollectionViewCell: UICollectionViewCell {
     // MARK: - Actions
     
     @IBAction func addNewScreenshot(_ sender: UIButton) {
-        self.viewController()?.presentingViewController?.dismiss(animated: true, completion: nil)
-        DebuggIt.sharedInstance.moveApplicationWindowToFront()
+        self.viewController()?.presentingViewController?.dismiss(animated: true, completion: {
+            DebuggIt.sharedInstance.moveApplicationWindowToFront()
+        })
         IQKeyboardManager.sharedManager().enable = false
     }
 

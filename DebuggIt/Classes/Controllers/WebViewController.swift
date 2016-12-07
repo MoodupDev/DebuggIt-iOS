@@ -23,8 +23,9 @@ class WebViewController: UIViewController {
     }
     
     func dismiss(_ sender: AnyObject?) {
-        self.dismiss(animated: true, completion: nil)
-        DebuggIt.sharedInstance.moveApplicationWindowToFront()
+        self.dismiss(animated: true, completion: {
+            DebuggIt.sharedInstance.moveApplicationWindowToFront()
+        })
     }
 }
 
@@ -54,8 +55,6 @@ extension WebViewController : UIWebViewDelegate {
                 editScreenshotViewController.modalPresentationStyle = .overCurrentContext
                 DebuggIt.sharedInstance.showModal(viewController: editScreenshotViewController)
             }), animated: true, completion: nil)
-            }, errorBlock: { (status, errorMessage) in
-                print(status ?? "status", errorMessage ?? "error")
-        })
+            }, errorBlock: nil)
     }
 }

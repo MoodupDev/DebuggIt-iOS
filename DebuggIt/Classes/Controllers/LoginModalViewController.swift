@@ -35,8 +35,9 @@ class LoginModalViewController: UIViewController {
     
     func close(_ sender: UITapGestureRecognizer) {
         self.dismiss(animated: true, completion: nil)
-        self.presentingViewController?.dismiss(animated: true, completion: nil)
-        DebuggIt.sharedInstance.moveApplicationWindowToFront()
+        self.presentingViewController?.dismiss(animated: true, completion: {
+            DebuggIt.sharedInstance.moveApplicationWindowToFront()
+        })
     }
     
     @IBAction func signIn(_ sender: UIButton) {

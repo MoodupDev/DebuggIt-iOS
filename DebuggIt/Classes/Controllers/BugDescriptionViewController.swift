@@ -52,13 +52,15 @@ class BugDescriptionViewController: UIViewController {
     }
     
     private func dissmissDebuggIt() {
-        self.dismiss(animated: true, completion: nil)
-        DebuggIt.sharedInstance.moveApplicationWindowToFront()
+        self.dismiss(animated: true, completion: {
+            DebuggIt.sharedInstance.moveApplicationWindowToFront()
+        })
     }
     
     @IBAction func cancelClicked(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
-        DebuggIt.sharedInstance.moveApplicationWindowToFront()
+        dismiss(animated: true, completion: {
+            DebuggIt.sharedInstance.moveApplicationWindowToFront()
+        })
         DebuggIt.sharedInstance.report = Report()
     }
     
