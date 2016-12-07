@@ -38,7 +38,7 @@ class JiraApiClient: ApiClientProtocol {
     
     // MARK: ApiClient
     
-    func addIssue(title: String, content: String, priority: String, kind: String, successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
+    func addIssue(title: String, content: String, priority: String, kind: String, successBlock: (() -> ())?, errorBlock: ((_ statusCode: Int? , _ body: String?) -> ())?) {
         
         let params: Parameters = [
             "fields" : [
@@ -66,14 +66,14 @@ class JiraApiClient: ApiClientProtocol {
             switch response.result {
             case .success(let value):
                 if response.isSuccess() {
-                    successBlock()
+                    successBlock?()
                 } else {
-                    errorBlock(response.responseCode, value)
+                    errorBlock?(response.responseCode, value)
                 }
             case .failure(let error as AFError):
-                errorBlock(nil, error.errorDescription)
+                errorBlock?(nil, error.errorDescription)
             default:
-                errorBlock(nil, nil)
+                errorBlock?(nil, nil)
                 
             }
             
@@ -82,7 +82,7 @@ class JiraApiClient: ApiClientProtocol {
         
     }
     
-    func refreshAccessToken(successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
+    func refreshAccessToken(successBlock: (() -> ())?, errorBlock: ((_ statusCode: Int? , _ body: String?) -> ())?) {
         // do nothing
     }
     
@@ -94,11 +94,11 @@ class JiraApiClient: ApiClientProtocol {
         self.keychain[Constants.Jira.passwordKey] = nil
     }
     
-    internal func exchangeAuthCodeForToken(_ code: String, successBlock: @escaping () -> (), errorBlock: @escaping (Int?, String?) -> ()) {
+    internal func exchangeAuthCodeForToken(_ code: String, successBlock: (() -> ())?, errorBlock: ((_ statusCode: Int? , _ body: String?) -> ())?) {
         
     }
     
-    func login(email: String, password: String, successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
+    func login(email: String, password: String, successBlock: (() -> ())?, errorBlock: ((_ statusCode: Int? , _ body: String?) -> ())?) {
         
         let headers: HTTPHeaders = [
             "Authorization" : authorizationHeader(username: email, password: password)
@@ -111,14 +111,14 @@ class JiraApiClient: ApiClientProtocol {
             case .success(let value):
                 if response.isSuccess() {
                     self.storeUserCredentials(email: email, password: password)
-                    successBlock()
+                    successBlock?()
                 } else {
-                    errorBlock(response.responseCode, value)
+                    errorBlock?(response.responseCode, value)
                 }
             case .failure(let error as AFError):
-                errorBlock(nil, error.errorDescription)
+                errorBlock?(nil, error.errorDescription)
             default:
-                errorBlock(nil, nil)
+                errorBlock?(nil, nil)
                 
             }
             

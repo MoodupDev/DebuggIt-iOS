@@ -36,7 +36,7 @@ class GitHubApiClient: ApiClientProtocol {
     
     // MARK: ApiClient
     
-    func addIssue(title: String, content: String, priority: String, kind: String, successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
+    func addIssue(title: String, content: String, priority: String, kind: String, successBlock: (() -> ())?, errorBlock: ((_ statusCode: Int? , _ body: String?) -> ())?) {
         
         let params : Parameters = [
             "title": title,
@@ -55,14 +55,14 @@ class GitHubApiClient: ApiClientProtocol {
             switch response.result {
             case .success(let value):
                 if response.isSuccess() {
-                    successBlock()
+                    successBlock?()
                 } else {
-                    errorBlock(response.responseCode, value)
+                    errorBlock?(response.responseCode, value)
                 }
             case .failure(let error as AFError):
-                errorBlock(nil, error.errorDescription)
+                errorBlock?(nil, error.errorDescription)
             default:
-                errorBlock(nil, nil)
+                errorBlock?(nil, nil)
                 
             }
             
@@ -76,11 +76,11 @@ class GitHubApiClient: ApiClientProtocol {
         self.keychain[Constants.GitHub.twoFactorAuthCodeKey] = nil
     }
     
-    func refreshAccessToken(successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()) {
+    func refreshAccessToken(successBlock: (() -> ())?, errorBlock: ((_ statusCode: Int? , _ body: String?) -> ())?) {
         // do nothing
     }
     
-    internal func exchangeAuthCodeForToken(_ code: String, successBlock: @escaping () -> (), errorBlock: @escaping (Int?, String?) -> ()) {
+    internal func exchangeAuthCodeForToken(_ code: String, successBlock: (() -> ())?, errorBlock: ((_ statusCode: Int? , _ body: String?) -> ())?) {
         
         let headers: HTTPHeaders = [
             "Accept": "application/json"
@@ -97,14 +97,14 @@ class GitHubApiClient: ApiClientProtocol {
             case .success(let value):
                 if response.isSuccess() {
                     self.storeTokens(from: value)
-                    successBlock()
+                    successBlock?()
                 } else {
-                    errorBlock(response.responseCode, value)
+                    errorBlock?(response.responseCode, value)
                 }
             case .failure(let error as AFError):
-                errorBlock(nil, error.errorDescription)
+                errorBlock?(nil, error.errorDescription)
             default:
-                errorBlock(nil, nil)
+                errorBlock?(nil, nil)
                 
             }
         }

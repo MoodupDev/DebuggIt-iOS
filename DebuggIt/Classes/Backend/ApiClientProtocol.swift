@@ -22,24 +22,25 @@ protocol ApiClientProtocol {
                   content: String,
                   priority: String,
                   kind: String,
-                  successBlock: @escaping () -> (),
-                  errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()
+                  successBlock: (() -> ())?,
+                  errorBlock: ((_ statusCode: Int? , _ body: String?) -> ())?
     )
     
-    func refreshAccessToken(successBlock: @escaping () -> (),
-                      errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()
+    func refreshAccessToken(successBlock:  (() -> ())?,
+                      errorBlock: ((_ statusCode: Int? , _ body: String?) -> ())?
     )
     
     func clearTokens()
     
     func exchangeAuthCodeForToken(_ code: String,
-                              successBlock: @escaping () -> (),
-                              errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ())
+                              successBlock:  (() -> ())?,
+                              errorBlock: ((_ statusCode: Int? , _ body: String?) -> ())?
+    )
     
     func login(email: String,
                password: String,
-               successBlock: @escaping () -> (),
-               errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()
+               successBlock:  (() -> ())?,
+               errorBlock: ((_ statusCode: Int? , _ body: String?) -> ())?
     )
     
 }
@@ -49,8 +50,8 @@ protocol ApiClientProtocol {
 extension ApiClientProtocol {
     func login(email: String,
                password: String,
-               successBlock: @escaping () -> (),
-               errorBlock: @escaping (_ statusCode: Int? , _ body: String?) -> ()
+               successBlock:  (() -> ())?,
+               errorBlock: ((_ statusCode: Int? , _ body: String?) -> ())?
         ) {
         
     }
