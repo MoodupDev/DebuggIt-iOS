@@ -181,14 +181,12 @@ public class DebuggIt: NSObject {
     }
     
     @objc func moveButton(_ recognizer: UIPanGestureRecognizer) {
-        if recognizer.state == .began || recognizer.state == .changed {
-            if let view = recognizer.view {
-                let translation = recognizer.translation(in: view)
-                if(translation.y < 0.0 && view.center.y > (view.frame.height / 2)
-                    || translation.y >= 0.0 && view.center.y < ((currentViewController?.view.frame.maxY)! - (view.frame.height/2))) {
-                    view.center = CGPoint(x: view.center.x, y: view.center.y + translation.y)
-                    recognizer.setTranslation(CGPoint.zero, in: view)
-                }
+        if recognizer.state == .began || recognizer.state == .changed, let view = recognizer.view {
+            let translation = recognizer.translation(in: view)
+            if(translation.y < 0.0 && view.center.y > (view.frame.height / 2)
+                || translation.y >= 0.0 && view.center.y < ((currentViewController?.view.frame.maxY)! - (view.frame.height/2))) {
+                view.center = CGPoint(x: view.center.x, y: view.center.y + translation.y)
+                recognizer.setTranslation(CGPoint.zero, in: view)
             }
         }
     }
