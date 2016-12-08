@@ -86,8 +86,8 @@ public class DebuggIt: NSObject {
                 } catch let error {
                     print("\(#function): error when removing all keychain keys: \(error)")
                 }
-                //TODO: open first run dialog
-                isFirstRun = false
+                
+                showModal(viewController: Initializer.viewController(WelcomeViewController.self))
             }
         }
     }
