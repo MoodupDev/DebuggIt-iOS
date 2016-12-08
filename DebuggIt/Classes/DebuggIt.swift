@@ -62,7 +62,6 @@ public class DebuggIt: NSObject {
     
     func initDebugIt(configType:ConfigType) {
         self.configType = configType
-        report.configType = configType
         isInitialized = true
         ApiClient.postEvent(.initialized)
     }
