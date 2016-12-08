@@ -78,7 +78,6 @@ public class DebuggIt: NSObject {
             
             currentViewController = viewController
             
-            registerShakeDetector()
             addReportButton()
             
             if isFirstRun {
@@ -119,7 +118,7 @@ public class DebuggIt: NSObject {
         currentViewController?.view.addSubview(debuggItButton)
         addConstraints(forView: debuggItButton)
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(showReportDialog(_:)))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(showReportDialog))
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action:#selector(moveButton(_:)))
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action:#selector(handleLongPress(_:)))
         
@@ -164,7 +163,7 @@ public class DebuggIt: NSObject {
     }
     
     
-    @objc func showReportDialog(_ recognizer: UITapGestureRecognizer) {
+    @objc func showReportDialog() {
         debuggItButton.isHidden = true
         takeScreenshot()
         debuggItButton.isHidden = false
@@ -227,10 +226,4 @@ public class DebuggIt: NSObject {
         self.window = nil
         self.applicationWindow?.makeKeyAndVisible()
     }
-    
-    
-    private func registerShakeDetector() {
-        //todo add shake gesture listener
-    }
-    
 }

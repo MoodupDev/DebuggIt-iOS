@@ -16,16 +16,13 @@ private func swizzleMethod(of viewController: UIViewController.Type, original or
     method_exchangeImplementations(originalMethod, swizzledMethod)
 }
 
-private let isDebuggItViewController: (UIViewController.Type) -> Bool = { viewController in
-    return viewController is DebuggItViewControllerProtocol.Type
-}
-
-private func attachDebuggIt(to viewController: UIViewController?) {
-    if let viewController = viewController, isDebuggItViewController(type(of: viewController)) {
+private func attachDebuggIt(to viewController: UIViewController) {
+    if viewController is DebuggItViewControllerProtocol {
         do {
             try DebuggIt.sharedInstance.attach(to: viewController)
-        } catch {
-            print(#function, error)
+            viewController.becomeFirstResponder()
+        } catch let error {
+            fatalError("\(#function): \(error)")
         }
     }
 }
@@ -35,6 +32,8 @@ extension UIViewController {
     open override class func initialize() {
         
         guard self === UIViewController.self else { return }
+        swizzleMethod(of: self, original: #selector(getter: self.canBecomeFirstResponder), to: #selector(getter: self.canBecomeFirstResponderForShake))
+        swizzleMethod(of: self, original: #selector(self.motionEnded(_:with:)), to: #selector(self.motionEndedForShake(_:with:)))
         swizzleMethod(of: self, original: #selector(self.viewDidAppear(_:)), to: #selector(self.viewDidAppearWithAttach(_:)))
     }
     
@@ -44,4 +43,16 @@ extension UIViewController {
         self.viewDidAppearWithAttach(animated)
         attachDebuggIt(to: self)
     }
+    
+    var canBecomeFirstResponderForShake: Bool {
+        return self is DebuggItViewControllerProtocol
+    }
+    
+    func motionEndedForShake(_ motion: UIEventSubtype, with event: UIEvent?) {
+        if self is DebuggItViewControllerProtocol && motion == .motionShake {
+            DebuggIt.sharedInstance.showReportDialog()
+        }
+    }
+    
+    
 }
