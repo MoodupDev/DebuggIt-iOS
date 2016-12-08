@@ -35,13 +35,13 @@ extension UIViewController {
     open override class func initialize() {
         
         guard self === UIViewController.self else { return }
-        swizzleMethod(of: self, original: #selector(self.viewWillAppear(_:)), to: #selector(self.viewWillAppearWithAttach(_:)))
+        swizzleMethod(of: self, original: #selector(self.viewDidAppear(_:)), to: #selector(self.viewDidAppearWithAttach(_:)))
     }
     
     // MARK: - Swizzled methods
     
-    func viewWillAppearWithAttach(_ animated: Bool) {
-        self.viewWillAppearWithAttach(animated)
+    func viewDidAppearWithAttach(_ animated: Bool) {
+        self.viewDidAppearWithAttach(animated)
         attachDebuggIt(to: self)
     }
 }
