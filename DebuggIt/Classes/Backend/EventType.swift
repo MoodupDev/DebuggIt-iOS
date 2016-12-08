@@ -24,7 +24,7 @@ enum EventType : String {
     case reportCanceled
     case stepsToReproduceFilled
     case actualBehaviorFilled
-    case expectedBehaciorFilled
+    case expectedBehaviorFilled
     case appCrashed
     
     func name() -> String {

@@ -41,6 +41,7 @@ class BugDescriptionViewController: UIViewController {
                     alertController.dismiss(animated: false, completion: {
                         self.present(Utils.createAlert(title: "alert.title.success".localized(), message: "alert.message.saved.report".localized(), positiveAction: self.dissmissDebuggIt, negativeAction: nil), animated: true, completion: nil)
                     })
+                    self.postEventsAfterIssueSent(report: DebuggIt.sharedInstance.report)
                     DebuggIt.sharedInstance.report = Report()
             }, errorBlock: {
                 (status, error) in
@@ -48,6 +49,21 @@ class BugDescriptionViewController: UIViewController {
                     self.present(Utils.createAlert(title: "alert.title.failure".localized(), message: Utils.parseError(error), positiveAction: self.dissmissDebuggIt, negativeAction: nil), animated: true, completion: nil)
                 })
             })
+        }
+    }
+    
+    private func postEventsAfterIssueSent(report: Report) {
+        ApiClient.postEvent(.reportSent)
+        ApiClient.postEvent(.audioAmount, value: report.audioUrls.count)
+        ApiClient.postEvent(.screenshotAmount, value: report.screenshotsUrls.count)
+        if !report.actualBehavior.isEmpty {
+            ApiClient.postEvent(.actualBehaviorFilled)
+        }
+        if !report.stepsToReproduce.isEmpty {
+            ApiClient.postEvent(.stepsToReproduceFilled)
+        }
+        if !report.expectedBehavior.isEmpty {
+            ApiClient.postEvent(.expectedBehaviorFilled)
         }
     }
     
@@ -61,6 +77,7 @@ class BugDescriptionViewController: UIViewController {
         dismiss(animated: true, completion: {
             DebuggIt.sharedInstance.moveApplicationWindowToFront()
         })
+        ApiClient.postEvent(.reportCanceled)
         DebuggIt.sharedInstance.report = Report()
     }
     

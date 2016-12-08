@@ -50,6 +50,7 @@ class AudioCollectionViewCell: UICollectionViewCell {
             player!.volume = 1.0
             player!.play()
             playButton.isSelected = true
+            ApiClient.postEvent(.audioPlayed)
         }
     }
     
@@ -64,6 +65,7 @@ class AudioCollectionViewCell: UICollectionViewCell {
     
     @IBAction func removeAudio(_ sender: UIButton) {
         DebuggIt.sharedInstance.report.audioUrls.remove(at: index)
+        ApiClient.postEvent(.audioRemoved)
         if let viewController = self.viewController() as? BugDescriptionPage1ViewController {
             viewController.reportItemsCollection.reloadData()
         }
