@@ -27,7 +27,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="N11-zk-MET">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="N11-zk-MET">
                     <rect key="frame" x="8" y="20" width="359" height="257"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="UeY-vQ-Hxn" userLabel="Kind buttons">
@@ -194,7 +194,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="359" height="230"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="230" id="vhN-Uj-S5v"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="230" id="vhN-Uj-S5v"/>
                             </constraints>
                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fsU-in-udd">
                                 <size key="itemSize" width="115" height="200"/>
@@ -220,10 +220,10 @@
                 <constraint firstItem="Os6-AB-mH2" firstAttribute="leading" secondItem="wwm-cq-uWO" secondAttribute="leading" constant="8" id="9SJ-qo-WJb"/>
                 <constraint firstItem="2Gc-AC-FDh" firstAttribute="trailing" secondItem="wwm-cq-uWO" secondAttribute="trailingMargin" constant="-59" id="Aeu-j5-ra0"/>
                 <constraint firstAttribute="trailingMargin" secondItem="28T-Sq-gfZ" secondAttribute="trailing" id="P8Y-WT-Gsw"/>
-                <constraint firstAttribute="bottom" secondItem="Os6-AB-mH2" secondAttribute="bottom" constant="8" id="RWN-LC-2Xd"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Os6-AB-mH2" secondAttribute="bottom" constant="8" id="RWN-LC-2Xd"/>
                 <constraint firstItem="28T-Sq-gfZ" firstAttribute="top" secondItem="N11-zk-MET" secondAttribute="bottom" constant="55" id="Rc9-5l-bme"/>
                 <constraint firstItem="28T-Sq-gfZ" firstAttribute="leading" secondItem="2Gc-AC-FDh" secondAttribute="trailing" constant="8" id="UPr-w1-qyJ"/>
-                <constraint firstItem="N11-zk-MET" firstAttribute="top" secondItem="wwm-cq-uWO" secondAttribute="top" constant="20" id="Ww0-b3-eQB"/>
+                <constraint firstItem="N11-zk-MET" firstAttribute="top" relation="lessThanOrEqual" secondItem="wwm-cq-uWO" secondAttribute="top" constant="50" id="Ww0-b3-eQB"/>
                 <constraint firstItem="2Gc-AC-FDh" firstAttribute="top" secondItem="N11-zk-MET" secondAttribute="bottom" constant="16" id="bv8-iB-PrU"/>
                 <constraint firstItem="N11-zk-MET" firstAttribute="leading" secondItem="wwm-cq-uWO" secondAttribute="leadingMargin" id="hf6-fD-Cl6"/>
                 <constraint firstItem="2Gc-AC-FDh" firstAttribute="leading" secondItem="wwm-cq-uWO" secondAttribute="leadingMargin" id="jMZ-rh-0rT"/>
