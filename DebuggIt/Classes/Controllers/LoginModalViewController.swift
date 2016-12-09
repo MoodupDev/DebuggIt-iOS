@@ -25,7 +25,6 @@ class LoginModalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        twoFactorCodeTextField.delegate = self
         updateLoginInfoSection()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(close(_:)))
         background.addGestureRecognizer(tapGesture)
@@ -87,10 +86,4 @@ class LoginModalViewController: UIViewController {
         }
     }
     
-}
-
-extension LoginModalViewController : UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        (DebuggIt.sharedInstance.apiClient as! GitHubApiClient).twoFactorAuthCode = textField.text
-    }
 }
