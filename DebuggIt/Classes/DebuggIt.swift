@@ -146,16 +146,20 @@ public class DebuggIt: NSObject {
     }
     
     @objc func handleLongPress(_ recognizer: UILongPressGestureRecognizer) {
-        if !logoutShown {
-            logoutShown = true
-            showModal(viewController: Utils.createAlert(title: "Logout", message: "Do you want to logout?", positiveAction: {
-                self.logout()
-                self.logoutShown = false
-                self.moveApplicationWindowToFront()
-            }, negativeAction: {
-                self.logoutShown = false
-                self.moveApplicationWindowToFront()
-            }))
+        if (apiClient?.hasToken)! {
+            if !logoutShown {
+                logoutShown = true
+                showModal(viewController: Utils.createAlert(title: "alert.title.logout".localized(), message: "alert.message.logout".localized(), positiveAction: {
+                    self.logout()
+                    self.logoutShown = false
+                    self.moveApplicationWindowToFront()
+                }, negativeAction: {
+                    self.logoutShown = false
+                    self.moveApplicationWindowToFront()
+                }))
+            }
+        } else {
+            showReportDialog()
         }
     }
     

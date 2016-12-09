@@ -26,6 +26,8 @@ alert.title.login.successful = "Signed in!";
 
 alert.title.recording.disabled = "Recording is disabled";
 
+alert.title.logout = "Logout";
+
 /* Alert messages */
 
 alert.message.saved.report = "Report saved successfully";
@@ -38,6 +40,7 @@ alert.message.login.successful = "Now let\'s smash some bugs";
 
 alert.message.recording.disabled = "Please ask your developer to enable this feature";
 
+alert.message.logout = "Do you want to logout?";
 /* Alert buttons */
 
 alert.button.ok = "Ok";
