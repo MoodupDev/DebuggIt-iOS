@@ -94,10 +94,12 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="pDV-z7-fPk" firstAttribute="centerY" secondItem="xVq-KS-Kf0" secondAttribute="centerY" id="1Im-f3-XoA"/>
                 <constraint firstItem="pDV-z7-fPk" firstAttribute="top" relation="greaterThanOrEqual" secondItem="xVq-KS-Kf0" secondAttribute="top" constant="20" id="6sv-uA-B0v"/>
                 <constraint firstItem="pDV-z7-fPk" firstAttribute="centerY" secondItem="xVq-KS-Kf0" secondAttribute="centerY" id="DGK-j2-AfF"/>
                 <constraint firstAttribute="trailing" secondItem="pDV-z7-fPk" secondAttribute="trailing" constant="30" id="ECS-uw-gnj"/>
                 <constraint firstAttribute="bottom" secondItem="vdu-mD-wiW" secondAttribute="bottom" id="Ix2-md-r68"/>
+                <constraint firstItem="pDV-z7-fPk" firstAttribute="centerX" secondItem="xVq-KS-Kf0" secondAttribute="centerX" id="UTA-Y8-OSB"/>
                 <constraint firstItem="vdu-mD-wiW" firstAttribute="leading" secondItem="xVq-KS-Kf0" secondAttribute="leading" id="bIp-lg-uhp"/>
                 <constraint firstItem="pDV-z7-fPk" firstAttribute="centerX" secondItem="xVq-KS-Kf0" secondAttribute="centerX" id="gd5-gm-81F"/>
                 <constraint firstAttribute="trailing" secondItem="vdu-mD-wiW" secondAttribute="trailing" id="kuQ-dQ-jlQ"/>
