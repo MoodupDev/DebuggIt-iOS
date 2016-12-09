@@ -13,7 +13,7 @@ class JiraApiClient: ApiClientProtocol {
 
     // MARK: Properties
     
-    internal var loginUrl: String = ""
+    let loginUrl: String = ""
     var hasToken: Bool {
         get {
             return username != nil && password != nil

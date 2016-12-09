@@ -13,7 +13,7 @@ class BitbucketApiClient: ApiClientProtocol {
     
     // MARK: Properties
     
-    var loginUrl: String = "\(Constants.Bitbucket.authorizeUrl)?client_id=\(Constants.Bitbucket.clientId)&response_type=code"
+    let loginUrl: String = "\(Constants.Bitbucket.authorizeUrl)?client_id=\(Constants.Bitbucket.clientId)&response_type=code"
     
     var repoSlug: String
     var accountName: String

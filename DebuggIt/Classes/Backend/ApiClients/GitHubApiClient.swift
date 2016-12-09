@@ -17,7 +17,7 @@ class GitHubApiClient: ApiClientProtocol {
     var accountName: String
     var accessToken: String?
     
-    var loginUrl: String = "\(Constants.GitHub.authorizeUrl)?client_id=\(Constants.GitHub.clientId)&scope=repo"
+    let loginUrl: String = "\(Constants.GitHub.authorizeUrl)?client_id=\(Constants.GitHub.clientId)&scope=repo"
     var hasToken: Bool {
         get {
             return accessToken != nil
