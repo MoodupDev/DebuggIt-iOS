@@ -46,7 +46,7 @@ class BugDescriptionViewController: UIViewController {
             }, errorBlock: {
                 (status, error) in
                 alertController.dismiss(animated: false, completion:  {
-                    self.present(Utils.createAlert(title: "alert.title.failure".localized(), message: Utils.parseError(error), positiveAction: self.dissmissDebuggIt, negativeAction: nil), animated: true, completion: nil)
+                    self.present(Utils.createAlert(title: "alert.title.failure".localized(), message: Utils.parseError(error), positiveAction: {}, negativeAction: nil), animated: true, completion: nil)
                 })
             })
         }
