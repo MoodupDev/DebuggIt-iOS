@@ -12,22 +12,16 @@ import IQKeyboardManagerSwift
 @objc
 public class DebuggIt: NSObject {
     
+    // MARK: - Public properties
+    
     @objc public static let sharedInstance = DebuggIt()
-    var debuggItButton: DebuggItButton!
-    
-    private var currentViewController:UIViewController?
-    var applicationWindow: UIWindow?
-    var window: UIWindow?
-    var apiClient:ApiClientProtocol?
-    var configType:ConfigType = .bitbucket
-    
-    var report:Report = Report()
-    private var isInitialized:Bool = false
-    private var shouldPostInitializedEvent:Bool = true
-    
     @objc public var recordingEnabled = false
     
-    private var logoutShown = false
+    // MARK: - Properties
+    
+    var apiClient: ApiClientProtocol?
+    var configType: ConfigType = .bitbucket
+    var report: Report = Report()
     
     var isFirstRun: Bool {
         get {
@@ -41,9 +35,17 @@ public class DebuggIt: NSObject {
         }
     }
     
-    private override init() {
-
-    }
+    private var debuggItButton: DebuggItButton!
+    private var currentViewController:UIViewController?
+    
+    private var applicationWindow: UIWindow?
+    private var window: UIWindow?
+    private var isInitialized: Bool = false
+    private var shouldPostInitializedEvent: Bool = true
+    
+    private var logoutShown = false
+    
+    // MARK: - Public methods
     
     @objc public func initBitbucket(repoSlug: String, accountName: String) {
         apiClient = BitbucketApiClient(repoSlug: repoSlug, accountName: accountName)
@@ -59,6 +61,8 @@ public class DebuggIt: NSObject {
         apiClient = GitHubApiClient(repoSlug: repoSlug, accountName: accountName)
         initDebugIt(configType: .github)
     }
+    
+    // MARK: - Mathods
     
     func initDebugIt(configType:ConfigType) {
         self.configType = configType
@@ -227,5 +231,9 @@ public class DebuggIt: NSObject {
         self.window?.isHidden = true
         self.window = nil
         self.applicationWindow?.makeKeyAndVisible()
+    }
+    
+    private override init() {
+        
     }
 }
