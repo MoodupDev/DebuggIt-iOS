@@ -81,11 +81,7 @@ public class DebuggIt: NSObject {
             addReportButton()
             
             if isFirstRun {
-                do {
-                    try apiClient?.keychain.removeAll()
-                } catch let error {
-                    print("\(#function): error when removing all keychain keys: \(error)")
-                }
+                TokenManager.sharedManager.removeAll()
                 
                 showModal(viewController: Initializer.viewController(WelcomeViewController.self))
             }

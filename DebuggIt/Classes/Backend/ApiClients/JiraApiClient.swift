@@ -33,7 +33,7 @@ class JiraApiClient: ApiClientProtocol {
         self.projectKey = projectKey
         self.usesHttps = usesHttps
         
-        loadUserCredentials()
+        loadTokens()
     }
     
     // MARK: ApiClient
@@ -86,14 +86,6 @@ class JiraApiClient: ApiClientProtocol {
         // do nothing
     }
     
-    func clearTokens() {
-        username = nil
-        password = nil
-        
-        self.keychain[Constants.Jira.usernameKey] = nil
-        self.keychain[Constants.Jira.passwordKey] = nil
-    }
-    
     internal func exchangeAuthCodeForToken(_ code: String, successBlock: (() -> ())?, errorBlock: ((_ statusCode: Int? , _ body: String?) -> ())?) {
         
     }
@@ -137,17 +129,21 @@ class JiraApiClient: ApiClientProtocol {
         self.username = email
         self.password = password
         
-        self.keychain[Constants.Jira.usernameKey] = self.username
-        self.keychain[Constants.Jira.passwordKey] = self.password
+        let manager = TokenManager.sharedManager
+        manager.put(key: Constants.Jira.usernameKey, value: self.username)
+        manager.put(key: Constants.Jira.passwordKey, value: self.password)
     }
     
-    private func loadUserCredentials() {
-        if let username = try? self.keychain.get(Constants.Jira.usernameKey) {
-            self.username = username
-        }
-        if let password = try? self.keychain.get(Constants.Jira.passwordKey) {
-            self.password = password
-        }
-
+    func loadTokens() {
+        let manager = TokenManager.sharedManager
+        self.username = manager.get(key: Constants.Jira.usernameKey)
+        self.password = manager.get(key: Constants.Jira.passwordKey)
+    }
+    
+    func clearTokens() {
+        username = nil
+        password = nil
+        
+        TokenManager.sharedManager.remove(Constants.Jira.usernameKey, Constants.Jira.passwordKey)
     }
 }

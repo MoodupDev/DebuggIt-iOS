@@ -16,7 +16,6 @@ class GitHubApiClient: ApiClientProtocol {
     var repoSlug: String
     var accountName: String
     var accessToken: String?
-    var twoFactorAuthCode: String?
     
     var loginUrl: String = "\(Constants.GitHub.authorizeUrl)?client_id=\(Constants.GitHub.clientId)&scope=repo"
     var hasToken: Bool {
@@ -70,12 +69,6 @@ class GitHubApiClient: ApiClientProtocol {
         
     }
     
-    func clearTokens() {
-        accessToken = nil
-        self.keychain[Constants.GitHub.accessTokenKey] = nil
-        self.keychain[Constants.GitHub.twoFactorAuthCodeKey] = nil
-    }
-    
     func refreshAccessToken(successBlock: (() -> ())?, errorBlock: ((_ statusCode: Int? , _ body: String?) -> ())?) {
         // do nothing
     }
@@ -115,17 +108,16 @@ class GitHubApiClient: ApiClientProtocol {
         let json = JSON.parse(jsonString)
         self.accessToken = json["access_token"].stringValue
         
-        self.keychain[Constants.GitHub.accessTokenKey] = self.accessToken
-        self.keychain[Constants.GitHub.twoFactorAuthCodeKey] = self.twoFactorAuthCode
+        let manager = TokenManager.sharedManager
+        manager.put(key: Constants.GitHub.accessTokenKey, value: accessToken)
     }
     
-    private func loadTokens() {
-        if let accessToken = try? self.keychain.get(Constants.GitHub.accessTokenKey) {
-            self.accessToken = accessToken
-        }
-        if let twoFactorAuthCode = try? self.keychain.get(Constants.GitHub.twoFactorAuthCodeKey) {
-            self.twoFactorAuthCode = twoFactorAuthCode
-        }
-
+    func loadTokens() {
+        self.accessToken = TokenManager.sharedManager.get(key: Constants.GitHub.accessTokenKey)
+    }
+    
+    func clearTokens() {
+        accessToken = nil
+        TokenManager.sharedManager.remove(Constants.GitHub.accessTokenKey)
     }
 }

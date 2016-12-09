@@ -109,14 +109,6 @@ class BitbucketApiClient: ApiClientProtocol {
         
     }
     
-    func clearTokens() {
-        accessToken = nil
-        refreshToken = nil
-        
-        self.keychain[Constants.Bitbucket.accessTokenKey] = nil
-        self.keychain[Constants.Bitbucket.refreshTokenKey] = nil
-    }
-    
     internal func exchangeAuthCodeForToken(_ code: String, successBlock: (() -> ())?, errorBlock: ((_ statusCode: Int? , _ body: String?) -> ())?) {
         
         let headers: HTTPHeaders = [
@@ -155,16 +147,21 @@ class BitbucketApiClient: ApiClientProtocol {
         self.accessToken = json["access_token"].stringValue
         self.refreshToken = json["refresh_token"].stringValue
         
-        self.keychain[Constants.Bitbucket.accessTokenKey] = self.accessToken
-        self.keychain[Constants.Bitbucket.refreshTokenKey] = self.refreshToken
+        let manager = TokenManager.sharedManager
+        manager.put(key: Constants.Bitbucket.accessTokenKey, value: accessToken)
+        manager.put(key: Constants.Bitbucket.refreshTokenKey, value: refreshToken)
     }
     
-    private func loadTokens() {
-        if let accessToken = try? self.keychain.get(Constants.Bitbucket.accessTokenKey) {
-            self.accessToken = accessToken
-        }
-        if let refreshToken = try? self.keychain.get(Constants.Bitbucket.refreshTokenKey) {
-            self.refreshToken = refreshToken
-        }
+    func loadTokens() {
+        let manager = TokenManager.sharedManager
+        self.accessToken = manager.get(key: Constants.Bitbucket.accessTokenKey)
+        self.refreshToken = manager.get(key: Constants.Bitbucket.refreshTokenKey)
+    }
+    
+    func clearTokens() {
+        self.accessToken = nil
+        self.refreshToken = nil
+        
+        TokenManager.sharedManager.remove(Constants.Bitbucket.accessTokenKey, Constants.Bitbucket.refreshTokenKey)
     }
 }

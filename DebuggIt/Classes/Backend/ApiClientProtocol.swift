@@ -6,15 +6,12 @@
 //  Copyright © 2016 Mood Up. All rights reserved.
 //
 
-import KeychainAccess
-
 protocol ApiClientProtocol {
     
     // MARK: - Properties
     
     var loginUrl: String { get }
     var hasToken: Bool { get }
-    var keychain: Keychain { get }
     
     // MARK: - Methods
     
@@ -30,6 +27,7 @@ protocol ApiClientProtocol {
                       errorBlock: ((_ statusCode: Int? , _ body: String?) -> ())?
     )
     
+    func loadTokens()
     func clearTokens()
     
     func exchangeAuthCodeForToken(_ code: String,
@@ -54,9 +52,5 @@ extension ApiClientProtocol {
                errorBlock: ((_ statusCode: Int? , _ body: String?) -> ())?
         ) {
         
-    }
-    
-    var keychain: Keychain {
-        return Keychain(service: "com.moodup.debuggit")
     }
 }
