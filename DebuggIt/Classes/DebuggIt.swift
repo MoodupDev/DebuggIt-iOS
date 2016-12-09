@@ -41,7 +41,6 @@ public class DebuggIt: NSObject {
     private var applicationWindow: UIWindow?
     private var window: UIWindow?
     private var isInitialized: Bool = false
-    private var shouldPostInitializedEvent: Bool = true
     
     private var logoutShown = false
     
@@ -62,7 +61,7 @@ public class DebuggIt: NSObject {
         initDebugIt(configType: .github)
     }
     
-    // MARK: - Mathods
+    // MARK: - Methods
     
     func initDebugIt(configType:ConfigType) {
         self.configType = configType
@@ -74,10 +73,6 @@ public class DebuggIt: NSObject {
         if(!isInitialized) {
             throw DebuggItError.notInitialized(message: "Call init before attach")
         } else {
-            if(shouldPostInitializedEvent) {
-                ApiClient.postEvent(.initialized)
-                shouldPostInitializedEvent = false
-            }
             //TODO: add version checking
             
             currentViewController = viewController
