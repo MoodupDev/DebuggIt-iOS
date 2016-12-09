@@ -11,6 +11,7 @@ import UIKit
 class WebViewController: UIViewController {
     
     @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var loadIndicator: UIActivityIndicatorView!
     
     var url: String!
 
@@ -57,5 +58,13 @@ extension WebViewController : UIWebViewDelegate {
                 }), animated: true, completion: nil)
             })
             }, errorBlock: nil)
+    }
+    
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        loadIndicator.startAnimating()
+    }
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        loadIndicator.stopAnimating()
     }
 }
