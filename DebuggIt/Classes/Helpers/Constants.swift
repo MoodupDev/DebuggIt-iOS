@@ -11,6 +11,16 @@ struct Constants {
     static let debuggItUrl = "http://debugg.it"
     static let firstRunKey = "debuggit_first_run"
     
+    static let cookiesToRemove = [
+        "bb_session",
+        "csrftoken",
+        "dotcom_user",
+        "logged_in",
+        "_gh_sess",
+        "__Host-user_session_same_site",
+        "user_session"
+    ]
+    
     struct Api {
         private static let baseUrl = "https://debuggit-api-staging.herokuapp.com"
         static let uploadImageUrl = Api.baseUrl + "/api/v1/upload/image"

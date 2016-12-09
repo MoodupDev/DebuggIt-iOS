@@ -46,4 +46,13 @@ class Utils {
             return message
         }
     }
+    
+    static func clearWebViewCookies() {
+        let cookieJar = HTTPCookieStorage.shared
+        for cookie in cookieJar.cookies! {
+            if Constants.cookiesToRemove.contains(cookie.name) {
+                cookieJar.deleteCookie(cookie)
+            }
+        }
+    }
 }

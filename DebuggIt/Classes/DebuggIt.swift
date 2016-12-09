@@ -142,6 +142,7 @@ public class DebuggIt: NSObject {
     
     private func logout() {
         apiClient?.clearTokens()
+        Utils.clearWebViewCookies()
     }
     
     @objc func handleLongPress(_ recognizer: UILongPressGestureRecognizer) {
