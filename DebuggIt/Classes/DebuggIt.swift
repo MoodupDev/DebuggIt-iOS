@@ -141,6 +141,7 @@ public class DebuggIt: NSObject {
     }
     
     private func logout() {
+        report = Report()
         apiClient?.clearTokens()
         Utils.clearWebViewCookies()
     }
