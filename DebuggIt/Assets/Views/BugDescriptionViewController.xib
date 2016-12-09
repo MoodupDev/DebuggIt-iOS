@@ -34,7 +34,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="338" height="40"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1vE-oj-Bn1">
-                                            <rect key="frame" x="4" y="4" width="60" height="32"/>
+                                            <rect key="frame" x="4" y="4" width="48" height="32"/>
                                             <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                             <state key="normal" title="Cancel">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -44,7 +44,7 @@
                                             </connections>
                                         </button>
                                         <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="daA-Z5-aLT">
-                                            <rect key="frame" x="157" y="4" width="24" height="32"/>
+                                            <rect key="frame" x="151.66666666666666" y="4" width="23" height="32"/>
                                             <color key="pageIndicatorTintColor" red="0.95542651410000001" green="0.6555951834" blue="0.66193246839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="currentPageIndicatorTintColor" red="0.93139916659999999" green="0.2755307555" blue="0.18585780260000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
