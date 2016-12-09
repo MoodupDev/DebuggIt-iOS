@@ -13,7 +13,9 @@ extension URL {
         let url = URL(string: self.absoluteString.replaceFirst(replace: "#", with: "?"))!
         url.query?.components(separatedBy: "&").forEach({ (param) in
             let components = param.components(separatedBy: "=")
-            params[components[0]] = components[1]
+            if components.count > 1 {
+                params[components[0]] = components[1]
+            }
         })
         return params
     }
