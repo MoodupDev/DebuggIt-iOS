@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import DebuggIt
 
-class ViewController: UIViewController, DebuggItViewControllerProtocol {
+class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +18,14 @@ class ViewController: UIViewController, DebuggItViewControllerProtocol {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    @IBAction func showAlert(_ sender: UIButton) {
+        let alertController = UIAlertController(title: "Sample alert", message: "Sample alert messsage", preferredStyle: .actionSheet)
+        let actionClose = UIAlertAction(title: "Close", style: .cancel, handler: nil)
+        
+        alertController.addAction(actionClose)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
 
 }

@@ -28,11 +28,22 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qr0-Oa-z1k">
+                                <rect key="frame" x="16" y="518" width="288" height="30"/>
+                                <state key="normal" title="Show Alert"/>
+                                <connections>
+                                    <action selector="showAlert:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ZLH-rn-duB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.12659760513888893" blue="0.30550130208333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Qr0-Oa-z1k" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="2l3-r0-8dV"/>
                             <constraint firstItem="EYY-sl-zB0" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="4mg-JF-OZC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EYY-sl-zB0" secondAttribute="trailing" id="6Nu-kU-loG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Qr0-Oa-z1k" secondAttribute="trailing" id="9is-K8-cTs"/>
+                            <constraint firstItem="Qr0-Oa-z1k" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="N3W-Ok-VoF"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Qr0-Oa-z1k" secondAttribute="bottom" constant="20" id="SX5-Vc-NHl"/>
                             <constraint firstItem="EYY-sl-zB0" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="uIU-2n-ALl"/>
                             <constraint firstItem="EYY-sl-zB0" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="yHH-ZH-jlZ"/>
                         </constraints>

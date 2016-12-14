@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (4.2.0)
-  - DebuggIt (0.0.11):
+  - DebuggIt (0.1.0):
     - Alamofire (~> 4.0)
     - IQKeyboardManagerSwift (~> 4.0.6)
     - KeychainAccess
@@ -20,7 +20,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
-  DebuggIt: 1fe6fd3927175aa46308e8bfa3c4bbb93ec21284
+  DebuggIt: 280da54cf3e27b072d0bdead3cf27787044c8f71
   IQKeyboardManagerSwift: b3015e819559ca76381f87a0833f44d178564603
   KeychainAccess: 017ea25e313a49eda10bb19b0bb0760fb1edfe1a
   KMPlaceholderTextView: 2bbcd19a273648a80a61e1e48f9743a24d8930e3
