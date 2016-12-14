@@ -35,8 +35,6 @@ public class DebuggIt: NSObject {
         }
     }
     
-    private let alertWindowLevel: UIWindowLevel = 10
-    
     private var debuggItButton: DebuggItButton!
     private var currentWindow: UIWindow?
     
@@ -67,11 +65,11 @@ public class DebuggIt: NSObject {
     func initDebugIt(configType:ConfigType) {
         self.configType = configType
         ApiClient.postEvent(.initialized)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.attachToWindow(_:)), name: NSNotification.Name.UIWindowDidBecomeVisible, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.attachToWindow(_:)), name: NSNotification.Name.UIWindowDidBecomeKey, object: nil)
     }
     
     func attachToWindow(_ notification: Notification) {
-        guard let window = notification.object as? UIWindow, !(window is DebuggItWindow), !(UIApplication.shared.keyWindow is DebuggItWindow), window.windowLevel != alertWindowLevel else { return }
+        guard let window = notification.object as? UIWindow, !(window is DebuggItWindow) else { return }
         attach(to: window)
     }
     
