@@ -35,12 +35,13 @@ public class DebuggIt: NSObject {
         }
     }
     
+    private let alertWindowLevel: UIWindowLevel = 10
+    
     private var debuggItButton: DebuggItButton!
-    private var currentViewController:UIViewController?
+    private var currentWindow: UIWindow?
     
     private var applicationWindow: UIWindow?
     private var window: UIWindow?
-    private var isInitialized: Bool = false
     
     private var logoutShown = false
     
@@ -65,25 +66,24 @@ public class DebuggIt: NSObject {
     
     func initDebugIt(configType:ConfigType) {
         self.configType = configType
-        isInitialized = true
         ApiClient.postEvent(.initialized)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.attachToWindow(_:)), name: NSNotification.Name.UIWindowDidBecomeVisible, object: nil)
     }
     
-    func attach(to viewController: UIViewController) throws -> Void {
-        if(!isInitialized) {
-            throw DebuggItError.notInitialized(message: "Call init before attach")
-        } else {
-            //TODO: add version checking
+    func attachToWindow(_ notification: Notification) {
+        guard let window = notification.object as? UIWindow, !(window is DebuggItWindow), !(UIApplication.shared.keyWindow is DebuggItWindow), window.windowLevel != alertWindowLevel else { return }
+        attach(to: window)
+    }
+    
+    func attach(to window: UIWindow) {
+        currentWindow = window
+        
+        addReportButton()
+        
+        if isFirstRun {
+            TokenManager.sharedManager.removeAll()
             
-            currentViewController = viewController
-            
-            addReportButton()
-            
-            if isFirstRun {
-                TokenManager.sharedManager.removeAll()
-                
-                showModal(viewController: Initializer.viewController(WelcomeViewController.self))
-            }
+            showModal(viewController: Initializer.viewController(WelcomeViewController.self))
         }
     }
     
@@ -110,7 +110,7 @@ public class DebuggIt: NSObject {
         debuggItButton.imageView.roundCorners(corners: [.topRight, .bottomRight], radius: 5)
         debuggItButton.edge.roundCorners(corners: [.bottomLeft, .topLeft], radius: 5)
         
-        currentViewController?.view.addSubview(debuggItButton)
+        currentWindow?.addSubview(debuggItButton)
         addConstraints(forView: debuggItButton)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(showReportDialog))
@@ -125,7 +125,7 @@ public class DebuggIt: NSObject {
     }
     
     private func removeReportButtonIfExists() {
-        for subview in currentViewController!.view.subviews {
+        for subview in (currentWindow?.subviews)! {
             if subview is DebuggItButton {
                 subview.removeFromSuperview()
             }
@@ -134,9 +134,9 @@ public class DebuggIt: NSObject {
     
     
     private func addConstraints(forView : UIView) {
-        currentViewController?.view.addConstraint(NSLayoutConstraint(item: forView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: currentViewController?.view, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: 0.0))
+        currentWindow?.addConstraint(NSLayoutConstraint(item: forView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: currentWindow, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: 0.0))
         
-        currentViewController?.view.addConstraint(NSLayoutConstraint(item: forView, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: currentViewController?.view, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 0.0))
+        currentWindow?.addConstraint(NSLayoutConstraint(item: forView, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: currentWindow, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 0.0))
     }
     
     private func logout() {
@@ -195,7 +195,7 @@ public class DebuggIt: NSObject {
         if recognizer.state == .began || recognizer.state == .changed, let view = recognizer.view {
             let translation = recognizer.translation(in: view)
             if(translation.y < 0.0 && view.center.y > (view.frame.height / 2)
-                || translation.y >= 0.0 && view.center.y < ((currentViewController?.view.frame.maxY)! - (view.frame.height/2))) {
+                || translation.y >= 0.0 && view.center.y < ((currentWindow?.frame.maxY)! - (view.frame.height/2))) {
                 view.center = CGPoint(x: view.center.x, y: view.center.y + translation.y)
                 recognizer.setTranslation(CGPoint.zero, in: view)
             }
@@ -211,7 +211,7 @@ public class DebuggIt: NSObject {
         if window == nil {
             applicationWindow = UIApplication.shared.keyWindow
             
-            window = UIWindow(frame: UIScreen.main.bounds)
+            window = DebuggItWindow(frame: UIScreen.main.bounds)
             window?.rootViewController = UIViewController()
             window?.windowLevel = UIWindowLevelAlert + 1
             window?.makeKeyAndVisible()
@@ -231,4 +231,6 @@ public class DebuggIt: NSObject {
     private override init() {
         
     }
+    
+    private class DebuggItWindow : UIWindow {}
 }
