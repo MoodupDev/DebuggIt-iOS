@@ -9,7 +9,7 @@
 struct Constants {
     
     static let debuggItUrl = "http://debugg.it"
-    static let firstRunKey = "debuggit_first_run"
+    static let welcomeScreenHasBeenShownKey = "debuggit_first_run"
     
     static let cookiesToRemove = [
         "bb_session",

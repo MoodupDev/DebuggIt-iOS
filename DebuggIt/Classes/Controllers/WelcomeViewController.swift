@@ -18,7 +18,7 @@ class WelcomeViewController: UIViewController {
     }
     
     @IBAction func close(_ sender: UIButton) {
-        DebuggIt.sharedInstance.isFirstRun = false
+        DebuggIt.sharedInstance.welcomeScreenHasBeenShown = true
         self.dismiss(animated: true, completion: nil)
     }
     

@@ -23,14 +23,14 @@ public class DebuggIt: NSObject {
     var configType: ConfigType = .bitbucket
     var report: Report = Report()
     
-    var isFirstRun: Bool {
+    var welcomeScreenHasBeenShown: Bool {
         get {
             let defaults = UserDefaults.standard
-            return !defaults.bool(forKey: Constants.firstRunKey)
+            return defaults.bool(forKey: Constants.welcomeScreenHasBeenShownKey)
         }
         set {
             let defaults = UserDefaults.standard
-            defaults.set(isFirstRun, forKey: Constants.firstRunKey)
+            defaults.set(welcomeScreenHasBeenShown, forKey: Constants.welcomeScreenHasBeenShownKey)
             defaults.synchronize()
         }
     }
