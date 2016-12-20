@@ -162,6 +162,6 @@ class BitbucketApiClient: ApiClientProtocol {
         self.accessToken = nil
         self.refreshToken = nil
         
-        TokenManager.sharedManager.remove(Constants.Bitbucket.accessTokenKey, Constants.Bitbucket.refreshTokenKey)
+        TokenManager.sharedManager.remove([Constants.Bitbucket.accessTokenKey, Constants.Bitbucket.refreshTokenKey])
     }
 }

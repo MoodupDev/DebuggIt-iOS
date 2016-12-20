@@ -144,6 +144,6 @@ class JiraApiClient: ApiClientProtocol {
         username = nil
         password = nil
         
-        TokenManager.sharedManager.remove(Constants.Jira.usernameKey, Constants.Jira.passwordKey)
+        TokenManager.sharedManager.remove([Constants.Jira.usernameKey, Constants.Jira.passwordKey])
     }
 }

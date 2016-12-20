@@ -6,48 +6,81 @@
 //
 //
 
-import KeychainAccess
+import RNCryptor
 
 class TokenManager {
     
     // MARK: - Properties
-    
     private let serviceName = "com.moodup.debuggit"
-    private var keychain: Keychain
+    private let storedKeysKey = "debuggit_token_manager_keys"
+    
+    private var keys: [String]!
+    
+    private var encryptor: RNCryptor.Encryptor
+    private var decryptor: RNCryptor.Decryptor
+    
+    var defaults: UserDefaults! {
+        return UserDefaults.standard
+    }
     
     static let sharedManager = TokenManager()
     
     private init() {
-        self.keychain = Keychain(service: serviceName)
+        self.encryptor = RNCryptor.Encryptor(password: serviceName)
+        self.decryptor = RNCryptor.Decryptor(password: serviceName)
+        self.keys = self.defaults.array(forKey: storedKeysKey) as? [String] ?? [String]()
     }
     
     func put(key: String, value: String?) {
-        keychain[key] = value
+        if let data = value?.data(using: .utf8) {
+            defaults.setValue(encryptor.encrypt(data: data), forKey: key)
+            defaults.synchronize()
+            addKey(key)
+        }
     }
     
     func get(key: String, defaultValue: String? = nil) -> String? {
-        return keychain[key] ?? defaultValue
+        if let value = defaults.data(forKey: key) {
+            do {
+                return try String(data: decryptor.decrypt(data: value), encoding: .utf8) ?? defaultValue
+            } catch {
+                return defaultValue
+            }
+        }
+        return defaultValue
     }
     
     func remove(_ key: String) {
-        do {
-            try keychain.remove(key)
-        } catch let error {
-            print("Error while removing key ", key, #function, error)
+        defaults.removeObject(forKey: key)
+        deleteKey(key)
+    }
+    
+    func remove(_ keys: [String]) {
+        for key in keys {
+            remove(key)
         }
     }
     
     func removeAll() {
-        do {
-            try keychain.removeAll()
-        } catch let error {
-            print("Error while removing all tokens in ", #function, error)
+        remove(self.keys)
+    }
+    
+    private func addKey(_ key: String) {
+        if !keys.contains(key) {
+            keys.append(key)
+            saveKeys()
         }
     }
     
-    func remove(_ keys: String... ) {
-        for key in keys {
-            remove(key)
+    private func deleteKey(_ key: String) {
+        if let index = keys.index(of: key) {
+            keys.remove(at: index)
+            saveKeys()
         }
+    }
+    
+    private func saveKeys() {
+        defaults.setValue(self.keys, forKey: storedKeysKey)
+        defaults.synchronize()
     }
 }
