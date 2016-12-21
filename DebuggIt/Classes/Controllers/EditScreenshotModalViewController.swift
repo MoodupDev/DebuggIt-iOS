@@ -45,23 +45,17 @@ class EditScreenshotModalViewController: UIViewController {
         ApiClient.upload(.image, data: image.toBase64String(),
             successBlock: {
                 ApiClient.postEvent(self.freedrawButton.isSelected ? .screenshotAddedDraw : .screenshotAddedRectangle)
-                alertController.dismiss(animated: true, completion: self.handleAlertDismissal(viewController: self))
+                alertController.dismiss(animated: true, completion: self.showBugDescription)
             }, errorBlock: {
                 (statusCode, errorMessage) in
                 alertController.dismiss(animated: false, completion: nil)
             })
     }
     
-    private func handleAlertDismissal(viewController: UIViewController) -> (() -> Void) {
-        func dismissAlert() -> Void {
-            viewController.dismiss(animated: true, completion: {
-                let bugDescriptionViewController = Initializer.viewController(BugDescriptionViewController.self)
-                bugDescriptionViewController.modalPresentationStyle = .overCurrentContext
-                DebuggIt.sharedInstance.showModal(viewController: bugDescriptionViewController)
-            })
-        }
-        
-        return dismissAlert
+    func showBugDescription() -> Void {
+        self.dismiss(animated: true, completion: {
+            DebuggIt.sharedInstance.showModal(viewController: Initializer.viewController(BugDescriptionViewController.self))
+        })
     }
     
     @IBAction func tapCancel(_ sender: UIButton) {
