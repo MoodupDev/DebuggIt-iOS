@@ -36,14 +36,7 @@ class EditScreenshotModalViewController: UIViewController {
     }
     
     @IBAction func tapDone(_ sender: UIButton) {
-        UIGraphicsBeginImageContext(containerView.bounds.size)
-        containerView.layer.render(in: UIGraphicsGetCurrentContext()!)
-        
-        let image = UIGraphicsGetImageFromCurrentImageContext()!
-        
-        DebuggIt.sharedInstance.report.currentScreenshot = image
-        
-        UIGraphicsEndImageContext()
+        let image = screenshotSurface.image!
         
         let alertController = Utils.createAlert(title: "alert.title.sending.screenshot".localized(), message: "alert.message.wait".localized())
         present(alertController, animated: true, completion: nil)
