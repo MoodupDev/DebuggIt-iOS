@@ -36,6 +36,7 @@ class EditScreenshotModalViewController: UIViewController {
     }
     
     @IBAction func tapDone(_ sender: UIButton) {
+        screenshotSurface.pinCurrentRectangle()
         let image = screenshotSurface.image!
         
         let alertController = Utils.createAlert(title: "alert.title.sending.screenshot".localized(), message: "alert.message.wait".localized())

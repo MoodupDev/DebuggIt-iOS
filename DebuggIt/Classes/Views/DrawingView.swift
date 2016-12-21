@@ -105,7 +105,7 @@ class DrawingView: UIImageView {
         }
     }
     
-    private func pinCurrentRectangle() {
+    func pinCurrentRectangle() {
         if currentRectangle != nil && !currentRectangle.isPinned {
             currentRectangle.pin()
             draw(currentRectangle)
