@@ -103,20 +103,18 @@ public class DebuggIt: NSObject {
             errorBlock: errorBlock)
     }
     
-    private func addReportButton(to view: UIView) {
-        removeReportButtonIfExists(from: view)
+    private func addReportButton(to containter: UIView) {
+        removeReportButtonIfExists(from: containter)
+        let button = createReportButton()
+        
+        containter.addSubview(button)
+        addConstraints(for: button, in: containter)
+        
+        self.debuggItButton = button
+    }
+    
+    private func createReportButton() -> DebuggItButton {
         let debuggItButton = DebuggItButton.instantiateFromNib()
-        debuggItButton.clipsToBounds = true
-        debuggItButton.translatesAutoresizingMaskIntoConstraints = false
-        debuggItButton.isUserInteractionEnabled = true
-        
-        debuggItButton.layoutIfNeeded()
-        
-        debuggItButton.imageView.roundCorners(corners: [.topRight, .bottomRight], radius: 5)
-        debuggItButton.edge.roundCorners(corners: [.bottomLeft, .topLeft], radius: 5)
-        
-        view.addSubview(debuggItButton)
-        addConstraints(for: debuggItButton, in: view)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(showReportDialog))
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action:#selector(moveButton(_:)))
@@ -125,8 +123,8 @@ public class DebuggIt: NSObject {
         debuggItButton.addGestureRecognizer(tapGestureRecognizer)
         debuggItButton.addGestureRecognizer(panGestureRecognizer)
         debuggItButton.addGestureRecognizer(longPressGestureRecognizer)
-        
-        self.debuggItButton = debuggItButton
+        return debuggItButton
+
     }
     
     func removeReportButtonIfExists(from view: UIView) {
@@ -180,7 +178,7 @@ public class DebuggIt: NSObject {
         }
     }
     
-    func showLoginModal() {
+    private func showLoginModal() {
         
         if configType == .jira {
             showModal(viewController: Initializer.viewController(LoginModalViewController.self))

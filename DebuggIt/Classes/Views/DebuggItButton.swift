@@ -18,7 +18,16 @@ class DebuggItButton: UIView {
     }
     
     class func instantiateFromNib() -> DebuggItButton {
-        return Initializer.view(DebuggItButton.self) as! DebuggItButton
+        let button = Initializer.view(DebuggItButton.self) as! DebuggItButton
+        button.clipsToBounds = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.isUserInteractionEnabled = true
+        
+        button.layoutIfNeeded()
+        
+        button.imageView.roundCorners(corners: [.topRight, .bottomRight], radius: 5)
+        button.edge.roundCorners(corners: [.bottomLeft, .topLeft], radius: 5)
+        return button
     }
 
 }
