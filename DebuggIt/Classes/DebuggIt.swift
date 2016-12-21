@@ -30,7 +30,7 @@ public class DebuggIt: NSObject {
         }
         set {
             let defaults = UserDefaults.standard
-            defaults.set(welcomeScreenHasBeenShown, forKey: Constants.welcomeScreenHasBeenShownKey)
+            defaults.set(newValue, forKey: Constants.welcomeScreenHasBeenShownKey)
             defaults.synchronize()
         }
     }
@@ -114,16 +114,16 @@ public class DebuggIt: NSObject {
     }
     
     private func createReportButton() -> DebuggItButton {
-        let debuggItButton = DebuggItButton.instantiateFromNib()
+        let button = DebuggItButton.instantiateFromNib()
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(showReportDialog))
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action:#selector(moveButton(_:)))
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action:#selector(handleLongPress(_:)))
         
-        debuggItButton.addGestureRecognizer(tapGestureRecognizer)
-        debuggItButton.addGestureRecognizer(panGestureRecognizer)
-        debuggItButton.addGestureRecognizer(longPressGestureRecognizer)
-        return debuggItButton
+        button.addGestureRecognizer(tapGestureRecognizer)
+        button.addGestureRecognizer(panGestureRecognizer)
+        button.addGestureRecognizer(longPressGestureRecognizer)
+        return button
 
     }
     
