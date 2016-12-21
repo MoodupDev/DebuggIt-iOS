@@ -21,19 +21,26 @@ class DrawingView: UIImageView {
     private var paths = [UIBezierPath]()
     private var currentPath: UIBezierPath!
     
-    var currentRectangle: ResizableRectangle!
-    var rectangles = [ResizableRectangle]()
+    private var currentRectangle: ResizableRectangle!
+    private var rectangles = [ResizableRectangle]()
     
     private var lastDrawings = [DrawingType]()
     
+    private lazy var convertRatio: CGSize = {
+        let widthRatio = (self.image!.size.width / self.bounds.size.width)
+        let heightRatio = (self.image!.size.height / self.bounds.size.height)
+        return CGSize(width: widthRatio, height: heightRatio)
+    }()
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        lastPoint = (touches.first?.location(in: self))!
+        let touchLocation = (touches.first?.location(in: self))!
+        lastPoint = convertToImageCoords(touchLocation)
         switch type {
         case .free:
             currentPath = initBezierPath()
         case .rectangle:
             pinCurrentRectangle()
-            currentRectangle = createRectangle(at: lastPoint)
+            currentRectangle = createRectangle(at: touchLocation)
             self.addSubview(currentRectangle)
         }
     }
@@ -42,7 +49,7 @@ class DrawingView: UIImageView {
         let touch = touches.first
         switch(type) {
         case .free:
-            let currentPoint: CGPoint = (touch?.location(in: self))!
+            let currentPoint: CGPoint = convertToImageCoords((touch?.location(in: self))!)
             
             currentPath.move(to: lastPoint)
             currentPath.addLine(to: currentPoint)
@@ -119,10 +126,10 @@ class DrawingView: UIImageView {
     }
     
     private func draw(_ path: UIBezierPath) {
-        UIGraphicsBeginImageContext(self.frame.size)
+        UIGraphicsBeginImageContext(self.image!.size)
         let context = UIGraphicsGetCurrentContext()
         
-        self.draw(CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
+        image?.draw(in: CGRect(x: 0, y: 0, width: self.image!.size.width, height: self.image!.size.height))
         
         context?.draw(path)
         
@@ -133,8 +140,8 @@ class DrawingView: UIImageView {
     private func draw(_ rectangle: ResizableRectangle) {
         let path = initBezierPath()
         
-        let rectangleRect = self.convert(rectangle.frame, to: self)
-        let backgroundRect = self.convert(rectangle.backgroundView.frame, to: self)
+        let rectangleRect = convertToImageCoords(self.convert(rectangle.frame, to: self))
+        let backgroundRect = convertToImageCoords(self.convert(rectangle.backgroundView.frame, to: self))
         
         let size = backgroundRect.size
         
@@ -154,6 +161,22 @@ class DrawingView: UIImageView {
         draw(path)
         
         rectangle.removeFromSuperview()
+    }
+    
+    private func convertToImageCoords(_ location: CGPoint) -> CGPoint {
+        let x = location.x * convertRatio.width
+        let y = location.y * convertRatio.height
+        return CGPoint(x: x, y: y)
+    }
+    
+    private func convertToImageCoords(_ rect: CGRect) -> CGRect {
+        let height = rect.height * convertRatio.height
+        let width = rect.width * convertRatio.width
+        
+        let origin = convertToImageCoords(rect.origin)
+        let size = CGSize(width: width, height: height)
+        
+        return CGRect(origin: origin, size: size)
     }
 }
 
