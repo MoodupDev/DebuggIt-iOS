@@ -47,7 +47,7 @@ class BugDescriptionViewController: UIViewController {
                         self.present(Utils.createAlert(title: "alert.title.success".localized(), message: "alert.message.saved.report".localized(), positiveAction: self.dissmissDebuggIt, negativeAction: nil), animated: true, completion: nil)
                     })
                     self.postEventsAfterIssueSent(report: DebuggIt.sharedInstance.report)
-                    DebuggIt.sharedInstance.report = Report()
+                    self.clearData()
             }, errorBlock: {
                 (status, error) in
                 alertController.dismiss(animated: false, completion:  {
@@ -72,6 +72,11 @@ class BugDescriptionViewController: UIViewController {
         }
     }
     
+    private func clearData() {
+        DebuggIt.sharedInstance.report = Report()
+        ImageCache.shared.clearAll()
+    }
+    
     private func dissmissDebuggIt() {
         self.dismiss(animated: true, completion: {
             DebuggIt.sharedInstance.moveApplicationWindowToFront()
@@ -83,7 +88,7 @@ class BugDescriptionViewController: UIViewController {
             DebuggIt.sharedInstance.moveApplicationWindowToFront()
         })
         ApiClient.postEvent(.reportCanceled)
-        DebuggIt.sharedInstance.report = Report()
+        clearData()
     }
     
     @IBAction func pageControlTapped(_ sender: UIPageControl) {

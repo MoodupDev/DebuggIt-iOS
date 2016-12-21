@@ -11,18 +11,23 @@ import UIKit
 
 extension UIImageView {
     func loadFrom(url: URL, contentMode mode: UIViewContentMode = .scaleAspectFit) {
-        contentMode = mode
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                let data = data, error == nil,
-                let image = UIImage(data: data)
-                else { return }
-            DispatchQueue.main.async() { () -> Void in
-                self.image = image
-            }
-            }.resume()
+        self.contentMode = mode
+        if let cachedImage = ImageCache.shared.image(forKey: url) {
+            self.image = cachedImage
+        } else {
+            URLSession.shared.dataTask(with: url) { (data, response, error) in
+                guard
+                    let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                    let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                    let data = data, error == nil,
+                    let image = UIImage(data: data)
+                    else { return }
+                DispatchQueue.main.async() { () -> Void in
+                    ImageCache.shared.put(image: image, forKey: url)
+                    self.image = image
+                }
+                }.resume()
+        }
     }
     
     func loadFrom(link: String, contentMode mode: UIViewContentMode = .scaleAspectFit) {
