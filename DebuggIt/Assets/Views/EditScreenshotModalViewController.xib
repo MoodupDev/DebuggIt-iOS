@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditScreenshotModalViewController" customModule="DebugIt">
             <connections>
-                <outlet property="containerView" destination="eIw-Bj-oXT" id="Tdz-Ot-8Xa"/>
                 <outlet property="freedrawButton" destination="Yuf-29-eh8" id="Bdt-TJ-Q5f"/>
                 <outlet property="rectangleButton" destination="xaI-5i-RVl" id="rMo-tb-ZDh"/>
                 <outlet property="screenshotSurface" destination="Nj5-3L-GDr" id="6xp-4h-DgF"/>
@@ -73,21 +72,9 @@
                                     </constraints>
                                     <edgeInsets key="layoutMargins" top="4" left="4" bottom="4" right="4"/>
                                 </stackView>
-                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eIw-Bj-oXT">
+                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nj5-3L-GDr" customClass="DrawingView" customModule="DebuggIt" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="40" width="279" height="511"/>
-                                    <subviews>
-                                        <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nj5-3L-GDr" customClass="DrawingView" customModule="DebuggIt" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="279" height="511"/>
-                                        </imageView>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="Nj5-3L-GDr" secondAttribute="trailing" id="HXB-U8-dMl"/>
-                                        <constraint firstItem="Nj5-3L-GDr" firstAttribute="leading" secondItem="eIw-Bj-oXT" secondAttribute="leading" id="J19-BJ-dfR"/>
-                                        <constraint firstAttribute="bottom" secondItem="Nj5-3L-GDr" secondAttribute="bottom" id="KTY-dy-eMI"/>
-                                        <constraint firstItem="Nj5-3L-GDr" firstAttribute="top" secondItem="eIw-Bj-oXT" secondAttribute="top" id="Nuh-1a-INg"/>
-                                    </constraints>
-                                </view>
+                                </imageView>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="VwM-po-uZI">
                                     <rect key="frame" x="0.0" y="551" width="279" height="40"/>
                                     <subviews>
