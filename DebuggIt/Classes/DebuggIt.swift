@@ -65,6 +65,7 @@ public class DebuggIt: NSObject {
     func initDebugIt(configType:ConfigType) {
         self.configType = configType
         ApiClient.postEvent(.initialized)
+        swizzleMethod(of: UIWindow.self, original: #selector(setter: UIWindow.self.rootViewController), to: #selector(UIWindow.self.attachDebuggItOnRootViewControllerChange(_:)))
         NotificationCenter.default.addObserver(self, selector: #selector(self.attachToWindow(_:)), name: NSNotification.Name.UIWindowDidBecomeKey, object: nil)
     }
     
@@ -76,13 +77,19 @@ public class DebuggIt: NSObject {
     func attach(to window: UIWindow) {
         currentWindow = window
         
-        addReportButton()
+        removeReportButtonIfExists(from: window.rootViewController!.view)
+        addReportButton(to: window)
         
-        if isFirstRun {
+        if !welcomeScreenHasBeenShown {
             TokenManager.sharedManager.removeAll()
             
             showModal(viewController: Initializer.viewController(WelcomeViewController.self))
         }
+
+    }
+    
+    func reattach(to viewController: UIViewController) {
+        addReportButton(to: viewController.view)
     }
     
     func sendReport(successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int?,_ message: String?) -> ()) {
@@ -96,8 +103,8 @@ public class DebuggIt: NSObject {
             errorBlock: errorBlock)
     }
     
-    private func addReportButton() {
-        removeReportButtonIfExists()
+    private func addReportButton(to view: UIView) {
+        removeReportButtonIfExists(from: view)
         let debuggItButton = DebuggItButton.instantiateFromNib()
         debuggItButton.clipsToBounds = true
         debuggItButton.translatesAutoresizingMaskIntoConstraints = false
@@ -108,8 +115,8 @@ public class DebuggIt: NSObject {
         debuggItButton.imageView.roundCorners(corners: [.topRight, .bottomRight], radius: 5)
         debuggItButton.edge.roundCorners(corners: [.bottomLeft, .topLeft], radius: 5)
         
-        currentWindow?.addSubview(debuggItButton)
-        addConstraints(forView: debuggItButton)
+        view.addSubview(debuggItButton)
+        addConstraints(for: debuggItButton, in: view)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(showReportDialog))
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action:#selector(moveButton(_:)))
@@ -122,8 +129,8 @@ public class DebuggIt: NSObject {
         self.debuggItButton = debuggItButton
     }
     
-    private func removeReportButtonIfExists() {
-        for subview in (currentWindow?.subviews)! {
+    func removeReportButtonIfExists(from view: UIView) {
+        for subview in view.subviews {
             if subview is DebuggItButton {
                 subview.removeFromSuperview()
             }
@@ -131,10 +138,10 @@ public class DebuggIt: NSObject {
     }
     
     
-    private func addConstraints(forView : UIView) {
-        currentWindow?.addConstraint(NSLayoutConstraint(item: forView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: currentWindow, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: 0.0))
+    private func addConstraints(for view : UIView, in container: UIView) {
+        container.addConstraint(NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: container, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: 0.0))
         
-        currentWindow?.addConstraint(NSLayoutConstraint(item: forView, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: currentWindow, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 0.0))
+        container.addConstraint(NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: container, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 0.0))
     }
     
     private func logout() {
@@ -230,5 +237,22 @@ public class DebuggIt: NSObject {
         
     }
     
-    private class DebuggItWindow : UIWindow {}
+    private func swizzleMethod(of anyClass: AnyClass, original originalSelector: Selector, to swizzledSelector: Selector) {
+        let originalMethod = class_getInstanceMethod(anyClass, originalSelector)
+        let swizzledMethod = class_getInstanceMethod(anyClass, swizzledSelector)
+        
+        method_exchangeImplementations(originalMethod, swizzledMethod)
+    }
+    
+    class DebuggItWindow : UIWindow {}
+}
+
+extension UIWindow {
+    
+    func attachDebuggItOnRootViewControllerChange(_ viewController: UIViewController) {
+        attachDebuggItOnRootViewControllerChange(viewController)
+        guard !(self is DebuggIt.DebuggItWindow) && self.isKeyWindow else { return }
+        DebuggIt.sharedInstance.removeReportButtonIfExists(from: self)
+        DebuggIt.sharedInstance.reattach(to: self.rootViewController!)
+    }
 }
