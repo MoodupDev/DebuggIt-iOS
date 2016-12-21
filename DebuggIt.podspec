@@ -32,12 +32,16 @@ DebuggIt is a simple, yet powerful tool that helps you get reports of the bugs d
 
   s.ios.deployment_target = '9.0'
 
-  s.source_files = 'DebuggIt/Classes/**/*.swift'
+  s.source_files = 'DebuggIt/Source/**/*.swift'
   # s.resources = "DebuggIt/**/*.{png,jpeg,jpg,storyboard,xib}"
 
   
   s.resource_bundles = {
-    'DebuggIt' => ['DebuggIt/Assets/**/*.{xcassets,xib}', 'DebuggIt/Localization/*.lproj']
+    'DebuggIt' => [
+      'DebuggIt/Source/**/*.xib', 
+      'DebuggIt/Localization/*.lproj', 
+      'DebuggIt/Assets/*.xcassets'
+    ]
   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'

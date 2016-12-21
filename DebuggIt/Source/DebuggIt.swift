@@ -9,6 +9,12 @@
 import UIKit
 import IQKeyboardManagerSwift
 
+enum ConfigType {
+    case jira
+    case github
+    case bitbucket
+}
+
 @objc
 public class DebuggIt: NSObject {
     
@@ -254,3 +260,4 @@ extension UIWindow {
         DebuggIt.sharedInstance.reattach(to: self.rootViewController!)
     }
 }
+
