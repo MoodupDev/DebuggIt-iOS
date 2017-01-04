@@ -49,9 +49,9 @@ class IssueContentProvider {
     private static var imageFormat: String {
         switch DebuggIt.sharedInstance.configType {
         case .jira:
-            return "!%@!"
+            return "\(boldTitle(view))%@\n\n!%@!"
         default:
-            return "![](%@)"
+            return "\(boldTitle(view))%@\n\n![](%@)"
         }
     }
     private static var audioFormat: String {
@@ -70,6 +70,7 @@ class IssueContentProvider {
     private static let expectedBehavior = "Expected behavior"
     private static let priority = "Priority"
     private static let kind = "Kind"
+    private static let view = "View"
     
     // MARK: - Public methods
     
@@ -82,8 +83,8 @@ class IssueContentProvider {
             lines.append(boldTitle(kind) + report.kind.name())
             lines.append(boldTitle(priority) + report.priority.name())
         }
-        report.screenshotsUrls.forEach { (url) in
-            lines.append(getScreenshotLink(url: url))
+        report.screenshots.forEach { (screenshot) in
+            lines.append(getScreenshotLink(screenName: screenshot.screenName, url: screenshot.url))
         }
         
         for (index, url) in report.audioUrls.enumerated() {
@@ -102,8 +103,8 @@ class IssueContentProvider {
         return String(format: titleFormat, boldMark, title, boldMark)
     }
     
-    private static func getScreenshotLink(url: String) -> String {
-        return String(format: imageFormat, url)
+    private static func getScreenshotLink(screenName: String, url: String) -> String {
+        return String(format: imageFormat, screenName, url)
     }
     
     private static func getAudioLink(url: String, index: Int) -> String {

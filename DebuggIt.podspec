@@ -32,7 +32,7 @@ DebuggIt is a simple, yet powerful tool that helps you get reports of the bugs d
 
   s.ios.deployment_target = '9.0'
 
-  s.source_files = 'DebuggIt/Source/**/*.swift'
+  s.source_files = 'DebuggIt/**/*.swift'
   # s.resources = "DebuggIt/**/*.{png,jpeg,jpg,storyboard,xib}"
 
   
@@ -44,12 +44,9 @@ DebuggIt is a simple, yet powerful tool that helps you get reports of the bugs d
     ]
   }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
-  s.dependency "Alamofire", "~> 4.0"
-  s.dependency "SwiftyJSON"
-  s.dependency "IQKeyboardManagerSwift", "~> 4.0.6"
+  s.dependency 'Alamofire', "~> 4.0"
+  s.dependency 'SwiftyJSON'
+  s.dependency 'IQKeyboardManagerSwift', '~> 4.0.6'
   s.dependency 'KMPlaceholderTextView', '~> 1.3.0'
   s.dependency 'RNCryptor'
 

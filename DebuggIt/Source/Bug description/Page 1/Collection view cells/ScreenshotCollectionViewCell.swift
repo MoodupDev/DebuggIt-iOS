@@ -19,8 +19,8 @@ class ScreenshotCollectionViewCell: UICollectionViewCell {
     
     @IBAction func deleteScreenshot(_ sender: UIButton) {
         if let index = index {
-            let screenshotUrl = DebuggIt.sharedInstance.report.screenshotsUrls.remove(at: index)
-            ImageCache.shared.clear(key: screenshotUrl)
+            let screenshot = DebuggIt.sharedInstance.report.screenshots.remove(at: index)
+            ImageCache.shared.clear(key: screenshot.url)
             ApiClient.postEvent(.screenshotRemoved)
             if let viewController = self.viewController() as? BugDescriptionPage1ViewController {
                 viewController.reportItemsCollection.reloadData()

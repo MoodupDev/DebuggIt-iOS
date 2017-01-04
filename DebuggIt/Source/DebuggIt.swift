@@ -213,7 +213,16 @@ public class DebuggIt: NSObject {
     
     private func takeScreenshot() {
         let window: UIWindow! = UIApplication.shared.keyWindow
+        report.currentScreenshotScreenName = getVisibleViewControllerName(from: window)
         report.currentScreenshot = window.capture()
+    }
+    
+    private func getVisibleViewControllerName(from window: UIWindow) -> String {
+        var viewController = window.rootViewController
+        if viewController is UINavigationController {
+            viewController = (viewController as! UINavigationController).visibleViewController
+        }
+        return String(describing: type(of: viewController!))
     }
     
     func showModal(viewController: UIViewController, animated: Bool = true, completion: (() -> Void)? = nil) {

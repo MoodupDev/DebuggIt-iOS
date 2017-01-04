@@ -161,7 +161,7 @@ extension BugDescriptionPage1ViewController : UICollectionViewDataSource {
     
     var itemsCount: Int {
         let report = DebuggIt.sharedInstance.report
-        return report.screenshotsUrls.count + report.audioUrls.count + 1
+        return report.screenshots.count + report.audioUrls.count + 1
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -192,9 +192,9 @@ extension BugDescriptionPage1ViewController : UICollectionViewDataSource {
         let cell = reportItemsCollection.dequeueReusableCell(withReuseIdentifier: screenshotReuseIdentifier, for: indexPath) as! ScreenshotCollectionViewCell
         
         let report = DebuggIt.sharedInstance.report
-        let screenshots = report.screenshotsUrls
+        let screenshots = report.screenshots
         let index = indexPath.row - report.audioUrls.count
-        if let url = URL(string: screenshots[index]) {
+        if let url = URL(string: screenshots[index].url) {
             cell.screenshotImage.loadFrom(url: url)
         }
         cell.index = index

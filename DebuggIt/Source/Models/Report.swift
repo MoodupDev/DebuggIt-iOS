@@ -20,7 +20,8 @@ class Report {
     var expectedBehavior = ""
     
     var currentScreenshot: UIImage?
-    var screenshotsUrls = [String]()
+    var currentScreenshotScreenName: String?
+    var screenshots = [Screenshot]()
     var audioUrls = [String]()
     
     init() {

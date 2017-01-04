@@ -60,7 +60,7 @@ class BugDescriptionViewController: UIViewController {
     private func postEventsAfterIssueSent(report: Report) {
         ApiClient.postEvent(.reportSent)
         ApiClient.postEvent(.audioAmount, value: report.audioUrls.count)
-        ApiClient.postEvent(.screenshotAmount, value: report.screenshotsUrls.count)
+        ApiClient.postEvent(.screenshotAmount, value: report.screenshots.count)
         if !report.actualBehavior.isEmpty {
             ApiClient.postEvent(.actualBehaviorFilled)
         }
