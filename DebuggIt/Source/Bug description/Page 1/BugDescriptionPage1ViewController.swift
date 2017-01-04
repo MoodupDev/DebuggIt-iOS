@@ -205,6 +205,7 @@ extension BugDescriptionPage1ViewController : UICollectionViewDataSource {
     func createAudioCell(for indexPath: IndexPath) -> UICollectionViewCell {
         let cell = reportItemsCollection.dequeueReusableCell(withReuseIdentifier: audioReuseIdentifier, for: indexPath) as! AudioCollectionViewCell
         cell.index = indexPath.row
+        cell.label.text = String(format: "audio.label".localized(), indexPath.row + 1)
         return cell
     }
 }

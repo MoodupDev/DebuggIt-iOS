@@ -55,3 +55,7 @@ error.title.empty = "Issue title can't be empty";
 error.title.too.long = "Issue title is too long, ensure it has at most %d characters (it has %d).";
 error.2fa.code = "Please enter your two-factor authorization code";
 
+/* General */
+
+audio.label = "Audio %d";
+

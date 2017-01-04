@@ -54,6 +54,14 @@ class IssueContentProvider {
             return "![](%@)"
         }
     }
+    private static var audioFormat: String {
+        switch DebuggIt.sharedInstance.configType {
+        case .jira:
+            return "[%@|%@]"
+        default:
+            return "[%@](%@)"
+        }
+    }
     
     // MARK: Titles
     
@@ -77,8 +85,9 @@ class IssueContentProvider {
         report.screenshotsUrls.forEach { (url) in
             lines.append(getScreenshotLink(url: url))
         }
-        report.audioUrls.forEach { (url) in
-            lines.append(url)
+        
+        for (index, url) in report.audioUrls.enumerated() {
+            lines.append(getAudioLink(url: url, index: index))
         }
         
         var content = lines.reduce("", {$0 + "\n\n" + $1})
@@ -95,6 +104,10 @@ class IssueContentProvider {
     
     private static func getScreenshotLink(url: String) -> String {
         return String(format: imageFormat, url)
+    }
+    
+    private static func getAudioLink(url: String, index: Int) -> String {
+        return String(format: audioFormat, String(format: "audio.label".localized(), index + 1), url)
     }
     
     private static func createInfoTable() -> String {
