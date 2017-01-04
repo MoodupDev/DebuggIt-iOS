@@ -31,7 +31,8 @@ class ApiClient {
                 if response.isSuccess() {
                     switch(type) {
                     case .image:
-                        DebuggIt.sharedInstance.report.screenshotsUrls.append(value["url"].stringValue)
+                        let screenName = DebuggIt.sharedInstance.report.currentScreenshotScreenName!
+                        DebuggIt.sharedInstance.report.screenshots.append(Screenshot(screenName: screenName, url: value["url"].stringValue))
                     case .audio:
                         DebuggIt.sharedInstance.report.audioUrls.append(value["url"].stringValue)
                     }
