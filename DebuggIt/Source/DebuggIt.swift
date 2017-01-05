@@ -8,6 +8,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import ReachabilitySwift
 
 enum ConfigType {
     case jira
@@ -24,6 +25,8 @@ public class DebuggIt: NSObject {
     @objc public var recordingEnabled = false
     
     // MARK: - Properties
+    
+    let reachability = Reachability()!
     
     var apiClient: ApiClientProtocol?
     var configType: ConfigType = .bitbucket
@@ -49,6 +52,9 @@ public class DebuggIt: NSObject {
     
     private var logoutShown = false
     
+    private var versionChecked = false
+    private var versionSupported = false
+    
     // MARK: - Public methods
     
     @objc public func initBitbucket(repoSlug: String, accountName: String) {
@@ -73,6 +79,21 @@ public class DebuggIt: NSObject {
         ApiClient.postEvent(.initialized)
         swizzleMethod(of: UIWindow.self, original: #selector(setter: UIWindow.self.rootViewController), to: #selector(UIWindow.self.attachDebuggItOnRootViewControllerChange(_:)))
         NotificationCenter.default.addObserver(self, selector: #selector(self.attachToWindow(_:)), name: NSNotification.Name.UIWindowDidBecomeKey, object: nil)
+        initReachability()
+    }
+    
+    func initReachability() {
+        reachability.whenReachable = { reachability in
+            if !self.versionChecked {
+                self.checkVersion(completion: nil)
+            }
+        }
+        
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Unable to start notifier")
+        }
     }
     
     func attachToWindow(_ notification: Notification) {
@@ -91,7 +112,16 @@ public class DebuggIt: NSObject {
             
             showModal(viewController: Initializer.viewController(WelcomeViewController.self))
         }
-
+    }
+    
+    private func checkVersion(completion: (() -> ())? = nil) {
+        ApiClient.checkVersion(completionHandler: { [unowned self] (checked, supported) in
+            if checked {
+                self.reachability.stopNotifier()
+            }
+            self.versionChecked = checked
+            self.versionSupported = supported
+        })
     }
     
     func reattach(to viewController: UIViewController) {
@@ -172,15 +202,32 @@ public class DebuggIt: NSObject {
         }
     }
     
+    private func showNotCheckedModal() {
+        showModal(viewController: Utils.createAlert(title: "alert.title.failure".localized(), message: "error.version.not.checked".localized(), positiveAction: {
+            self.moveApplicationWindowToFront()
+        }))
+    }
+    
+    private func showNotSupportedModal() {
+       showModal(viewController: Utils.createAlert(title: "alert.title.failure".localized(), message: "error.version.unsupported".localized(), positiveAction: {
+            self.moveApplicationWindowToFront()
+       }))
+    }
     
     @objc func showReportDialog() {
-        debuggItButton.isHidden = true
-        takeScreenshot()
-        debuggItButton.isHidden = false
-        if (apiClient?.hasToken)! {
-            showModal(viewController: Initializer.viewController(EditScreenshotModalViewController.self))
+        if !versionChecked {
+            showNotCheckedModal()
+        } else if !versionSupported {
+            showNotSupportedModal()
         } else {
-            showLoginModal()
+            debuggItButton.isHidden = true
+            takeScreenshot()
+            debuggItButton.isHidden = false
+            if (apiClient?.hasToken)! {
+                showModal(viewController: Initializer.viewController(EditScreenshotModalViewController.self))
+            } else {
+                showLoginModal()
+            }
         }
     }
     

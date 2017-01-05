@@ -26,6 +26,7 @@ struct Constants {
         static let uploadImageUrl = Api.baseUrl + "/api/v1/upload/image"
         static let uploadAudioUrl = Api.baseUrl + "/api/v1/upload/audio"
         static let eventsUrl = Api.baseUrl + "/api/v2/events"
+        static let supportedVersionUrl = Api.baseUrl + "/api/v2/supported_versions/ios/%@"
     }
     
     struct Bitbucket {

@@ -69,8 +69,19 @@ class ApiClient {
         
     }
     
-    static func checkVersion() {
-        // TODO: implement checking if version is supported
+    static func checkVersion(completionHandler: @escaping (_ isChecked: Bool, _ isSupported: Bool) -> ()) {
+        if let version = Initializer.bundle(forClass: ApiClient.self).infoDictionary?["CFBundleShortVersionString"] as? String {
+            Alamofire.request(String(format: Constants.Api.supportedVersionUrl, version)).responseData { response in
+                switch response.result {
+                case .success(let value):
+                    completionHandler(true, response.isSuccess())
+                case .failure(let error):
+                    completionHandler(false, false)
+                }
+            }
+        } else {
+            completionHandler(false, false)
+        }
     }
 }
 
