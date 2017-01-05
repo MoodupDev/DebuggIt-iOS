@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "DebuggIt"
-  s.version      = "0.1.1"
+  s.version      = "0.1.2"
   s.summary      = "Tool that will help QA and clients report bugs easily directly from the device"
 
 
@@ -50,6 +50,5 @@ DebuggIt is a simple, yet powerful tool that helps you get reports of the bugs d
   s.dependency 'KMPlaceholderTextView', '~> 1.3.0'
   s.dependency 'RNCryptor'
   s.dependency 'ReachabilitySwift'
-
 
 end
