@@ -73,9 +73,9 @@ class ApiClient {
         if let version = Initializer.bundle(forClass: ApiClient.self).infoDictionary?["CFBundleShortVersionString"] as? String {
             Alamofire.request(String(format: Constants.Api.supportedVersionUrl, version)).responseData { response in
                 switch response.result {
-                case .success(let value):
+                case .success(_):
                     completionHandler(true, response.isSuccess())
-                case .failure(let error):
+                case .failure(_):
                     completionHandler(false, false)
                 }
             }
