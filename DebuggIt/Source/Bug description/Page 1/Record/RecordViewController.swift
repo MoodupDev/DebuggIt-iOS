@@ -99,8 +99,12 @@ class RecordViewController: UIViewController {
                         self.delegate?.recordUploaded()
                     }), animated: true, completion: nil)
                 }, errorBlock: { (code, message) in
-                    alert.dismiss(animated: true, completion: nil)
-                    self.present(Utils.createAlert(title: "alert.title.send.audio".localized(), message: "error.general".localized(), positiveAction: {}), animated: true, completion: nil)
+                    alert.dismiss(animated: true, completion: {
+                        self.present(Utils.createGeneralErrorAlert(action: {
+                            self.delegate?.recordFailed()
+                            self.dismiss(animated: true, completion: nil)
+                        }), animated: true, completion: nil)
+                    })
                 })
             }
         } else {

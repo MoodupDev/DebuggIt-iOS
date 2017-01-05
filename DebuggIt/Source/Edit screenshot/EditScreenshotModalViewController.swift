@@ -48,7 +48,9 @@ class EditScreenshotModalViewController: UIViewController {
                 alertController.dismiss(animated: true, completion: self.showBugDescription)
             }, errorBlock: {
                 (statusCode, errorMessage) in
-                alertController.dismiss(animated: false, completion: nil)
+                alertController.dismiss(animated: false, completion: {
+                    self.present(Utils.createGeneralErrorAlert(), animated: true, completion: nil)
+                })
             })
     }
     
