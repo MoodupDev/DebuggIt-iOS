@@ -203,15 +203,27 @@ public class DebuggIt: NSObject {
     }
     
     private func showNotCheckedModal() {
-        showModal(viewController: Utils.createAlert(title: "alert.title.failure".localized(), message: "error.version.not.checked".localized(), positiveAction: {
-            self.moveApplicationWindowToFront()
-        }))
+        showModal(viewController:
+            Utils.createAlert(
+                title: "alert.title.failure".localized(),
+                message: "error.version.not.checked".localized(),
+                positiveAction: {
+                    self.moveApplicationWindowToFront()
+                }
+            )
+        )
     }
     
     private func showNotSupportedModal() {
-       showModal(viewController: Utils.createAlert(title: "alert.title.failure".localized(), message: "error.version.unsupported".localized(), positiveAction: {
-            self.moveApplicationWindowToFront()
-       }))
+       showModal(viewController:
+            Utils.createAlert(
+                title: "alert.title.failure".localized(),
+                message: "error.version.unsupported".localized(),
+                positiveAction: {
+                    self.moveApplicationWindowToFront()
+                }
+            )
+        )
     }
     
     @objc func showReportDialog() {
@@ -291,10 +303,6 @@ public class DebuggIt: NSObject {
         self.window?.isHidden = true
         self.window = nil
         self.applicationWindow?.makeKeyAndVisible()
-    }
-    
-    private override init() {
-        
     }
     
     private func swizzleMethod(of anyClass: AnyClass, original originalSelector: Selector, to swizzledSelector: Selector) {

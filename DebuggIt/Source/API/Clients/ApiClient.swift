@@ -29,14 +29,14 @@ class ApiClient {
             case .success(let value):
                 let value = JSON(value)
                 if response.isSuccess() {
+                    let url = value["url"].stringValue
                     switch(type) {
                     case .image:
                         let screenName = DebuggIt.sharedInstance.report.currentScreenshotScreenName!
-                        DebuggIt.sharedInstance.report.screenshots.append(Screenshot(screenName: screenName, url: value["url"].stringValue))
+                        DebuggIt.sharedInstance.report.screenshots.append(Screenshot(screenName: screenName, url: url))
                     case .audio:
-                        DebuggIt.sharedInstance.report.audioUrls.append(value["url"].stringValue)
+                        DebuggIt.sharedInstance.report.audioUrls.append(url)
                     }
-                    print(value["url"].stringValue)
                     successBlock()
                 } else {
                     errorBlock(response.responseCode, value.rawString())
