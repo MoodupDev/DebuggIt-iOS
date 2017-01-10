@@ -45,6 +45,8 @@ playground.xcworkspace
 #
 Pods/
 DebugIt.xcworkspace
+/*.framework
+/*.framework.zip
 
 # Carthage
 #

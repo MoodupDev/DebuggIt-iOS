@@ -26,7 +26,7 @@ DebuggIt is a simple, yet powerful tool that helps you get reports of the bugs d
   # s.screenshots   = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license         = { :type => 'MIT', :file => 'LICENSE' }
   s.author          = { "Mood Up" => "biuro@mooduplabs.com" }
-  s.source          = { :git => "https://bitbucket.org/moodup/debugg.it-ios.git", :tag => "#{s.version}" }
+  s.source          = { :http => "http://debugg.it/downloads/ios/#{s.version}/DebuggIt.framework.zip" }
 
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
