@@ -1,0 +1,63 @@
+/* 
+  Localizable.strings
+  DebugIt
+
+  Created by Arkadiusz Żmudzin on 10.11.2016.
+  Copyright © 2016 MoodUp. All rights reserved.
+*/
+
+login.text = "Sign in to %@ account and report bugs from the phone";
+
+/* Alert titles */
+
+alert.title.send.report = "Send report";
+alert.title.send.screenshot = "Send screenshot";
+alert.title.send.audio = "Send audio";
+
+alert.title.sending.report = "Sending report";
+alert.title.sending.screenshot = "Sending screenshot";
+alert.title.sending.audio = "Sending audio";
+
+alert.title.success = "Success";
+alert.title.failure = "Error";
+
+alert.title.login = "Sign in";
+alert.title.login.successful = "Signed in!";
+
+alert.title.recording.disabled = "Recording is disabled";
+
+alert.title.logout = "Logout";
+
+/* Alert messages */
+
+alert.message.saved.report = "Report saved successfully";
+alert.message.saved.screenshot = "Screenshot saved successfully";
+alert.message.saved.audio = "Audio saved successfully";
+
+alert.message.wait = "Wait for the end...";
+alert.message.login = "Signing in to account...";
+alert.message.login.successful = "Now let\'s smash some bugs";
+
+alert.message.recording.disabled = "Please ask your developer to enable this feature";
+
+alert.message.logout = "Do you want to logout?";
+/* Alert buttons */
+
+alert.button.ok = "Ok";
+alert.button.cancel = "Cancel";
+
+/* Errors */
+
+error.general = "Something went wrong\nCheck your Internet connection";
+error.login = "It\'s not possible to sign you in!\nCheck your Internet connection";
+error.login.wrong.credentials = "Invalid email or password,\ncan\'t log in";
+error.title.empty = "Issue title can't be empty";
+error.title.too.long = "Issue title is too long, ensure it has at most %d characters (it has %d).";
+error.2fa.code = "Please enter your two-factor authorization code";
+error.version.unsupported = "Your debugg.it version isn\'t the latest version, check debugg.it website";
+error.version.not.checked = "Can\'t check if your debugg.it version is supported!\nCheck your Internet connection";
+
+/* General */
+
+audio.label = "Audio %d";
+
