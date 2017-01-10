@@ -7,16 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2101FA3B1E251ED000A7E979 /* DebuggIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2101FA311E251ED000A7E979 /* DebuggIt.framework */; };
-		2101FA401E251ED000A7E979 /* DebuggItTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2101FA3F1E251ED000A7E979 /* DebuggItTests.swift */; };
 		2101FA421E251ED000A7E979 /* DebuggIt.h in Headers */ = {isa = PBXBuildFile; fileRef = 2101FA341E251ED000A7E979 /* DebuggIt.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		213313761E251FBA00777356 /* DebuggIt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213313481E251FBA00777356 /* DebuggIt.swift */; };
 		213313AB1E25212E00777356 /* ApiClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213313A91E25212E00777356 /* ApiClientProtocol.swift */; };
 		213313AC1E25212E00777356 /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213313AA1E25212E00777356 /* EventType.swift */; };
-		213313B21E25213D00777356 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213313AE1E25213D00777356 /* ApiClient.swift */; };
-		213313B31E25213D00777356 /* BitbucketApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213313AF1E25213D00777356 /* BitbucketApiClient.swift */; };
-		213313B41E25213D00777356 /* GitHubApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213313B01E25213D00777356 /* GitHubApiClient.swift */; };
-		213313B51E25213D00777356 /* JiraApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213313B11E25213D00777356 /* JiraApiClient.swift */; };
 		213313BA1E25217D00777356 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213313B81E25217D00777356 /* Report.swift */; };
 		213313BB1E25217D00777356 /* Screenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213313B91E25217D00777356 /* Screenshot.swift */; };
 		213313BE1E25219600777356 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213313BC1E25219600777356 /* WelcomeViewController.swift */; };
@@ -71,32 +65,20 @@
 		2133142C1E25247C00777356 /* BugDescriptionPage2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2133142A1E25247C00777356 /* BugDescriptionPage2ViewController.swift */; };
 		2133142D1E25247C00777356 /* BugDescriptionPage2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2133142B1E25247C00777356 /* BugDescriptionPage2ViewController.xib */; };
 		2133142F1E2524C100777356 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2133142E1E2524C100777356 /* Localizable.strings */; };
+		21E83D1C1E25272600D24FBF /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E83D181E25272600D24FBF /* ApiClient.swift */; };
+		21E83D1D1E25272600D24FBF /* BitbucketApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E83D191E25272600D24FBF /* BitbucketApiClient.swift */; };
+		21E83D1E1E25272600D24FBF /* GitHubApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E83D1A1E25272600D24FBF /* GitHubApiClient.swift */; };
+		21E83D1F1E25272600D24FBF /* JiraApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E83D1B1E25272600D24FBF /* JiraApiClient.swift */; };
+		21E83D211E25281500D24FBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21E83D201E25281500D24FBF /* Assets.xcassets */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		2101FA3C1E251ED000A7E979 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2101FA281E251ED000A7E979 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2101FA301E251ED000A7E979;
-			remoteInfo = DebuggIt;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2101FA311E251ED000A7E979 /* DebuggIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DebuggIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2101FA341E251ED000A7E979 /* DebuggIt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DebuggIt.h; sourceTree = "<group>"; };
 		2101FA351E251ED000A7E979 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2101FA3A1E251ED000A7E979 /* DebuggItTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DebuggItTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2101FA3F1E251ED000A7E979 /* DebuggItTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebuggItTests.swift; sourceTree = "<group>"; };
-		2101FA411E251ED000A7E979 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		213313481E251FBA00777356 /* DebuggIt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebuggIt.swift; sourceTree = "<group>"; };
 		213313A91E25212E00777356 /* ApiClientProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClientProtocol.swift; sourceTree = "<group>"; };
 		213313AA1E25212E00777356 /* EventType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventType.swift; sourceTree = "<group>"; };
-		213313AE1E25213D00777356 /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiClient.swift; path = Clients/ApiClient.swift; sourceTree = "<group>"; };
-		213313AF1E25213D00777356 /* BitbucketApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BitbucketApiClient.swift; path = Clients/BitbucketApiClient.swift; sourceTree = "<group>"; };
-		213313B01E25213D00777356 /* GitHubApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GitHubApiClient.swift; path = Clients/GitHubApiClient.swift; sourceTree = "<group>"; };
-		213313B11E25213D00777356 /* JiraApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JiraApiClient.swift; path = Clients/JiraApiClient.swift; sourceTree = "<group>"; };
 		213313B81E25217D00777356 /* Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		213313B91E25217D00777356 /* Screenshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screenshot.swift; sourceTree = "<group>"; };
 		213313BC1E25219600777356 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +133,11 @@
 		2133142A1E25247C00777356 /* BugDescriptionPage2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BugDescriptionPage2ViewController.swift; sourceTree = "<group>"; };
 		2133142B1E25247C00777356 /* BugDescriptionPage2ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BugDescriptionPage2ViewController.xib; sourceTree = "<group>"; };
 		2133142E1E2524C100777356 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		21E83D181E25272600D24FBF /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		21E83D191E25272600D24FBF /* BitbucketApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitbucketApiClient.swift; sourceTree = "<group>"; };
+		21E83D1A1E25272600D24FBF /* GitHubApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubApiClient.swift; sourceTree = "<group>"; };
+		21E83D1B1E25272600D24FBF /* JiraApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JiraApiClient.swift; sourceTree = "<group>"; };
+		21E83D201E25281500D24FBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,14 +148,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2101FA371E251ED000A7E979 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2101FA3B1E251ED000A7E979 /* DebuggIt.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -176,7 +155,6 @@
 			isa = PBXGroup;
 			children = (
 				2101FA331E251ED000A7E979 /* DebuggIt */,
-				2101FA3E1E251ED000A7E979 /* DebuggItTests */,
 				2101FA321E251ED000A7E979 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -185,7 +163,6 @@
 			isa = PBXGroup;
 			children = (
 				2101FA311E251ED000A7E979 /* DebuggIt.framework */,
-				2101FA3A1E251ED000A7E979 /* DebuggItTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -200,19 +177,10 @@
 				213313B61E25215900777356 /* Models */,
 				213313A81E25211A00777356 /* API */,
 				213313481E251FBA00777356 /* DebuggIt.swift */,
-				2101FA341E251ED000A7E979 /* DebuggIt.h */,
 				2133140A1E2522EF00777356 /* Supporting Files */,
+				21E83D201E25281500D24FBF /* Assets.xcassets */,
 			);
 			path = DebuggIt;
-			sourceTree = "<group>";
-		};
-		2101FA3E1E251ED000A7E979 /* DebuggItTests */ = {
-			isa = PBXGroup;
-			children = (
-				2101FA3F1E251ED000A7E979 /* DebuggItTests.swift */,
-				2101FA411E251ED000A7E979 /* Info.plist */,
-			);
-			path = DebuggItTests;
 			sourceTree = "<group>";
 		};
 		213313A81E25211A00777356 /* API */ = {
@@ -228,10 +196,10 @@
 		213313AD1E25213200777356 /* Clients */ = {
 			isa = PBXGroup;
 			children = (
-				213313AE1E25213D00777356 /* ApiClient.swift */,
-				213313AF1E25213D00777356 /* BitbucketApiClient.swift */,
-				213313B01E25213D00777356 /* GitHubApiClient.swift */,
-				213313B11E25213D00777356 /* JiraApiClient.swift */,
+				21E83D181E25272600D24FBF /* ApiClient.swift */,
+				21E83D191E25272600D24FBF /* BitbucketApiClient.swift */,
+				21E83D1A1E25272600D24FBF /* GitHubApiClient.swift */,
+				21E83D1B1E25272600D24FBF /* JiraApiClient.swift */,
 			);
 			path = Clients;
 			sourceTree = "<group>";
@@ -340,6 +308,7 @@
 		2133140A1E2522EF00777356 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2101FA341E251ED000A7E979 /* DebuggIt.h */,
 				2133142E1E2524C100777356 /* Localizable.strings */,
 				2101FA351E251ED000A7E979 /* Info.plist */,
 			);
@@ -419,24 +388,6 @@
 			productReference = 2101FA311E251ED000A7E979 /* DebuggIt.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		2101FA391E251ED000A7E979 /* DebuggItTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2101FA481E251ED000A7E979 /* Build configuration list for PBXNativeTarget "DebuggItTests" */;
-			buildPhases = (
-				2101FA361E251ED000A7E979 /* Sources */,
-				2101FA371E251ED000A7E979 /* Frameworks */,
-				2101FA381E251ED000A7E979 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2101FA3D1E251ED000A7E979 /* PBXTargetDependency */,
-			);
-			name = DebuggItTests;
-			productName = DebuggItTests;
-			productReference = 2101FA3A1E251ED000A7E979 /* DebuggItTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -451,11 +402,6 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 4UE95LJ5MB;
 						LastSwiftMigration = 0820;
-						ProvisioningStyle = Automatic;
-					};
-					2101FA391E251ED000A7E979 = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 4UE95LJ5MB;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -473,7 +419,6 @@
 			projectRoot = "";
 			targets = (
 				2101FA301E251ED000A7E979 /* DebuggIt */,
-				2101FA391E251ED000A7E979 /* DebuggItTests */,
 			);
 		};
 /* End PBXProject section */
@@ -497,14 +442,8 @@
 				213314281E25245C00777356 /* RecordViewController.xib in Resources */,
 				2133142F1E2524C100777356 /* Localizable.strings in Resources */,
 				213313FE1E25228500777356 /* DebuggItButton.xib in Resources */,
+				21E83D211E25281500D24FBF /* Assets.xcassets in Resources */,
 				213313BF1E25219600777356 /* WelcomeViewController.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2101FA381E251ED000A7E979 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,15 +455,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				213313D41E25222A00777356 /* TokenManager.swift in Sources */,
-				213313B41E25213D00777356 /* GitHubApiClient.swift in Sources */,
 				213313BE1E25219600777356 /* WelcomeViewController.swift in Sources */,
+				21E83D1F1E25272600D24FBF /* JiraApiClient.swift in Sources */,
 				213313ED1E25225A00777356 /* UIView+RoundedCorners.swift in Sources */,
 				213313BB1E25217D00777356 /* Screenshot.swift in Sources */,
 				2133141F1E25245000777356 /* AudioCollectionViewCell.swift in Sources */,
 				213313FD1E25228500777356 /* DebuggItButton.swift in Sources */,
 				213314121E25242B00777356 /* BugDescriptionViewController.swift in Sources */,
+				21E83D1E1E25272600D24FBF /* GitHubApiClient.swift in Sources */,
 				213313EE1E25225A00777356 /* UIViewController+EmbedInContainer.swift in Sources */,
-				213313B31E25213D00777356 /* BitbucketApiClient.swift in Sources */,
 				213313E71E25225A00777356 /* String+Base64.swift in Sources */,
 				213314171E25244800777356 /* BugDescriptionPage1ViewController.swift in Sources */,
 				213314271E25245C00777356 /* RecordViewController.swift in Sources */,
@@ -538,7 +477,8 @@
 				213314031E25228500777356 /* RoundedImageView.swift in Sources */,
 				213314001E25228500777356 /* ResizableRectangle.swift in Sources */,
 				213313BA1E25217D00777356 /* Report.swift in Sources */,
-				213313B51E25213D00777356 /* JiraApiClient.swift in Sources */,
+				21E83D1C1E25272600D24FBF /* ApiClient.swift in Sources */,
+				21E83D1D1E25272600D24FBF /* BitbucketApiClient.swift in Sources */,
 				213313D01E25222A00777356 /* Constants.swift in Sources */,
 				213313E41E25225A00777356 /* ApiClientProtocol+Headers.swift in Sources */,
 				213313C71E2521F800777356 /* WebViewController.swift in Sources */,
@@ -552,7 +492,6 @@
 				2133142C1E25247C00777356 /* BugDescriptionPage2ViewController.swift in Sources */,
 				213313AC1E25212E00777356 /* EventType.swift in Sources */,
 				213313AB1E25212E00777356 /* ApiClientProtocol.swift in Sources */,
-				213313B21E25213D00777356 /* ApiClient.swift in Sources */,
 				213313EF1E25225A00777356 /* UIWindow+Screenshot.swift in Sources */,
 				213314021E25228500777356 /* RoundedButton.swift in Sources */,
 				213314231E25245000777356 /* ScreenshotCollectionViewCell.swift in Sources */,
@@ -564,23 +503,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2101FA361E251ED000A7E979 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2101FA401E251ED000A7E979 /* DebuggItTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		2101FA3D1E251ED000A7E979 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2101FA301E251ED000A7E979 /* DebuggIt */;
-			targetProxy = 2101FA3C1E251ED000A7E979 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		2101FA431E251ED000A7E979 /* Debug */ = {
@@ -725,32 +648,6 @@
 			};
 			name = Release;
 		};
-		2101FA491E251ED000A7E979 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 4UE95LJ5MB;
-				INFOPLIST_FILE = DebuggItTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.moodup.DebuggItTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Debug;
-		};
-		2101FA4A1E251ED000A7E979 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 4UE95LJ5MB;
-				INFOPLIST_FILE = DebuggItTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.moodup.DebuggItTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -768,15 +665,6 @@
 			buildConfigurations = (
 				2101FA461E251ED000A7E979 /* Debug */,
 				2101FA471E251ED000A7E979 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2101FA481E251ED000A7E979 /* Build configuration list for PBXNativeTarget "DebuggItTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2101FA491E251ED000A7E979 /* Debug */,
-				2101FA4A1E251ED000A7E979 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
