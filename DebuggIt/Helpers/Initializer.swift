@@ -12,10 +12,7 @@ import UIKit
 class Initializer {
     
     static func bundle(forClass: AnyClass) -> Bundle {
-        let podBundle = Bundle(for: forClass)
-        
-        let bundleURL = podBundle.url(forResource: "DebuggIt", withExtension: "bundle")
-        return Bundle(url: bundleURL!)!
+        return Bundle(for: forClass)
     }
 
     static func viewController<T: UIViewController>(_ withClass: T.Type) -> T {
