@@ -44,6 +44,8 @@ class Utils {
                 return error
             } else if let error = json["message"].string {
                 return error
+            } else if error == "Forbidden" {
+                return "error.repo.access.forbidden".localized()
             }
             return message
         } else {

@@ -56,6 +56,7 @@ error.title.too.long = "Issue title is too long, ensure it has at most %d charac
 error.2fa.code = "Please enter your two-factor authorization code";
 error.version.unsupported = "Your debugg.it version isn\'t the latest version, check debugg.it website";
 error.version.not.checked = "Can\'t check if your debugg.it version is supported!\nCheck your Internet connection";
+error.repo.access.forbidden = "You don\'t have access to the repository. Please contact your developer";
 
 /* General */
 
