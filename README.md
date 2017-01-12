@@ -16,35 +16,52 @@ To run the example project, open `DebuggIt.xcworkspace`, choose `DebuggItDemo` s
 
 ## Installation
 
-Currently DebuggIt is available only through this repository. To install
-it, clone this repo and add this line to your project Podfile.
+debugg.it is available through CocoaPods. To install it, add the following to your Podfile:
 
 ```ruby
-pod 'DebuggIt', :podspec => '~/path/to/cloned/repo/DebuggIt.podspec'
+use_frameworks!
+platform :ios, '9.0'
+pod 'DebuggIt'
 ```
 
-Then in your `AppDelegate` file add this line to initialize debugg.it:
+Don’t forget to import the Pod in `AppDelegate`:
+
+```swift
+import DebuggIt
+```
+or in Objective-C
+```objc
+@import DebuggIt;
+```
+
+and add one of these lines (**at start of method**) to initialize debugg.it
 
 *Swift*:
 
 ```swift
-// Bitbucket
-DebuggIt.sharedInstance.initBitbucket(repoSlug: "repo-name", accountName: "repo-owner-username")
-// or Github
-DebuggIt.sharedInstance.initGithub(repoSlug: "repo-name", accountName: "repo-owner-username")
-// or JIRA
-DebuggIt.sharedInstance.initJira(host: "jira-host-url", projectKey: "project-key")
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    // Override point for customization after application launch.
+    DebuggIt.sharedInstance.initBitbucket(repoSlug: "repo-name", accountName: "repo-owner-username")
+    // or Github
+    DebuggIt.sharedInstance.initGithub(repoSlug: "repo-name", accountName: "repo-owner-username")
+    // or JIRA
+    DebuggIt.sharedInstance.initJira(host: "jira-host-url", projectKey: "project-key")
+    return true
+}
 ```
 
 *Objective-C*:
 
 ```objc
-// Bitbucket
-[[DebuggIt sharedInstance] initBitbucketWithRepoSlug: @"repo-name" accountName:@"repo-owner-username"];
-// or Github
-[[DebuggIt sharedInstance] initGithubWithRepoSlug: @"repo-name" accountName:@"repo-owner-username"];
-// or JIRA
-[[DebuggIt sharedInstance] initJiraWithHost:@"jira-host-url" projectKey:@"project-key" usesHttps:YES];
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Bitbucket
+    [[DebuggIt sharedInstance] initBitbucketWithRepoSlug: @"repo-name" accountName:@"repo-owner-username"];
+    // or Github
+    [[DebuggIt sharedInstance] initGithubWithRepoSlug: @"repo-name" accountName:@"repo-owner-username"];
+    // or JIRA
+    [[DebuggIt sharedInstance] initJiraWithHost:@"jira-host-url" projectKey:@"project-key" usesHttps:YES];
+    return YES;
+}
 ```
 
 **Note**: If you are using **JIRA** and your host **do not use SSL**, use additional parameter in initialize method:
