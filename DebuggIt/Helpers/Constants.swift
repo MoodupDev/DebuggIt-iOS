@@ -22,7 +22,7 @@ struct Constants {
     ]
     
     struct Api {
-        private static let baseUrl = "https://debuggit-api-staging.herokuapp.com"
+        private static let baseUrl = Config.sharedInstance.apiBaseUrl()
         static let uploadImageUrl = Api.baseUrl + "/api/v1/upload/image"
         static let uploadAudioUrl = Api.baseUrl + "/api/v1/upload/audio"
         static let eventsUrl = Api.baseUrl + "/api/v2/events"
