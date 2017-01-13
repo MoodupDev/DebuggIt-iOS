@@ -116,21 +116,21 @@ All source files are located in `DebuggIt` group under `DebuggIt` project.
 ## Deployment
 
 To deploy new version of `DebuggIt`, you must:
-
-1. Archive `.framework` file
-	1. Make sure that there's custom post-archive script in `DebuggIt` scheme. 
-	To do this, choose `DebuggIt` scheme and click **Product -> Scheme -> Edit Scheme** (or `Cmd + Shift + <`). 
+1. Choose `DebuggIt-Production` build scheme
+2. Archive `.framework` file
+	1. Make sure that there's custom post-archive script in `DebuggIt-Production` scheme. 
+	To do this, choose `DebuggIt-Production` scheme and click **Product -> Scheme -> Edit Scheme** (or `Cmd + Shift + <`). 
 	Expand **Archive** in the side menu. If there's no custom **Post-action** script, add new script. 
 	Paste contents of `archive_post_action_script.sh` into the Run Script window.
 	Be sure to select `DebuggIt` for the **Provide build settings from** setting and click Close to apply the changes.
 	2. Ensure that **Skip Install** setting in framework target's **Build Settings** is set to `No`
 	3. Archive the framework by clicking **Product -> Archive** in the menu bar. If the option is greyed out, make sure to select a physical iOS device and not the iOS simulator.
 	4. Once the bundle is archived, the Xcode Organizer will pop up. Wait a few more seconds, and the Finder should also open up directory with `DebuggIt.framework` inside it.
-2. Use `deploy` script (**Note**: Ruby required)
+3. Use `deploy` script (**Note**: Ruby required)
 	1. Open terminal in project directory
 	2. Make sure that `deploy` script has execute permissions (`chmod +x deploy`)
 	3. Use this script to deploy new version to server: `./deploy <version>` (e.g. `./deploy 1.0.1`)
-3. Update pod
+4. Update pod
 	1. Update version in `DebuggIt.podspec`
 	2. Lint build using `pod lib lint DebuggIt.podspec`
 	3. Update pod: `pod trunk push DebuggIt.podspec`
