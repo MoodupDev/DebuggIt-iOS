@@ -42,7 +42,7 @@ extension WebViewController : UIWebViewDelegate {
     }
     
     func isCallback(_ url: URL?) -> Bool {
-        return url?.queryParams()["code"] != nil
+        return (url?.absoluteString.contains(Constants.Bitbucket.callbackUrl))! && url?.queryParams()["code"] != nil
     }
     
     func exchangeCodeForAccessToken(_ code: String) {
