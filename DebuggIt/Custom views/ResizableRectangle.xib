@@ -77,6 +77,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="backgroundView" destination="O7h-ZO-VSU" id="oCh-1V-50u"/>
+                <outletCollection property="corners" destination="zLp-E9-I6C" collectionClass="NSMutableArray" id="xet-Oz-EAL"/>
                 <outletCollection property="corners" destination="oHI-tE-yJk" collectionClass="NSMutableArray" id="e2H-h5-KZ2"/>
                 <outletCollection property="corners" destination="T9m-t0-Mi4" collectionClass="NSMutableArray" id="0wO-3K-Ra9"/>
                 <outletCollection property="corners" destination="Mpa-Ne-CrG" collectionClass="NSMutableArray" id="G34-2l-DmO"/>

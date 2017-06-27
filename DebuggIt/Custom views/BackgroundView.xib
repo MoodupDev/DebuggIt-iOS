@@ -20,7 +20,7 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MNR-cg-oi5" userLabel="topOrange">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="567"/>
-                    <color key="backgroundColor" red="0.90980392156862744" green="0.41176470588235292" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.90980392156862744" green="0.41176470588235292" blue="0.27450980392156865" alpha="1" colorSpace="deviceRGB"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                             <integer key="value" value="5"/>
