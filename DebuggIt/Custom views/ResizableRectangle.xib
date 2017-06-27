@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB" customClass="ResizableRectangle" customModule="DebugIt" customModuleProvider="target">
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB" customClass="ResizableRectangle" customModule="DebuggIt" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -31,31 +30,59 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="corner" translatesAutoresizingMaskIntoConstraints="NO" id="zLp-E9-I6C">
                     <rect key="frame" x="0.0" y="84" width="16" height="16"/>
                 </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oHI-tE-yJk">
+                    <rect key="frame" x="-6" y="78" width="28" height="28"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T9m-t0-Mi4">
+                    <rect key="frame" x="78" y="78" width="28" height="28"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QnR-g5-vaO">
+                    <rect key="frame" x="-6" y="-6" width="28" height="28"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mpa-Ne-CrG">
+                    <rect key="frame" x="78" y="-6" width="28" height="28"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="g5J-yi-bJW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1aw-FC-D0r"/>
+                <constraint firstItem="QnR-g5-vaO" firstAttribute="top" secondItem="g5J-yi-bJW" secondAttribute="top" constant="-6" id="2DV-HX-ucT"/>
+                <constraint firstItem="Mpa-Ne-CrG" firstAttribute="top" secondItem="An5-uV-v3B" secondAttribute="top" constant="-6" id="3sU-cD-gSA"/>
+                <constraint firstItem="T9m-t0-Mi4" firstAttribute="trailing" secondItem="uST-zA-d8d" secondAttribute="trailing" constant="6" id="63E-0o-PdH"/>
                 <constraint firstAttribute="trailing" secondItem="An5-uV-v3B" secondAttribute="trailing" id="70G-gr-i4w"/>
+                <constraint firstItem="oHI-tE-yJk" firstAttribute="bottom" secondItem="zLp-E9-I6C" secondAttribute="bottom" constant="6" id="EyN-Ya-ZUP"/>
+                <constraint firstItem="QnR-g5-vaO" firstAttribute="bottom" secondItem="g5J-yi-bJW" secondAttribute="bottom" constant="6" id="Gev-UG-oBQ"/>
+                <constraint firstItem="Mpa-Ne-CrG" firstAttribute="trailing" secondItem="An5-uV-v3B" secondAttribute="trailing" constant="6" id="Ii6-kJ-LaC"/>
                 <constraint firstAttribute="trailing" secondItem="uST-zA-d8d" secondAttribute="trailing" id="KbY-NY-TvH"/>
                 <constraint firstItem="O7h-ZO-VSU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="Lab-U8-979"/>
+                <constraint firstItem="oHI-tE-yJk" firstAttribute="top" secondItem="zLp-E9-I6C" secondAttribute="top" constant="-6" id="MBw-nz-FpP"/>
                 <constraint firstAttribute="bottom" secondItem="O7h-ZO-VSU" secondAttribute="bottom" constant="5" id="W1e-dm-qVD"/>
                 <constraint firstAttribute="bottom" secondItem="uST-zA-d8d" secondAttribute="bottom" id="ZPl-ZE-KTu"/>
+                <constraint firstItem="Mpa-Ne-CrG" firstAttribute="leading" secondItem="An5-uV-v3B" secondAttribute="leading" constant="-6" id="a3w-pE-vih"/>
+                <constraint firstItem="QnR-g5-vaO" firstAttribute="trailing" secondItem="g5J-yi-bJW" secondAttribute="trailing" constant="6" id="bbp-uV-Ttj"/>
+                <constraint firstItem="T9m-t0-Mi4" firstAttribute="bottom" secondItem="uST-zA-d8d" secondAttribute="bottom" constant="6" id="c4L-lt-Vjl"/>
+                <constraint firstItem="T9m-t0-Mi4" firstAttribute="top" secondItem="uST-zA-d8d" secondAttribute="top" constant="-6" id="epW-EI-Gqw"/>
                 <constraint firstItem="zLp-E9-I6C" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hWT-bG-W8o"/>
+                <constraint firstItem="QnR-g5-vaO" firstAttribute="leading" secondItem="g5J-yi-bJW" secondAttribute="leading" constant="-6" id="joq-DF-T5e"/>
+                <constraint firstItem="Mpa-Ne-CrG" firstAttribute="bottom" secondItem="An5-uV-v3B" secondAttribute="bottom" constant="6" id="n9R-sO-13d"/>
                 <constraint firstAttribute="trailing" secondItem="O7h-ZO-VSU" secondAttribute="trailing" constant="5" id="na4-ct-mcn"/>
                 <constraint firstItem="An5-uV-v3B" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="oFV-XZ-CkS"/>
                 <constraint firstItem="O7h-ZO-VSU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="oT2-Rr-coh"/>
+                <constraint firstItem="T9m-t0-Mi4" firstAttribute="leading" secondItem="uST-zA-d8d" secondAttribute="leading" constant="-6" id="q5u-UV-wGx"/>
+                <constraint firstItem="oHI-tE-yJk" firstAttribute="trailing" secondItem="zLp-E9-I6C" secondAttribute="trailing" constant="6" id="r8k-bI-Jlo"/>
+                <constraint firstItem="oHI-tE-yJk" firstAttribute="leading" secondItem="zLp-E9-I6C" secondAttribute="leading" constant="-6" id="tdF-kM-fCV"/>
                 <constraint firstItem="g5J-yi-bJW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="woI-PZ-fNY"/>
                 <constraint firstAttribute="bottom" secondItem="zLp-E9-I6C" secondAttribute="bottom" id="xpX-pa-SMM"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="backgroundView" destination="O7h-ZO-VSU" id="oCh-1V-50u"/>
-                <outletCollection property="corners" destination="g5J-yi-bJW" collectionClass="NSMutableArray" id="a3s-10-ShW"/>
-                <outletCollection property="corners" destination="An5-uV-v3B" collectionClass="NSMutableArray" id="8a0-9n-rMX"/>
-                <outletCollection property="corners" destination="uST-zA-d8d" collectionClass="NSMutableArray" id="na3-wC-9cP"/>
-                <outletCollection property="corners" destination="zLp-E9-I6C" collectionClass="NSMutableArray" id="xet-Oz-EAL"/>
+                <outletCollection property="corners" destination="oHI-tE-yJk" collectionClass="NSMutableArray" id="e2H-h5-KZ2"/>
+                <outletCollection property="corners" destination="T9m-t0-Mi4" collectionClass="NSMutableArray" id="0wO-3K-Ra9"/>
+                <outletCollection property="corners" destination="Mpa-Ne-CrG" collectionClass="NSMutableArray" id="G34-2l-DmO"/>
+                <outletCollection property="corners" destination="QnR-g5-vaO" collectionClass="NSMutableArray" id="Etn-1T-9cL"/>
             </connections>
-            <point key="canvasLocation" x="-102" y="337"/>
+            <point key="canvasLocation" x="-111" y="347"/>
         </view>
     </objects>
     <resources>
