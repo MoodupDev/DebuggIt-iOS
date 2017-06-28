@@ -32,8 +32,15 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dC4-bP-BCP">
+                    <rect key="frame" x="0.0" y="8" width="375" height="1"/>
+                    <color key="backgroundColor" red="0.83529411764705885" green="0.83529411764705885" blue="0.83529411764705885" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="TtX-7J-kDe"/>
+                    </constraints>
+                </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="N11-zk-MET">
-                    <rect key="frame" x="8" y="20" width="359" height="72"/>
+                    <rect key="frame" x="8" y="17" width="359" height="72"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="UeY-vQ-Hxn" userLabel="Kind buttons">
                             <rect key="frame" x="0.0" y="0.0" width="359" height="30"/>
@@ -179,7 +186,7 @@
                     </subviews>
                 </stackView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2Gc-AC-FDh" customClass="KMPlaceholderTextView" customModule="KMPlaceholderTextView">
-                    <rect key="frame" x="8" y="293" width="300" height="128"/>
+                    <rect key="frame" x="8" y="105" width="300" height="128"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="128" id="c8B-kK-Qvc"/>
@@ -191,7 +198,7 @@
                     </userDefinedRuntimeAttributes>
                 </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="28T-Sq-gfZ" userLabel="Record button">
-                    <rect key="frame" x="316" y="332" width="51" height="34"/>
+                    <rect key="frame" x="316" y="144" width="51" height="34"/>
                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
                     <state key="normal" image="recordMicro"/>
                     <connections>
@@ -230,17 +237,21 @@
                 <constraint firstAttribute="trailingMargin" secondItem="N11-zk-MET" secondAttribute="trailing" id="8aW-mx-rGM"/>
                 <constraint firstItem="Os6-AB-mH2" firstAttribute="leading" secondItem="wwm-cq-uWO" secondAttribute="leading" constant="8" id="9SJ-qo-WJb"/>
                 <constraint firstItem="2Gc-AC-FDh" firstAttribute="trailing" secondItem="wwm-cq-uWO" secondAttribute="trailingMargin" constant="-59" id="Aeu-j5-ra0"/>
+                <constraint firstItem="N11-zk-MET" firstAttribute="top" secondItem="dC4-bP-BCP" secondAttribute="bottom" constant="8" id="DBg-zH-WhB"/>
+                <constraint firstItem="dC4-bP-BCP" firstAttribute="top" secondItem="wwm-cq-uWO" secondAttribute="top" constant="8" id="OVT-DS-Z8S"/>
                 <constraint firstAttribute="trailingMargin" secondItem="28T-Sq-gfZ" secondAttribute="trailing" id="P8Y-WT-Gsw"/>
                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Os6-AB-mH2" secondAttribute="bottom" constant="8" id="RWN-LC-2Xd"/>
                 <constraint firstItem="28T-Sq-gfZ" firstAttribute="top" secondItem="N11-zk-MET" secondAttribute="bottom" constant="55" id="Rc9-5l-bme"/>
+                <constraint firstItem="dC4-bP-BCP" firstAttribute="leading" secondItem="wwm-cq-uWO" secondAttribute="leading" id="SsD-re-F75"/>
                 <constraint firstItem="28T-Sq-gfZ" firstAttribute="leading" secondItem="2Gc-AC-FDh" secondAttribute="trailing" constant="8" id="UPr-w1-qyJ"/>
-                <constraint firstItem="N11-zk-MET" firstAttribute="top" relation="lessThanOrEqual" secondItem="wwm-cq-uWO" secondAttribute="top" constant="50" id="Ww0-b3-eQB"/>
+                <constraint firstAttribute="trailing" secondItem="dC4-bP-BCP" secondAttribute="trailing" id="aIG-cS-3Vh"/>
                 <constraint firstItem="2Gc-AC-FDh" firstAttribute="top" secondItem="N11-zk-MET" secondAttribute="bottom" constant="16" id="bv8-iB-PrU"/>
                 <constraint firstItem="N11-zk-MET" firstAttribute="leading" secondItem="wwm-cq-uWO" secondAttribute="leadingMargin" id="hf6-fD-Cl6"/>
                 <constraint firstItem="2Gc-AC-FDh" firstAttribute="leading" secondItem="wwm-cq-uWO" secondAttribute="leadingMargin" id="jMZ-rh-0rT"/>
                 <constraint firstAttribute="trailing" secondItem="Os6-AB-mH2" secondAttribute="trailing" constant="8" id="jZO-8Y-rFW"/>
                 <constraint firstItem="Os6-AB-mH2" firstAttribute="top" secondItem="2Gc-AC-FDh" secondAttribute="bottom" constant="8" id="rL5-c4-Dse"/>
             </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="32.5" y="52.5"/>
         </view>
     </objects>
