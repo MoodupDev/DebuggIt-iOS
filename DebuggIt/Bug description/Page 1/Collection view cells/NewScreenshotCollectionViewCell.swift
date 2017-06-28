@@ -9,13 +9,22 @@
 import UIKit
 import IQKeyboardManagerSwift
 
+protocol NewScreenshotDelegate: NSObjectProtocol {
+    func changeDebuggItButtonImage()
+}
+
 class NewScreenshotCollectionViewCell: UICollectionViewCell {
+    
+    weak var delegate: NewScreenshotDelegate?
     
     // MARK: - Actions
     
     @IBAction func addNewScreenshot(_ sender: UIButton) {
+        self.delegate = DebuggIt.sharedInstance
+
         self.viewController()?.presentingViewController?.dismiss(animated: true, completion: {
             DebuggIt.sharedInstance.moveApplicationWindowToFront()
+            self.delegate?.changeDebuggItButtonImage()
         })
         IQKeyboardManager.sharedManager().enable = false
     }

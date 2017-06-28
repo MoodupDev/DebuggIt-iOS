@@ -17,7 +17,7 @@ enum ConfigType {
 }
 
 @objc
-public class DebuggIt: NSObject {
+public class DebuggIt: NSObject, NewScreenshotDelegate {
     
     // MARK: - Public properties
     
@@ -44,7 +44,7 @@ public class DebuggIt: NSObject {
         }
     }
     
-    private var debuggItButton: DebuggItButton!
+    fileprivate var debuggItButton: DebuggItButton!
     private var currentWindow: UIWindow?
     
     private var applicationWindow: UIWindow?
@@ -274,6 +274,12 @@ public class DebuggIt: NSObject {
         let window: UIWindow! = UIApplication.shared.keyWindow
         report.currentScreenshotScreenName = getVisibleViewControllerName(from: window)
         report.currentScreenshot = window.capture()
+    }
+    
+    func changeDebuggItButtonImage() {
+        DispatchQueue.main.async {
+            self.debuggItButton.imageView.image = Initializer.image(named: "nextScreenshoot")
+        }
     }
     
     private func getVisibleViewControllerName(from window: UIWindow) -> String {
