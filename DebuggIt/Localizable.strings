@@ -28,9 +28,11 @@ alert.title.recording.disabled = "Recording is disabled";
 
 alert.title.logout = "Logout";
 
+alert.title.saved.report = "Great report!";
+
 /* Alert messages */
 
-alert.message.saved.report = "Report saved successfully";
+alert.message.saved.report = "Everything went smoothly";
 alert.message.saved.screenshot = "Screenshot saved successfully";
 alert.message.saved.audio = "Audio saved successfully";
 
@@ -49,6 +51,7 @@ alert.button.cancel = "Cancel";
 /* Errors */
 
 error.general = "Something went wrong\nCheck your Internet connection";
+error.send.report = "Report isn't sent!\nCheck your Internet connection";
 error.login = "It\'s not possible to sign you in!\nCheck your Internet connection";
 error.login.wrong.credentials = "Invalid email or password,\ncan\'t log in";
 error.title.empty = "Describe what went wrong to send the report";

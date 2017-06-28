@@ -205,7 +205,7 @@ public class DebuggIt: NSObject, NewScreenshotDelegate {
     private func showNotCheckedModal() {
         showModal(viewController:
             Utils.createAlert(
-                title: "alert.title.failure".localized(),
+                title: "",
                 message: "error.version.not.checked".localized(),
                 positiveAction: {
                     self.moveApplicationWindowToFront()
@@ -217,7 +217,7 @@ public class DebuggIt: NSObject, NewScreenshotDelegate {
     private func showNotSupportedModal() {
        showModal(viewController:
             Utils.createAlert(
-                title: "alert.title.failure".localized(),
+                title: "",
                 message: "error.version.unsupported".localized(),
                 positiveAction: {
                     self.moveApplicationWindowToFront()

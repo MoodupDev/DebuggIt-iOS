@@ -36,7 +36,7 @@ class BugDescriptionViewController: UIViewController {
         if title.isEmpty {
             present(Utils.createAlert(title: "", message: "error.title.empty".localized(), positiveAction: {}), animated: true, completion: nil)
         } else if title.characters.count > titleMaxCharacters {
-            present(Utils.createAlert(title: "alert.title.failure".localized(), message: String(format: "error.title.too.long".localized(), titleMaxCharacters, title.characters.count), positiveAction: {}), animated: true, completion: nil)
+            present(Utils.createAlert(title: "", message: String(format: "error.title.too.long".localized(), titleMaxCharacters, title.characters.count), positiveAction: {}), animated: true, completion: nil)
         } else {
             let alertController = Utils.createAlert(title: "alert.title.sending.report".localized(), message: "alert.message.wait".localized())
             present(alertController, animated: true, completion: nil)
@@ -44,14 +44,14 @@ class BugDescriptionViewController: UIViewController {
             DebuggIt.sharedInstance.sendReport(
                 successBlock: {
                     alertController.dismiss(animated: false, completion: {
-                        self.present(Utils.createAlert(title: "alert.title.success".localized(), message: "alert.message.saved.report".localized(), positiveAction: self.dissmissDebuggIt, negativeAction: nil), animated: true, completion: nil)
+                        self.present(Utils.createAlert(title: "alert.title.saved.report".localized(), message: "alert.message.saved.report".localized(), positiveAction: self.dissmissDebuggIt, negativeAction: nil), animated: true, completion: nil)
                     })
                     self.postEventsAfterIssueSent(report: DebuggIt.sharedInstance.report)
                     self.clearData()
             }, errorBlock: {
                 (status, error) in
                 alertController.dismiss(animated: false, completion:  {
-                    self.present(Utils.createAlert(title: "alert.title.failure".localized(), message: Utils.parseError(error), positiveAction: {}, negativeAction: nil), animated: true, completion: nil)
+                    self.present(Utils.createAlert(title: "", message: "error.send.report".localized(), positiveAction: {}, negativeAction: nil), animated: true, completion: nil)
                 })
             })
         }

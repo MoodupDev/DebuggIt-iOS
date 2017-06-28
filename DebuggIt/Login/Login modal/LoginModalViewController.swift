@@ -61,13 +61,13 @@ class LoginModalViewController: UIViewController {
                     let message = Utils.parseError(errorMessage, defaultMessage: "error.login.wrong.credentials".localized())
                     if message.contains("two-factor") {
                         self.twoFactorCodeTextField.superview?.isHidden = false
-                        self.present(Utils.createAlert(title: "alert.title.failure".localized(), message: "error.2fa.code".localized(), positiveAction: {}), animated: true, completion: nil)
+                        self.present(Utils.createAlert(title: "alert.title.failure", message: "error.2fa.code".localized(), positiveAction: {}), animated: true, completion: nil)
                     } else {
-                        self.present(Utils.createAlert(title: "alert.title.failure".localized(), message: message, positiveAction: {}), animated: true, completion: nil)
+                        self.present(Utils.createAlert(title: "alert.title.failure", message: message, positiveAction: {}), animated: true, completion: nil)
                         
                     }
                 } else {
-                    self.present(Utils.createAlert(title: "alert.title.failure".localized(), message: "error.general".localized(), positiveAction: {}), animated: true, completion: nil)
+                    self.present(Utils.createAlert(title: "alert.title.failure", message: "error.general".localized(), positiveAction: {}), animated: true, completion: nil)
                 }
         })
     }

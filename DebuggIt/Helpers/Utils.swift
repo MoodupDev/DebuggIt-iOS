@@ -34,7 +34,7 @@ class Utils {
     }
     
     static func createGeneralErrorAlert(action: @escaping () -> Void = {}) -> UIAlertController {
-        return Utils.createAlert(title: "alert.title.failure".localized(), message: "error.general".localized(), positiveAction: action)
+        return Utils.createAlert(title: "", message: "error.general".localized(), positiveAction: action)
     }
     
     static func parseError(_ error: String?, defaultMessage message: String = "error.general".localized()) -> String {
