@@ -7,6 +7,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditScreenshotModalViewController" customModule="DebugIt">
             <connections>
@@ -41,6 +46,7 @@
                                                 <constraint firstAttribute="width" constant="60" id="kdv-9Z-UFm"/>
                                             </constraints>
                                             <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                             <state key="normal" title="Cancel">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -54,6 +60,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="60" id="ly1-wk-q7O"/>
                                             </constraints>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                             <state key="normal" title="Next">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -80,6 +87,7 @@
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Izm-RY-fO5">
                                             <rect key="frame" x="0.0" y="0.0" width="93" height="40"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
                                             <state key="normal" image="undo"/>
                                             <connections>
                                                 <action selector="tapUndo:" destination="-1" eventType="touchUpInside" id="u78-qX-Msv"/>
@@ -87,6 +95,7 @@
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaI-5i-RVl">
                                             <rect key="frame" x="93" y="0.0" width="93" height="40"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
                                             <state key="normal" image="rectangle"/>
                                             <connections>
                                                 <action selector="tapRectangle:" destination="-1" eventType="touchUpInside" id="aqx-CR-Xh9"/>
@@ -94,6 +103,7 @@
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yuf-29-eh8">
                                             <rect key="frame" x="186" y="0.0" width="93" height="40"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
                                             <state key="normal" image="draw"/>
                                             <connections>
                                                 <action selector="tapFreeDraw:" destination="-1" eventType="touchUpInside" id="PKJ-hG-hZc"/>
