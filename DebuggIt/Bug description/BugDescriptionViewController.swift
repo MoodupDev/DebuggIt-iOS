@@ -34,7 +34,7 @@ class BugDescriptionViewController: UIViewController {
     private func sendReport() {
         let title = DebuggIt.sharedInstance.report.title
         if title.isEmpty {
-            present(Utils.createAlert(title: "alert.title.failure".localized(), message: "error.title.empty".localized(), positiveAction: {}), animated: true, completion: nil)
+            present(Utils.createAlert(title: "", message: "error.title.empty".localized(), positiveAction: {}), animated: true, completion: nil)
         } else if title.characters.count > titleMaxCharacters {
             present(Utils.createAlert(title: "alert.title.failure".localized(), message: String(format: "error.title.too.long".localized(), titleMaxCharacters, title.characters.count), positiveAction: {}), animated: true, completion: nil)
         } else {
