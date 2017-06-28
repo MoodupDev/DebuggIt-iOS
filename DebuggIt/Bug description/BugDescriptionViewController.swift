@@ -28,7 +28,7 @@ class BugDescriptionViewController: UIViewController {
     // MARK: Actions
     @IBAction func doneClicked(_ sender: UIBarButtonItem) {
         self.resignFirstResponder()
-        self.present(Utils.createAlert(title: "alert.title.send.report".localized(), message: "Do you want to send the report?", positiveAction: self.sendReport, negativeAction: {}), animated: true, completion: nil)
+        self.sendReport()
     }
     
     private func sendReport() {
