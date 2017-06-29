@@ -24,7 +24,7 @@ platform :ios, '9.0'
 pod 'DebuggIt'
 ```
 
-Donâ€™t forget to import the Pod in `AppDelegate`:
+Don’t forget to import the Pod in `AppDelegate`:
 
 ```swift
 import DebuggIt
@@ -116,6 +116,7 @@ All source files are located in `DebuggIt` group under `DebuggIt` project.
 ## Deployment
 
 To deploy new version of `DebuggIt`, you must:
+
 1. Choose `DebuggIt-Production` build scheme
 2. Archive `.framework` file
 	1. Make sure that there's custom post-archive script in `DebuggIt-Production` scheme. 
