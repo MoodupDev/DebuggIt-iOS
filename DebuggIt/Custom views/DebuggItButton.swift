@@ -11,6 +11,7 @@ import UIKit
 class DebuggItButton: UIView {
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var top: UIView!
     @IBOutlet weak var edge: UIView!
     
     override func awakeFromNib() {
@@ -25,7 +26,8 @@ class DebuggItButton: UIView {
         
         button.layoutIfNeeded()
         
-        button.imageView.roundCorners(corners: [.topRight, .bottomRight], radius: 5)
+        button.imageView.roundCorners(corners: [.topLeft, .bottomLeft], radius: 5)
+        button.top.roundCorners(corners: [.bottomLeft, .topLeft], radius: 5)
         button.edge.roundCorners(corners: [.bottomLeft, .topLeft], radius: 5)
         return button
     }
