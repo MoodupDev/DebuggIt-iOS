@@ -48,11 +48,16 @@ class BugDescriptionViewController: UIViewController {
                     })
                     self.postEventsAfterIssueSent(report: DebuggIt.sharedInstance.report)
                     self.clearData()
-            }, errorBlock: {
-                (status, error) in
-                alertController.dismiss(animated: false, completion:  {
-                    self.present(Utils.createAlert(title: "", message: "error.send.report".localized(), positiveAction: {}, negativeAction: nil), animated: true, completion: nil)
-                })
+            }, errorBlock: { (status, error) in
+                if status != nil {
+                    alertController.dismiss(animated: false, completion:  {
+                        self.present(Utils.createAlert(title: "", message: "error.send.report.badcredentials".localized(), positiveAction: {}, negativeAction: nil), animated: true, completion: nil)
+                    })
+                } else {
+                    alertController.dismiss(animated: false, completion:  {
+                        self.present(Utils.createAlert(title: "", message: "error.send.report".localized(), positiveAction: {}, negativeAction: nil), animated: true, completion: nil)
+                    })
+                }
             })
         }
     }
