@@ -42,6 +42,9 @@ class DrawingView: UIImageView {
             pinCurrentRectangle()
             currentRectangle = createRectangle(at: touchLocation)
             self.addSubview(currentRectangle)
+        case .arrow:
+            // TODO arrow method
+            print("arrow Touches began")
         }
     }
     
@@ -59,6 +62,9 @@ class DrawingView: UIImageView {
             lastPoint = currentPoint
         case .rectangle:
             break
+        case .arrow:
+            // TODO arrow method
+            print("arrow touches moved")
         }
     }
     
@@ -92,17 +98,24 @@ class DrawingView: UIImageView {
     }
     
     func undo() {
-        if let lastDrawing =  lastDrawings.last {
+        if let lastDrawing = lastDrawings.last {
             switch lastDrawing {
             case .free:
                 paths.removeLast()
             case .rectangle:
                 pinCurrentRectangle()
                 rectangles.removeLast()
+            case .arrow:
+                // TODO arrow method
+                print("undo arrow move")
             }
             redraw()
             lastDrawings.removeLast()
         }
+    }
+    
+    func redo() {
+        // TODO redo function
     }
     
     func pinCurrentRectangle() {
@@ -183,4 +196,5 @@ class DrawingView: UIImageView {
 enum DrawingType : Int {
     case free
     case rectangle
+    case arrow
 }

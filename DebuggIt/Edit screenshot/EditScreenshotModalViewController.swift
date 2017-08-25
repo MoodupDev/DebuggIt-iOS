@@ -73,20 +73,31 @@ class EditScreenshotModalViewController: UIViewController {
         screenshotSurface.undo()
     }
     
+    @IBAction func tapRedo(_ sender: UIButton) {
+        screenshotSurface.redo()
+    }
+    
+    @IBAction func tapArrow(_ sender: UIButton) {
+        changeButtonState(sender, secondOptionButton: freedrawButton, thirdOptionButton: rectangleButton)
+        screenshotSurface.type = .arrow
+    }
+    
+    
     @IBAction func tapRectangle(_ sender: UIButton) {
-        changeButtonState(sender, secondOptionButton: freedrawButton)
-        screenshotSurface.type = sender.isSelected ? .rectangle : .free
+        changeButtonState(sender, secondOptionButton: freedrawButton, thirdOptionButton: arrowButton)
+        screenshotSurface.type = .rectangle
     }
     
     @IBAction func tapFreeDraw(_ sender: UIButton) {
-        changeButtonState(sender, secondOptionButton: rectangleButton)
-        screenshotSurface.type = sender.isSelected ? .free : .rectangle
+        changeButtonState(sender, secondOptionButton: rectangleButton, thirdOptionButton: arrowButton)
+        screenshotSurface.type = .free
     }
     
-    private func changeButtonState(_ sender:UIButton, secondOptionButton:UIButton) {
+    private func changeButtonState(_ sender: UIButton, secondOptionButton: UIButton, thirdOptionButton: UIButton) {
         if !sender.isSelected {
             sender.isSelected = true
             secondOptionButton.isSelected = false
+            thirdOptionButton.isSelected = false
         }
     }
 }

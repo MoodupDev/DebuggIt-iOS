@@ -91,8 +91,9 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tkk-pW-6bJ">
                                             <rect key="frame" x="0.0" y="0.0" width="56" height="40"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
-                                            <state key="normal" image="iconArrowActive"/>
+                                            <state key="normal" image="iconArrowInactive"/>
                                             <connections>
+                                                <action selector="tapArrow:" destination="-1" eventType="touchUpInside" id="qJO-aS-1Gg"/>
                                                 <action selector="tapUndo:" destination="-1" eventType="touchUpInside" id="5pD-Ug-Fx3"/>
                                             </connections>
                                         </button>
@@ -125,6 +126,7 @@
                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
                                             <state key="normal" image="iconRedoInactive"/>
                                             <connections>
+                                                <action selector="tapRedo:" destination="-1" eventType="touchUpInside" id="nBw-w7-FJp"/>
                                                 <action selector="tapUndo:" destination="-1" eventType="touchUpInside" id="mDJ-SP-c2T"/>
                                             </connections>
                                         </button>
@@ -161,7 +163,7 @@
         </view>
     </objects>
     <resources>
-        <image name="iconArrowActive" width="38" height="37"/>
+        <image name="iconArrowInactive" width="17" height="17"/>
         <image name="iconDrawInactive" width="38" height="37"/>
         <image name="iconRectangleInactive" width="38" height="37"/>
         <image name="iconRedoInactive" width="38" height="37"/>
