@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -15,8 +16,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditScreenshotModalViewController" customModule="DebugIt">
             <connections>
+                <outlet property="arrowButton" destination="Tkk-pW-6bJ" id="YqC-c3-zEe"/>
                 <outlet property="freedrawButton" destination="Yuf-29-eh8" id="Bdt-TJ-Q5f"/>
                 <outlet property="rectangleButton" destination="xaI-5i-RVl" id="rMo-tb-ZDh"/>
+                <outlet property="redoButton" destination="0MY-QP-63J" id="OHj-01-ve4"/>
                 <outlet property="screenshotSurface" destination="Nj5-3L-GDr" id="6xp-4h-DgF"/>
                 <outlet property="undoButton" destination="Izm-RY-fO5" id="u52-sG-3AK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -85,28 +88,44 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="VwM-po-uZI">
                                     <rect key="frame" x="0.0" y="551" width="279" height="40"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Izm-RY-fO5">
-                                            <rect key="frame" x="0.0" y="0.0" width="93" height="40"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tkk-pW-6bJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="56" height="40"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
-                                            <state key="normal" image="undo"/>
+                                            <state key="normal" image="iconArrowActive"/>
                                             <connections>
-                                                <action selector="tapUndo:" destination="-1" eventType="touchUpInside" id="u78-qX-Msv"/>
+                                                <action selector="tapUndo:" destination="-1" eventType="touchUpInside" id="5pD-Ug-Fx3"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaI-5i-RVl">
-                                            <rect key="frame" x="93" y="0.0" width="93" height="40"/>
+                                            <rect key="frame" x="56" y="0.0" width="55.5" height="40"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
-                                            <state key="normal" image="rectangle"/>
+                                            <state key="normal" image="iconRectangleInactive"/>
                                             <connections>
                                                 <action selector="tapRectangle:" destination="-1" eventType="touchUpInside" id="aqx-CR-Xh9"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yuf-29-eh8">
-                                            <rect key="frame" x="186" y="0.0" width="93" height="40"/>
+                                            <rect key="frame" x="111.5" y="0.0" width="56" height="40"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
-                                            <state key="normal" image="draw"/>
+                                            <state key="normal" image="iconDrawInactive"/>
                                             <connections>
                                                 <action selector="tapFreeDraw:" destination="-1" eventType="touchUpInside" id="PKJ-hG-hZc"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Izm-RY-fO5">
+                                            <rect key="frame" x="167.5" y="0.0" width="55.5" height="40"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
+                                            <state key="normal" image="iconUndoInactive"/>
+                                            <connections>
+                                                <action selector="tapUndo:" destination="-1" eventType="touchUpInside" id="u78-qX-Msv"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0MY-QP-63J">
+                                            <rect key="frame" x="223" y="0.0" width="56" height="40"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
+                                            <state key="normal" image="iconRedoInactive"/>
+                                            <connections>
+                                                <action selector="tapUndo:" destination="-1" eventType="touchUpInside" id="mDJ-SP-c2T"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -142,8 +161,10 @@
         </view>
     </objects>
     <resources>
-        <image name="draw" width="34" height="34"/>
-        <image name="rectangle" width="34" height="34"/>
-        <image name="undo" width="34" height="34"/>
+        <image name="iconArrowActive" width="38" height="37"/>
+        <image name="iconDrawInactive" width="38" height="37"/>
+        <image name="iconRectangleInactive" width="38" height="37"/>
+        <image name="iconRedoInactive" width="38" height="37"/>
+        <image name="iconUndoInactive" width="38" height="37"/>
     </resources>
 </document>

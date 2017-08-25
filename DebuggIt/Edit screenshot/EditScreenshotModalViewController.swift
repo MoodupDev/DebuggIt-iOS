@@ -11,9 +11,11 @@ import UIKit
 class EditScreenshotModalViewController: UIViewController {
     
     @IBOutlet weak var screenshotSurface: DrawingView!
+    @IBOutlet weak var arrowButton: UIButton!
     @IBOutlet weak var rectangleButton: UIButton!
     @IBOutlet weak var freedrawButton: UIButton!
     @IBOutlet weak var undoButton: UIButton!
+    @IBOutlet weak var redoButton: UIButton!
     @IBOutlet weak var containerView: UIView!
     
     override func viewDidLoad() {
@@ -23,16 +25,17 @@ class EditScreenshotModalViewController: UIViewController {
     }
     
     private func initButtons() {
-        undoButton.setImage(Initializer.image(named: "undoActive" ), for: UIControlState.highlighted)
-        undoButton.setImage(Initializer.image(named: "undo"), for: UIControlState.normal)
-        
-        rectangleButton.setImage(Initializer.image(named: "rectangleActive"), for: UIControlState.selected)
-        rectangleButton.setImage(Initializer.image(named: "rectangle"), for: UIControlState.normal)
-        
-        freedrawButton.setImage(Initializer.image(named: "drawActive"), for: UIControlState.selected)
-        freedrawButton.setImage(Initializer.image(named: "draw"), for: UIControlState.normal)
-        
-        freedrawButton.isSelected = true
+        //undoButton.setImage(Initializer.image(named: "undo2"), for: UIControlState.highlighted)
+        undoButton.setImage(Initializer.image(named: "iconUndoInactive"), for: UIControlState.normal)
+        //redoButton.setImage(Initializer.image(named: "redo"), for: UIControlState.highlighted)
+        redoButton.setImage(Initializer.image(named: "iconRedoInactive"), for: UIControlState.normal)
+        rectangleButton.setImage(Initializer.image(named: "iconRectangleActive"), for: UIControlState.selected)
+        rectangleButton.setImage(Initializer.image(named: "iconRectangleInactive"), for: UIControlState.normal)
+        freedrawButton.setImage(Initializer.image(named: "iconDrawActive"), for: UIControlState.selected)
+        freedrawButton.setImage(Initializer.image(named: "iconDrawInactive"), for: UIControlState.normal)
+        arrowButton.setImage(Initializer.image(named: "iconArrowActive"), for: UIControlState.selected)
+        arrowButton.setImage(Initializer.image(named: "iconArrowInactive"), for: UIControlState.normal)
+        arrowButton.isSelected = true
     }
     
     @IBAction func tapDone(_ sender: UIButton) {
