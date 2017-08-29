@@ -43,8 +43,10 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="45" id="qmp-3O-5w7"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
-                            <state key="normal" title="OK"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
+                            <state key="normal" title="OK">
+                                <color key="titleColor" red="0.20784313725490194" green="0.20784313725490194" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
                             <connections>
                                 <action selector="close:" destination="-1" eventType="touchUpInside" id="0o0-xP-S3E"/>
                             </connections>
@@ -56,11 +58,12 @@
                                 <constraint firstAttribute="height" constant="2" id="AQ5-Fd-aMu"/>
                             </constraints>
                         </view>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="PopupViewController" text="Probny tekst" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="z7c-KY-DCO">
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="PopupViewController" editable="NO" text="Probny tekst" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7c-KY-DCO">
                             <rect key="frame" x="8" y="78" width="254" height="57"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
+                            <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="textColor" red="0.20784313725490194" green="0.20784313725490194" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                     </subviews>
