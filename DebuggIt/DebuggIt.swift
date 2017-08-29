@@ -203,27 +203,17 @@ public class DebuggIt: NSObject, NewScreenshotDelegate {
     }
     
     private func showNotCheckedModal() {
-        showModal(viewController:
-            Utils.createAlert(
-                title: "",
-                message: "error.version.not.checked".localized(),
-                positiveAction: {
-                    self.moveApplicationWindowToFront()
-                }
-            )
-        )
+        let popup = Initializer.viewController(PopupViewController.self)
+        showModal(viewController: popup)
+        popup.thumbImageView.image = Initializer.image(named: "thumbsDown")
+        popup.alertTextView.text = "error.version.not.checked".localized()
     }
     
     private func showNotSupportedModal() {
-       showModal(viewController:
-            Utils.createAlert(
-                title: "",
-                message: "error.version.unsupported".localized(),
-                positiveAction: {
-                    self.moveApplicationWindowToFront()
-                }
-            )
-        )
+        let popup = Initializer.viewController(PopupViewController.self)
+        showModal(viewController: popup)
+        popup.thumbImageView.image = Initializer.image(named: "thumbsDown")
+        popup.alertTextView.text = "error.version.unsupported".localized()
     }
     
     @objc func showReportDialog() {

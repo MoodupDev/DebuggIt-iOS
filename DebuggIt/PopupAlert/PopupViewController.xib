@@ -10,82 +10,87 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Montserrat-Regular.ttf">
-            <string>Montserrat-Regular</string>
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PopupViewController" customModule="DebuggIt" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PopupViewController" customModule="DebuggIt" customModuleProvider="target">
+            <connections>
+                <outlet property="alertTextView" destination="z7c-KY-DCO" id="Psh-fh-NDh"/>
+                <outlet property="thumbImageView" destination="yO1-TU-m4j" id="uAa-wi-Q4I"/>
+                <outlet property="view" destination="iN0-l3-epB" id="yhg-e7-FZu"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iwa-JL-FNk">
+                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iwa-JL-FNk">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8nm-ko-0fa" userLabel="Background VIew" customClass="BackgroundView" customModule="DebuggIt" customModuleProvider="target">
+                    <rect key="frame" x="52" y="238" width="270" height="190"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8nm-ko-0fa" customClass="BackgroundView" customModule="DebuggIt" customModuleProvider="target">
-                            <rect key="frame" x="52" y="238" width="270" height="190"/>
-                            <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yO1-TU-m4j">
-                                    <rect key="frame" x="115" y="24" width="41" height="45"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="AlertLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NIO-9o-El7">
-                                    <rect key="frame" x="92" y="84" width="86" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6N-mk-O4s">
-                                    <rect key="frame" x="0.0" y="145" width="270" height="45"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="45" id="qmp-3O-5w7"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
-                                    <state key="normal" title="OK"/>
-                                    <connections>
-                                        <action selector="close:" destination="-1" eventType="touchUpInside" id="0o0-xP-S3E"/>
-                                    </connections>
-                                </button>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="exs-rT-EoV">
-                                    <rect key="frame" x="0.0" y="143" width="270" height="2"/>
-                                    <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="2" id="AQ5-Fd-aMu"/>
-                                    </constraints>
-                                </view>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="thumbsUp" translatesAutoresizingMaskIntoConstraints="NO" id="yO1-TU-m4j">
+                            <rect key="frame" x="115" y="24" width="41" height="45"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6N-mk-O4s">
+                            <rect key="frame" x="0.0" y="145" width="270" height="45"/>
                             <constraints>
-                                <constraint firstItem="exs-rT-EoV" firstAttribute="leading" secondItem="8nm-ko-0fa" secondAttribute="leading" id="8Im-Vx-Qq4"/>
-                                <constraint firstItem="b6N-mk-O4s" firstAttribute="top" secondItem="exs-rT-EoV" secondAttribute="bottom" id="BKS-UO-h23"/>
-                                <constraint firstAttribute="trailing" secondItem="b6N-mk-O4s" secondAttribute="trailing" id="CJD-eD-rv8"/>
-                                <constraint firstItem="b6N-mk-O4s" firstAttribute="leading" secondItem="8nm-ko-0fa" secondAttribute="leading" id="CQy-kg-BIB"/>
-                                <constraint firstAttribute="trailing" secondItem="exs-rT-EoV" secondAttribute="trailing" id="NqJ-zu-8c1"/>
-                                <constraint firstAttribute="height" constant="190" id="cJL-46-E0o"/>
-                                <constraint firstAttribute="width" constant="270" id="n4M-YW-cJN"/>
-                                <constraint firstAttribute="bottom" secondItem="b6N-mk-O4s" secondAttribute="bottom" id="nFJ-sr-Aig"/>
+                                <constraint firstAttribute="height" constant="45" id="qmp-3O-5w7"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
+                            <state key="normal" title="OK"/>
+                            <connections>
+                                <action selector="close:" destination="-1" eventType="touchUpInside" id="0o0-xP-S3E"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="exs-rT-EoV">
+                            <rect key="frame" x="0.0" y="143" width="270" height="2"/>
+                            <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="2" id="AQ5-Fd-aMu"/>
                             </constraints>
                         </view>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="PopupViewController" text="Probny tekst" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="z7c-KY-DCO">
+                            <rect key="frame" x="8" y="78" width="254" height="57"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
                     </subviews>
-                    <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="8nm-ko-0fa" firstAttribute="centerX" secondItem="Iwa-JL-FNk" secondAttribute="centerX" id="V5W-bk-pGh"/>
-                        <constraint firstItem="8nm-ko-0fa" firstAttribute="centerY" secondItem="Iwa-JL-FNk" secondAttribute="centerY" id="yGB-LI-lYg"/>
+                        <constraint firstItem="exs-rT-EoV" firstAttribute="leading" secondItem="8nm-ko-0fa" secondAttribute="leading" id="8Im-Vx-Qq4"/>
+                        <constraint firstItem="b6N-mk-O4s" firstAttribute="top" secondItem="exs-rT-EoV" secondAttribute="bottom" id="BKS-UO-h23"/>
+                        <constraint firstAttribute="trailing" secondItem="b6N-mk-O4s" secondAttribute="trailing" id="CJD-eD-rv8"/>
+                        <constraint firstItem="b6N-mk-O4s" firstAttribute="leading" secondItem="8nm-ko-0fa" secondAttribute="leading" id="CQy-kg-BIB"/>
+                        <constraint firstAttribute="trailing" secondItem="exs-rT-EoV" secondAttribute="trailing" id="NqJ-zu-8c1"/>
+                        <constraint firstAttribute="height" constant="190" id="cJL-46-E0o"/>
+                        <constraint firstAttribute="width" constant="270" id="n4M-YW-cJN"/>
+                        <constraint firstAttribute="bottom" secondItem="b6N-mk-O4s" secondAttribute="bottom" id="nFJ-sr-Aig"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Iwa-JL-FNk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Hlq-st-KON"/>
-                <constraint firstItem="Iwa-JL-FNk" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Pl1-CA-HZ2"/>
+                <constraint firstItem="Iwa-JL-FNk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Hlq-st-KON"/>
+                <constraint firstItem="8nm-ko-0fa" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="PXH-rV-aPw"/>
+                <constraint firstItem="Iwa-JL-FNk" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="Pl1-CA-HZ2"/>
                 <constraint firstItem="Iwa-JL-FNk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="YAJ-26-cgj"/>
-                <constraint firstItem="Iwa-JL-FNk" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="YiF-VN-rRT"/>
+                <constraint firstItem="Iwa-JL-FNk" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="YiF-VN-rRT"/>
+                <constraint firstItem="8nm-ko-0fa" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="anc-cn-Ope"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <viewLayoutGuide key="safeArea" id="EK1-ye-BKH"/>
             <point key="canvasLocation" x="35.5" y="53.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="thumbsUp" width="42" height="46"/>
+    </resources>
 </document>

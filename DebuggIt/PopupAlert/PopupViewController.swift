@@ -10,6 +10,9 @@ import UIKit
 
 class PopupViewController: UIViewController {
     
+    @IBOutlet weak var thumbImageView: UIImageView!
+    @IBOutlet weak var alertTextView: UITextView!
+    
     override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
         super.dismiss(animated: flag, completion: {
             completion?()
@@ -22,3 +25,4 @@ class PopupViewController: UIViewController {
     }
     
 }
+
