@@ -24,6 +24,9 @@ class DrawingView: UIImageView {
     private var currentRectangle: ResizableRectangle!
     private var rectangles = [ResizableRectangle]()
     
+    private var currentArrow: ResizableArrow!
+    private var arrows = [ResizableArrow]()
+    
     private var lastDrawings = [DrawingType]()
     
     private lazy var convertRatio: CGSize = {
@@ -43,8 +46,9 @@ class DrawingView: UIImageView {
             currentRectangle = createRectangle(at: touchLocation)
             self.addSubview(currentRectangle)
         case .arrow:
-            // TODO arrow method
-            print("arrow Touches began")
+            pinCurrentArrow()
+            currentArrow = createArrow(at: touchLocation)
+            self.addSubview(currentArrow)
         }
     }
     
@@ -63,8 +67,7 @@ class DrawingView: UIImageView {
         case .rectangle:
             break
         case .arrow:
-            // TODO arrow method
-            print("arrow touches moved")
+            break
         }
     }
     
@@ -95,6 +98,13 @@ class DrawingView: UIImageView {
         rectangle.center.x = point.x
     
         return rectangle
+    }
+    
+    private func createArrow(at point: CGPoint) -> ResizableArrow {
+        let arrow = ResizableArrow.instantiateFromNib()
+        arrow.center.y = point.y
+        arrow.center.x = point.x
+        return arrow
     }
     
     func undo() {
@@ -128,10 +138,23 @@ class DrawingView: UIImageView {
         }
     }
     
+    func pinCurrentArrow() {
+        if currentArrow != nil && !currentArrow.isPinned {
+            currentArrow.pin()
+            draw(currentArrow)
+            arrows.append(currentArrow)
+            currentArrow.removeFromSuperview()
+            currentArrow = nil
+        }
+    }
+    
     private func redraw() {
         self.image = DebuggIt.sharedInstance.report.currentScreenshot
         rectangles.forEach({ (rectangle) in
             draw(rectangle)
+        })
+        arrows.forEach({ (arrow) in
+            draw(arrow)
         })
         paths.forEach({ (path) in
             draw(path)
@@ -174,6 +197,32 @@ class DrawingView: UIImageView {
         draw(path)
         
         rectangle.removeFromSuperview()
+    }
+    
+    private func draw(_ arrow: ResizableArrow) {
+        let path = initBezierPath()
+        
+        let arrowRect = convertToImageCoords(self.convert(arrow.frame, to: self))
+        let backgroundRect = convertToImageCoords(self.convert(arrow.backgroundView.frame, to: self))
+        
+        let size = backgroundRect.size
+        
+        var topLeft = arrowRect.origin
+        topLeft.x += backgroundRect.origin.x
+        topLeft.y += backgroundRect.origin.y
+        let bottomLeft = CGPoint(x: topLeft.x, y: topLeft.y + size.height)
+        let topRight = CGPoint(x: topLeft.x + size.width, y: topLeft.y)
+        let bottomRight = CGPoint(x: topRight.x, y: bottomLeft.y)
+        
+        path.move(to: topLeft)
+        path.addLine(to: topRight)
+        path.addLine(to: bottomRight)
+        path.addLine(to: bottomLeft)
+        path.addLine(to: topLeft)
+        
+        draw(path)
+        
+        arrow.removeFromSuperview()
     }
     
     private func convertToImageCoords(_ location: CGPoint) -> CGPoint {

@@ -100,6 +100,8 @@
 		259616C51F038E84009A2631 /* Montserrat-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 259616B31F038E84009A2631 /* Montserrat-ThinItalic.ttf */; };
 		D090DEDD1F504BCA00DE2D5E /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D090DEDC1F504BCA00DE2D5E /* PopupViewController.swift */; };
 		D090DEE31F504FFC00DE2D5E /* PopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D090DEE21F504FFC00DE2D5E /* PopupViewController.xib */; };
+		D0A141C71F55795D00C475CC /* ResizableArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A141C61F55795D00C475CC /* ResizableArrow.swift */; };
+		D0A141C91F5579BB00C475CC /* ResizableArrow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A141C81F5579BB00C475CC /* ResizableArrow.xib */; };
 		DB2021A675F90E2F5DDA29D9 /* Pods_DebuggItDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F88C1D6D6AEC79640DCE07E5 /* Pods_DebuggItDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -235,6 +237,8 @@
 		BDD5A2A9F2B752460A63E252 /* Pods-DebuggItDemo.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebuggItDemo.production.xcconfig"; path = "Pods/Target Support Files/Pods-DebuggItDemo/Pods-DebuggItDemo.production.xcconfig"; sourceTree = "<group>"; };
 		D090DEDC1F504BCA00DE2D5E /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		D090DEE21F504FFC00DE2D5E /* PopupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupViewController.xib; sourceTree = "<group>"; };
+		D0A141C61F55795D00C475CC /* ResizableArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizableArrow.swift; sourceTree = "<group>"; };
+		D0A141C81F5579BB00C475CC /* ResizableArrow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResizableArrow.xib; sourceTree = "<group>"; };
 		D68A0669A7EDDBAEDD03B9E9 /* Pods-DebuggIt.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebuggIt.staging.xcconfig"; path = "Pods/Target Support Files/Pods-DebuggIt/Pods-DebuggIt.staging.xcconfig"; sourceTree = "<group>"; };
 		E99A5BFE76F7BB189F2C4D32 /* Pods-DebuggItDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebuggItDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-DebuggItDemo/Pods-DebuggItDemo.release.xcconfig"; sourceTree = "<group>"; };
 		F88C1D6D6AEC79640DCE07E5 /* Pods_DebuggItDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DebuggItDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -409,6 +413,8 @@
 				213313F61E25228500777356 /* DrawingView.swift */,
 				213313F71E25228500777356 /* ResizableRectangle.swift */,
 				213313F81E25228500777356 /* ResizableRectangle.xib */,
+				D0A141C81F5579BB00C475CC /* ResizableArrow.xib */,
+				D0A141C61F55795D00C475CC /* ResizableArrow.swift */,
 				213313F91E25228500777356 /* RoundedButton.swift */,
 				213313FA1E25228500777356 /* RoundedImageView.swift */,
 			);
@@ -694,6 +700,7 @@
 				213313FE1E25228500777356 /* DebuggItButton.xib in Resources */,
 				259616BD1F038E84009A2631 /* Montserrat-Light.ttf in Resources */,
 				21E83D211E25281500D24FBF /* Assets.xcassets in Resources */,
+				D0A141C91F5579BB00C475CC /* ResizableArrow.xib in Resources */,
 				259616C51F038E84009A2631 /* Montserrat-ThinItalic.ttf in Resources */,
 				213313BF1E25219600777356 /* WelcomeViewController.xib in Resources */,
 				259616B81F038E84009A2631 /* Montserrat-ExtraBold.ttf in Resources */,
@@ -845,6 +852,7 @@
 				213313D11E25222A00777356 /* ImageCache.swift in Sources */,
 				213314211E25245000777356 /* NewScreenshotCollectionViewCell.swift in Sources */,
 				213313C31E2521E700777356 /* LoginModalViewController.swift in Sources */,
+				D0A141C71F55795D00C475CC /* ResizableArrow.swift in Sources */,
 				213313D21E25222A00777356 /* Initializer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
