@@ -94,7 +94,6 @@
                                             <state key="normal" image="iconArrowInactive"/>
                                             <connections>
                                                 <action selector="tapArrow:" destination="-1" eventType="touchUpInside" id="qJO-aS-1Gg"/>
-                                                <action selector="tapUndo:" destination="-1" eventType="touchUpInside" id="5pD-Ug-Fx3"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaI-5i-RVl">
@@ -127,7 +126,6 @@
                                             <state key="normal" image="iconRedoInactive"/>
                                             <connections>
                                                 <action selector="tapRedo:" destination="-1" eventType="touchUpInside" id="nBw-w7-FJp"/>
-                                                <action selector="tapUndo:" destination="-1" eventType="touchUpInside" id="mDJ-SP-c2T"/>
                                             </connections>
                                         </button>
                                     </subviews>

@@ -24,8 +24,8 @@ class DrawingView: UIImageView {
     private var currentRectangle: ResizableRectangle!
     private var rectangles = [ResizableRectangle]()
     
-    private var currentArrow: ResizableArrow!
-    private var arrows = [ResizableArrow]()
+    private var currentArrow: UIBezierPath!
+    private var arrows = [UIBezierPath]()
     
     private var lastDrawings = [DrawingType]()
     
@@ -46,9 +46,7 @@ class DrawingView: UIImageView {
             currentRectangle = createRectangle(at: touchLocation)
             self.addSubview(currentRectangle)
         case .arrow:
-            pinCurrentArrow()
-            currentArrow = createArrow(at: touchLocation)
-            self.addSubview(currentArrow)
+            currentArrow = initBezierPath()
         }
     }
     
@@ -67,7 +65,7 @@ class DrawingView: UIImageView {
         case .rectangle:
             break
         case .arrow:
-            break
+            print("move")
         }
     }
     
@@ -75,6 +73,14 @@ class DrawingView: UIImageView {
         switch type {
         case .free:
             paths.append(currentPath)
+        case .arrow:
+            let touch = touches.first
+            let currentPoint: CGPoint = convertToImageCoords((touch?.location(in: self))!)
+            currentArrow.move(to: currentPoint)
+            currentArrow.addLine(to: lastPoint)
+            currentArrow = UIBezierPath.bezierPathWithArrowFromPoint(startPoint: lastPoint, endPoint: currentPoint, tailWidth: 4, headWidth: 8, headLength: 6)
+            draw(currentArrow)
+            arrows.append(currentArrow)
         default:
             break
         }
@@ -100,13 +106,6 @@ class DrawingView: UIImageView {
         return rectangle
     }
     
-    private func createArrow(at point: CGPoint) -> ResizableArrow {
-        let arrow = ResizableArrow.instantiateFromNib()
-        arrow.center.y = point.y
-        arrow.center.x = point.x
-        return arrow
-    }
-    
     func undo() {
         if let lastDrawing = lastDrawings.last {
             switch lastDrawing {
@@ -116,8 +115,7 @@ class DrawingView: UIImageView {
                 pinCurrentRectangle()
                 rectangles.removeLast()
             case .arrow:
-                // TODO arrow method
-                print("undo arrow move")
+                arrows.removeLast()
             }
             redraw()
             lastDrawings.removeLast()
@@ -135,16 +133,6 @@ class DrawingView: UIImageView {
             rectangles.append(currentRectangle)
             currentRectangle.removeFromSuperview()
             currentRectangle = nil
-        }
-    }
-    
-    func pinCurrentArrow() {
-        if currentArrow != nil && !currentArrow.isPinned {
-            currentArrow.pin()
-            draw(currentArrow)
-            arrows.append(currentArrow)
-            currentArrow.removeFromSuperview()
-            currentArrow = nil
         }
     }
     
@@ -197,32 +185,6 @@ class DrawingView: UIImageView {
         draw(path)
         
         rectangle.removeFromSuperview()
-    }
-    
-    private func draw(_ arrow: ResizableArrow) {
-        let path = initBezierPath()
-        
-        let arrowRect = convertToImageCoords(self.convert(arrow.frame, to: self))
-        let backgroundRect = convertToImageCoords(self.convert(arrow.backgroundView.frame, to: self))
-        
-        let size = backgroundRect.size
-        
-        var topLeft = arrowRect.origin
-        topLeft.x += backgroundRect.origin.x
-        topLeft.y += backgroundRect.origin.y
-        let bottomLeft = CGPoint(x: topLeft.x, y: topLeft.y + size.height)
-        let topRight = CGPoint(x: topLeft.x + size.width, y: topLeft.y)
-        let bottomRight = CGPoint(x: topRight.x, y: bottomLeft.y)
-        
-        path.move(to: topLeft)
-        path.addLine(to: topRight)
-        path.addLine(to: bottomRight)
-        path.addLine(to: bottomLeft)
-        path.addLine(to: topLeft)
-        
-        draw(path)
-        
-        arrow.removeFromSuperview()
     }
     
     private func convertToImageCoords(_ location: CGPoint) -> CGPoint {
