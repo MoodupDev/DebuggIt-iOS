@@ -10,7 +10,7 @@ import UIKit
 
 class DrawingView: UIImageView {
     
-    var type: DrawingType = .free {
+    var type: DrawingType = .arrow {
         didSet {
             pinCurrentRectangle()
         }
@@ -65,7 +65,7 @@ class DrawingView: UIImageView {
         case .rectangle:
             break
         case .arrow:
-            print("move")
+            break
         }
     }
     
