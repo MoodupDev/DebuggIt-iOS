@@ -31,6 +31,7 @@ class DrawingView: UIImageView {
     private var currentArrow: UIBezierPath!
     private var arrows = [UIBezierPath]()
     private var nextArrows = [UIBezierPath]()
+    private var temporaryArrow = UIBezierPath()
     
     private var lastDrawings = [DrawingType]()
     private var nextDrawings = [DrawingType]()
@@ -66,17 +67,17 @@ class DrawingView: UIImageView {
         switch(type) {
         case .free:
             let currentPoint: CGPoint = convertToImageCoords((touch?.location(in: self))!)
-            
             currentPath.move(to: lastPoint)
             currentPath.addLine(to: currentPoint)
-            
             draw(currentPath)
-            
             lastPoint = currentPoint
         case .rectangle:
             break
         case .arrow:
-            break
+            redraw()
+            let currentPoint: CGPoint = convertToImageCoords((touch?.location(in: self))!)
+            temporaryArrow = UIBezierPath.bezierPathWithArrowFromPoint(startPoint: lastPoint, endPoint: currentPoint, tailWidth: 4, headWidth: 8, headLength: 6)
+            draw(temporaryArrow)
         }
     }
     
@@ -85,6 +86,7 @@ class DrawingView: UIImageView {
         case .free:
             paths.append(currentPath)
         case .arrow:
+            redraw()
             let touch = touches.first
             let currentPoint: CGPoint = convertToImageCoords((touch?.location(in: self))!)
             currentArrow = UIBezierPath.bezierPathWithArrowFromPoint(startPoint: lastPoint, endPoint: currentPoint, tailWidth: 4, headWidth: 8, headLength: 6)
