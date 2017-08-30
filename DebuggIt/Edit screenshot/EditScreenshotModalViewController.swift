@@ -83,7 +83,6 @@ class EditScreenshotModalViewController: UIViewController, DrawingViewDelegate {
         screenshotSurface.type = .arrow
     }
     
-    
     @IBAction func tapRectangle(_ sender: UIButton) {
         changeButtonState(sender, secondOptionButton: freedrawButton, thirdOptionButton: arrowButton)
         screenshotSurface.type = .rectangle
@@ -107,6 +106,13 @@ class EditScreenshotModalViewController: UIViewController, DrawingViewDelegate {
             undoButton.isSelected = true
         } else {
             undoButton.isSelected = false
+        }
+    }
+    func highlightRedoButton(highlight: Bool) {
+        if highlight {
+            redoButton.isSelected = true
+        } else {
+            redoButton.isSelected = false
         }
     }
 }

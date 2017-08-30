@@ -21,15 +21,19 @@ class DrawingView: UIImageView {
     private var lastPoint: CGPoint!
     
     private var paths = [UIBezierPath]()
+    private var nextPaths = [UIBezierPath]()
     private var currentPath: UIBezierPath!
     
     private var currentRectangle: ResizableRectangle!
     private var rectangles = [ResizableRectangle]()
+    private var nextRectangles = [ResizableRectangle]()
     
     private var currentArrow: UIBezierPath!
     private var arrows = [UIBezierPath]()
+    private var nextArrows = [UIBezierPath]()
     
     private var lastDrawings = [DrawingType]()
+    private var nextDrawings = [DrawingType]()
     
     private lazy var convertRatio: CGSize = {
         let widthRatio = (self.image!.size.width / self.bounds.size.width)
@@ -38,6 +42,11 @@ class DrawingView: UIImageView {
     }()
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        nextDrawings = []
+        nextRectangles = []
+        nextArrows = []
+        nextPaths = []
+        delegate?.highlightRedoButton(highlight: false)
         let touchLocation = (touches.first?.location(in: self))!
         lastPoint = convertToImageCoords(touchLocation)
         switch type {
@@ -78,8 +87,6 @@ class DrawingView: UIImageView {
         case .arrow:
             let touch = touches.first
             let currentPoint: CGPoint = convertToImageCoords((touch?.location(in: self))!)
-            currentArrow.move(to: currentPoint)
-            currentArrow.addLine(to: lastPoint)
             currentArrow = UIBezierPath.bezierPathWithArrowFromPoint(startPoint: lastPoint, endPoint: currentPoint, tailWidth: 4, headWidth: 8, headLength: 6)
             draw(currentArrow)
             arrows.append(currentArrow)
@@ -113,14 +120,19 @@ class DrawingView: UIImageView {
         if let lastDrawing = lastDrawings.last {
             switch lastDrawing {
             case .free:
+                nextPaths.append(paths.last!)
                 paths.removeLast()
             case .rectangle:
                 pinCurrentRectangle()
+                nextRectangles.append(rectangles.last!)
                 rectangles.removeLast()
             case .arrow:
+                nextArrows.append(arrows.last!)
                 arrows.removeLast()
             }
+            delegate?.highlightRedoButton(highlight: true)
             redraw()
+            nextDrawings.append(lastDrawings.last!)
             lastDrawings.removeLast()
         }
         if lastDrawings != [] {
@@ -131,7 +143,29 @@ class DrawingView: UIImageView {
     }
     
     func redo() {
-        // TODO redo function
+        if let nextDrawing = nextDrawings.last {
+            switch nextDrawing {
+            case .free:
+                paths.append(nextPaths.last!)
+                nextPaths.removeLast()
+            case .rectangle:
+                pinCurrentRectangle()
+                rectangles.append(nextRectangles.last!)
+                nextRectangles.removeLast()
+            case .arrow:
+                arrows.append(nextArrows.last!)
+                nextArrows.removeLast()
+            }
+            delegate?.highlightUndoButton(highlight: true)
+            redraw()
+            lastDrawings.append(nextDrawings.last!)
+            nextDrawings.removeLast()
+        }
+        if nextDrawings != [] {
+            delegate?.highlightRedoButton(highlight: true)
+        } else {
+            delegate?.highlightRedoButton(highlight: false)
+        }
     }
     
     func pinCurrentRectangle() {
@@ -220,4 +254,5 @@ enum DrawingType : Int {
 
 protocol DrawingViewDelegate: class {
     func highlightUndoButton(highlight: Bool)
+    func highlightRedoButton(highlight: Bool)
 }
