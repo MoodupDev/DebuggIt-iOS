@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditScreenshotModalViewController: UIViewController {
+class EditScreenshotModalViewController: UIViewController, DrawingViewDelegate {
     
     @IBOutlet weak var screenshotSurface: DrawingView!
     @IBOutlet weak var arrowButton: UIButton!
@@ -22,12 +22,13 @@ class EditScreenshotModalViewController: UIViewController {
         super.viewDidLoad()
         screenshotSurface.image = DebuggIt.sharedInstance.report.currentScreenshot
         initButtons()
+        screenshotSurface.delegate = self
     }
     
     private func initButtons() {
-        //undoButton.setImage(Initializer.image(named: "undo2"), for: UIControlState.highlighted)
+        undoButton.setImage(Initializer.image(named: "iconUndoActive"), for: UIControlState.selected)
         undoButton.setImage(Initializer.image(named: "iconUndoInactive"), for: UIControlState.normal)
-        //redoButton.setImage(Initializer.image(named: "redo"), for: UIControlState.highlighted)
+        redoButton.setImage(Initializer.image(named: "iconRedoActive"), for: UIControlState.selected)
         redoButton.setImage(Initializer.image(named: "iconRedoInactive"), for: UIControlState.normal)
         rectangleButton.setImage(Initializer.image(named: "iconRectangleActive"), for: UIControlState.selected)
         rectangleButton.setImage(Initializer.image(named: "iconRectangleInactive"), for: UIControlState.normal)
@@ -98,6 +99,14 @@ class EditScreenshotModalViewController: UIViewController {
             sender.isSelected = true
             secondOptionButton.isSelected = false
             thirdOptionButton.isSelected = false
+        }
+    }
+    
+    func highlightUndoButton(highlight: Bool) {
+        if highlight {
+            undoButton.isSelected = true
+        } else {
+            undoButton.isSelected = false
         }
     }
 }

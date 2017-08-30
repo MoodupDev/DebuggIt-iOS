@@ -16,6 +16,8 @@ class DrawingView: UIImageView {
         }
     }
     
+    weak var delegate: DrawingViewDelegate?
+    
     private var lastPoint: CGPoint!
     
     private var paths = [UIBezierPath]()
@@ -85,6 +87,7 @@ class DrawingView: UIImageView {
             break
         }
         lastDrawings.append(type)
+        delegate?.highlightUndoButton(highlight: true)
     }
     
     private func initBezierPath(lineWidth: CGFloat = 5.0, lineCapStyle: CGLineCap = .round) -> UIBezierPath {
@@ -119,6 +122,11 @@ class DrawingView: UIImageView {
             }
             redraw()
             lastDrawings.removeLast()
+        }
+        if lastDrawings != [] {
+            delegate?.highlightUndoButton(highlight: true)
+        } else {
+            delegate?.highlightUndoButton(highlight: false)
         }
     }
     
@@ -208,4 +216,8 @@ enum DrawingType : Int {
     case free
     case rectangle
     case arrow
+}
+
+protocol DrawingViewDelegate: class {
+    func highlightUndoButton(highlight: Bool)
 }
