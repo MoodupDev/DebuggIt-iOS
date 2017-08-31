@@ -76,7 +76,7 @@ class DrawingView: UIImageView {
         case .arrow:
             redraw()
             let currentPoint: CGPoint = convertToImageCoords((touch?.location(in: self))!)
-            temporaryArrow = UIBezierPath.bezierPathWithArrowFromPoint(startPoint: lastPoint, endPoint: currentPoint, tailWidth: 4, headWidth: 8, headLength: 6)
+            temporaryArrow = UIBezierPath.bezierPathWithArrowFromPoint(startPoint: lastPoint, endPoint: currentPoint, tailWidth: Constants.arrowTailWidth, headWidth: Constants.arrowHeadWidth, headLength: Constants.arrowHeadLength)
             draw(temporaryArrow)
         }
     }
@@ -89,7 +89,7 @@ class DrawingView: UIImageView {
             redraw()
             let touch = touches.first
             let currentPoint: CGPoint = convertToImageCoords((touch?.location(in: self))!)
-            currentArrow = UIBezierPath.bezierPathWithArrowFromPoint(startPoint: lastPoint, endPoint: currentPoint, tailWidth: 4, headWidth: 8, headLength: 6)
+            currentArrow = UIBezierPath.bezierPathWithArrowFromPoint(startPoint: lastPoint, endPoint: currentPoint, tailWidth: Constants.arrowTailWidth, headWidth: Constants.arrowHeadWidth, headLength: Constants.arrowHeadLength)
             draw(currentArrow)
             arrows.append(currentArrow)
         default:

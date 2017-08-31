@@ -93,4 +93,8 @@ struct Constants {
         static let usernameKey = "jira_username"
         static let passwordKey = "jira_password"
     }
+    
+    static let arrowTailWidth: CGFloat = 1.0
+    static let arrowHeadWidth: CGFloat = 10.0
+    static let arrowHeadLength: CGFloat = 10.0
 }
