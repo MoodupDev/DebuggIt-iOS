@@ -23,7 +23,7 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" misplaced="YES" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -34,10 +34,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8nm-ko-0fa" userLabel="Background VIew" customClass="BackgroundView" customModule="DebuggIt" customModuleProvider="target">
                     <rect key="frame" x="52" y="238" width="270" height="190"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="thumbsUp" translatesAutoresizingMaskIntoConstraints="NO" id="yO1-TU-m4j">
-                            <rect key="frame" x="115" y="24" width="41" height="45"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6N-mk-O4s">
                             <rect key="frame" x="0.0" y="145" width="270" height="45"/>
                             <constraints>
@@ -58,23 +54,32 @@
                                 <constraint firstAttribute="height" constant="2" id="AQ5-Fd-aMu"/>
                             </constraints>
                         </view>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="PopupViewController" editable="NO" text="Probny tekst" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7c-KY-DCO">
-                            <rect key="frame" x="8" y="78" width="254" height="57"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" misplaced="YES" restorationIdentifier="PopupViewController" scrollEnabled="NO" editable="NO" text="Probny tekst" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7c-KY-DCO">
+                            <rect key="frame" x="8" y="69" width="254" height="66"/>
                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="textColor" red="0.20784313725490194" green="0.20784313725490194" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="thumbsUp" translatesAutoresizingMaskIntoConstraints="NO" id="yO1-TU-m4j">
+                            <rect key="frame" x="115" y="8" width="41" height="45"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="z7c-KY-DCO" firstAttribute="top" secondItem="yO1-TU-m4j" secondAttribute="bottom" constant="8" id="6cI-wZ-zVU"/>
                         <constraint firstItem="exs-rT-EoV" firstAttribute="leading" secondItem="8nm-ko-0fa" secondAttribute="leading" id="8Im-Vx-Qq4"/>
                         <constraint firstItem="b6N-mk-O4s" firstAttribute="top" secondItem="exs-rT-EoV" secondAttribute="bottom" id="BKS-UO-h23"/>
                         <constraint firstAttribute="trailing" secondItem="b6N-mk-O4s" secondAttribute="trailing" id="CJD-eD-rv8"/>
                         <constraint firstItem="b6N-mk-O4s" firstAttribute="leading" secondItem="8nm-ko-0fa" secondAttribute="leading" id="CQy-kg-BIB"/>
+                        <constraint firstAttribute="trailing" secondItem="z7c-KY-DCO" secondAttribute="trailing" constant="8" id="FwU-pW-WNn"/>
+                        <constraint firstItem="yO1-TU-m4j" firstAttribute="top" secondItem="8nm-ko-0fa" secondAttribute="top" constant="16" id="LaW-Lp-zm0"/>
                         <constraint firstAttribute="trailing" secondItem="exs-rT-EoV" secondAttribute="trailing" id="NqJ-zu-8c1"/>
+                        <constraint firstItem="z7c-KY-DCO" firstAttribute="leading" secondItem="8nm-ko-0fa" secondAttribute="leading" constant="8" id="Ss1-pb-Yem"/>
+                        <constraint firstItem="exs-rT-EoV" firstAttribute="top" secondItem="z7c-KY-DCO" secondAttribute="bottom" constant="8" id="bI7-Af-HUe"/>
                         <constraint firstAttribute="height" constant="190" id="cJL-46-E0o"/>
+                        <constraint firstAttribute="trailing" secondItem="yO1-TU-m4j" secondAttribute="trailing" constant="114" id="eBF-8h-Es9"/>
+                        <constraint firstItem="yO1-TU-m4j" firstAttribute="leading" secondItem="8nm-ko-0fa" secondAttribute="leading" constant="115" id="mOW-rX-Q2o"/>
                         <constraint firstAttribute="width" constant="270" id="n4M-YW-cJN"/>
                         <constraint firstAttribute="bottom" secondItem="b6N-mk-O4s" secondAttribute="bottom" id="nFJ-sr-Aig"/>
                     </constraints>
