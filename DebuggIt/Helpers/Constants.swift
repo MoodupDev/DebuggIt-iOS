@@ -31,7 +31,7 @@ struct Constants {
     
     struct Bitbucket {
         
-        //MARL: Priorities
+        //MARK: Priorities
         static let minor = "minor"
         static let major = "major"
         static let critical = "critical"
