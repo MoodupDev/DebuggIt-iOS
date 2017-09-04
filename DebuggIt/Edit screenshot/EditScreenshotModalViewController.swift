@@ -50,6 +50,7 @@ class EditScreenshotModalViewController: UIViewController, DrawingViewDelegate {
             popup.alertTextView.text = "alert.message.wait".localized()
             popup.okButton.removeFromSuperview()
             popup.breakLineView.removeFromSuperview()
+            popup.thumbImageView.isHidden = true
         })
         
         ApiClient.upload(.image, data: image.toBase64String(),

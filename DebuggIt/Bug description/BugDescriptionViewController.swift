@@ -58,11 +58,12 @@ class BugDescriptionViewController: UIViewController {
                 progressPopup.alertTextView.text = "alert.message.wait".localized()
                 progressPopup.okButton.removeFromSuperview()
                 progressPopup.breakLineView.removeFromSuperview()
+                progressPopup.thumbImageView.isHidden = true
             })
             
             DebuggIt.sharedInstance.sendReport(
                 successBlock: {
-                    progressPopup.dismiss(animated: false, completion: {
+                    progressPopup.dismiss(animated: true, completion: {
                         let popup = Initializer.viewController(PopupViewController.self)
                         DebuggIt.sharedInstance.showModal(viewController: popup)
                         popup.willShowDebuggItWindow = false
@@ -81,7 +82,7 @@ class BugDescriptionViewController: UIViewController {
                         popup.alertTextView.text = "error.send.report.badcredentials".localized()
                     })
                 } else {
-                    progressPopup.dismiss(animated: false, completion:  {
+                    progressPopup.dismiss(animated: true, completion:  {
                         let popup = Initializer.viewController(PopupViewController.self)
                         DebuggIt.sharedInstance.showModal(viewController: popup)
                         popup.willShowDebuggItWindow = true

@@ -126,10 +126,15 @@ class BugDescriptionPage1ViewController: UIViewController {
             recordViewController.modalPresentationStyle = .overCurrentContext
             self.present(recordViewController, animated: true, completion: nil)
         } else {
-            self.present(Utils.createAlert(title: "alert.title.recording.disabled".localized(), message: "alert.message.recording.disabled".localized(), positiveAction: {}), animated: true, completion: nil)
+            self.dismiss(animated: true, completion: {
+                let popup = Initializer.viewController(PopupViewController.self)
+                DebuggIt.sharedInstance.showModal(viewController: popup)
+                popup.willShowDebuggItWindow = true
+                popup.thumbImageView.image = Initializer.image(named: "thumbsDown")
+                popup.alertTextView.text = "alert.message.recording.disabled".localized()
+            })
         }
     }
- 
 }
 
 // MARK: - TextViewDelegate
