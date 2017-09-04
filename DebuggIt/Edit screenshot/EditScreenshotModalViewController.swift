@@ -42,26 +42,30 @@ class EditScreenshotModalViewController: UIViewController, DrawingViewDelegate {
     @IBAction func tapDone(_ sender: UIButton) {
         screenshotSurface.pinCurrentRectangle()
         let image = screenshotSurface.image!
-        
-        let alertController = Utils.createAlert(title: "alert.title.sending.screenshot".localized(), message: "alert.message.wait".localized())
-        present(alertController, animated: true, completion: nil)
+        let popup = Initializer.viewController(PopupViewController.self)
+        self.dismiss(animated: true, completion: {
+            DebuggIt.sharedInstance.showModal(viewController: popup)
+            popup.willShowDebuggItWindow = true
+            popup.thumbImageView.image = Initializer.image(named: "thumbsUp")
+            popup.alertTextView.text = "alert.message.wait".localized()
+            popup.okButton.removeFromSuperview()
+            popup.breakLineView.removeFromSuperview()
+        })
         
         ApiClient.upload(.image, data: image.toBase64String(),
             successBlock: {
                 ApiClient.postEvent(self.freedrawButton.isSelected ? .screenshotAddedDraw : .screenshotAddedRectangle)
-                alertController.dismiss(animated: true, completion: self.showBugDescription)
+                popup.dismiss(animated: true, completion: self.showBugDescription)
             }, errorBlock: {
                 (statusCode, errorMessage) in
-                alertController.dismiss(animated: false, completion: {
+                popup.dismiss(animated: false, completion: {
                     self.present(Utils.createGeneralErrorAlert(), animated: true, completion: nil)
                 })
             })
     }
     
     func showBugDescription() -> Void {
-        self.dismiss(animated: true, completion: {
-            DebuggIt.sharedInstance.showModal(viewController: Initializer.viewController(BugDescriptionViewController.self))
-        })
+        DebuggIt.sharedInstance.showModal(viewController: Initializer.viewController(BugDescriptionViewController.self))
     }
     
     @IBAction func tapCancel(_ sender: UIButton) {
