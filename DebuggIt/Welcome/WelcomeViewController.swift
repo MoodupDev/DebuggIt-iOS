@@ -21,5 +21,4 @@ class WelcomeViewController: UIViewController {
         DebuggIt.sharedInstance.welcomeScreenHasBeenShown = true
         self.dismiss(animated: true, completion: nil)
     }
-    
 }

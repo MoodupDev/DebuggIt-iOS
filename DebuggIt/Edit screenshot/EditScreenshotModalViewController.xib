@@ -148,14 +148,14 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="AjI-Dj-cmh" secondAttribute="trailing" constant="40" id="HRp-cD-P9e"/>
-                <constraint firstItem="AjI-Dj-cmh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="aWf-Ta-BET"/>
+                <constraint firstAttribute="trailing" secondItem="AjI-Dj-cmh" secondAttribute="trailing" constant="25" id="HRp-cD-P9e"/>
+                <constraint firstItem="AjI-Dj-cmh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="24" id="aWf-Ta-BET"/>
                 <constraint firstAttribute="bottom" secondItem="Bee-fv-MEP" secondAttribute="bottom" id="c1P-t0-sYc"/>
                 <constraint firstAttribute="trailing" secondItem="Bee-fv-MEP" secondAttribute="trailing" id="dee-sa-Wv6"/>
-                <constraint firstItem="AjI-Dj-cmh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="uP2-UI-ue3"/>
+                <constraint firstItem="AjI-Dj-cmh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="25" id="uP2-UI-ue3"/>
                 <constraint firstItem="Bee-fv-MEP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="wZv-JM-d2t"/>
                 <constraint firstItem="Bee-fv-MEP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="yyp-H1-eN1"/>
-                <constraint firstAttribute="bottom" secondItem="AjI-Dj-cmh" secondAttribute="bottom" constant="30" id="z5B-fA-pYd"/>
+                <constraint firstAttribute="bottom" secondItem="AjI-Dj-cmh" secondAttribute="bottom" constant="24" id="z5B-fA-pYd"/>
             </constraints>
             <point key="canvasLocation" x="44" y="14"/>
         </view>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -24,7 +24,7 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="xVq-KS-Kf0">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vdu-mD-wiW" userLabel="mainArea">
@@ -104,7 +104,7 @@
             <constraints>
                 <constraint firstItem="pDV-z7-fPk" firstAttribute="centerY" secondItem="xVq-KS-Kf0" secondAttribute="centerY" id="1Im-f3-XoA"/>
                 <constraint firstItem="pDV-z7-fPk" firstAttribute="centerY" secondItem="xVq-KS-Kf0" secondAttribute="centerY" id="DGK-j2-AfF"/>
-                <constraint firstAttribute="trailing" secondItem="pDV-z7-fPk" secondAttribute="trailing" constant="30" id="ECS-uw-gnj"/>
+                <constraint firstAttribute="trailing" secondItem="pDV-z7-fPk" secondAttribute="trailing" constant="25" id="ECS-uw-gnj"/>
                 <constraint firstAttribute="bottom" secondItem="vdu-mD-wiW" secondAttribute="bottom" id="Ix2-md-r68"/>
                 <constraint firstItem="pDV-z7-fPk" firstAttribute="centerX" secondItem="xVq-KS-Kf0" secondAttribute="centerX" id="UTA-Y8-OSB"/>
                 <constraint firstItem="pDV-z7-fPk" firstAttribute="height" secondItem="vdu-mD-wiW" secondAttribute="height" multiplier="0.7" id="bF7-52-1Fo"/>
@@ -112,7 +112,7 @@
                 <constraint firstItem="pDV-z7-fPk" firstAttribute="centerX" secondItem="xVq-KS-Kf0" secondAttribute="centerX" id="gd5-gm-81F"/>
                 <constraint firstAttribute="trailing" secondItem="vdu-mD-wiW" secondAttribute="trailing" id="kuQ-dQ-jlQ"/>
                 <constraint firstItem="vdu-mD-wiW" firstAttribute="top" secondItem="xVq-KS-Kf0" secondAttribute="top" id="qkn-ra-pFw"/>
-                <constraint firstItem="pDV-z7-fPk" firstAttribute="leading" secondItem="xVq-KS-Kf0" secondAttribute="leading" constant="30" id="t2A-Ib-CBB"/>
+                <constraint firstItem="pDV-z7-fPk" firstAttribute="leading" secondItem="xVq-KS-Kf0" secondAttribute="leading" constant="25" id="t2A-Ib-CBB"/>
             </constraints>
         </view>
     </objects>
