@@ -64,7 +64,6 @@ class LoginModalViewController: UIViewController {
                         self.present(Utils.createAlert(title: "alert.title.failure", message: "error.2fa.code".localized(), positiveAction: {}), animated: true, completion: nil)
                     } else {
                         self.present(Utils.createAlert(title: "alert.title.failure", message: message, positiveAction: {}), animated: true, completion: nil)
-                        
                     }
                 } else {
                     self.present(Utils.createAlert(title: "alert.title.failure", message: "error.general".localized(), positiveAction: {}), animated: true, completion: nil)

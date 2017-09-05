@@ -40,16 +40,20 @@
                         <constraint firstAttribute="height" constant="1" id="TtX-7J-kDe"/>
                     </constraints>
                 </view>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="N11-zk-MET">
-                    <rect key="frame" x="16" y="17" width="343" height="72"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="N11-zk-MET">
+                    <rect key="frame" x="16" y="17" width="343" height="74"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="UeY-vQ-Hxn" userLabel="Kind buttons">
-                            <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="UeY-vQ-Hxn" userLabel="Kind buttons">
+                            <rect key="frame" x="0.0" y="0.0" width="343" height="31"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iLG-uh-1wi" customClass="RoundedButton" customModule="DebuggIt" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="165.5" height="30"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="165.5" height="31"/>
                                     <color key="backgroundColor" red="0.90980392160000001" green="0.41176470590000003" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="31" id="qVl-5F-5ug"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
+                                    <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                     <state key="normal" title="Bug"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
@@ -76,9 +80,10 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eUF-zg-r2I" customClass="RoundedButton" customModule="DebuggIt" customModuleProvider="target">
-                                    <rect key="frame" x="177.5" y="0.0" width="165.5" height="30"/>
+                                    <rect key="frame" x="177.5" y="0.0" width="165.5" height="31"/>
                                     <color key="backgroundColor" red="0.90980392160000001" green="0.41176470590000003" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
+                                    <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                     <state key="normal" title="Enhancement"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="color" keyPath="selectedBackgroundColor">
@@ -105,14 +110,21 @@
                                     </connections>
                                 </button>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="eUF-zg-r2I" firstAttribute="height" secondItem="iLG-uh-1wi" secondAttribute="height" id="UzP-xG-NOw"/>
+                            </constraints>
                         </stackView>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Zua-Ko-RxP" userLabel="Priority buttons">
-                            <rect key="frame" x="0.0" y="42" width="343" height="30"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Zua-Ko-RxP" userLabel="Priority buttons">
+                            <rect key="frame" x="0.0" y="43" width="343" height="31"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gct-GV-P3l" customClass="RoundedButton" customModule="DebuggIt" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="106.5" height="30"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="106.5" height="31"/>
                                     <color key="backgroundColor" red="0.90980392160000001" green="0.41176470590000003" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="31" id="CL2-ho-8Xn"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
+                                    <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                     <state key="normal" title="Low"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
@@ -136,9 +148,10 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LWa-fz-5Lc" customClass="RoundedButton" customModule="DebuggIt" customModuleProvider="target">
-                                    <rect key="frame" x="118.5" y="0.0" width="106" height="30"/>
+                                    <rect key="frame" x="118.5" y="0.0" width="106" height="31"/>
                                     <color key="backgroundColor" red="0.90980392160000001" green="0.41176470590000003" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
+                                    <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                     <state key="normal" title="Medium"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="color" keyPath="selectedBackgroundColor">
@@ -162,9 +175,10 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iV4-7x-OEB" customClass="RoundedButton" customModule="DebuggIt" customModuleProvider="target">
-                                    <rect key="frame" x="236.5" y="0.0" width="106.5" height="30"/>
+                                    <rect key="frame" x="236.5" y="0.0" width="106.5" height="31"/>
                                     <color key="backgroundColor" red="0.90980392160000001" green="0.41176470590000003" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
+                                    <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                     <state key="normal" title="High"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
@@ -188,11 +202,15 @@
                                     </connections>
                                 </button>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="iV4-7x-OEB" firstAttribute="height" secondItem="Gct-GV-P3l" secondAttribute="height" id="tvG-U1-j7O"/>
+                                <constraint firstItem="LWa-fz-5Lc" firstAttribute="height" secondItem="Gct-GV-P3l" secondAttribute="height" id="wpY-8P-lhM"/>
+                            </constraints>
                         </stackView>
                     </subviews>
                 </stackView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2Gc-AC-FDh" customClass="KMPlaceholderTextView" customModule="KMPlaceholderTextView">
-                    <rect key="frame" x="16" y="114" width="284" height="34"/>
+                    <rect key="frame" x="16" y="116" width="284" height="34"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="Xlv-f4-eR1"/>
@@ -214,7 +232,7 @@
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="130" id="vhN-Uj-S5v"/>
                             </constraints>
                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fsU-in-udd">
-                                <size key="itemSize" width="115" height="200"/>
+                                <size key="itemSize" width="95" height="160"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                 <inset key="sectionInset" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
@@ -231,7 +249,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="28T-Sq-gfZ" userLabel="Record button">
-                    <rect key="frame" x="308" y="114" width="51" height="34"/>
+                    <rect key="frame" x="308" y="116" width="51" height="34"/>
                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
                     <state key="normal" image="recordMicro"/>
                     <connections>
