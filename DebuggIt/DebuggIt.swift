@@ -80,6 +80,37 @@ public class DebuggIt: NSObject, NewScreenshotDelegate {
         swizzleMethod(of: UIWindow.self, original: #selector(setter: UIWindow.self.rootViewController), to: #selector(UIWindow.self.attachDebuggItOnRootViewControllerChange(_:)))
         NotificationCenter.default.addObserver(self, selector: #selector(self.attachToWindow(_:)), name: NSNotification.Name.UIWindowDidBecomeKey, object: nil)
         initReachability()
+        
+        guard let bundle = Bundle(identifier: "com.moodup.DebuggIt")
+            else { return }
+        let fonts = [
+            bundle.url(forResource: "Montserrat-Regular", withExtension: "ttf"),
+            bundle.url(forResource: "Montserrat-Black", withExtension: "ttf"),
+            bundle.url(forResource: "Montserrat-BlackItalic", withExtension: "ttf"),
+            bundle.url(forResource: "Montserrat-Bold", withExtension: "ttf"),
+            bundle.url(forResource: "Montserrat-BoldItalic", withExtension: "ttf"),
+            bundle.url(forResource: "Montserrat-ExtraBold", withExtension: "ttf"),
+            bundle.url(forResource: "Montserrat-ExtraBoldItalic", withExtension: "ttf"),
+            bundle.url(forResource: "Montserrat-ExtraLight", withExtension: "ttf"),
+            bundle.url(forResource: "Montserrat-ExtraLightItalic", withExtension: "ttf"),
+            bundle.url(forResource: "Montserrat-Italic", withExtension: "ttf"),
+            bundle.url(forResource: "Montserrat-Light", withExtension: "ttf"),
+            bundle.url(forResource: "Montserrat-LightItalic", withExtension: "ttf"),
+            bundle.url(forResource: "Montserrat-Medium", withExtension: "ttf"),
+            bundle.url(forResource: "Montserrat-MediumItalic", withExtension: "ttf"),
+            bundle.url(forResource: "Montserrat-SemiBold", withExtension: "ttf"),
+            bundle.url(forResource: "Montserrat-SemiBoldItalic", withExtension: "ttf"),
+            bundle.url(forResource: "Montserrat-Thin", withExtension: "ttf"),
+            bundle.url(forResource: "Montserrat-ThinItalic", withExtension: "ttf")
+            ]
+        for url in fonts.flatMap({ $0 }) {
+            // Create a CGDataPRovider and a CGFont from the URL.
+            // Register the font with the system.
+            if let dataProvider = CGDataProvider(url: url as CFURL) {
+                let font = CGFont(dataProvider)
+                CTFontManagerRegisterGraphicsFont(font, nil)
+            }
+        }
     }
     
     func initReachability() {
