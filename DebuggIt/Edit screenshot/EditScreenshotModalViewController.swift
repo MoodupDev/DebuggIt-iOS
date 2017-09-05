@@ -43,17 +43,20 @@ class EditScreenshotModalViewController: UIViewController, DrawingViewDelegate {
         screenshotSurface.pinCurrentRectangle()
         let image = screenshotSurface.image!
         let popup = Initializer.viewController(PopupViewController.self)
-        popup.willShowDebuggItWindow = true
-        popup.modalPresentationStyle = .overCurrentContext
-        self.present(popup, animated: true, completion: nil)
+        self.dismiss(animated: true, completion: {
+            DebuggIt.sharedInstance.showModal(viewController: popup)
+            popup.willShowDebuggItWindow = true
+            popup.thumbImageView.image = Initializer.image(named: "thumbsUp")
+            popup.alertTextView.text = "alert.message.wait".localized()
+            popup.okButton.removeFromSuperview()
+            popup.breakLineView.removeFromSuperview()
+            popup.thumbImageView.isHidden = true
+        })
+        
         ApiClient.upload(.image, data: image.toBase64String(),
             successBlock: {
                 ApiClient.postEvent(self.freedrawButton.isSelected ? .screenshotAddedDraw : .screenshotAddedRectangle)
-                popup.dismiss(animated: true, completion: {
-                    self.dismiss(animated: true, completion: {
-                        self.showBugDescription()
-                    })
-                })
+                popup.dismiss(animated: true, completion: self.showBugDescription)
             }, errorBlock: {
                 (statusCode, errorMessage) in
                 popup.dismiss(animated: false, completion: {
