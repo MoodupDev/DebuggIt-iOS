@@ -41,14 +41,13 @@ extension UIBezierPath {
         var points = [CGPoint]()
         self.getAxisAlignedArrowPoints(points: &points, forLength: CGFloat(length), tailWidth: tailWidth, headWidth: headWidth, headLength: headLength)
         
-        var transform: CGAffineTransform = self.transformForStartPoint(startPoint: startPoint, endPoint: endPoint, length:  CGFloat(length))
+        let transform: CGAffineTransform = self.transformForStartPoint(startPoint: startPoint, endPoint: endPoint, length:  CGFloat(length))
         
-        var cgPath: CGMutablePath = CGMutablePath()
-        //CGPathAddLines(cgPath, &transform, points, 7)
+        let cgPath: CGMutablePath = CGMutablePath()
         cgPath.addLines(between: points, transform: transform)
         cgPath.closeSubpath()
         
-        var uiPath: UIBezierPath = UIBezierPath(cgPath: cgPath)
+        let uiPath: UIBezierPath = UIBezierPath(cgPath: cgPath)
         return uiPath
     }
 }

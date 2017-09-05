@@ -28,20 +28,20 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vdu-mD-wiW" userLabel="mainArea">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pDV-z7-fPk" customClass="BackgroundView" customModule="DebuggIt" customModuleProvider="target">
-                    <rect key="frame" x="30" y="110.33333333333331" width="354" height="515.33333333333326"/>
+                    <rect key="frame" x="25" y="100" width="325" height="467"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JMn-U5-eZa">
-                            <rect key="frame" x="8" y="7.9999999999999716" width="338" height="499.33333333333326"/>
+                            <rect key="frame" x="8" y="8" width="309" height="451"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8dn-5n-hAC">
-                                    <rect key="frame" x="0.0" y="0.0" width="338" height="40.000000000000014"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="309" height="40"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1vE-oj-Bn1">
-                                            <rect key="frame" x="4" y="4" width="51" height="32.000000000000014"/>
+                                            <rect key="frame" x="4" y="4" width="51" height="32"/>
                                             <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                             <state key="normal" title="Cancel">
@@ -52,7 +52,7 @@
                                             </connections>
                                         </button>
                                         <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="daA-Z5-aLT">
-                                            <rect key="frame" x="153" y="4" width="23" height="32.000000000000014"/>
+                                            <rect key="frame" x="138.5" y="4" width="23" height="32"/>
                                             <color key="pageIndicatorTintColor" red="0.95542651410000001" green="0.6555951834" blue="0.66193246839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="currentPageIndicatorTintColor" red="0.93139916659999999" green="0.2755307555" blue="0.18585780260000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
@@ -60,7 +60,7 @@
                                             </connections>
                                         </pageControl>
                                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EoO-fc-m9k">
-                                            <rect key="frame" x="274" y="4" width="60" height="32.000000000000014"/>
+                                            <rect key="frame" x="245" y="4" width="60" height="32"/>
                                             <color key="backgroundColor" red="0.90980392156862744" green="0.41176470588235292" blue="0.27450980392156865" alpha="1" colorSpace="deviceRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="udL-pJ-jYq"/>
@@ -85,7 +85,7 @@
                                     <edgeInsets key="layoutMargins" top="4" left="4" bottom="4" right="4"/>
                                 </stackView>
                                 <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s9f-Q6-bqO">
-                                    <rect key="frame" x="0.0" y="40" width="338" height="459.33333333333326"/>
+                                    <rect key="frame" x="0.0" y="40" width="309" height="411"/>
                                 </containerView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

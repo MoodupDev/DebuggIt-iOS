@@ -44,10 +44,10 @@
                     <rect key="frame" x="16" y="17" width="343" height="74"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="UeY-vQ-Hxn" userLabel="Kind buttons">
-                            <rect key="frame" x="0.0" y="0.0" width="343" height="31"/>
+                            <rect key="frame" x="85.5" y="0.0" width="172" height="31"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iLG-uh-1wi" customClass="RoundedButton" customModule="DebuggIt" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="165.5" height="31"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="52" height="31"/>
                                     <color key="backgroundColor" red="0.90980392160000001" green="0.41176470590000003" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="31" id="qVl-5F-5ug"/>
@@ -80,7 +80,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eUF-zg-r2I" customClass="RoundedButton" customModule="DebuggIt" customModuleProvider="target">
-                                    <rect key="frame" x="177.5" y="0.0" width="165.5" height="31"/>
+                                    <rect key="frame" x="64" y="0.0" width="108" height="31"/>
                                     <color key="backgroundColor" red="0.90980392160000001" green="0.41176470590000003" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                     <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
@@ -115,10 +115,10 @@
                             </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Zua-Ko-RxP" userLabel="Priority buttons">
-                            <rect key="frame" x="0.0" y="43" width="343" height="31"/>
+                            <rect key="frame" x="65.5" y="43" width="212" height="31"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gct-GV-P3l" customClass="RoundedButton" customModule="DebuggIt" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="106.5" height="31"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="53" height="31"/>
                                     <color key="backgroundColor" red="0.90980392160000001" green="0.41176470590000003" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="31" id="CL2-ho-8Xn"/>
@@ -148,7 +148,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LWa-fz-5Lc" customClass="RoundedButton" customModule="DebuggIt" customModuleProvider="target">
-                                    <rect key="frame" x="118.5" y="0.0" width="106" height="31"/>
+                                    <rect key="frame" x="67" y="0.0" width="76" height="31"/>
                                     <color key="backgroundColor" red="0.90980392160000001" green="0.41176470590000003" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                     <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
@@ -175,7 +175,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iV4-7x-OEB" customClass="RoundedButton" customModule="DebuggIt" customModuleProvider="target">
-                                    <rect key="frame" x="236.5" y="0.0" width="106.5" height="31"/>
+                                    <rect key="frame" x="155" y="0.0" width="57" height="31"/>
                                     <color key="backgroundColor" red="0.90980392160000001" green="0.41176470590000003" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                     <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
