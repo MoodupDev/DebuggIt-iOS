@@ -55,7 +55,7 @@ class BugDescriptionViewController: UIViewController {
                 DebuggIt.sharedInstance.showModal(viewController: progressPopup)
                 progressPopup.willShowDebuggItWindow = true
                 progressPopup.thumbImageView.image = Initializer.image(named: "thumbsUp")
-                progressPopup.alertTextView.text = "alert.message.wait".localized()
+                progressPopup.alertTextView.text = "alert.sending.report".localized()
                 progressPopup.okButton.removeFromSuperview()
                 progressPopup.breakLineView.removeFromSuperview()
                 progressPopup.thumbImageView.isHidden = true
@@ -68,7 +68,7 @@ class BugDescriptionViewController: UIViewController {
                         DebuggIt.sharedInstance.showModal(viewController: popup)
                         popup.willShowDebuggItWindow = false
                         popup.thumbImageView.image = Initializer.image(named: "thumbsUp")
-                        popup.alertTextView.text = "alert.message,saved.report".localized()
+                        popup.alertTextView.text = "alert.message.saved.report".localized()
                     })
                     self.postEventsAfterIssueSent(report: DebuggIt.sharedInstance.report)
                     self.clearData()

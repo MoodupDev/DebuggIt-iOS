@@ -47,7 +47,7 @@ class EditScreenshotModalViewController: UIViewController, DrawingViewDelegate {
             DebuggIt.sharedInstance.showModal(viewController: popup)
             popup.willShowDebuggItWindow = true
             popup.thumbImageView.image = Initializer.image(named: "thumbsUp")
-            popup.alertTextView.text = "alert.message.wait".localized()
+            popup.alertTextView.text = "alert.sending.screenshot".localized()
             popup.okButton.removeFromSuperview()
             popup.breakLineView.removeFromSuperview()
             popup.thumbImageView.isHidden = true

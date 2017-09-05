@@ -14,8 +14,6 @@ alert.title.send.report = "Send report";
 alert.title.send.screenshot = "Send screenshot";
 alert.title.send.audio = "Send audio";
 
-alert.title.sending.report = "Sending report";
-alert.title.sending.screenshot = "Sending screenshot";
 alert.title.sending.audio = "Sending audio";
 
 alert.title.success = "Success";
@@ -32,10 +30,12 @@ alert.title.saved.report = "Great report!";
 
 /* Alert messages */
 
-alert.message.saved.report = "Everything went smoothly";
+alert.message.saved.report = "Great report!\nEverything went smoothly";
 alert.message.saved.screenshot = "Screenshot saved successfully";
 alert.message.saved.audio = "Audio saved successfully";
 
+alert.sending.screenshot = "Sending screenshot.\nWait for the end...";
+alert.sending.report = "Sending report.\nWait for the end...";
 alert.message.wait = "Wait for the end...";
 alert.message.login = "Signing in to account...";
 alert.message.login.successful = "Now let\'s smash some bugs";
