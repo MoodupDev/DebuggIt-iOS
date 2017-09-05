@@ -52,7 +52,7 @@ alert.button.cancel = "Cancel";
 
 error.general = "Something went wrong\nCheck your Internet connection";
 error.send.report = "Report isn't sent!\nCheck your Internet connection";
-error.send.report.badcredentials = "Repository not found!\nAsk your developer for help!";
+error.send.report.badcredentials = "Repository not found.\nAsk your developer for help";
 error.login = "It\'s not possible to sign you in!\nCheck your Internet connection";
 error.login.wrong.credentials = "Invalid email or password,\ncan\'t log in";
 error.title.empty = "Describe what went wrong to send the report";
