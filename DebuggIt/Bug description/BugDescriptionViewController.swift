@@ -35,59 +35,36 @@ class BugDescriptionViewController: UIViewController {
         let title = DebuggIt.sharedInstance.report.title
         if title.isEmpty {
             self.dismiss(animated: true, completion: {
-                let popup = Initializer.viewController(PopupViewController.self)
-                DebuggIt.sharedInstance.showModal(viewController: popup)
-                popup.willShowDebuggItWindow = true
-                popup.thumbImageView.image = Initializer.image(named: "thumbsDown")
-                popup.alertTextView.text = "error.title.empty".localized()
+                self.showPopup(willShowNextWindow: true, alertText: "error.title.empty".localized(), positiveAction: false, isProgressPopup: false)
             })
         } else if title.characters.count > titleMaxCharacters {
             self.dismiss(animated: true, completion: {
                 let popup = Initializer.viewController(PopupViewController.self)
                 DebuggIt.sharedInstance.showModal(viewController: popup)
-                popup.willShowDebuggItWindow = true
-                popup.thumbImageView.image = Initializer.image(named: "thumbsDown")
-                popup.alertTextView.text = "error.title.too.long".localized()
+                self.showPopup(willShowNextWindow: true, alertText: "error.title.too.long".localized(), positiveAction: false, isProgressPopup: false)
             })
         } else {
             let progressPopup = Initializer.viewController(PopupViewController.self)
             self.dismiss(animated: true, completion: {
                 DebuggIt.sharedInstance.showModal(viewController: progressPopup)
-                progressPopup.willShowDebuggItWindow = true
-                progressPopup.thumbImageView.image = Initializer.image(named: "thumbsUp")
-                progressPopup.alertTextView.text = "alert.sending.report".localized()
-                progressPopup.okButton.removeFromSuperview()
-                progressPopup.breakLineView.removeFromSuperview()
-                progressPopup.thumbImageView.isHidden = true
+                progressPopup.setup(willShowNextWindow: true, alertText: "alert.sending.report".localized(), positiveAction: true, isProgressPopup: true)
             })
             
             DebuggIt.sharedInstance.sendReport(
                 successBlock: {
                     progressPopup.dismiss(animated: true, completion: {
-                        let popup = Initializer.viewController(PopupViewController.self)
-                        DebuggIt.sharedInstance.showModal(viewController: popup)
-                        popup.willShowDebuggItWindow = false
-                        popup.thumbImageView.image = Initializer.image(named: "thumbsUp")
-                        popup.alertTextView.text = "alert.message.saved.report".localized()
+                        self.showPopup(willShowNextWindow: false, alertText: "alert.message.saved.report".localized(), positiveAction: true, isProgressPopup: false)
                     })
                     self.postEventsAfterIssueSent(report: DebuggIt.sharedInstance.report)
                     self.clearData()
             }, errorBlock: { (status, error) in
                 if status != nil {
                     progressPopup.dismiss(animated: true, completion:  {
-                        let popup = Initializer.viewController(PopupViewController.self)
-                        DebuggIt.sharedInstance.showModal(viewController: popup)
-                        popup.willShowDebuggItWindow = true
-                        popup.thumbImageView.image = Initializer.image(named: "thumbsDown")
-                        popup.alertTextView.text = "error.send.report.badcredentials".localized()
+                        self.showPopup(willShowNextWindow: true, alertText: "error.send.report.badcredentials".localized(), positiveAction: false, isProgressPopup: false)
                     })
                 } else {
                     progressPopup.dismiss(animated: true, completion:  {
-                        let popup = Initializer.viewController(PopupViewController.self)
-                        DebuggIt.sharedInstance.showModal(viewController: popup)
-                        popup.willShowDebuggItWindow = true
-                        popup.thumbImageView.image = Initializer.image(named: "thumbsDown")
-                        popup.alertTextView.text = "error.send.report".localized()
+                        self.showPopup(willShowNextWindow: true, alertText: "error.send.report".localized(), positiveAction: false, isProgressPopup: false)
                     })
                 }
             })
@@ -112,6 +89,12 @@ class BugDescriptionViewController: UIViewController {
     private func clearData() {
         DebuggIt.sharedInstance.report = Report()
         ImageCache.shared.clearAll()
+    }
+    
+    func showPopup(willShowNextWindow: Bool, alertText: String, positiveAction: Bool, isProgressPopup: Bool) {
+        let popup = Initializer.viewController(PopupViewController.self)
+        DebuggIt.sharedInstance.showModal(viewController: popup)
+        popup.setup(willShowNextWindow: willShowNextWindow, alertText: alertText, positiveAction: positiveAction, isProgressPopup: isProgressPopup)
     }
     
     private func dissmissDebuggIt() {

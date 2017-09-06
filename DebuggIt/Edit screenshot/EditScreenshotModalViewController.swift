@@ -45,12 +45,7 @@ class EditScreenshotModalViewController: UIViewController, DrawingViewDelegate {
         let popup = Initializer.viewController(PopupViewController.self)
         self.dismiss(animated: true, completion: {
             DebuggIt.sharedInstance.showModal(viewController: popup)
-            popup.willShowDebuggItWindow = true
-            popup.thumbImageView.image = Initializer.image(named: "thumbsUp")
-            popup.alertTextView.text = "alert.sending.screenshot".localized()
-            popup.okButton.removeFromSuperview()
-            popup.breakLineView.removeFromSuperview()
-            popup.thumbImageView.isHidden = true
+            popup.setup(willShowNextWindow: true, alertText: "alert.sending.screenshot".localized(), positiveAction: true, isProgressPopup: true)
         })
         
         ApiClient.upload(.image, data: image.toBase64String(),

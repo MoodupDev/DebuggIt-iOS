@@ -16,6 +16,21 @@ class PopupViewController: UIViewController {
     @IBOutlet weak var breakLineView: UIView!
     var willShowDebuggItWindow = false
     
+    func setup(willShowNextWindow: Bool, alertText: String, positiveAction: Bool, isProgressPopup: Bool) {
+        self.willShowDebuggItWindow = willShowNextWindow
+        self.alertTextView.text = alertText
+        if positiveAction {
+            thumbImageView.image = Initializer.image(named: "thumbsUp")
+        } else {
+            thumbImageView.image = Initializer.image(named: "thumbsDown")
+        }
+        if isProgressPopup {
+            self.okButton.removeFromSuperview()
+            self.breakLineView.removeFromSuperview()
+            self.thumbImageView.isHidden = true
+        }
+    }
+    
     override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
         super.dismiss(animated: flag, completion: {
             completion?()

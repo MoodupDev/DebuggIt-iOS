@@ -129,9 +129,7 @@ class BugDescriptionPage1ViewController: UIViewController {
             self.dismiss(animated: true, completion: {
                 let popup = Initializer.viewController(PopupViewController.self)
                 DebuggIt.sharedInstance.showModal(viewController: popup)
-                popup.willShowDebuggItWindow = true
-                popup.thumbImageView.image = Initializer.image(named: "thumbsDown")
-                popup.alertTextView.text = "alert.message.recording.disabled".localized()
+                popup.setup(willShowNextWindow: true, alertText: "alert.message.recording.disabled".localized(), positiveAction: false, isProgressPopup: false)
             })
         }
     }

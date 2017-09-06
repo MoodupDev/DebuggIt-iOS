@@ -236,15 +236,13 @@ public class DebuggIt: NSObject, NewScreenshotDelegate {
     private func showNotCheckedModal() {
         let popup = Initializer.viewController(PopupViewController.self)
         showModal(viewController: popup)
-        popup.thumbImageView.image = Initializer.image(named: "thumbsDown")
-        popup.alertTextView.text = "error.version.not.checked".localized()
+        popup.setup(willShowNextWindow: false, alertText: "error.version.not.checked".localized(), positiveAction: false, isProgressPopup: false)
     }
     
     private func showNotSupportedModal() {
         let popup = Initializer.viewController(PopupViewController.self)
         showModal(viewController: popup)
-        popup.thumbImageView.image = Initializer.image(named: "thumbsDown")
-        popup.alertTextView.text = "error.version.unsupported".localized()
+        popup.setup(willShowNextWindow: false, alertText: "error.version.unsupported".localized(), positiveAction: false, isProgressPopup: false)
     }
     
     @objc func showReportDialog() {
