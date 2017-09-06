@@ -122,19 +122,25 @@ class DrawingView: UIImageView {
         if let lastDrawing = lastDrawings.last {
             switch lastDrawing {
             case .free:
-                nextPaths.append(paths.last!)
-                paths.removeLast()
+                if let lastPath = paths.last {
+                    nextPaths.append(lastPath)
+                    paths.removeLast()
+                }
             case .rectangle:
                 pinCurrentRectangle()
-                nextRectangles.append(rectangles.last!)
-                rectangles.removeLast()
+                if let lastRectangle = rectangles.last {
+                    nextRectangles.append(lastRectangle)
+                    rectangles.removeLast()
+                }
             case .arrow:
-                nextArrows.append(arrows.last!)
-                arrows.removeLast()
+                if let lastArrow = arrows.last {
+                    nextArrows.append(lastArrow)
+                    arrows.removeLast()
+                }
             }
             delegate?.highlightRedoButton(highlight: true)
             redraw()
-            nextDrawings.append(lastDrawings.last!)
+            nextDrawings.append(lastDrawing)
             lastDrawings.removeLast()
         }
         if lastDrawings != [] {
@@ -148,19 +154,25 @@ class DrawingView: UIImageView {
         if let nextDrawing = nextDrawings.last {
             switch nextDrawing {
             case .free:
-                paths.append(nextPaths.last!)
-                nextPaths.removeLast()
+                if let lastPath = nextPaths.last {
+                    paths.append(lastPath)
+                    nextPaths.removeLast()
+                }
             case .rectangle:
                 pinCurrentRectangle()
-                rectangles.append(nextRectangles.last!)
-                nextRectangles.removeLast()
+                if let lastRectangle = nextRectangles.last {
+                    rectangles.append(lastRectangle)
+                    nextRectangles.removeLast()
+                }
             case .arrow:
-                arrows.append(nextArrows.last!)
-                nextArrows.removeLast()
+                if let lastArrow = nextArrows.last {
+                    arrows.append(lastArrow)
+                    nextArrows.removeLast()
+                }
             }
             delegate?.highlightUndoButton(highlight: true)
             redraw()
-            lastDrawings.append(nextDrawings.last!)
+            lastDrawings.append(nextDrawing)
             nextDrawings.removeLast()
         }
         if nextDrawings != [] {
