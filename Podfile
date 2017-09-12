@@ -25,3 +25,9 @@ target 'DebuggItDemo' do
   # Pods for DebuggIt
   shared_pods
 end
+  
+target 'DebuggItTests' do
+      use_frameworks!
+      
+      shared_pods
+end
