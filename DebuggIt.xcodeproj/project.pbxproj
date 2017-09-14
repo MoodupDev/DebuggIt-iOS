@@ -101,9 +101,10 @@
 		259616C51F038E84009A2631 /* Montserrat-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 259616B31F038E84009A2631 /* Montserrat-ThinItalic.ttf */; };
 		D00C7EF91F569007003202ED /* UIBezier+Arrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00C7EF81F569007003202ED /* UIBezier+Arrow.swift */; };
 		D06346581F67CFF000429FC1 /* DebuggIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2101FA311E251ED000A7E979 /* DebuggIt.framework */; };
+		D064719E1F6A7662007D4AEA /* BugDescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D064719D1F6A7662007D4AEA /* BugDescriptionViewModel.swift */; };
+		D06471A01F6A77BE007D4AEA /* BugDescriptionPage1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D064719F1F6A77BE007D4AEA /* BugDescriptionPage1Tests.swift */; };
 		D090DEDD1F504BCA00DE2D5E /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D090DEDC1F504BCA00DE2D5E /* PopupViewController.swift */; };
 		D090DEE31F504FFC00DE2D5E /* PopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D090DEE21F504FFC00DE2D5E /* PopupViewController.xib */; };
-		D0995E721F67D7F6001809A2 /* BugDescriptionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0995E711F67D7F6001809A2 /* BugDescriptionViewTests.swift */; };
 		DB2021A675F90E2F5DDA29D9 /* Pods_DebuggItDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F88C1D6D6AEC79640DCE07E5 /* Pods_DebuggItDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -251,9 +252,10 @@
 		D00C7EF81F569007003202ED /* UIBezier+Arrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezier+Arrow.swift"; sourceTree = "<group>"; };
 		D06346531F67CFEF00429FC1 /* DebuggItTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DebuggItTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D06346571F67CFF000429FC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D064719D1F6A7662007D4AEA /* BugDescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BugDescriptionViewModel.swift; sourceTree = "<group>"; };
+		D064719F1F6A77BE007D4AEA /* BugDescriptionPage1Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BugDescriptionPage1Tests.swift; sourceTree = "<group>"; };
 		D090DEDC1F504BCA00DE2D5E /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		D090DEE21F504FFC00DE2D5E /* PopupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupViewController.xib; sourceTree = "<group>"; };
-		D0995E711F67D7F6001809A2 /* BugDescriptionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BugDescriptionViewTests.swift; sourceTree = "<group>"; };
 		D68A0669A7EDDBAEDD03B9E9 /* Pods-DebuggIt.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebuggIt.staging.xcconfig"; path = "Pods/Target Support Files/Pods-DebuggIt/Pods-DebuggIt.staging.xcconfig"; sourceTree = "<group>"; };
 		E7C4B57F604BBEE730D50EAC /* Pods-DebuggItTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebuggItTests.production.xcconfig"; path = "Pods/Target Support Files/Pods-DebuggItTests/Pods-DebuggItTests.production.xcconfig"; sourceTree = "<group>"; };
 		E99A5BFE76F7BB189F2C4D32 /* Pods-DebuggItDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebuggItDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-DebuggItDemo/Pods-DebuggItDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -490,6 +492,7 @@
 				213314291E25246200777356 /* Page2 */,
 				2133140E1E25242B00777356 /* BugDescriptionPageViewController.swift */,
 				2133140F1E25242B00777356 /* BugDescriptionViewController.swift */,
+				D064719D1F6A7662007D4AEA /* BugDescriptionViewModel.swift */,
 				213314101E25242B00777356 /* BugDescriptionViewController.xib */,
 			);
 			name = BugDescription;
@@ -593,7 +596,7 @@
 			isa = PBXGroup;
 			children = (
 				D06346571F67CFF000429FC1 /* Info.plist */,
-				D0995E711F67D7F6001809A2 /* BugDescriptionViewTests.swift */,
+				D064719F1F6A77BE007D4AEA /* BugDescriptionPage1Tests.swift */,
 			);
 			path = DebuggItTests;
 			sourceTree = "<group>";
@@ -925,6 +928,7 @@
 			files = (
 				213313D41E25222A00777356 /* TokenManager.swift in Sources */,
 				213313BE1E25219600777356 /* WelcomeViewController.swift in Sources */,
+				D064719E1F6A7662007D4AEA /* BugDescriptionViewModel.swift in Sources */,
 				21E83D1F1E25272600D24FBF /* JiraApiClient.swift in Sources */,
 				213313ED1E25225A00777356 /* UIView+RoundedCorners.swift in Sources */,
 				213313BB1E25217D00777356 /* Screenshot.swift in Sources */,
@@ -988,7 +992,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0995E721F67D7F6001809A2 /* BugDescriptionViewTests.swift in Sources */,
+				D06471A01F6A77BE007D4AEA /* BugDescriptionPage1Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
