@@ -21,66 +21,117 @@ class BugDescriptionPage1Tests: XCTestCase {
         super.tearDown()
     }
     
-    func testInitialBugOptionIsActive() {
-        let result = self.bugDescriptionViewModel.bugOptionIsActive
-        XCTAssertTrue(result)
-    }
-    
-    func testInitialEnhancementOptionIsInactive() {
-        let result = self.bugDescriptionViewModel.enhancementOptionIsActive
-        XCTAssertFalse(result)
+    func testInitialBugOptionIsActiveAndOtherAreInactive() {
+        let bugOption = self.bugDescriptionViewModel.bugOptionIsActive
+        let enhancementOption = self.bugDescriptionViewModel.enhancementOptionIsActive
+        XCTAssertTrue(bugOption)
+        XCTAssertFalse(enhancementOption)
     }
     
     func testBugOptionIsChosen() {
         self.bugDescriptionViewModel.bugOptionChosen()
-        let result = self.bugDescriptionViewModel.bugOptionIsActive
-        XCTAssertTrue(result)
-    }
-    
-    func testEnhancementIsInactiveWhenBugIsChosen() {
-        self.bugDescriptionViewModel.bugOptionChosen()
-        let result = self.bugDescriptionViewModel.enhancementOptionIsActive
-        XCTAssertFalse(result)
+        let bugOption = self.bugDescriptionViewModel.bugOptionIsActive
+        let enhancementOption = self.bugDescriptionViewModel.enhancementOptionIsActive
+        XCTAssertTrue(bugOption)
+        XCTAssertFalse(enhancementOption)
     }
     
     func testEnhancementOptionIsChosen() {
         self.bugDescriptionViewModel.enhancementOptionChosen()
-        let result = self.bugDescriptionViewModel.enhancementOptionIsActive
-        XCTAssertTrue(result)
+        let enhancementOption = self.bugDescriptionViewModel.enhancementOptionIsActive
+        let bugOption = self.bugDescriptionViewModel.bugOptionIsActive
+        XCTAssertTrue(enhancementOption)
+        XCTAssertFalse(bugOption)
     }
     
-    func testBugIsInactiveWhenEnhancementIsChosen() {
-        self.bugDescriptionViewModel.enhancementOptionChosen()
-        let result = self.bugDescriptionViewModel.bugOptionIsActive
-        XCTAssertFalse(result)
-    }
-    
-    func testBugActivityAfterSwitchingFromEnhancementToBugOption() {
+    func testBugOptionIsChosenAfterSwitchingFromAnother() {
         self.bugDescriptionViewModel.enhancementOptionChosen()
         self.bugDescriptionViewModel.bugOptionChosen()
-        let result = self.bugDescriptionViewModel.bugOptionIsActive
-        XCTAssertTrue(result)
+        let bugOption = self.bugDescriptionViewModel.bugOptionIsActive
+        let enhancementOption = self.bugDescriptionViewModel.enhancementOptionIsActive
+        XCTAssertTrue(bugOption)
+        XCTAssertFalse(enhancementOption)
     }
     
-    func testEnhancementActivityAfterSwitchingFromEnhancementToBugOption() {
-        self.bugDescriptionViewModel.enhancementOptionChosen()
-        self.bugDescriptionViewModel.bugOptionChosen()
-        let result = self.bugDescriptionViewModel.enhancementOptionIsActive
-        XCTAssertFalse(result)
-    }
-    
-    func testBugAtivityAfterSwitchingFromBugToEnhancementOption() {
+    func testEnhancementOptionIsChosenAfterSwitchingFromAnother() {
         self.bugDescriptionViewModel.bugOptionChosen()
         self.bugDescriptionViewModel.enhancementOptionChosen()
-        let result = self.bugDescriptionViewModel.bugOptionIsActive
-        XCTAssertFalse(result)
+        let bugOption = self.bugDescriptionViewModel.bugOptionIsActive
+        let enhancementOption = self.bugDescriptionViewModel.enhancementOptionIsActive
+        XCTAssertTrue(enhancementOption)
+        XCTAssertFalse(bugOption)
     }
     
-    func testEnhancementActivityAfterSwitchingFromBugToEnhancementOption() {
-        self.bugDescriptionViewModel.bugOptionChosen()
-        self.bugDescriptionViewModel.enhancementOptionChosen()
-        let result = self.bugDescriptionViewModel.enhancementOptionIsActive
-        XCTAssertTrue(result)
+    func testInitialMediumPriorityOptionActiveAndOtherInactive() {
+        let lowPriorityOption = self.bugDescriptionViewModel.lowPriorityOptionIsActive
+        let mediumPriorityOption = self.bugDescriptionViewModel.mediumPriorityOptionIsActive
+        let highPriorityOption = self.bugDescriptionViewModel.highPriorityOptionIsActive
+        XCTAssertTrue(mediumPriorityOption)
+        XCTAssertFalse(lowPriorityOption)
+        XCTAssertFalse(highPriorityOption)
     }
     
+    func testLowPriorityOptionChosen() {
+        self.bugDescriptionViewModel.lowPriorityOptionChosen()
+        let lowPriorityOption = self.bugDescriptionViewModel.lowPriorityOptionIsActive
+        let mediumPriorityOption = self.bugDescriptionViewModel.mediumPriorityOptionIsActive
+        let highPriorityOption = self.bugDescriptionViewModel.highPriorityOptionIsActive
+        XCTAssertTrue(lowPriorityOption)
+        XCTAssertFalse(mediumPriorityOption)
+        XCTAssertFalse(highPriorityOption)
+    }
+    
+    func testMediumPriorityOptionChosen() {
+        self.bugDescriptionViewModel.mediumPriorityOptionChosen()
+        let lowPriorityOption = self.bugDescriptionViewModel.lowPriorityOptionIsActive
+        let mediumPriorityOption = self.bugDescriptionViewModel.mediumPriorityOptionIsActive
+        let highPriorityOption = self.bugDescriptionViewModel.highPriorityOptionIsActive
+        XCTAssertTrue(mediumPriorityOption)
+        XCTAssertFalse(lowPriorityOption)
+        XCTAssertFalse(highPriorityOption)
+    }
+    
+    func testHighPriorityOptionChosen() {
+        self.bugDescriptionViewModel.highPriorityOptionChosen()
+        let lowPriorityOption = self.bugDescriptionViewModel.lowPriorityOptionIsActive
+        let mediumPriorityOption = self.bugDescriptionViewModel.mediumPriorityOptionIsActive
+        let highPriorityOption = self.bugDescriptionViewModel.highPriorityOptionIsActive
+        XCTAssertTrue(highPriorityOption)
+        XCTAssertFalse(lowPriorityOption)
+        XCTAssertFalse(mediumPriorityOption)
+    }
+    
+    func testLowPriorityIsChosenAfterSwitchingFromAnother() {
+        self.bugDescriptionViewModel.mediumPriorityOptionChosen()
+        self.bugDescriptionViewModel.lowPriorityOptionChosen()
+        let lowPriorityOption = self.bugDescriptionViewModel.lowPriorityOptionIsActive
+        let mediumPriorityOption = self.bugDescriptionViewModel.mediumPriorityOptionIsActive
+        let highPriorityOption = self.bugDescriptionViewModel.highPriorityOptionIsActive
+        XCTAssertTrue(lowPriorityOption)
+        XCTAssertFalse(mediumPriorityOption)
+        XCTAssertFalse(highPriorityOption)
+    }
+    
+    func testMediumPriorityIsChosenAfterSwitchingFromAnother() {
+        self.bugDescriptionViewModel.lowPriorityOptionChosen()
+        self.bugDescriptionViewModel.mediumPriorityOptionChosen()
+        let lowPriorityOption = self.bugDescriptionViewModel.lowPriorityOptionIsActive
+        let mediumPriorityOption = self.bugDescriptionViewModel.mediumPriorityOptionIsActive
+        let highPriorityOption = self.bugDescriptionViewModel.highPriorityOptionIsActive
+        XCTAssertTrue(mediumPriorityOption)
+        XCTAssertFalse(lowPriorityOption)
+        XCTAssertFalse(highPriorityOption)
+    }
+    
+    func testHighPriorityIsChosenAfterSwitchingFromAnother() {
+        self.bugDescriptionViewModel.lowPriorityOptionChosen()
+        self.bugDescriptionViewModel.highPriorityOptionChosen()
+        let lowPriorityOption = self.bugDescriptionViewModel.lowPriorityOptionIsActive
+        let mediumPriorityOption = self.bugDescriptionViewModel.mediumPriorityOptionIsActive
+        let highPriorityOption = self.bugDescriptionViewModel.highPriorityOptionIsActive
+        XCTAssertTrue(highPriorityOption)
+        XCTAssertFalse(lowPriorityOption)
+        XCTAssertFalse(mediumPriorityOption)
+    }
+
 }

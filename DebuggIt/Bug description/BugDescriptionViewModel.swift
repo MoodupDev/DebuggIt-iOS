@@ -12,6 +12,9 @@ class BugDescriptionViewModel {
     
     var bugOptionIsActive = true
     var enhancementOptionIsActive = false
+    var lowPriorityOptionIsActive = false
+    var mediumPriorityOptionIsActive = true
+    var highPriorityOptionIsActive = false
     
     func bugOptionChosen() {
         bugOptionIsActive = true
@@ -22,6 +25,25 @@ class BugDescriptionViewModel {
         enhancementOptionIsActive = true
         bugOptionIsActive = false
     }
+    
+    func lowPriorityOptionChosen() {
+        lowPriorityOptionIsActive = true
+        mediumPriorityOptionIsActive = false
+        highPriorityOptionIsActive = false
+    }
+    
+    func mediumPriorityOptionChosen() {
+        mediumPriorityOptionIsActive = true
+        lowPriorityOptionIsActive = false
+        highPriorityOptionIsActive = false
+    }
+    
+    func highPriorityOptionChosen() {
+        highPriorityOptionIsActive = true
+        lowPriorityOptionIsActive = false
+        mediumPriorityOptionIsActive = false
+    }
+    
     
     
 }
