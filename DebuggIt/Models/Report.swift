@@ -30,8 +30,8 @@ class Report {
 }
 
 enum ReportKind: String {
-    case bug = "Bug"
-    case enhancement = "Enhancement"
+    case bug = "bug"
+    case enhancement = "enhancement"
     
     func name() -> String {
         if DebuggIt.sharedInstance.configType == .jira {
@@ -48,9 +48,9 @@ enum ReportKind: String {
 }
 
 enum ReportPriority: String {
-    case low = "Low"
-    case medium = "Medium"
-    case high = "High"
+    case low = "low"
+    case medium = "medium"
+    case high = "high"
     
     func name() -> String {
         if DebuggIt.sharedInstance.configType == .bitbucket {

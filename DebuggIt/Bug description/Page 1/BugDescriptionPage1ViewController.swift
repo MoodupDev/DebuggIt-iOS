@@ -16,6 +16,7 @@ class BugDescriptionPage1ViewController: UIViewController {
     
     // MARK: - Properties
     
+    var viewModel = BugDescriptionPage1ViewModel()
     @IBOutlet var kindButtons: [UIButton]!
     @IBOutlet var priorityButtons: [UIButton]!
     @IBOutlet weak var titleTextView: UITextView!
@@ -57,12 +58,9 @@ class BugDescriptionPage1ViewController: UIViewController {
     }
     
     private func loadDataFromReport() {
-        let report = DebuggIt.sharedInstance.report
-        if !report.title.isEmpty {
-            titleTextView.text = report.title
-        }
-        selectFromButtons(kindButtons, title: report.kind.rawValue)
-        selectFromButtons(priorityButtons, title: report.priority.rawValue)
+        titleTextView.text = viewModel.loadDataFromReport()
+        selectFromButtons(kindButtons, title: viewModel.loadKindButtons())
+        selectFromButtons(priorityButtons, title: viewModel.loadPriorityButtons())
     }
     
     private func initReportItemsCollection() {
