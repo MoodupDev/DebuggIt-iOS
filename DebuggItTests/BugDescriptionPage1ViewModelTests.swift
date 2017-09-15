@@ -97,10 +97,9 @@ class BugDescriptionPage1ViewModelTests: XCTestCase {
     }
     
     func testWriteTitle() {
-        let titleString = "New title"
-        self.bugDescriptionViewModel.writeTitle(text: titleString)
-        let result = self.bugDescriptionViewModel.title
-        XCTAssertEqual(result, titleString)
+        DebuggIt.sharedInstance.report.title = "New title"
+        let result = self.bugDescriptionViewModel.loadReportTitle()
+        XCTAssertEqual(result, "New title")
     }
 
 }

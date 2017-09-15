@@ -10,52 +10,72 @@ import Foundation
 
 class BugDescriptionPage1ViewModel {
     
-    let report = DebuggIt.sharedInstance.report
-    var title = ""
-    var reportType: ReportKind!
-    var priority: ReportPriority!
-    
-    init() {
-        reportType = report.kind
-        priority = report.priority
+    func getReport() -> Report {
+        return DebuggIt.sharedInstance.report
     }
     
-    func loadDataFromReport() -> String {
-        if !report.title.isEmpty {
-            self.title = report.title
+    func loadReportTitle() -> String {
+        let title = DebuggIt.sharedInstance.report.title
+        if !title.isEmpty {
+            return title
         }
-        return self.title
+        return ""
     }
     
-    func loadKindButtons() -> String {
-        return report.kind.rawValue
+    func loadReportKind() -> String {
+        return DebuggIt.sharedInstance.report.kind.rawValue
     }
     
-    func loadPriorityButtons() -> String {
-        return report.priority.rawValue
+    func getAudioUrlCount() -> Int {
+        return DebuggIt.sharedInstance.report.audioUrls.count
+    }
+    
+    func getScreenshotCount() -> Int {
+        let report = DebuggIt.sharedInstance.report
+        return report.screenshots.count + report.audioUrls.count + 1
+    }
+    
+    func loadScreenshots() -> [Screenshot] {
+        return DebuggIt.sharedInstance.report.screenshots
+    }
+    
+    func loadReportPriority() -> String {
+        return DebuggIt.sharedInstance.report.priority.rawValue
+    }
+    
+    func setReportKind(selected: ReportKind) {
+        DebuggIt.sharedInstance.report.kind = selected
+    }
+    
+    func setReportPriority(selected: ReportPriority) {
+        DebuggIt.sharedInstance.report.priority = selected
     }
 
-    func bugOptionChosen() {
-        self.reportType = .bug
-    }
+//    func bugOptionChosen() {
+//        self.reportType = .bug
+//    }
+//
+//    func enhancementOptionChosen() {
+//        self.reportType = .enhancement
+//    }
+//
+//    func lowPriorityOptionChosen() {
+//        self.priority = .low
+//    }
+//
+//    func mediumPriorityOptionChosen() {
+//        self.priority = .medium
+//    }
+//
+//    func highPriorityOptionChosen() {
+//        self.priority = .high
+//    }
 
-    func enhancementOptionChosen() {
-        self.reportType = .enhancement
+    func setTitle(text: String) {
+        DebuggIt.sharedInstance.report.title = text
     }
-
-    func lowPriorityOptionChosen() {
-        self.priority = .low
-    }
-
-    func mediumPriorityOptionChosen() {
-        self.priority = .medium
-    }
-
-    func highPriorityOptionChosen() {
-        self.priority = .high
-    }
-
-    func writeTitle(text: String) {
-        self.title = text
+    
+    func isRecordingEnabled() -> Bool {
+        return DebuggIt.sharedInstance.recordingEnabled
     }
 }

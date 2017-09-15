@@ -34,11 +34,6 @@ class BugDescriptionPage1ViewController: UIViewController {
         loadDataFromReport()
         initReportItemsCollection()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     // MARK: - Methods
     
@@ -58,9 +53,9 @@ class BugDescriptionPage1ViewController: UIViewController {
     }
     
     private func loadDataFromReport() {
-        titleTextView.text = viewModel.loadDataFromReport()
-        selectFromButtons(kindButtons, title: viewModel.loadKindButtons())
-        selectFromButtons(priorityButtons, title: viewModel.loadPriorityButtons())
+        titleTextView.text = viewModel.loadReportTitle()
+        selectFromButtons(kindButtons, title: viewModel.loadReportKind())
+        selectFromButtons(priorityButtons, title: viewModel.loadReportPriority())
     }
     
     private func initReportItemsCollection() {
@@ -87,7 +82,7 @@ class BugDescriptionPage1ViewController: UIViewController {
     private func setReportKind(selectedButton: UIButton) {
         for (_, button) in kindButtons.enumerated() {
             if(button == selectedButton) {
-                DebuggIt.sharedInstance.report.kind = ReportKind(rawValue: (button.titleLabel?.text)!)!
+                viewModel.setReportKind(selected: ReportKind(rawValue: (button.titleLabel?.text)!)!)
             }
         }
     }
@@ -95,7 +90,7 @@ class BugDescriptionPage1ViewController: UIViewController {
     private func setReportPriority(selectedButton: UIButton) {
         for (_, button) in priorityButtons.enumerated() {
             if(button == selectedButton) {
-                DebuggIt.sharedInstance.report.priority = ReportPriority(rawValue: (button.titleLabel?.text)!)!
+                viewModel.setReportPriority(selected: ReportPriority(rawValue: (button.titleLabel?.text)!)!)
             }
         }
     }
@@ -117,7 +112,7 @@ class BugDescriptionPage1ViewController: UIViewController {
     }
 
     @IBAction func recordTapped(_ sender: UIButton) {
-        if DebuggIt.sharedInstance.recordingEnabled {
+        if viewModel.isRecordingEnabled() {
             sender.isSelected = true
             let recordViewController = Initializer.viewController(RecordViewController.self)
             recordViewController.delegate = self
@@ -138,7 +133,7 @@ class BugDescriptionPage1ViewController: UIViewController {
 extension BugDescriptionPage1ViewController: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
-        DebuggIt.sharedInstance.report.title = textView.text
+        viewModel.setTitle(text: textView.text)
     }
 }
 
@@ -161,8 +156,7 @@ extension BugDescriptionPage1ViewController: RecordViewControllerDelegate {
 extension BugDescriptionPage1ViewController : UICollectionViewDataSource {
     
     var itemsCount: Int {
-        let report = DebuggIt.sharedInstance.report
-        return report.screenshots.count + report.audioUrls.count + 1
+        return viewModel.getScreenshotCount()
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -179,9 +173,7 @@ extension BugDescriptionPage1ViewController : UICollectionViewDataSource {
         if indexPath.row == itemsCount - 1 {
             return collectionView.dequeueReusableCell(withReuseIdentifier: newScreenshotReuseIdentifier, for: indexPath) as! NewScreenshotCollectionViewCell
         } else {
-            let report = DebuggIt.sharedInstance.report
-            
-            if indexPath.row < report.audioUrls.count {
+            if indexPath.row < viewModel.getAudioUrlCount() {
                 return createAudioCell(for: indexPath)
             } else {
                 return createScreenshotCell(for: indexPath)
@@ -191,10 +183,8 @@ extension BugDescriptionPage1ViewController : UICollectionViewDataSource {
     
     func createScreenshotCell(for indexPath: IndexPath) -> UICollectionViewCell {
         let cell = reportItemsCollection.dequeueReusableCell(withReuseIdentifier: screenshotReuseIdentifier, for: indexPath) as! ScreenshotCollectionViewCell
-        
-        let report = DebuggIt.sharedInstance.report
-        let screenshots = report.screenshots
-        let index = indexPath.row - report.audioUrls.count
+        let screenshots = viewModel.loadScreenshots()
+        let index = indexPath.row - viewModel.getAudioUrlCount()
         if let url = URL(string: screenshots[index].url) {
             cell.screenshotImage.loadFrom(url: url)
         }
