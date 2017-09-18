@@ -102,6 +102,7 @@
 		D00C7EF91F569007003202ED /* UIBezier+Arrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00C7EF81F569007003202ED /* UIBezier+Arrow.swift */; };
 		D0234FF81F6FE7F3008C490F /* BugDescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0234FF71F6FE7F3008C490F /* BugDescriptionViewModel.swift */; };
 		D0234FFA1F6FF385008C490F /* EditScreenshotModalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0234FF91F6FF385008C490F /* EditScreenshotModalViewModel.swift */; };
+		D0234FFC1F6FF844008C490F /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0234FFB1F6FF844008C490F /* WelcomeViewModel.swift */; };
 		D0262BDD1F6FA1A80025A15D /* BugDescriptionPage2ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0262BDC1F6FA1A70025A15D /* BugDescriptionPage2ViewModel.swift */; };
 		D06346581F67CFF000429FC1 /* DebuggIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2101FA311E251ED000A7E979 /* DebuggIt.framework */; };
 		D064719E1F6A7662007D4AEA /* BugDescriptionPage1ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D064719D1F6A7662007D4AEA /* BugDescriptionPage1ViewModel.swift */; };
@@ -255,6 +256,7 @@
 		D00C7EF81F569007003202ED /* UIBezier+Arrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezier+Arrow.swift"; sourceTree = "<group>"; };
 		D0234FF71F6FE7F3008C490F /* BugDescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BugDescriptionViewModel.swift; sourceTree = "<group>"; };
 		D0234FF91F6FF385008C490F /* EditScreenshotModalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScreenshotModalViewModel.swift; sourceTree = "<group>"; };
+		D0234FFB1F6FF844008C490F /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		D0262BDC1F6FA1A70025A15D /* BugDescriptionPage2ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BugDescriptionPage2ViewModel.swift; sourceTree = "<group>"; };
 		D06346531F67CFEF00429FC1 /* DebuggItTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DebuggItTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D06346571F67CFF000429FC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 			isa = PBXGroup;
 			children = (
 				213313BC1E25219600777356 /* WelcomeViewController.swift */,
+				D0234FFB1F6FF844008C490F /* WelcomeViewModel.swift */,
 				213313BD1E25219600777356 /* WelcomeViewController.xib */,
 			);
 			path = Welcome;
@@ -972,6 +975,7 @@
 				213313E91E25225A00777356 /* String+Replace.swift in Sources */,
 				D090DEDD1F504BCA00DE2D5E /* PopupViewController.swift in Sources */,
 				213313EC1E25225A00777356 /* UIImageView+UrlLoading.swift in Sources */,
+				D0234FFC1F6FF844008C490F /* WelcomeViewModel.swift in Sources */,
 				213313E51E25225A00777356 /* CGContext+DrawPath.swift in Sources */,
 				213313E61E25225A00777356 /* DataResponse+Validation.swift in Sources */,
 				213313E81E25225A00777356 /* String+Localized.swift in Sources */,

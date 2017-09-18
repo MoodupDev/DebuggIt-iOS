@@ -10,15 +10,17 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     
+    var viewModel = WelcomeViewModel()
+    
     override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
         super.dismiss(animated: flag, completion: {
             completion?()
-            DebuggIt.sharedInstance.moveApplicationWindowToFront()
+            self.viewModel.moveApplicationWindowToFront()
         })
     }
     
     @IBAction func close(_ sender: UIButton) {
-        DebuggIt.sharedInstance.welcomeScreenHasBeenShown = true
+        viewModel.welcomeScreenHasBeenShown()
         self.dismiss(animated: true, completion: nil)
     }
 }
