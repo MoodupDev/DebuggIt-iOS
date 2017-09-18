@@ -15,6 +15,7 @@ class BugDescriptionPage2ViewController: UIViewController {
     @IBOutlet weak var actualBehaviorTextView: UITextView!
     @IBOutlet weak var expectedBehaviorTextView: UITextView!
     
+    var viewModel = BugDescriptionPage2ViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -51,26 +51,6 @@ class BugDescriptionPage1ViewModel {
         DebuggIt.sharedInstance.report.priority = selected
     }
 
-//    func bugOptionChosen() {
-//        self.reportType = .bug
-//    }
-//
-//    func enhancementOptionChosen() {
-//        self.reportType = .enhancement
-//    }
-//
-//    func lowPriorityOptionChosen() {
-//        self.priority = .low
-//    }
-//
-//    func mediumPriorityOptionChosen() {
-//        self.priority = .medium
-//    }
-//
-//    func highPriorityOptionChosen() {
-//        self.priority = .high
-//    }
-
     func setTitle(text: String) {
         DebuggIt.sharedInstance.report.title = text
     }

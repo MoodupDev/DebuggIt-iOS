@@ -82,7 +82,9 @@ class BugDescriptionPage1ViewController: UIViewController {
     private func setReportKind(selectedButton: UIButton) {
         for (_, button) in kindButtons.enumerated() {
             if(button == selectedButton) {
-                viewModel.setReportKind(selected: ReportKind(rawValue: (button.titleLabel?.text)!)!)
+                if let kind = ReportKind(rawValue: (button.titleLabel?.text)!) {
+                    viewModel.setReportKind(selected: kind)
+                }
             }
         }
     }
@@ -90,7 +92,9 @@ class BugDescriptionPage1ViewController: UIViewController {
     private func setReportPriority(selectedButton: UIButton) {
         for (_, button) in priorityButtons.enumerated() {
             if(button == selectedButton) {
-                viewModel.setReportPriority(selected: ReportPriority(rawValue: (button.titleLabel?.text)!)!)
+                if let priority = ReportPriority(rawValue: (button.titleLabel?.text)!) {
+                    viewModel.setReportPriority(selected: priority)
+                }
             }
         }
     }
