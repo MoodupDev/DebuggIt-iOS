@@ -17,10 +17,11 @@ class EditScreenshotModalViewController: UIViewController, DrawingViewDelegate {
     @IBOutlet weak var undoButton: UIButton!
     @IBOutlet weak var redoButton: UIButton!
     @IBOutlet weak var containerView: UIView!
+    var viewModel = EditScreenshotModalViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        screenshotSurface.image = DebuggIt.sharedInstance.report.currentScreenshot
+        screenshotSurface.image = viewModel.getCurrentScreenshot()
         initButtons()
         screenshotSurface.delegate = self
     }
@@ -66,7 +67,7 @@ class EditScreenshotModalViewController: UIViewController, DrawingViewDelegate {
     
     @IBAction func tapCancel(_ sender: UIButton) {
         dismiss(animated: true, completion: {
-            DebuggIt.sharedInstance.moveApplicationWindowToFront()
+            self.viewModel.moveApplicationWindowToFront()
         })
     }
     
