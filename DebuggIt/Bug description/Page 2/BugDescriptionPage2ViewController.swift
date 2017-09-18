@@ -27,41 +27,20 @@ class BugDescriptionPage2ViewController: UIViewController {
     }
 
     private func loadDataFromReport() {
-        let report = DebuggIt.sharedInstance.report
-        
-        if !report.stepsToReproduce.isEmpty {
-            stepsToReproduceTextView.text = report.stepsToReproduce
-        }
-        
-        if !report.actualBehavior.isEmpty {
-            actualBehaviorTextView.text = report.actualBehavior
-        }
-        
-        if !report.expectedBehavior.isEmpty {
-            expectedBehaviorTextView.text = report.expectedBehavior
-        }
+        stepsToReproduceTextView.text = viewModel.getStepsToReproduceText()
+        actualBehaviorTextView.text = viewModel.getActualBehaviorText()
+        expectedBehaviorTextView.text = viewModel.getExpectedBehaviorText()
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }
 
-extension BugDescriptionPage2ViewController : UITextViewDelegate{
+extension BugDescriptionPage2ViewController : UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         if textView == stepsToReproduceTextView {
-            DebuggIt.sharedInstance.report.stepsToReproduce = textView.text
+            viewModel.setStepsToReproduceText(text: textView.text)
         } else if textView == actualBehaviorTextView {
-            DebuggIt.sharedInstance.report.actualBehavior = textView.text
+            viewModel.setActualBehaviorText(text: textView.text)
         } else {
-            DebuggIt.sharedInstance.report.expectedBehavior = textView.text
+            viewModel.setExpectedBehaviorText(text: textView.text)
         }
     }
 }
