@@ -100,6 +100,7 @@
 		259616C41F038E84009A2631 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 259616B21F038E84009A2631 /* Montserrat-Thin.ttf */; };
 		259616C51F038E84009A2631 /* Montserrat-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 259616B31F038E84009A2631 /* Montserrat-ThinItalic.ttf */; };
 		D00C7EF91F569007003202ED /* UIBezier+Arrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00C7EF81F569007003202ED /* UIBezier+Arrow.swift */; };
+		D0234FF81F6FE7F3008C490F /* BugDescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0234FF71F6FE7F3008C490F /* BugDescriptionViewModel.swift */; };
 		D0262BDD1F6FA1A80025A15D /* BugDescriptionPage2ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0262BDC1F6FA1A70025A15D /* BugDescriptionPage2ViewModel.swift */; };
 		D06346581F67CFF000429FC1 /* DebuggIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2101FA311E251ED000A7E979 /* DebuggIt.framework */; };
 		D064719E1F6A7662007D4AEA /* BugDescriptionPage1ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D064719D1F6A7662007D4AEA /* BugDescriptionPage1ViewModel.swift */; };
@@ -251,6 +252,7 @@
 		BAA6E241B2EF47D4123C35E1 /* Pods-DebuggItTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebuggItTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DebuggItTests/Pods-DebuggItTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BDD5A2A9F2B752460A63E252 /* Pods-DebuggItDemo.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebuggItDemo.production.xcconfig"; path = "Pods/Target Support Files/Pods-DebuggItDemo/Pods-DebuggItDemo.production.xcconfig"; sourceTree = "<group>"; };
 		D00C7EF81F569007003202ED /* UIBezier+Arrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezier+Arrow.swift"; sourceTree = "<group>"; };
+		D0234FF71F6FE7F3008C490F /* BugDescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BugDescriptionViewModel.swift; sourceTree = "<group>"; };
 		D0262BDC1F6FA1A70025A15D /* BugDescriptionPage2ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BugDescriptionPage2ViewModel.swift; sourceTree = "<group>"; };
 		D06346531F67CFEF00429FC1 /* DebuggItTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DebuggItTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D06346571F67CFF000429FC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -494,6 +496,7 @@
 				213314291E25246200777356 /* Page2 */,
 				2133140E1E25242B00777356 /* BugDescriptionPageViewController.swift */,
 				2133140F1E25242B00777356 /* BugDescriptionViewController.swift */,
+				D0234FF71F6FE7F3008C490F /* BugDescriptionViewModel.swift */,
 				213314101E25242B00777356 /* BugDescriptionViewController.xib */,
 			);
 			name = BugDescription;
@@ -939,6 +942,7 @@
 				213313FD1E25228500777356 /* DebuggItButton.swift in Sources */,
 				213314121E25242B00777356 /* BugDescriptionViewController.swift in Sources */,
 				21E83D1E1E25272600D24FBF /* GitHubApiClient.swift in Sources */,
+				D0234FF81F6FE7F3008C490F /* BugDescriptionViewModel.swift in Sources */,
 				213313EE1E25225A00777356 /* UIViewController+EmbedInContainer.swift in Sources */,
 				213313E71E25225A00777356 /* String+Base64.swift in Sources */,
 				213314171E25244800777356 /* BugDescriptionPage1ViewController.swift in Sources */,

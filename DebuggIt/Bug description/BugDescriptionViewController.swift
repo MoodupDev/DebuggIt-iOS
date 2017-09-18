@@ -16,6 +16,7 @@ class BugDescriptionViewController: UIViewController {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var container: UIView!
     var pageViewController : BugDescriptionPageViewController!
+    var viewModel = BugDescriptionViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,12 +33,11 @@ class BugDescriptionViewController: UIViewController {
     }
     
     private func sendReport() {
-        let title = DebuggIt.sharedInstance.report.title
-        if title.isEmpty {
+        if viewModel.isTitleEmpty() {
             self.dismiss(animated: true, completion: {
                 self.showPopup(willShowNextWindow: true, alertText: "error.title.empty".localized(), positiveAction: false, isProgressPopup: false)
             })
-        } else if title.characters.count > titleMaxCharacters {
+        } else if viewModel.getTitleCharactersCount() > titleMaxCharacters {
             self.dismiss(animated: true, completion: {
                 let popup = Initializer.viewController(PopupViewController.self)
                 DebuggIt.sharedInstance.showModal(viewController: popup)
@@ -87,8 +87,7 @@ class BugDescriptionViewController: UIViewController {
     }
     
     private func clearData() {
-        DebuggIt.sharedInstance.report = Report()
-        ImageCache.shared.clearAll()
+        viewModel.clearData()
     }
     
     func showPopup(willShowNextWindow: Bool, alertText: String, positiveAction: Bool, isProgressPopup: Bool) {
@@ -99,13 +98,13 @@ class BugDescriptionViewController: UIViewController {
     
     private func dissmissDebuggIt() {
         self.dismiss(animated: true, completion: {
-            DebuggIt.sharedInstance.moveApplicationWindowToFront()
+            self.viewModel.moveApplicationWindowToFront()
         })
     }
     
     @IBAction func cancelClicked(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: {
-            DebuggIt.sharedInstance.moveApplicationWindowToFront()
+            self.viewModel.moveApplicationWindowToFront()
         })
         ApiClient.postEvent(.reportCanceled)
         clearData()
