@@ -8,10 +8,6 @@
 
 import UIKit
 
-private let screenshotReuseIdentifier = "ScreenshotCollectionViewCell"
-private let newScreenshotReuseIdentifier = "NewScreenshotCollectionViewCell"
-private let audioReuseIdentifier = "AudioCollectionViewCell"
-
 class BugDescriptionPage1ViewController: UIViewController {
     
     // MARK: - Properties
@@ -61,9 +57,9 @@ class BugDescriptionPage1ViewController: UIViewController {
     private func initReportItemsCollection() {
         self.reportItemsCollection.dataSource = self
         
-        self.reportItemsCollection.register(Initializer.nib(named: screenshotReuseIdentifier), forCellWithReuseIdentifier: screenshotReuseIdentifier)
-        self.reportItemsCollection.register(Initializer.nib(named: newScreenshotReuseIdentifier), forCellWithReuseIdentifier: newScreenshotReuseIdentifier)
-        self.reportItemsCollection.register(Initializer.nib(named: audioReuseIdentifier), forCellWithReuseIdentifier: audioReuseIdentifier)
+        self.reportItemsCollection.register(Initializer.nib(named: Constants.screenshotReuseIdentifier), forCellWithReuseIdentifier: Constants.screenshotReuseIdentifier)
+        self.reportItemsCollection.register(Initializer.nib(named: Constants.newScreenshotReuseIdentifier), forCellWithReuseIdentifier: Constants.newScreenshotReuseIdentifier)
+        self.reportItemsCollection.register(Initializer.nib(named: Constants.audioReuseIdentifier), forCellWithReuseIdentifier: Constants.audioReuseIdentifier)
     }
     
     private func selectFromButtons(_ buttons: [UIButton], selected: UIButton) {
@@ -175,7 +171,7 @@ extension BugDescriptionPage1ViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if indexPath.row == itemsCount - 1 {
-            return collectionView.dequeueReusableCell(withReuseIdentifier: newScreenshotReuseIdentifier, for: indexPath) as! NewScreenshotCollectionViewCell
+            return collectionView.dequeueReusableCell(withReuseIdentifier: Constants.newScreenshotReuseIdentifier, for: indexPath) as! NewScreenshotCollectionViewCell
         } else {
             if indexPath.row < viewModel.getAudioUrlCount() {
                 return createAudioCell(for: indexPath)
@@ -186,7 +182,7 @@ extension BugDescriptionPage1ViewController : UICollectionViewDataSource {
     }
     
     func createScreenshotCell(for indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = reportItemsCollection.dequeueReusableCell(withReuseIdentifier: screenshotReuseIdentifier, for: indexPath) as! ScreenshotCollectionViewCell
+        let cell = reportItemsCollection.dequeueReusableCell(withReuseIdentifier: Constants.screenshotReuseIdentifier, for: indexPath) as! ScreenshotCollectionViewCell
         let screenshots = viewModel.loadScreenshots()
         let index = indexPath.row - viewModel.getAudioUrlCount()
         if let url = URL(string: screenshots[index].url) {
@@ -198,7 +194,7 @@ extension BugDescriptionPage1ViewController : UICollectionViewDataSource {
     }
     
     func createAudioCell(for indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = reportItemsCollection.dequeueReusableCell(withReuseIdentifier: audioReuseIdentifier, for: indexPath) as! AudioCollectionViewCell
+        let cell = reportItemsCollection.dequeueReusableCell(withReuseIdentifier: Constants.audioReuseIdentifier, for: indexPath) as! AudioCollectionViewCell
         cell.index = indexPath.row
         cell.label.text = String(format: "audio.label".localized(), indexPath.row + 1)
         return cell

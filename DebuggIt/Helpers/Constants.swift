@@ -98,5 +98,8 @@ struct Constants {
     static let arrowHeadWidth: CGFloat = 10.0
     static let arrowHeadLength: CGFloat = 10.0
     
+    static let screenshotReuseIdentifier = "ScreenshotCollectionViewCell"
+    static let newScreenshotReuseIdentifier = "NewScreenshotCollectionViewCell"
+    static let audioReuseIdentifier = "AudioCollectionViewCell"
     static let reportTitleMaxCharacters = 255
 }
