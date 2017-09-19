@@ -9,6 +9,7 @@
 import Foundation
 
 class BugDescriptionViewModel {
+    
     func isTitleEmpty() -> Bool {
         let title = DebuggIt.sharedInstance.report.title
         if title.isEmpty {

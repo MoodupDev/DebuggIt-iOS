@@ -24,6 +24,17 @@ class BugDescriptionViewModelTests: XCTestCase {
         ImageCache.shared.clearAll()
     }
     
+    func testIsTitleEmptyDefault() {
+        let result = bugDescriptionViewModel.isTitleEmpty()
+        XCTAssertTrue(result)
+    }
+    
+    func testIsTitleEmpty() {
+        bugDescriptionPage1ViewModel.setTitle(text: "Some title")
+        let result = bugDescriptionViewModel.isTitleEmpty()
+        XCTAssertFalse(result)
+    }
+    
     func testTitleCharactersCount() {
         bugDescriptionPage1ViewModel.setTitle(text: "Some title")
         let result = bugDescriptionViewModel.getTitleCharactersCount()
