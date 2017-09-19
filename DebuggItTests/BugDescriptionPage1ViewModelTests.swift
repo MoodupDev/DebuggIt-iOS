@@ -21,85 +21,61 @@ class BugDescriptionPage1ViewModelTests: XCTestCase {
         super.tearDown()
     }
     
-    func testInitialBugOptionIsActiveAndOtherAreInactive() {
-        let result = self.bugDescriptionViewModel.reportType.rawValue
-        XCTAssertEqual(result, "bug")
-    }
-    
-    func testBugOptionIsChosen() {
-        self.bugDescriptionViewModel.bugOptionChosen()
-        let result = self.bugDescriptionViewModel.reportType.rawValue
-        XCTAssertEqual(result, "bug")
-    }
-    
-    func testEnhancementOptionIsChosen() {
-        self.bugDescriptionViewModel.enhancementOptionChosen()
-        let result = self.bugDescriptionViewModel.reportType.rawValue
-        XCTAssertEqual(result, "enhancement")
-    }
-    
-    func testBugOptionIsChosenAfterSwitchingFromAnother() {
-        self.bugDescriptionViewModel.enhancementOptionChosen()
-        self.bugDescriptionViewModel.bugOptionChosen()
-        let result = self.bugDescriptionViewModel.reportType.rawValue
-        XCTAssertEqual(result, "bug")
-    }
-    
-    func testEnhancementOptionIsChosenAfterSwitchingFromAnother() {
-        self.bugDescriptionViewModel.bugOptionChosen()
-        self.bugDescriptionViewModel.enhancementOptionChosen()
-        let result = self.bugDescriptionViewModel.reportType.rawValue
-        XCTAssertEqual(result, "enhancement")
-    }
-    
-    func testInitialMediumPriorityOptionActiveAndOtherInactive() {
-        let result = self.bugDescriptionViewModel.priority.rawValue
-        XCTAssertEqual(result, "medium")
-    }
-    
-    func testLowPriorityOptionChosen() {
-        self.bugDescriptionViewModel.lowPriorityOptionChosen()
-        let result = self.bugDescriptionViewModel.priority.rawValue
-        XCTAssertEqual(result, "low")
-    }
-    
-    func testMediumPriorityOptionChosen() {
-        self.bugDescriptionViewModel.mediumPriorityOptionChosen()
-        let result = self.bugDescriptionViewModel.priority.rawValue
-        XCTAssertEqual(result, "medium")
-    }
-    
-    func testHighPriorityOptionChosen() {
-        self.bugDescriptionViewModel.highPriorityOptionChosen()
-        let result = self.bugDescriptionViewModel.priority.rawValue
-        XCTAssertEqual(result, "high")
-    }
-    
-    func testLowPriorityIsChosenAfterSwitchingFromAnother() {
-        self.bugDescriptionViewModel.mediumPriorityOptionChosen()
-        self.bugDescriptionViewModel.lowPriorityOptionChosen()
-        let result = self.bugDescriptionViewModel.priority.rawValue
-        XCTAssertEqual(result, "low")
-    }
-    
-    func testMediumPriorityIsChosenAfterSwitchingFromAnother() {
-        self.bugDescriptionViewModel.lowPriorityOptionChosen()
-        self.bugDescriptionViewModel.mediumPriorityOptionChosen()
-        let result = self.bugDescriptionViewModel.priority.rawValue
-        XCTAssertEqual(result, "medium")
-    }
-    
-    func testHighPriorityIsChosenAfterSwitchingFromAnother() {
-        self.bugDescriptionViewModel.lowPriorityOptionChosen()
-        self.bugDescriptionViewModel.highPriorityOptionChosen()
-        let result = self.bugDescriptionViewModel.priority.rawValue
-        XCTAssertEqual(result, "high")
-    }
-    
     func testWriteTitle() {
         DebuggIt.sharedInstance.report.title = "New title"
         let result = self.bugDescriptionViewModel.loadReportTitle()
         XCTAssertEqual(result, "New title")
     }
-
+    
+    func testBugOptionDefaultActive() {
+        let result = DebuggIt.sharedInstance.report.kind.rawValue
+        XCTAssertEqual(result, "Bug")
+    }
+    
+    func testMediumPriorityDefaultActive() {
+        let result = DebuggIt.sharedInstance.report.priority.rawValue
+        XCTAssertEqual(result, "Medium")
+    }
+    
+    func testChooseEnhancementOption() {
+        self.bugDescriptionViewModel.setReportKind(selected: .enhancement)
+        let result = DebuggIt.sharedInstance.report.kind.rawValue
+        XCTAssertEqual(result, "Enhancement")
+    }
+    
+    func testChooseBugOption() {
+        self.bugDescriptionViewModel.setReportKind(selected: .enhancement)
+        self.bugDescriptionViewModel.setReportKind(selected: .bug)
+        let result = DebuggIt.sharedInstance.report.kind.rawValue
+        XCTAssertEqual(result, "Bug")
+    }
+    
+    func testChooseLowPriorityOption() {
+        self.bugDescriptionViewModel.setReportPriority(selected: .low)
+        let result = DebuggIt.sharedInstance.report.priority.rawValue
+        XCTAssertEqual(result, "Low")
+    }
+    
+    func testChooseHighPriorityOption() {
+        self.bugDescriptionViewModel.setReportPriority(selected: .high)
+        let result = DebuggIt.sharedInstance.report.priority.rawValue
+        XCTAssertEqual(result, "High")
+    }
+    
+    func testChooseMediumPriorityOption() {
+        self.bugDescriptionViewModel.setReportPriority(selected: .low)
+        self.bugDescriptionViewModel.setReportPriority(selected: .medium)
+        let result = DebuggIt.sharedInstance.report.priority.rawValue
+        XCTAssertEqual(result, "Medium")
+    }
+    
+    func testIsRecordingEnabled() {
+        DebuggIt.sharedInstance.recordingEnabled = true
+        XCTAssertTrue(self.bugDescriptionViewModel.isRecordingEnabled())
+    }
+    
+    func testIsRecordingDisabled() {
+        DebuggIt.sharedInstance.recordingEnabled = false
+        XCTAssertFalse(self.bugDescriptionViewModel.isRecordingEnabled())
+    }
 }
