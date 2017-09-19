@@ -27,9 +27,9 @@ class BugDescriptionPage2ViewController: UIViewController {
     }
 
     private func loadDataFromReport() {
-        stepsToReproduceTextView.text = viewModel.getStepsToReproduceText()
-        actualBehaviorTextView.text = viewModel.getActualBehaviorText()
-        expectedBehaviorTextView.text = viewModel.getExpectedBehaviorText()
+        stepsToReproduceTextView.text = viewModel.loadStepsToReproduceText()
+        actualBehaviorTextView.text = viewModel.loadActualBehaviorText()
+        expectedBehaviorTextView.text = viewModel.loadExpectedBehaviorText()
     }
 }
 

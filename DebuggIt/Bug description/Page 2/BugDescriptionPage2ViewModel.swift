@@ -14,7 +14,7 @@ class BugDescriptionPage2ViewModel {
         return DebuggIt.sharedInstance.report
     }
     
-    func getStepsToReproduceText() -> String {
+    func loadStepsToReproduceText() -> String {
         let report = DebuggIt.sharedInstance.report
         if !report.stepsToReproduce.isEmpty {
             return report.stepsToReproduce
@@ -23,7 +23,7 @@ class BugDescriptionPage2ViewModel {
         }
     }
     
-    func getActualBehaviorText() -> String {
+    func loadActualBehaviorText() -> String {
         let report = DebuggIt.sharedInstance.report
         if !report.actualBehavior.isEmpty {
             return report.actualBehavior
@@ -32,7 +32,7 @@ class BugDescriptionPage2ViewModel {
         }
     }
     
-    func getExpectedBehaviorText() -> String {
+    func loadExpectedBehaviorText() -> String {
         let report = DebuggIt.sharedInstance.report
         if !report.expectedBehavior.isEmpty {
             return report.expectedBehavior
