@@ -11,8 +11,6 @@ import IQKeyboardManagerSwift
 
 class BugDescriptionViewController: UIViewController {
     
-    private let titleMaxCharacters = 255;
-    
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var container: UIView!
     var pageViewController : BugDescriptionPageViewController!
@@ -37,7 +35,7 @@ class BugDescriptionViewController: UIViewController {
             self.dismiss(animated: true, completion: {
                 self.showPopup(willShowNextWindow: true, alertText: "error.title.empty".localized(), positiveAction: false, isProgressPopup: false)
             })
-        } else if viewModel.getTitleCharactersCount() > titleMaxCharacters {
+        } else if viewModel.getTitleCharactersCount() > Constants.reportTitleMaxCharacters {
             self.dismiss(animated: true, completion: {
                 let popup = Initializer.viewController(PopupViewController.self)
                 DebuggIt.sharedInstance.showModal(viewController: popup)
