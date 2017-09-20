@@ -42,27 +42,9 @@ class EditScreenshotModalViewController: UIViewController, DrawingViewDelegate {
     
     @IBAction func tapDone(_ sender: UIButton) {
         screenshotSurface.pinCurrentRectangle()
-        let image = screenshotSurface.image!
-        let popup = Initializer.viewController(PopupViewController.self)
-        self.dismiss(animated: true, completion: {
-            DebuggIt.sharedInstance.showModal(viewController: popup)
-            popup.setup(willShowNextWindow: true, alertText: "alert.sending.screenshot".localized(), positiveAction: true, isProgressPopup: true)
-        })
-        
-        ApiClient.upload(.image, data: image.toBase64String(),
-            successBlock: {
-                ApiClient.postEvent(self.freedrawButton.isSelected ? .screenshotAddedDraw : .screenshotAddedRectangle)
-                popup.dismiss(animated: true, completion: self.showBugDescription)
-            }, errorBlock: {
-                (statusCode, errorMessage) in
-                popup.dismiss(animated: false, completion: {
-                    self.present(Utils.createGeneralErrorAlert(), animated: true, completion: nil)
-                })
-            })
-    }
-    
-    func showBugDescription() -> Void {
-        DebuggIt.sharedInstance.showModal(viewController: Initializer.viewController(BugDescriptionViewController.self))
+        if let image = screenshotSurface.image {
+            viewModel.editScreenshotDone(self, image: image)
+        }
     }
     
     @IBAction func tapCancel(_ sender: UIButton) {
@@ -109,6 +91,7 @@ class EditScreenshotModalViewController: UIViewController, DrawingViewDelegate {
             undoButton.isSelected = false
         }
     }
+    
     func highlightRedoButton(highlight: Bool) {
         if highlight {
             redoButton.isSelected = true

@@ -74,7 +74,6 @@ class BugDescriptionPage1ViewController: UIViewController {
         }
     }
 
-    
     private func setReportKind(selectedButton: UIButton) {
         for (_, button) in kindButtons.enumerated() {
             if(button == selectedButton) {
