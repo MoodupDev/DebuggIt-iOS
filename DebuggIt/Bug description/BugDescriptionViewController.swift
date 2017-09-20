@@ -27,71 +27,7 @@ class BugDescriptionViewController: UIViewController {
     // MARK: Actions
     @IBAction func doneClicked(_ sender: UIBarButtonItem) {
         self.resignFirstResponder()
-        self.sendReport()
-    }
-    
-    private func sendReport() {
-        if viewModel.isTitleEmpty() {
-            self.dismiss(animated: true, completion: {
-                self.showPopup(willShowNextWindow: true, alertText: "error.title.empty".localized(), positiveAction: false, isProgressPopup: false)
-            })
-        } else if viewModel.getTitleCharactersCount() > Constants.reportTitleMaxCharacters {
-            self.dismiss(animated: true, completion: {
-                let popup = Initializer.viewController(PopupViewController.self)
-                DebuggIt.sharedInstance.showModal(viewController: popup)
-                self.showPopup(willShowNextWindow: true, alertText: "error.title.too.long".localized(), positiveAction: false, isProgressPopup: false)
-            })
-        } else {
-            let progressPopup = Initializer.viewController(PopupViewController.self)
-            self.dismiss(animated: true, completion: {
-                DebuggIt.sharedInstance.showModal(viewController: progressPopup)
-                progressPopup.setup(willShowNextWindow: true, alertText: "alert.sending.report".localized(), positiveAction: true, isProgressPopup: true)
-            })
-            
-            DebuggIt.sharedInstance.sendReport(
-                successBlock: {
-                    progressPopup.dismiss(animated: true, completion: {
-                        self.showPopup(willShowNextWindow: false, alertText: "alert.message.saved.report".localized(), positiveAction: true, isProgressPopup: false)
-                    })
-                    self.postEventsAfterIssueSent(report: DebuggIt.sharedInstance.report)
-                    self.clearData()
-            }, errorBlock: { (status, error) in
-                if status != nil {
-                    progressPopup.dismiss(animated: true, completion:  {
-                        self.showPopup(willShowNextWindow: true, alertText: "error.send.report.badcredentials".localized(), positiveAction: false, isProgressPopup: false)
-                    })
-                } else {
-                    progressPopup.dismiss(animated: true, completion:  {
-                        self.showPopup(willShowNextWindow: true, alertText: "error.send.report".localized(), positiveAction: false, isProgressPopup: false)
-                    })
-                }
-            })
-        }
-    }
-    
-    private func postEventsAfterIssueSent(report: Report) {
-        ApiClient.postEvent(.reportSent)
-        ApiClient.postEvent(.audioAmount, value: report.audioUrls.count)
-        ApiClient.postEvent(.screenshotAmount, value: report.screenshots.count)
-        if !report.actualBehavior.isEmpty {
-            ApiClient.postEvent(.actualBehaviorFilled)
-        }
-        if !report.stepsToReproduce.isEmpty {
-            ApiClient.postEvent(.stepsToReproduceFilled)
-        }
-        if !report.expectedBehavior.isEmpty {
-            ApiClient.postEvent(.expectedBehaviorFilled)
-        }
-    }
-    
-    private func clearData() {
-        viewModel.clearData()
-    }
-    
-    func showPopup(willShowNextWindow: Bool, alertText: String, positiveAction: Bool, isProgressPopup: Bool) {
-        let popup = Initializer.viewController(PopupViewController.self)
-        DebuggIt.sharedInstance.showModal(viewController: popup)
-        popup.setup(willShowNextWindow: willShowNextWindow, alertText: alertText, positiveAction: positiveAction, isProgressPopup: isProgressPopup)
+        viewModel.sendReport(viewController: self)
     }
     
     private func dissmissDebuggIt() {
@@ -104,8 +40,7 @@ class BugDescriptionViewController: UIViewController {
         dismiss(animated: true, completion: {
             self.viewModel.moveApplicationWindowToFront()
         })
-        ApiClient.postEvent(.reportCanceled)
-        clearData()
+        viewModel.clearData()
     }
     
     @IBAction func pageControlTapped(_ sender: UIPageControl) {
