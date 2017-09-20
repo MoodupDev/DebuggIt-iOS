@@ -14,4 +14,16 @@ class PopupViewModel {
     func moveApplicationWindowToFront() {
         DebuggIt.sharedInstance.moveApplicationWindowToFront()
     }
+    
+    func showBugDescription() {
+        DebuggIt.sharedInstance.showModal(viewController: Initializer.viewController(BugDescriptionViewController.self))
+    }
+    
+    func getShowNextWindow() -> Bool {
+        return self.willShowDebuggItWindow
+    }
+    
+    func setShowNextWindow(willShow: Bool) {
+        self.willShowDebuggItWindow = willShow
+    }
 }
