@@ -17,7 +17,7 @@ class PopupViewController: UIViewController {
     var viewModel = PopupViewModel()
     
     func setup(willShowNextWindow: Bool, alertText: String, positiveAction: Bool, isProgressPopup: Bool) {
-        viewModel.setShowNextWindow(willShow: willShowNextWindow)
+        viewModel.setWillShowNextWindow(willShow: willShowNextWindow)
         self.alertTextView.text = alertText
         if positiveAction {
             thumbImageView.image = Initializer.image(named: "thumbsUp")
@@ -34,7 +34,7 @@ class PopupViewController: UIViewController {
     override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
         super.dismiss(animated: flag, completion: {
             completion?()
-            if !self.viewModel.getShowNextWindow() {
+            if !self.viewModel.getWillShowNextWindow() {
                 self.viewModel.moveApplicationWindowToFront()
             }
         })
@@ -42,7 +42,7 @@ class PopupViewController: UIViewController {
     
     @IBAction func close(_ sender: UIButton) {
         self.dismiss(animated: true, completion: {
-            if self.viewModel.getShowNextWindow() {
+            if self.viewModel.getWillShowNextWindow() {
                 self.viewModel.showBugDescription()
             }
         })

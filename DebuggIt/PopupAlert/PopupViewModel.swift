@@ -19,11 +19,11 @@ class PopupViewModel {
         DebuggIt.sharedInstance.showModal(viewController: Initializer.viewController(BugDescriptionViewController.self))
     }
     
-    func getShowNextWindow() -> Bool {
+    func getWillShowNextWindow() -> Bool {
         return self.willShowDebuggItWindow
     }
     
-    func setShowNextWindow(willShow: Bool) {
+    func setWillShowNextWindow(willShow: Bool) {
         self.willShowDebuggItWindow = willShow
     }
 }
