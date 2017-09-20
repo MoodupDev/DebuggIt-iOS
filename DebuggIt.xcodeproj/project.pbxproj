@@ -110,6 +110,7 @@
 		D06346581F67CFF000429FC1 /* DebuggIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2101FA311E251ED000A7E979 /* DebuggIt.framework */; };
 		D064719E1F6A7662007D4AEA /* BugDescriptionPage1ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D064719D1F6A7662007D4AEA /* BugDescriptionPage1ViewModel.swift */; };
 		D06471A01F6A77BE007D4AEA /* BugDescriptionPage1ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D064719F1F6A77BE007D4AEA /* BugDescriptionPage1ViewModelTests.swift */; };
+		D06A84C61F727D3A00832469 /* PopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06A84C51F727D3A00832469 /* PopupViewModel.swift */; };
 		D090DEDD1F504BCA00DE2D5E /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D090DEDC1F504BCA00DE2D5E /* PopupViewController.swift */; };
 		D090DEE31F504FFC00DE2D5E /* PopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D090DEE21F504FFC00DE2D5E /* PopupViewController.xib */; };
 		DB2021A675F90E2F5DDA29D9 /* Pods_DebuggItDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F88C1D6D6AEC79640DCE07E5 /* Pods_DebuggItDemo.framework */; };
@@ -268,6 +269,7 @@
 		D06346571F67CFF000429FC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D064719D1F6A7662007D4AEA /* BugDescriptionPage1ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BugDescriptionPage1ViewModel.swift; sourceTree = "<group>"; };
 		D064719F1F6A77BE007D4AEA /* BugDescriptionPage1ViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BugDescriptionPage1ViewModelTests.swift; sourceTree = "<group>"; };
+		D06A84C51F727D3A00832469 /* PopupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewModel.swift; sourceTree = "<group>"; };
 		D090DEDC1F504BCA00DE2D5E /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		D090DEE21F504FFC00DE2D5E /* PopupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupViewController.xib; sourceTree = "<group>"; };
 		D68A0669A7EDDBAEDD03B9E9 /* Pods-DebuggIt.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebuggIt.staging.xcconfig"; path = "Pods/Target Support Files/Pods-DebuggIt/Pods-DebuggIt.staging.xcconfig"; sourceTree = "<group>"; };
@@ -626,6 +628,7 @@
 			isa = PBXGroup;
 			children = (
 				D090DEDC1F504BCA00DE2D5E /* PopupViewController.swift */,
+				D06A84C51F727D3A00832469 /* PopupViewModel.swift */,
 				D090DEE21F504FFC00DE2D5E /* PopupViewController.xib */,
 			);
 			path = PopupAlert;
@@ -948,6 +951,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				213313D41E25222A00777356 /* TokenManager.swift in Sources */,
+				D06A84C61F727D3A00832469 /* PopupViewModel.swift in Sources */,
 				213313BE1E25219600777356 /* WelcomeViewController.swift in Sources */,
 				D064719E1F6A7662007D4AEA /* BugDescriptionPage1ViewModel.swift in Sources */,
 				21E83D1F1E25272600D24FBF /* JiraApiClient.swift in Sources */,

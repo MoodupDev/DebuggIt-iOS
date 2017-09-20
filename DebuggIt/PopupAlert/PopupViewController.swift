@@ -14,10 +14,10 @@ class PopupViewController: UIViewController {
     @IBOutlet weak var alertTextView: UITextView!
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var breakLineView: UIView!
-    var willShowDebuggItWindow = false
+    var viewModel = PopupViewModel()
     
     func setup(willShowNextWindow: Bool, alertText: String, positiveAction: Bool, isProgressPopup: Bool) {
-        self.willShowDebuggItWindow = willShowNextWindow
+        viewModel.willShowDebuggItWindow = willShowNextWindow
         self.alertTextView.text = alertText
         if positiveAction {
             thumbImageView.image = Initializer.image(named: "thumbsUp")
@@ -34,15 +34,15 @@ class PopupViewController: UIViewController {
     override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
         super.dismiss(animated: flag, completion: {
             completion?()
-            if !(self.willShowDebuggItWindow) {
-                DebuggIt.sharedInstance.moveApplicationWindowToFront()
+            if !self.viewModel.willShowDebuggItWindow {
+                self.viewModel.moveApplicationWindowToFront()
             }
         })
     }
     
     @IBAction func close(_ sender: UIButton) {
         self.dismiss(animated: true, completion: {
-            if self.willShowDebuggItWindow {
+            if self.viewModel.willShowDebuggItWindow {
                 DebuggIt.sharedInstance.showModal(viewController: Initializer.viewController(BugDescriptionViewController.self))
             }
         })
