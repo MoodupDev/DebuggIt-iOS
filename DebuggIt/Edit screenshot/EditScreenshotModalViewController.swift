@@ -21,9 +21,9 @@ class EditScreenshotModalViewController: UIViewController, DrawingViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        screenshotSurface.image = viewModel.getCurrentScreenshot()
-        initButtons()
-        screenshotSurface.delegate = self
+        self.screenshotSurface.image = self.viewModel.getCurrentScreenshot()
+        self.initButtons()
+        self.screenshotSurface.delegate = self
     }
     
     private func initButtons() {
@@ -41,9 +41,9 @@ class EditScreenshotModalViewController: UIViewController, DrawingViewDelegate {
     }
     
     @IBAction func tapDone(_ sender: UIButton) {
-        screenshotSurface.pinCurrentRectangle()
+        self.screenshotSurface.pinCurrentRectangle()
         if let image = screenshotSurface.image {
-            viewModel.editScreenshotDone(self, image: image)
+            self.viewModel.editScreenshotDone(self, image: image)
         }
     }
     
@@ -54,26 +54,26 @@ class EditScreenshotModalViewController: UIViewController, DrawingViewDelegate {
     }
     
     @IBAction func tapUndo(_ sender: UIButton) {
-        screenshotSurface.undo()
+        self.screenshotSurface.undo()
     }
     
     @IBAction func tapRedo(_ sender: UIButton) {
-        screenshotSurface.redo()
+        self.screenshotSurface.redo()
     }
     
     @IBAction func tapArrow(_ sender: UIButton) {
         changeButtonState(sender, secondOptionButton: freedrawButton, thirdOptionButton: rectangleButton)
-        screenshotSurface.type = .arrow
+        self.screenshotSurface.type = .arrow
     }
     
     @IBAction func tapRectangle(_ sender: UIButton) {
         changeButtonState(sender, secondOptionButton: freedrawButton, thirdOptionButton: arrowButton)
-        screenshotSurface.type = .rectangle
+        self.screenshotSurface.type = .rectangle
     }
     
     @IBAction func tapFreeDraw(_ sender: UIButton) {
         changeButtonState(sender, secondOptionButton: rectangleButton, thirdOptionButton: arrowButton)
-        screenshotSurface.type = .free
+        self.screenshotSurface.type = .free
     }
     
     private func changeButtonState(_ sender: UIButton, secondOptionButton: UIButton, thirdOptionButton: UIButton) {

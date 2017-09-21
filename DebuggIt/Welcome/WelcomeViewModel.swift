@@ -13,7 +13,7 @@ class WelcomeViewModel {
         DebuggIt.sharedInstance.moveApplicationWindowToFront()
     }
     
-    func welcomeScreenHasBeenShown() {
+    func didShowWelcomeScreen() {
         DebuggIt.sharedInstance.welcomeScreenHasBeenShown = true
     }
 }

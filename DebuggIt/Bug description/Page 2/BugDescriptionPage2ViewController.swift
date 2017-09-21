@@ -19,28 +19,28 @@ class BugDescriptionPage2ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        stepsToReproduceTextView.delegate = self
-        actualBehaviorTextView.delegate = self
-        expectedBehaviorTextView.delegate = self
+        self.stepsToReproduceTextView.delegate = self
+        self.actualBehaviorTextView.delegate = self
+        self.expectedBehaviorTextView.delegate = self
         
-        loadDataFromReport()
+        self.loadDataFromReport()
     }
 
     private func loadDataFromReport() {
-        stepsToReproduceTextView.text = viewModel.loadStepsToReproduceText()
-        actualBehaviorTextView.text = viewModel.loadActualBehaviorText()
-        expectedBehaviorTextView.text = viewModel.loadExpectedBehaviorText()
+        self.stepsToReproduceTextView.text = self.viewModel.loadStepsToReproduceText()
+        self.actualBehaviorTextView.text = self.viewModel.loadActualBehaviorText()
+        self.expectedBehaviorTextView.text = self.viewModel.loadExpectedBehaviorText()
     }
 }
 
 extension BugDescriptionPage2ViewController : UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        if textView == stepsToReproduceTextView {
-            viewModel.setStepsToReproduceText(text: textView.text)
-        } else if textView == actualBehaviorTextView {
-            viewModel.setActualBehaviorText(text: textView.text)
+        if textView == self.stepsToReproduceTextView {
+            self.viewModel.setStepsToReproduceText(text: textView.text)
+        } else if textView == self.actualBehaviorTextView {
+            self.viewModel.setActualBehaviorText(text: textView.text)
         } else {
-            viewModel.setExpectedBehaviorText(text: textView.text)
+            self.viewModel.setExpectedBehaviorText(text: textView.text)
         }
     }
 }

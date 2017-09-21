@@ -20,7 +20,7 @@ class WelcomeViewController: UIViewController {
     }
     
     @IBAction func close(_ sender: UIButton) {
-        viewModel.welcomeScreenHasBeenShown()
+        self.viewModel.didShowWelcomeScreen()
         self.dismiss(animated: true, completion: nil)
     }
 }

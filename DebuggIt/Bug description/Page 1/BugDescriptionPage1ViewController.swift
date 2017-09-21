@@ -49,9 +49,9 @@ class BugDescriptionPage1ViewController: UIViewController {
     }
     
     private func loadDataFromReport() {
-        titleTextView.text = viewModel.loadReportTitle()
-        selectFromButtons(kindButtons, title: viewModel.loadReportKind())
-        selectFromButtons(priorityButtons, title: viewModel.loadReportPriority())
+        titleTextView.text = self.viewModel.loadReportTitle()
+        selectFromButtons(kindButtons, title: self.viewModel.loadReportKind())
+        selectFromButtons(priorityButtons, title: self.viewModel.loadReportPriority())
     }
     
     private func initReportItemsCollection() {
@@ -78,7 +78,7 @@ class BugDescriptionPage1ViewController: UIViewController {
         for (_, button) in kindButtons.enumerated() {
             if(button == selectedButton) {
                 if let kind = ReportKind(rawValue: (button.titleLabel?.text)!) {
-                    viewModel.setReportKind(selected: kind)
+                    self.viewModel.setReportKind(selected: kind)
                 }
             }
         }
@@ -88,7 +88,7 @@ class BugDescriptionPage1ViewController: UIViewController {
         for (_, button) in priorityButtons.enumerated() {
             if(button == selectedButton) {
                 if let priority = ReportPriority(rawValue: (button.titleLabel?.text)!) {
-                    viewModel.setReportPriority(selected: priority)
+                    self.viewModel.setReportPriority(selected: priority)
                 }
             }
         }
@@ -111,7 +111,7 @@ class BugDescriptionPage1ViewController: UIViewController {
     }
 
     @IBAction func recordTapped(_ sender: UIButton) {
-        if viewModel.isRecordingEnabled() {
+        if self.viewModel.isRecordingEnabled() {
             sender.isSelected = true
             let recordViewController = Initializer.viewController(RecordViewController.self)
             recordViewController.delegate = self
@@ -155,7 +155,7 @@ extension BugDescriptionPage1ViewController: RecordViewControllerDelegate {
 extension BugDescriptionPage1ViewController : UICollectionViewDataSource {
     
     var itemsCount: Int {
-        return viewModel.getScreenshotCount()
+        return self.viewModel.getScreenshotCount()
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -172,7 +172,7 @@ extension BugDescriptionPage1ViewController : UICollectionViewDataSource {
         if indexPath.row == itemsCount - 1 {
             return collectionView.dequeueReusableCell(withReuseIdentifier: Constants.newScreenshotReuseIdentifier, for: indexPath) as! NewScreenshotCollectionViewCell
         } else {
-            if indexPath.row < viewModel.getAudioUrlCount() {
+            if indexPath.row < self.viewModel.getAudioUrlCount() {
                 return createAudioCell(for: indexPath)
             } else {
                 return createScreenshotCell(for: indexPath)
@@ -182,8 +182,8 @@ extension BugDescriptionPage1ViewController : UICollectionViewDataSource {
     
     func createScreenshotCell(for indexPath: IndexPath) -> UICollectionViewCell {
         let cell = reportItemsCollection.dequeueReusableCell(withReuseIdentifier: Constants.screenshotReuseIdentifier, for: indexPath) as! ScreenshotCollectionViewCell
-        let screenshots = viewModel.loadScreenshots()
-        let index = indexPath.row - viewModel.getAudioUrlCount()
+        let screenshots = self.viewModel.loadScreenshots()
+        let index = indexPath.row - self.viewModel.getAudioUrlCount()
         if let url = URL(string: screenshots[index].url) {
             cell.screenshotImage.loadFrom(url: url)
         }
