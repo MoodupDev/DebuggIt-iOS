@@ -31,7 +31,7 @@ struct Constants {
     
     struct Bitbucket {
         
-        //MARL: Priorities
+        //MARK: Priorities
         static let minor = "minor"
         static let major = "major"
         static let critical = "critical"
@@ -93,4 +93,13 @@ struct Constants {
         static let usernameKey = "jira_username"
         static let passwordKey = "jira_password"
     }
+    
+    static let arrowTailWidth: CGFloat = 1.0
+    static let arrowHeadWidth: CGFloat = 10.0
+    static let arrowHeadLength: CGFloat = 10.0
+    
+    static let screenshotReuseIdentifier = "ScreenshotCollectionViewCell"
+    static let newScreenshotReuseIdentifier = "NewScreenshotCollectionViewCell"
+    static let audioReuseIdentifier = "AudioCollectionViewCell"
+    static let reportTitleMaxCharacters = 255
 }

@@ -14,8 +14,6 @@ alert.title.send.report = "Send report";
 alert.title.send.screenshot = "Send screenshot";
 alert.title.send.audio = "Send audio";
 
-alert.title.sending.report = "Sending report";
-alert.title.sending.screenshot = "Sending screenshot";
 alert.title.sending.audio = "Sending audio";
 
 alert.title.success = "Success";
@@ -28,12 +26,16 @@ alert.title.recording.disabled = "Recording is disabled";
 
 alert.title.logout = "Logout";
 
+alert.title.saved.report = "Great report!";
+
 /* Alert messages */
 
-alert.message.saved.report = "Report saved successfully";
+alert.message.saved.report = "Great report!\nEverything went smoothly";
 alert.message.saved.screenshot = "Screenshot saved successfully";
 alert.message.saved.audio = "Audio saved successfully";
 
+alert.sending.screenshot = "Sending screenshot.\nWait for the end...";
+alert.sending.report = "Sending report.\nWait for the end...";
 alert.message.wait = "Wait for the end...";
 alert.message.login = "Signing in to account...";
 alert.message.login.successful = "Now let\'s smash some bugs";
@@ -49,9 +51,11 @@ alert.button.cancel = "Cancel";
 /* Errors */
 
 error.general = "Something went wrong\nCheck your Internet connection";
+error.send.report = "Report isn't sent!\nCheck your Internet connection";
+error.send.report.badcredentials = "Repository not found.\nAsk your developer for help";
 error.login = "It\'s not possible to sign you in!\nCheck your Internet connection";
 error.login.wrong.credentials = "Invalid email or password,\ncan\'t log in";
-error.title.empty = "Issue title can't be empty";
+error.title.empty = "Describe what went wrong to send the report";
 error.title.too.long = "Issue title is too long, ensure it has at most %d characters (it has %d).";
 error.2fa.code = "Please enter your two-factor authorization code";
 error.version.unsupported = "Your debugg.it version isn\'t the latest version, check debugg.it website";

@@ -24,7 +24,7 @@ platform :ios, '9.0'
 pod 'DebuggIt'
 ```
 
-Donâ€™t forget to import the Pod in `AppDelegate`:
+Don’t forget to import the Pod in `AppDelegate`:
 
 ```swift
 import DebuggIt

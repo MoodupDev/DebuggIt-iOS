@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditScreenshotModalViewController" customModule="DebugIt">
             <connections>
+                <outlet property="arrowButton" destination="Tkk-pW-6bJ" id="YqC-c3-zEe"/>
                 <outlet property="freedrawButton" destination="Yuf-29-eh8" id="Bdt-TJ-Q5f"/>
                 <outlet property="rectangleButton" destination="xaI-5i-RVl" id="rMo-tb-ZDh"/>
+                <outlet property="redoButton" destination="0MY-QP-63J" id="OHj-01-ve4"/>
                 <outlet property="screenshotSurface" destination="Nj5-3L-GDr" id="6xp-4h-DgF"/>
                 <outlet property="undoButton" destination="Izm-RY-fO5" id="u52-sG-3AK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -41,6 +49,7 @@
                                                 <constraint firstAttribute="width" constant="60" id="kdv-9Z-UFm"/>
                                             </constraints>
                                             <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                             <state key="normal" title="Cancel">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -50,10 +59,11 @@
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l97-P3-CfM">
                                             <rect key="frame" x="215" y="4" width="60" height="32"/>
-                                            <color key="backgroundColor" red="0.90980392156862744" green="0.41176470588235292" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.90980392156862744" green="0.41176470588235292" blue="0.27450980392156865" alpha="1" colorSpace="deviceRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="60" id="ly1-wk-q7O"/>
                                             </constraints>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                             <state key="normal" title="Next">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -78,25 +88,44 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="VwM-po-uZI">
                                     <rect key="frame" x="0.0" y="551" width="279" height="40"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Izm-RY-fO5">
-                                            <rect key="frame" x="0.0" y="0.0" width="93" height="40"/>
-                                            <state key="normal" image="undo"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tkk-pW-6bJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="56" height="40"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
+                                            <state key="normal" image="iconArrowInactive"/>
                                             <connections>
-                                                <action selector="tapUndo:" destination="-1" eventType="touchUpInside" id="u78-qX-Msv"/>
+                                                <action selector="tapArrow:" destination="-1" eventType="touchUpInside" id="qJO-aS-1Gg"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaI-5i-RVl">
-                                            <rect key="frame" x="93" y="0.0" width="93" height="40"/>
-                                            <state key="normal" image="rectangle"/>
+                                            <rect key="frame" x="56" y="0.0" width="55.5" height="40"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
+                                            <state key="normal" image="iconRectangleInactive"/>
                                             <connections>
                                                 <action selector="tapRectangle:" destination="-1" eventType="touchUpInside" id="aqx-CR-Xh9"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yuf-29-eh8">
-                                            <rect key="frame" x="186" y="0.0" width="93" height="40"/>
-                                            <state key="normal" image="draw"/>
+                                            <rect key="frame" x="111.5" y="0.0" width="56" height="40"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
+                                            <state key="normal" image="iconDrawInactive"/>
                                             <connections>
                                                 <action selector="tapFreeDraw:" destination="-1" eventType="touchUpInside" id="PKJ-hG-hZc"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Izm-RY-fO5">
+                                            <rect key="frame" x="167.5" y="0.0" width="55.5" height="40"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
+                                            <state key="normal" image="iconUndoInactive"/>
+                                            <connections>
+                                                <action selector="tapUndo:" destination="-1" eventType="touchUpInside" id="u78-qX-Msv"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0MY-QP-63J">
+                                            <rect key="frame" x="223" y="0.0" width="56" height="40"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
+                                            <state key="normal" image="iconRedoInactive"/>
+                                            <connections>
+                                                <action selector="tapRedo:" destination="-1" eventType="touchUpInside" id="nBw-w7-FJp"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -119,21 +148,23 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="AjI-Dj-cmh" secondAttribute="trailing" constant="40" id="HRp-cD-P9e"/>
-                <constraint firstItem="AjI-Dj-cmh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="aWf-Ta-BET"/>
+                <constraint firstAttribute="trailing" secondItem="AjI-Dj-cmh" secondAttribute="trailing" constant="25" id="HRp-cD-P9e"/>
+                <constraint firstItem="AjI-Dj-cmh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="24" id="aWf-Ta-BET"/>
                 <constraint firstAttribute="bottom" secondItem="Bee-fv-MEP" secondAttribute="bottom" id="c1P-t0-sYc"/>
                 <constraint firstAttribute="trailing" secondItem="Bee-fv-MEP" secondAttribute="trailing" id="dee-sa-Wv6"/>
-                <constraint firstItem="AjI-Dj-cmh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="uP2-UI-ue3"/>
+                <constraint firstItem="AjI-Dj-cmh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="25" id="uP2-UI-ue3"/>
                 <constraint firstItem="Bee-fv-MEP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="wZv-JM-d2t"/>
                 <constraint firstItem="Bee-fv-MEP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="yyp-H1-eN1"/>
-                <constraint firstAttribute="bottom" secondItem="AjI-Dj-cmh" secondAttribute="bottom" constant="30" id="z5B-fA-pYd"/>
+                <constraint firstAttribute="bottom" secondItem="AjI-Dj-cmh" secondAttribute="bottom" constant="24" id="z5B-fA-pYd"/>
             </constraints>
             <point key="canvasLocation" x="44" y="14"/>
         </view>
     </objects>
     <resources>
-        <image name="draw" width="34" height="34"/>
-        <image name="rectangle" width="34" height="34"/>
-        <image name="undo" width="34" height="34"/>
+        <image name="iconArrowInactive" width="17" height="17"/>
+        <image name="iconDrawInactive" width="38" height="37"/>
+        <image name="iconRectangleInactive" width="38" height="37"/>
+        <image name="iconRedoInactive" width="38" height="37"/>
+        <image name="iconUndoInactive" width="38" height="37"/>
     </resources>
 </document>

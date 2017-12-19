@@ -4,7 +4,7 @@ platform :ios, '9.0'
 def shared_pods
   pod 'Alamofire', "~> 4.0"
   pod 'SwiftyJSON'
-  pod 'IQKeyboardManagerSwift', '~> 4.0.6'
+  pod 'IQKeyboardManagerSwift'
   pod 'KMPlaceholderTextView', '~> 1.3.0'
   pod 'RNCryptor'
   pod 'ReachabilitySwift'
@@ -24,4 +24,10 @@ target 'DebuggItDemo' do
 
   # Pods for DebuggIt
   shared_pods
+end
+  
+target 'DebuggItTests' do
+      use_frameworks!
+      
+      shared_pods
 end

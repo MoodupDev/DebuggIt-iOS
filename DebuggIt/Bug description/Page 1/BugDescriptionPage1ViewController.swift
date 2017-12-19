@@ -8,14 +8,11 @@
 
 import UIKit
 
-private let screenshotReuseIdentifier = "ScreenshotCollectionViewCell"
-private let newScreenshotReuseIdentifier = "NewScreenshotCollectionViewCell"
-private let audioReuseIdentifier = "AudioCollectionViewCell"
-
 class BugDescriptionPage1ViewController: UIViewController {
     
     // MARK: - Properties
     
+    var viewModel = BugDescriptionPage1ViewModel()
     @IBOutlet var kindButtons: [UIButton]!
     @IBOutlet var priorityButtons: [UIButton]!
     @IBOutlet weak var titleTextView: UITextView!
@@ -32,11 +29,6 @@ class BugDescriptionPage1ViewController: UIViewController {
         initRecordButton()
         loadDataFromReport()
         initReportItemsCollection()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: - Methods
@@ -57,20 +49,17 @@ class BugDescriptionPage1ViewController: UIViewController {
     }
     
     private func loadDataFromReport() {
-        let report = DebuggIt.sharedInstance.report
-        if !report.title.isEmpty {
-            titleTextView.text = report.title
-        }
-        selectFromButtons(kindButtons, title: report.kind.rawValue)
-        selectFromButtons(priorityButtons, title: report.priority.rawValue)
+        titleTextView.text = self.viewModel.loadReportTitle()
+        selectFromButtons(kindButtons, title: self.viewModel.loadReportKind())
+        selectFromButtons(priorityButtons, title: self.viewModel.loadReportPriority())
     }
     
     private func initReportItemsCollection() {
         self.reportItemsCollection.dataSource = self
         
-        self.reportItemsCollection.register(Initializer.nib(named: screenshotReuseIdentifier), forCellWithReuseIdentifier: screenshotReuseIdentifier)
-        self.reportItemsCollection.register(Initializer.nib(named: newScreenshotReuseIdentifier), forCellWithReuseIdentifier: newScreenshotReuseIdentifier)
-        self.reportItemsCollection.register(Initializer.nib(named: audioReuseIdentifier), forCellWithReuseIdentifier: audioReuseIdentifier)
+        self.reportItemsCollection.register(Initializer.nib(named: Constants.screenshotReuseIdentifier), forCellWithReuseIdentifier: Constants.screenshotReuseIdentifier)
+        self.reportItemsCollection.register(Initializer.nib(named: Constants.newScreenshotReuseIdentifier), forCellWithReuseIdentifier: Constants.newScreenshotReuseIdentifier)
+        self.reportItemsCollection.register(Initializer.nib(named: Constants.audioReuseIdentifier), forCellWithReuseIdentifier: Constants.audioReuseIdentifier)
     }
     
     private func selectFromButtons(_ buttons: [UIButton], selected: UIButton) {
@@ -85,11 +74,12 @@ class BugDescriptionPage1ViewController: UIViewController {
         }
     }
 
-    
     private func setReportKind(selectedButton: UIButton) {
         for (_, button) in kindButtons.enumerated() {
             if(button == selectedButton) {
-                DebuggIt.sharedInstance.report.kind = ReportKind(rawValue: (button.titleLabel?.text)!)!
+                if let kind = ReportKind(rawValue: (button.titleLabel?.text)!) {
+                    self.viewModel.setReportKind(selected: kind)
+                }
             }
         }
     }
@@ -97,7 +87,9 @@ class BugDescriptionPage1ViewController: UIViewController {
     private func setReportPriority(selectedButton: UIButton) {
         for (_, button) in priorityButtons.enumerated() {
             if(button == selectedButton) {
-                DebuggIt.sharedInstance.report.priority = ReportPriority(rawValue: (button.titleLabel?.text)!)!
+                if let priority = ReportPriority(rawValue: (button.titleLabel?.text)!) {
+                    self.viewModel.setReportPriority(selected: priority)
+                }
             }
         }
     }
@@ -119,17 +111,20 @@ class BugDescriptionPage1ViewController: UIViewController {
     }
 
     @IBAction func recordTapped(_ sender: UIButton) {
-        if DebuggIt.sharedInstance.recordingEnabled {
+        if self.viewModel.isRecordingEnabled() {
             sender.isSelected = true
             let recordViewController = Initializer.viewController(RecordViewController.self)
             recordViewController.delegate = self
             recordViewController.modalPresentationStyle = .overCurrentContext
             self.present(recordViewController, animated: true, completion: nil)
         } else {
-            self.present(Utils.createAlert(title: "alert.title.recording.disabled".localized(), message: "alert.message.recording.disabled".localized(), positiveAction: {}), animated: true, completion: nil)
+            self.dismiss(animated: true, completion: {
+                let popup = Initializer.viewController(PopupViewController.self)
+                DebuggIt.sharedInstance.showModal(viewController: popup)
+                popup.setup(willShowNextWindow: true, alertText: "alert.message.recording.disabled".localized(), positiveAction: false, isProgressPopup: false)
+            })
         }
     }
- 
 }
 
 // MARK: - TextViewDelegate
@@ -137,7 +132,7 @@ class BugDescriptionPage1ViewController: UIViewController {
 extension BugDescriptionPage1ViewController: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
-        DebuggIt.sharedInstance.report.title = textView.text
+        viewModel.setTitle(text: textView.text)
     }
 }
 
@@ -160,8 +155,7 @@ extension BugDescriptionPage1ViewController: RecordViewControllerDelegate {
 extension BugDescriptionPage1ViewController : UICollectionViewDataSource {
     
     var itemsCount: Int {
-        let report = DebuggIt.sharedInstance.report
-        return report.screenshots.count + report.audioUrls.count + 1
+        return self.viewModel.getScreenshotCount()
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -176,11 +170,9 @@ extension BugDescriptionPage1ViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if indexPath.row == itemsCount - 1 {
-            return collectionView.dequeueReusableCell(withReuseIdentifier: newScreenshotReuseIdentifier, for: indexPath) as! NewScreenshotCollectionViewCell
+            return collectionView.dequeueReusableCell(withReuseIdentifier: Constants.newScreenshotReuseIdentifier, for: indexPath) as! NewScreenshotCollectionViewCell
         } else {
-            let report = DebuggIt.sharedInstance.report
-            
-            if indexPath.row < report.audioUrls.count {
+            if indexPath.row < self.viewModel.getAudioUrlCount() {
                 return createAudioCell(for: indexPath)
             } else {
                 return createScreenshotCell(for: indexPath)
@@ -189,11 +181,9 @@ extension BugDescriptionPage1ViewController : UICollectionViewDataSource {
     }
     
     func createScreenshotCell(for indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = reportItemsCollection.dequeueReusableCell(withReuseIdentifier: screenshotReuseIdentifier, for: indexPath) as! ScreenshotCollectionViewCell
-        
-        let report = DebuggIt.sharedInstance.report
-        let screenshots = report.screenshots
-        let index = indexPath.row - report.audioUrls.count
+        let cell = reportItemsCollection.dequeueReusableCell(withReuseIdentifier: Constants.screenshotReuseIdentifier, for: indexPath) as! ScreenshotCollectionViewCell
+        let screenshots = self.viewModel.loadScreenshots()
+        let index = indexPath.row - self.viewModel.getAudioUrlCount()
         if let url = URL(string: screenshots[index].url) {
             cell.screenshotImage.loadFrom(url: url)
         }
@@ -203,7 +193,7 @@ extension BugDescriptionPage1ViewController : UICollectionViewDataSource {
     }
     
     func createAudioCell(for indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = reportItemsCollection.dequeueReusableCell(withReuseIdentifier: audioReuseIdentifier, for: indexPath) as! AudioCollectionViewCell
+        let cell = reportItemsCollection.dequeueReusableCell(withReuseIdentifier: Constants.audioReuseIdentifier, for: indexPath) as! AudioCollectionViewCell
         cell.index = indexPath.row
         cell.label.text = String(format: "audio.label".localized(), indexPath.row + 1)
         return cell

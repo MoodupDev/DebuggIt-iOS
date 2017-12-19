@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFq-rR-oBJ" customClass="RoundedButton" customModule="DebuggIt" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="230" height="351"/>
+                        <rect key="frame" x="0.0" y="0.0" width="230" height="350"/>
                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                         <state key="normal" title="+">
                             <color key="titleColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -42,9 +41,13 @@
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="tFq-rR-oBJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="6fN-dv-OS4"/>
                 <constraint firstItem="tFq-rR-oBJ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="8LH-zv-OQU"/>
-                <constraint firstAttribute="bottom" secondItem="tFq-rR-oBJ" secondAttribute="bottom" constant="-1" id="IwJ-Wv-1Sr"/>
+                <constraint firstAttribute="bottom" secondItem="tFq-rR-oBJ" secondAttribute="bottom" id="IwJ-Wv-1Sr"/>
+                <constraint firstItem="tFq-rR-oBJ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Wyb-hr-Qyq"/>
+                <constraint firstAttribute="trailing" secondItem="tFq-rR-oBJ" secondAttribute="trailing" id="bVl-kZ-dTQ"/>
                 <constraint firstItem="tFq-rR-oBJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="lir-Q1-R1d"/>
+                <constraint firstAttribute="bottom" secondItem="tFq-rR-oBJ" secondAttribute="bottom" id="w0B-iZ-nz2"/>
                 <constraint firstAttribute="trailing" secondItem="tFq-rR-oBJ" secondAttribute="trailing" id="yGa-P1-mhz"/>
             </constraints>
             <size key="customSize" width="230" height="349"/>
