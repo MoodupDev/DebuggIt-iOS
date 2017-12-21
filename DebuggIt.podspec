@@ -126,7 +126,7 @@ DESCRIPTION_CONTENT
 
   s.dependency 'Alamofire', "~> 4.0"
   s.dependency 'SwiftyJSON'
-  s.dependency 'IQKeyboardManagerSwift', '~> 4.0.6'
+  s.dependency 'IQKeyboardManagerSwift', '~> 5.0.7'
   s.dependency 'KMPlaceholderTextView', '~> 1.3.0'
   s.dependency 'RNCryptor'
   s.dependency 'ReachabilitySwift'
