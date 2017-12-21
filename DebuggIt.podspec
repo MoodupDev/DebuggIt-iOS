@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "DebuggIt"
-  s.version      = "0.2.0"
+  s.version      = "0.2.1"
   s.summary      = "Tool that will help QA and clients report bugs easily directly from the device"
 
 
@@ -124,11 +124,11 @@ DESCRIPTION_CONTENT
   s.ios.deployment_target = '9.0'
   s.ios.vendored_frameworks = 'outputs/frameworks/DebuggIt.framework'
 
-  s.dependency 'Alamofire', "~> 4.0"
-  s.dependency 'SwiftyJSON'
+  s.dependency 'Alamofire', "~> 4.2.0"
+  s.dependency 'SwiftyJSON', "~> 3.1.4"
   s.dependency 'IQKeyboardManagerSwift', '~> 5.0.7'
   s.dependency 'KMPlaceholderTextView', '~> 1.3.0'
-  s.dependency 'RNCryptor'
-  s.dependency 'ReachabilitySwift'
+  s.dependency 'RNCryptor', "~> 5.0.1"
+  s.dependency 'ReachabilitySwift', "~> 3"
 
 end
