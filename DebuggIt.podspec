@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "DebuggIt"
-  s.version      = "0.2.1"
+  s.version      = "0.2.2"
   s.summary      = "Tool that will help QA and clients report bugs easily directly from the device"
 
 
