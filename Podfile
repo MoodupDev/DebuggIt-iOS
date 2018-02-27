@@ -3,11 +3,11 @@ platform :ios, '9.0'
 
 def shared_pods
   pod 'Alamofire', "~> 4.0"
-  pod 'SwiftyJSON', "~> 3.1.4"
-  pod 'IQKeyboardManagerSwift', '~> 5.0.7'
-  pod 'KMPlaceholderTextView', '~> 1.3.0'
-  pod 'RNCryptor', "~> 5.0.2"
-  pod 'ReachabilitySwift', "~> 3"
+  pod 'SwiftyJSON', "~> 3.0"
+  pod 'IQKeyboardManagerSwift', '~> 5.0'
+  pod 'KMPlaceholderTextView', '~> 1.0'
+  pod 'RNCryptor', "~> 5.0"
+  pod 'ReachabilitySwift', "~> 3.0"
 end
 
 target 'DebuggIt' do
