@@ -6,7 +6,7 @@ def shared_pods
   pod 'SwiftyJSON', "~> 3.1.4"
   pod 'IQKeyboardManagerSwift', '~> 5.0.7'
   pod 'KMPlaceholderTextView', '~> 1.3.0'
-  pod 'RNCryptor', "~> 5.0.1"
+  pod 'RNCryptor', "~> 5.0.2"
   pod 'ReachabilitySwift', "~> 3"
 end
 
