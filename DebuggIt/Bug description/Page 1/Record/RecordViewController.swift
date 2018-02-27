@@ -113,7 +113,7 @@ class RecordViewController: UIViewController {
     }
     
     
-    func updateUi() {
+    @objc func updateUi() {
         remainingTime -= 1
         remainingTimeLabel.text = String(format: "00:%02d", remainingTime)
         recordCircle.alpha = CGFloat(remainingTime % 2)

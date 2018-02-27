@@ -31,7 +31,7 @@ class AudioCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Methods
     
-    func playerDidFinishPlaying(note: NSNotification) {
+    @objc func playerDidFinishPlaying(note: NSNotification) {
         finishPlaying()
     }
     

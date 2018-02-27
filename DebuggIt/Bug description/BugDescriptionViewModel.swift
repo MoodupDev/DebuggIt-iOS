@@ -20,7 +20,7 @@ class BugDescriptionViewModel {
     }
     
     func getTitleCharactersCount() -> Int {
-        return DebuggIt.sharedInstance.report.title.characters.count
+        return DebuggIt.sharedInstance.report.title.count
     }
     
     func clearData() {
@@ -51,7 +51,7 @@ class BugDescriptionViewModel {
     
     func showTooLongTitlePopup(_ viewController: BugDescriptionViewController) {
         viewController.dismiss(animated: true, completion: {
-            let title = String(format: "error.title.too.long".localized(), Constants.reportTitleMaxCharacters, DebuggIt.sharedInstance.report.title.characters.count)
+            let title = String(format: "error.title.too.long".localized(), Constants.reportTitleMaxCharacters, DebuggIt.sharedInstance.report.title.count)
             self.showPopup(willShowNextWindow: true, alertText: title, positiveAction: false, isProgressPopup: false)
         })
     }

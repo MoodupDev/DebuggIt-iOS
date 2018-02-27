@@ -31,7 +31,7 @@ enum EventType : String {
         var name: String
         do {
             let regex = try NSRegularExpression(pattern: "([a-z])([A-Z])", options: .init(rawValue: 0))
-            name = regex.stringByReplacingMatches(in: self.rawValue, options: .init(rawValue: 0), range: NSMakeRange(0, self.rawValue.characters.count), withTemplate: "$1 $2")
+            name = regex.stringByReplacingMatches(in: self.rawValue, options: .init(rawValue: 0), range: NSMakeRange(0, self.rawValue.count), withTemplate: "$1 $2")
             name = name.lowercased().replacingOccurrences(of: " ", with: "_")
         } catch {
             name = ""

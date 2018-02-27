@@ -23,7 +23,7 @@ class WebViewController: UIViewController {
         self.webView.loadRequest(URLRequest(url: URL(string: url!)!))
     }
     
-    func dismiss(_ sender: AnyObject?) {
+    @objc func dismiss(_ sender: AnyObject?) {
         self.dismiss(animated: true, completion: {
             DebuggIt.sharedInstance.moveApplicationWindowToFront()
         })

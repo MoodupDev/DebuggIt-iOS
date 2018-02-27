@@ -108,7 +108,7 @@ public class DebuggIt: NSObject, NewScreenshotDelegate {
             // Register the font with the system.
             if let dataProvider = CGDataProvider(url: url as CFURL) {
                 let font = CGFont(dataProvider)
-                CTFontManagerRegisterGraphicsFont(font, nil)
+                CTFontManagerRegisterGraphicsFont(font!, nil)
             }
         }
     }
@@ -127,7 +127,7 @@ public class DebuggIt: NSObject, NewScreenshotDelegate {
         }
     }
     
-    func attachToWindow(_ notification: Notification) {
+    @objc func attachToWindow(_ notification: Notification) {
         guard let window = notification.object as? UIWindow, !(window is DebuggItWindow) else { return }
         attach(to: window)
     }
@@ -334,7 +334,7 @@ public class DebuggIt: NSObject, NewScreenshotDelegate {
         let originalMethod = class_getInstanceMethod(anyClass, originalSelector)
         let swizzledMethod = class_getInstanceMethod(anyClass, swizzledSelector)
         
-        method_exchangeImplementations(originalMethod, swizzledMethod)
+        method_exchangeImplementations(originalMethod!, swizzledMethod!)
     }
     
     class DebuggItWindow : UIWindow {}
@@ -342,7 +342,7 @@ public class DebuggIt: NSObject, NewScreenshotDelegate {
 
 extension UIWindow {
     
-    func attachDebuggItOnRootViewControllerChange(_ viewController: UIViewController) {
+    @objc func attachDebuggItOnRootViewControllerChange(_ viewController: UIViewController) {
         attachDebuggItOnRootViewControllerChange(viewController)
         guard !(self is DebuggIt.DebuggItWindow) && self.isKeyWindow else { return }
         DebuggIt.sharedInstance.removeReportButtonIfExists(from: self)
