@@ -8,10 +8,13 @@
 
 import UIKit
 
+protocol BugDescriptionPage1Delegate: class {
+    func bugDescriptionPageOneDidClickAddNewScreenshot(_ viewController: BugDescriptionPage1ViewController)
+}
+
 class BugDescriptionPage1ViewController: UIViewController {
     
     // MARK: - Properties
-    
     var viewModel = BugDescriptionPage1ViewModel()
     @IBOutlet var kindButtons: [UIButton]!
     @IBOutlet var priorityButtons: [UIButton]!
@@ -19,7 +22,7 @@ class BugDescriptionPage1ViewController: UIViewController {
     @IBOutlet weak var recordButton: UIButton!
     
     @IBOutlet weak var reportItemsCollection: UICollectionView!
-    
+    weak var delegate: BugDescriptionPage1Delegate?
     // MARK: - Overriden
 
     override func viewDidLoad() {
