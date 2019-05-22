@@ -190,6 +190,7 @@ extension BugDescriptionPage1ViewController : UICollectionViewDataSource {
             cell.screenshotImage.loadFrom(url: url)
         }
         cell.index = index
+        cell.delegate = self
         
         return cell
     }
@@ -214,5 +215,14 @@ extension BugDescriptionPage1ViewController: AudioCollectionViewCellDelegate {
 extension BugDescriptionPage1ViewController: NewScreenshotCollectionViewCellDelegate {
     func newScreenshotCellDidClickAddNewScreenshot(_ cell: NewScreenshotCollectionViewCell) {
         self.delegate?.bugDescriptionPageOneDidClickAddNewScreenshot(self)
+    }
+}
+
+extension BugDescriptionPage1ViewController: ScreenshotCollectionViewCellDelegate {
+    func screenshotCollectionViewCell(_ cell: ScreenshotCollectionViewCell, didRemoveScreenshotAtIndex index: Int) {
+        let screenshot = DebuggIt.sharedInstance.report.screenshots.remove(at: index)
+        ImageCache.shared.clear(key: screenshot.url)
+        ApiClient.postEvent(.screenshotRemoved)
+        self.reportItemsCollection.reloadData()
     }
 }
