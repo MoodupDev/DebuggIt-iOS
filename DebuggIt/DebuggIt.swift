@@ -54,7 +54,8 @@ public class DebuggIt: NSObject {
     
     private var versionChecked = false
     private var versionSupported = false
-    
+
+    private var buttonPositionYDiff: CGFloat = 0
     // MARK: - Public methods
     
     @objc public func initBitbucket(repoSlug: String, accountName: String) {
@@ -103,14 +104,15 @@ public class DebuggIt: NSObject {
             bundle.url(forResource: "Montserrat-Thin", withExtension: "ttf"),
             bundle.url(forResource: "Montserrat-ThinItalic", withExtension: "ttf")
             ]
-        for url in fonts.flatMap({ $0 }) {
-            // Create a CGDataPRovider and a CGFont from the URL.
-            // Register the font with the system.
-            if let dataProvider = CGDataProvider(url: url as CFURL) {
+        
+        fonts.forEach({ url in
+            guard let url = url,
+                let dataProvider = CGDataProvider(url: url as CFURL),
                 let font = CGFont(dataProvider)
-                CTFontManagerRegisterGraphicsFont(font!, nil)
-            }
-        }
+                else { return }
+            
+            CTFontManagerRegisterGraphicsFont(font, nil)
+        })
     }
     
     func initReachability() {
@@ -204,7 +206,7 @@ public class DebuggIt: NSObject {
     
     
     private func addConstraints(for view : UIView, in container: UIView) {
-        container.addConstraint(NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: container, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: 0.0))
+        container.addConstraint(NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: container, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: self.buttonPositionYDiff))
         
         container.addConstraint(NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: container, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 0.0))
     }
@@ -284,6 +286,7 @@ public class DebuggIt: NSObject {
             if(translation.y < 0.0 && view.center.y > (view.frame.height / 2)
                 || translation.y >= 0.0 && view.center.y < ((currentWindow?.frame.maxY)! - (view.frame.height/2))) {
                 view.center = CGPoint(x: view.center.x, y: view.center.y + translation.y)
+                self.buttonPositionYDiff += translation.y
                 recognizer.setTranslation(CGPoint.zero, in: view)
             }
         }
