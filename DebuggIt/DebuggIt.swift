@@ -17,7 +17,7 @@ enum ConfigType {
 }
 
 @objc
-public class DebuggIt: NSObject, NewScreenshotDelegate {
+public class DebuggIt: NSObject {
     
     // MARK: - Public properties
     
@@ -295,7 +295,7 @@ public class DebuggIt: NSObject, NewScreenshotDelegate {
         report.currentScreenshot = window.capture()
     }
     
-    func changeDebuggItButtonImage() {
+    func changeButtonImageToScreenshot() {
         DispatchQueue.main.async {
             self.debuggItButton.imageView.image = Initializer.image(named: "nextScreenshoot")
         }
@@ -341,7 +341,6 @@ public class DebuggIt: NSObject, NewScreenshotDelegate {
 }
 
 extension UIWindow {
-    
     @objc func attachDebuggItOnRootViewControllerChange(_ viewController: UIViewController) {
         attachDebuggItOnRootViewControllerChange(viewController)
         guard !(self is DebuggIt.DebuggItWindow) && self.isKeyWindow else { return }
@@ -350,3 +349,12 @@ extension UIWindow {
     }
 }
 
+extension DebuggIt: BugDescriptionPage1Delegate {
+    func bugDescriptionPageOneDidClickAddNewScreenshot(_ viewController: BugDescriptionPage1ViewController) {
+        viewController.dismiss(animated: true) {
+            self.changeButtonImageToScreenshot()
+            self.moveApplicationWindowToFront()
+            IQKeyboardManager.shared.enable = false
+        }
+    }
+}
