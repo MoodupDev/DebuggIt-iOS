@@ -132,8 +132,6 @@ class RecordViewController: UIViewController {
     @IBAction func recordStopped(_ sender: UIButton) {
         stopRecording()
     }
-    
-
 }
 
 // MARK: - AVAudioRecorderDelegate

@@ -204,7 +204,6 @@ public class DebuggIt: NSObject {
         }
     }
     
-    
     private func addConstraints(for view : UIView, in container: UIView) {
         container.addConstraint(NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: container, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: self.buttonPositionYDiff))
         

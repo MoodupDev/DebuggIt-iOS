@@ -115,6 +115,15 @@ class BugDescriptionPage1ViewController: UIViewController {
 
     @IBAction func recordTapped(_ sender: UIButton) {
         if self.viewModel.isRecordingEnabled() {
+            if !self.viewModel.isRecordingUsageDescriptionProvided() {
+                let popup = Initializer.viewController(PopupViewController.self)
+                popup.modalPresentationStyle = .overCurrentContext
+                let _ = popup.view
+                popup.setup(willShowNextWindow: true, alertText: "alert.message.recording.missing.description".localized(), positiveAction: false, isProgressPopup: false)
+                self.present(popup, animated: true)
+                return
+            }
+
             sender.isSelected = true
             let recordViewController = Initializer.viewController(RecordViewController.self)
             recordViewController.delegate = self
