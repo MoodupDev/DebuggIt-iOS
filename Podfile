@@ -1,13 +1,15 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '9.0'
 
+project 'Debuggit.xcodeproj'
+
 def shared_pods
-  pod 'Alamofire', "~> 4.0"
-  pod 'SwiftyJSON', "~> 3.0"
-  pod 'IQKeyboardManagerSwift', '~> 5.0'
-  pod 'KMPlaceholderTextView', '~> 1.0'
-  pod 'RNCryptor', "~> 5.0"
-  pod 'ReachabilitySwift', "~> 3.0"
+  pod 'Alamofire', '~> 4.8.2'
+  pod 'SwiftyJSON', '~> 5.0.0'
+  pod 'IQKeyboardManagerSwift', '~> 6.3.0'
+  pod 'KMPlaceholderTextView', '~> 1.4.0'
+  pod 'RNCryptor', '~> 5.1.0'
+  pod 'ReachabilitySwift', '~>  4.3.1'
 end
 
 target 'DebuggIt' do

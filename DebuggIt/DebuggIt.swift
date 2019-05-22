@@ -8,7 +8,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
-import ReachabilitySwift
+import Reachability
 
 enum ConfigType {
     case jira
@@ -318,13 +318,13 @@ public class DebuggIt: NSObject, NewScreenshotDelegate {
             window?.windowLevel = UIWindowLevelAlert + 1
             window?.makeKeyAndVisible()
         }
-        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.shared.enable = true
         viewController.modalPresentationStyle = .overCurrentContext
         window?.rootViewController?.present(viewController, animated: animated, completion: completion)
     }
     
     func moveApplicationWindowToFront() {
-        IQKeyboardManager.sharedManager().enable = false
+        IQKeyboardManager.shared.enable = false
         self.window?.isHidden = true
         self.window = nil
         self.applicationWindow?.makeKeyAndVisible()

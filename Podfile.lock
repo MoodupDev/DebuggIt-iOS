@@ -1,27 +1,36 @@
 PODS:
-  - Alamofire (4.6.0)
-  - IQKeyboardManagerSwift (5.0.7)
-  - KMPlaceholderTextView (1.3.0)
-  - ReachabilitySwift (3)
-  - RNCryptor (5.0.2)
-  - SwiftyJSON (3.1.4)
+  - Alamofire (4.8.2)
+  - IQKeyboardManagerSwift (6.3.0)
+  - KMPlaceholderTextView (1.4.0)
+  - ReachabilitySwift (4.3.1)
+  - RNCryptor (5.1.0)
+  - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 4.0)
-  - IQKeyboardManagerSwift (~> 5.0)
-  - KMPlaceholderTextView (~> 1.0)
-  - ReachabilitySwift (~> 3.0)
-  - RNCryptor (~> 5.0)
-  - SwiftyJSON (~> 3.0)
+  - Alamofire (~> 4.8.2)
+  - IQKeyboardManagerSwift (~> 6.3.0)
+  - KMPlaceholderTextView (~> 1.4.0)
+  - ReachabilitySwift (~> 4.3.1)
+  - RNCryptor (~> 5.1.0)
+  - SwiftyJSON (~> 5.0.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - IQKeyboardManagerSwift
+    - KMPlaceholderTextView
+    - ReachabilitySwift
+    - RNCryptor
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
-  IQKeyboardManagerSwift: 30fb3a61de1af53a95e02b80fb54ed0a19d5ede5
-  KMPlaceholderTextView: 2bbcd19a273648a80a61e1e48f9743a24d8930e3
-  ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
-  RNCryptor: 59b9f92e9fa8a1af74c32dc6b1af5e30ff5e1b64
-  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
+  KMPlaceholderTextView: 2206c3df39979e9396e2d96fa9f427a8951121b0
+  ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
+  RNCryptor: a369134686cd2ad391323cc856b62e591193ba79
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 06e4dcc5a0bd6915d5a583421c6b3eecce1e92cd
+PODFILE CHECKSUM: f0c79d29357ff790dcabcf9fce10af3fb41c19f2
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.6.1

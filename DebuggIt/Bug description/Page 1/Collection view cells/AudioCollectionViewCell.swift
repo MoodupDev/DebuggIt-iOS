@@ -12,7 +12,6 @@ import AVFoundation
 class AudioCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
-    
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var label: UILabel!
     

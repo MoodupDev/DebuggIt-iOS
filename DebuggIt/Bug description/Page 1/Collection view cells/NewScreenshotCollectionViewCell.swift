@@ -22,11 +22,7 @@ class NewScreenshotCollectionViewCell: UICollectionViewCell {
     @IBAction func addNewScreenshot(_ sender: UIButton) {
         self.delegate = DebuggIt.sharedInstance
 
-        self.viewController()?.presentingViewController?.dismiss(animated: true, completion: {
-            DebuggIt.sharedInstance.moveApplicationWindowToFront()
-            self.delegate?.changeDebuggItButtonImage()
-        })
-        IQKeyboardManager.sharedManager().enable = false
+        IQKeyboardManager.shared.enable = false
     }
 
 }
