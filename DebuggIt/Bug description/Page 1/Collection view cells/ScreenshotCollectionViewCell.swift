@@ -8,23 +8,22 @@
 
 import UIKit
 
+protocol ScreenshotCollectionViewCellDelegate: class {
+    func screenshotCollectionViewCell(_ cell: ScreenshotCollectionViewCell, didRemoveScreenshotAtIndex index: Int)
+}
+
 class ScreenshotCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
-    
     @IBOutlet weak var screenshotImage: UIImageView!
+    weak var delegate: ScreenshotCollectionViewCellDelegate?
     var index: Int?
     
     // MARK: - Actions
     
     @IBAction func deleteScreenshot(_ sender: UIButton) {
         if let index = index {
-            let screenshot = DebuggIt.sharedInstance.report.screenshots.remove(at: index)
-            ImageCache.shared.clear(key: screenshot.url)
-            ApiClient.postEvent(.screenshotRemoved)
-            if let viewController = self.viewController() as? BugDescriptionPage1ViewController {
-                viewController.reportItemsCollection.reloadData()
-            }
+            self.delegate?.screenshotCollectionViewCell(self, didRemoveScreenshotAtIndex: index)
         }
     }
 

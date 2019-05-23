@@ -8,10 +8,13 @@
 
 import UIKit
 
+protocol BugDescriptionPage1Delegate: class {
+    func bugDescriptionPageOneDidClickAddNewScreenshot(_ viewController: BugDescriptionPage1ViewController)
+}
+
 class BugDescriptionPage1ViewController: UIViewController {
     
     // MARK: - Properties
-    
     var viewModel = BugDescriptionPage1ViewModel()
     @IBOutlet var kindButtons: [UIButton]!
     @IBOutlet var priorityButtons: [UIButton]!
@@ -19,7 +22,7 @@ class BugDescriptionPage1ViewController: UIViewController {
     @IBOutlet weak var recordButton: UIButton!
     
     @IBOutlet weak var reportItemsCollection: UICollectionView!
-    
+    weak var delegate: BugDescriptionPage1Delegate?
     // MARK: - Overriden
 
     override func viewDidLoad() {
@@ -112,6 +115,15 @@ class BugDescriptionPage1ViewController: UIViewController {
 
     @IBAction func recordTapped(_ sender: UIButton) {
         if self.viewModel.isRecordingEnabled() {
+            if !self.viewModel.isRecordingUsageDescriptionProvided() {
+                let popup = Initializer.viewController(PopupViewController.self)
+                popup.modalPresentationStyle = .overCurrentContext
+                let _ = popup.view
+                popup.setup(willShowNextWindow: true, alertText: "alert.message.recording.missing.description".localized(), positiveAction: false, isProgressPopup: false)
+                self.present(popup, animated: true)
+                return
+            }
+
             sender.isSelected = true
             let recordViewController = Initializer.viewController(RecordViewController.self)
             recordViewController.delegate = self
@@ -168,9 +180,11 @@ extension BugDescriptionPage1ViewController : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         if indexPath.row == itemsCount - 1 {
-            return collectionView.dequeueReusableCell(withReuseIdentifier: Constants.newScreenshotReuseIdentifier, for: indexPath) as! NewScreenshotCollectionViewCell
+            guard let screenShotCell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.newScreenshotReuseIdentifier, for: indexPath) as? NewScreenshotCollectionViewCell else { return UICollectionViewCell() }
+            screenShotCell.delegate = self
+            
+            return screenShotCell
         } else {
             if indexPath.row < self.viewModel.getAudioUrlCount() {
                 return createAudioCell(for: indexPath)
@@ -188,6 +202,7 @@ extension BugDescriptionPage1ViewController : UICollectionViewDataSource {
             cell.screenshotImage.loadFrom(url: url)
         }
         cell.index = index
+        cell.delegate = self
         
         return cell
     }
@@ -196,6 +211,30 @@ extension BugDescriptionPage1ViewController : UICollectionViewDataSource {
         let cell = reportItemsCollection.dequeueReusableCell(withReuseIdentifier: Constants.audioReuseIdentifier, for: indexPath) as! AudioCollectionViewCell
         cell.index = indexPath.row
         cell.label.text = String(format: "audio.label".localized(), indexPath.row + 1)
+        cell.delegate = self
         return cell
+    }
+}
+
+extension BugDescriptionPage1ViewController: AudioCollectionViewCellDelegate {
+    func audioCollectionCell(_ cell: AudioCollectionViewCell, didRemoveAudioAtIndex index: Int) {
+        DebuggIt.sharedInstance.report.audioUrls.remove(at: index)
+        ApiClient.postEvent(.audioRemoved)
+        self.reportItemsCollection.reloadData()
+    }
+}
+
+extension BugDescriptionPage1ViewController: NewScreenshotCollectionViewCellDelegate {
+    func newScreenshotCellDidClickAddNewScreenshot(_ cell: NewScreenshotCollectionViewCell) {
+        self.delegate?.bugDescriptionPageOneDidClickAddNewScreenshot(self)
+    }
+}
+
+extension BugDescriptionPage1ViewController: ScreenshotCollectionViewCellDelegate {
+    func screenshotCollectionViewCell(_ cell: ScreenshotCollectionViewCell, didRemoveScreenshotAtIndex index: Int) {
+        let screenshot = DebuggIt.sharedInstance.report.screenshots.remove(at: index)
+        ImageCache.shared.clear(key: screenshot.url)
+        ApiClient.postEvent(.screenshotRemoved)
+        self.reportItemsCollection.reloadData()
     }
 }

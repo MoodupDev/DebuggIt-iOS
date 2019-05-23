@@ -26,11 +26,15 @@ class RecordViewController: UIViewController {
     var audioFilename: URL!
     
     var delegate: RecordViewControllerDelegate?
+    var applicationIdleTimerDisabled: Bool = false
     
     // MARK: - Overriden methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.applicationIdleTimerDisabled = UIApplication.shared.isIdleTimerDisabled
+        UIApplication.shared.isIdleTimerDisabled = true
 
         // Do any additional setup after loading the view.
         recordingSession = AVAudioSession.sharedInstance()
@@ -51,7 +55,13 @@ class RecordViewController: UIViewController {
             delegate?.recordFailed()
         }
     }
-    
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        UIApplication.shared.isIdleTimerDisabled = self.applicationIdleTimerDisabled
+    }
+
     // MARK: - Methods
     
     private func startRecording() {
@@ -132,8 +142,6 @@ class RecordViewController: UIViewController {
     @IBAction func recordStopped(_ sender: UIButton) {
         stopRecording()
     }
-    
-
 }
 
 // MARK: - AVAudioRecorderDelegate

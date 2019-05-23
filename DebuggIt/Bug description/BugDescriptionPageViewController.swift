@@ -15,8 +15,11 @@ class BugDescriptionPageViewController: UIPageViewController {
     weak var pageControl: UIPageControl?
     
     private(set) lazy var orderedViewControllers: [UIViewController] = {
+        let firstPageViewController = Initializer.viewController(BugDescriptionPage1ViewController.self)
+        firstPageViewController.delegate = DebuggIt.sharedInstance
+        
         return [
-            Initializer.viewController(BugDescriptionPage1ViewController.self),
+            firstPageViewController,
             Initializer.viewController(BugDescriptionPage2ViewController.self),
             ]
     }()

@@ -8,7 +8,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
-import ReachabilitySwift
+import Reachability
 
 enum ConfigType {
     case jira
@@ -17,7 +17,7 @@ enum ConfigType {
 }
 
 @objc
-public class DebuggIt: NSObject, NewScreenshotDelegate {
+public class DebuggIt: NSObject {
     
     // MARK: - Public properties
     
@@ -54,7 +54,8 @@ public class DebuggIt: NSObject, NewScreenshotDelegate {
     
     private var versionChecked = false
     private var versionSupported = false
-    
+
+    private var buttonPositionYDiff: CGFloat = 0
     // MARK: - Public methods
     
     @objc public func initBitbucket(repoSlug: String, accountName: String) {
@@ -103,14 +104,15 @@ public class DebuggIt: NSObject, NewScreenshotDelegate {
             bundle.url(forResource: "Montserrat-Thin", withExtension: "ttf"),
             bundle.url(forResource: "Montserrat-ThinItalic", withExtension: "ttf")
             ]
-        for url in fonts.flatMap({ $0 }) {
-            // Create a CGDataPRovider and a CGFont from the URL.
-            // Register the font with the system.
-            if let dataProvider = CGDataProvider(url: url as CFURL) {
+        
+        fonts.forEach({ url in
+            guard let url = url,
+                let dataProvider = CGDataProvider(url: url as CFURL),
                 let font = CGFont(dataProvider)
-                CTFontManagerRegisterGraphicsFont(font!, nil)
-            }
-        }
+                else { return }
+            
+            CTFontManagerRegisterGraphicsFont(font, nil)
+        })
     }
     
     func initReachability() {
@@ -202,9 +204,8 @@ public class DebuggIt: NSObject, NewScreenshotDelegate {
         }
     }
     
-    
     private func addConstraints(for view : UIView, in container: UIView) {
-        container.addConstraint(NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: container, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: 0.0))
+        container.addConstraint(NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: container, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: self.buttonPositionYDiff))
         
         container.addConstraint(NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: container, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 0.0))
     }
@@ -284,6 +285,7 @@ public class DebuggIt: NSObject, NewScreenshotDelegate {
             if(translation.y < 0.0 && view.center.y > (view.frame.height / 2)
                 || translation.y >= 0.0 && view.center.y < ((currentWindow?.frame.maxY)! - (view.frame.height/2))) {
                 view.center = CGPoint(x: view.center.x, y: view.center.y + translation.y)
+                self.buttonPositionYDiff += translation.y
                 recognizer.setTranslation(CGPoint.zero, in: view)
             }
         }
@@ -295,7 +297,7 @@ public class DebuggIt: NSObject, NewScreenshotDelegate {
         report.currentScreenshot = window.capture()
     }
     
-    func changeDebuggItButtonImage() {
+    func changeButtonImageToScreenshot() {
         DispatchQueue.main.async {
             self.debuggItButton.imageView.image = Initializer.image(named: "nextScreenshoot")
         }
@@ -318,13 +320,13 @@ public class DebuggIt: NSObject, NewScreenshotDelegate {
             window?.windowLevel = UIWindowLevelAlert + 1
             window?.makeKeyAndVisible()
         }
-        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.shared.enable = true
         viewController.modalPresentationStyle = .overCurrentContext
         window?.rootViewController?.present(viewController, animated: animated, completion: completion)
     }
     
     func moveApplicationWindowToFront() {
-        IQKeyboardManager.sharedManager().enable = false
+        IQKeyboardManager.shared.enable = false
         self.window?.isHidden = true
         self.window = nil
         self.applicationWindow?.makeKeyAndVisible()
@@ -341,7 +343,6 @@ public class DebuggIt: NSObject, NewScreenshotDelegate {
 }
 
 extension UIWindow {
-    
     @objc func attachDebuggItOnRootViewControllerChange(_ viewController: UIViewController) {
         attachDebuggItOnRootViewControllerChange(viewController)
         guard !(self is DebuggIt.DebuggItWindow) && self.isKeyWindow else { return }
@@ -350,3 +351,12 @@ extension UIWindow {
     }
 }
 
+extension DebuggIt: BugDescriptionPage1Delegate {
+    func bugDescriptionPageOneDidClickAddNewScreenshot(_ viewController: BugDescriptionPage1ViewController) {
+        viewController.dismiss(animated: true) {
+            self.changeButtonImageToScreenshot()
+            self.moveApplicationWindowToFront()
+            IQKeyboardManager.shared.enable = false
+        }
+    }
+}

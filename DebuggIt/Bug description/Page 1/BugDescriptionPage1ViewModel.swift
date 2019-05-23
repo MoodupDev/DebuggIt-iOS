@@ -58,4 +58,9 @@ class BugDescriptionPage1ViewModel {
     func isRecordingEnabled() -> Bool {
         return DebuggIt.sharedInstance.recordingEnabled
     }
+
+    func isRecordingUsageDescriptionProvided() -> Bool {
+        guard let infoDictionary = Bundle.main.infoDictionary else { return false }
+        return infoDictionary["NSMicrophoneUsageDescription"] != nil
+    }
 }
