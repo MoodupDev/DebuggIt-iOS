@@ -17,7 +17,7 @@ class Config: NSObject {
         let currentConfiguration = Initializer.bundle(forClass: Config.self).object(forInfoDictionaryKey: "Config") as! String
         
         let path = Initializer.bundle(forClass: Config.self).path(forResource: "Config", ofType: "plist")!
-        configs = NSDictionary(contentsOfFile: path)!.object(forKey: currentConfiguration) as! NSDictionary
+        configs = NSDictionary(contentsOfFile: path)!.object(forKey: currentConfiguration) as? NSDictionary
     }
 }
 

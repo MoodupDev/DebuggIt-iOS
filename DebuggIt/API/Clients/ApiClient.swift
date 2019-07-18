@@ -24,7 +24,7 @@ class ApiClient {
             "app_id": Bundle.main.bundleIdentifier ?? ""
         ]
         
-        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { (response) in
+        AF.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { (response) in
             switch response.result {
             case .success(let value):
                 let value = JSON(value)
@@ -45,9 +45,8 @@ class ApiClient {
                 errorBlock(nil, error.errorDescription)
             default:
                 errorBlock(nil, nil)
-                
+
             }
-            
         }
     }
     
@@ -64,14 +63,13 @@ class ApiClient {
             params["value"] = value
         }
         
-        Alamofire.request(Constants.Api.eventsUrl, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).response { (response) in
+        AF.request(Constants.Api.eventsUrl, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).response { (response) in
         }
-        
     }
     
     static func checkVersion(completionHandler: @escaping (_ isChecked: Bool, _ isSupported: Bool) -> ()) {
         if let version = Initializer.bundle(forClass: ApiClient.self).infoDictionary?["CFBundleShortVersionString"] as? String {
-            Alamofire.request(String(format: Constants.Api.supportedVersionUrl, version)).responseData { response in
+            AF.request(String(format: Constants.Api.supportedVersionUrl, version)).responseData { response in
                 switch response.result {
                 case .success(_):
                     completionHandler(true, response.isSuccess())

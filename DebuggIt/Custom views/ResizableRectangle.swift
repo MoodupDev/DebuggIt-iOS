@@ -33,7 +33,7 @@ class ResizableRectangle: UIView {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if(!isPinned) {
-            let touch = touches.first as UITouch!
+            let touch = touches.first
             
             touchStart = touch?.location(in: self)
             isResizingLowerRight = (self.bounds.size.width - touchStart!.x < resizeThumbSize && self.bounds.size.height - touchStart!.y < resizeThumbSize);

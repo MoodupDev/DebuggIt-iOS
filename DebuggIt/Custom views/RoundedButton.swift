@@ -57,7 +57,7 @@ class RoundedButton: UIButton {
     }
     
     
-    private func setBackgroundColor(color: UIColor?, forState: UIControlState){
+    private func setBackgroundColor(color: UIColor?, forState: UIControl.State){
         if color != nil {
             setBackgroundImage(UIImage.imageWithColor(color: color!, size: self.intrinsicContentSize), for: forState)
         } else {

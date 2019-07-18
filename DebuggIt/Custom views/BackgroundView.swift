@@ -33,7 +33,7 @@ class BackgroundView: UIView {
         self.layer.cornerRadius = 5
         
         // Make the view stretch with containing view
-        contentView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        contentView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         
         // Adding custom subview on top of our view (over any custom drawing > see note below)
         addSubview(contentView)
@@ -46,7 +46,7 @@ class BackgroundView: UIView {
     
     func bringSubviewsToFront() {
         subviews.reversed().forEach { (subview) in
-            bringSubview(toFront: subview)
+            bringSubviewToFront(subview)
         }
     }
 }

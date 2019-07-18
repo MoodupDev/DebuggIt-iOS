@@ -73,7 +73,7 @@ class TokenManager {
     }
     
     private func deleteKey(_ key: String) {
-        if let index = keys.index(of: key) {
+        if let index = keys.firstIndex(of: key) {
             keys.remove(at: index)
             saveKeys()
         }

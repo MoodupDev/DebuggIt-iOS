@@ -26,5 +26,4 @@ class ScreenshotCollectionViewCell: UICollectionViewCell {
             self.delegate?.screenshotCollectionViewCell(self, didRemoveScreenshotAtIndex: index)
         }
     }
-
 }

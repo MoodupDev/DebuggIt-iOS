@@ -79,7 +79,7 @@ public class DebuggIt: NSObject {
         self.configType = configType
         ApiClient.postEvent(.initialized)
         swizzleMethod(of: UIWindow.self, original: #selector(setter: UIWindow.self.rootViewController), to: #selector(UIWindow.self.attachDebuggItOnRootViewControllerChange(_:)))
-        NotificationCenter.default.addObserver(self, selector: #selector(self.attachToWindow(_:)), name: NSNotification.Name.UIWindowDidBecomeKey, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.attachToWindow(_:)), name: UIWindow.didBecomeKeyNotification, object: nil)
         initReachability()
         
         guard let bundle = Bundle(identifier: "com.moodup.DebuggIt")
@@ -205,9 +205,9 @@ public class DebuggIt: NSObject {
     }
     
     private func addConstraints(for view : UIView, in container: UIView) {
-        container.addConstraint(NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: container, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: self.buttonPositionYDiff))
+        container.addConstraint(NSLayoutConstraint(item: view, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: container, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1.0, constant: 0.0))
         
-        container.addConstraint(NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: container, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 0.0))
+        container.addConstraint(NSLayoutConstraint(item: view, attribute: NSLayoutConstraint.Attribute.right, relatedBy: NSLayoutConstraint.Relation.equal, toItem: container, attribute: NSLayoutConstraint.Attribute.right, multiplier: 1.0, constant: 0.0))
     }
     
     private func logout() {
@@ -317,7 +317,7 @@ public class DebuggIt: NSObject {
             
             window = DebuggItWindow(frame: UIScreen.main.bounds)
             window?.rootViewController = UIViewController()
-            window?.windowLevel = UIWindowLevelAlert + 1
+            window?.windowLevel = UIWindow.Level.alert + 1
             window?.makeKeyAndVisible()
         }
         IQKeyboardManager.shared.enable = true
@@ -333,16 +333,17 @@ public class DebuggIt: NSObject {
     }
     
     private func swizzleMethod(of anyClass: AnyClass, original originalSelector: Selector, to swizzledSelector: Selector) {
-        let originalMethod = class_getInstanceMethod(anyClass, originalSelector)
-        let swizzledMethod = class_getInstanceMethod(anyClass, swizzledSelector)
-        
-        method_exchangeImplementations(originalMethod!, swizzledMethod!)
+        guard let originalMethod = class_getInstanceMethod(anyClass, originalSelector),
+            let swizzledMethod = class_getInstanceMethod(anyClass, swizzledSelector) else { return }
+    
+        method_exchangeImplementations(originalMethod, swizzledMethod)
     }
     
     class DebuggItWindow : UIWindow {}
 }
 
 extension UIWindow {
+    
     @objc func attachDebuggItOnRootViewControllerChange(_ viewController: UIViewController) {
         attachDebuggItOnRootViewControllerChange(viewController)
         guard !(self is DebuggIt.DebuggItWindow) && self.isKeyWindow else { return }
