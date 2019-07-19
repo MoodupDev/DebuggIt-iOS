@@ -41,7 +41,10 @@ class BitbucketApiClient: ApiClientProtocol {
         
         let params: Parameters = [
             "title": title,
-            "content": content,
+            "content": [
+                "raw": content,
+                "markup": "markdown"
+            ],
             "priority": priority.lowercased(),
             "kind": kind.lowercased()
         ]
@@ -50,7 +53,7 @@ class BitbucketApiClient: ApiClientProtocol {
             "Authorization": authorizationHeader(token: accessToken ?? "")
         ]
         
-        AF.request(String(format: Constants.Bitbucket.issuesUrl, accountName, repoSlug), method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseString { (response) in
+        AF.request(String(format: Constants.Bitbucket.issuesUrl, accountName, repoSlug), method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseString { (response) in
             switch response.result {
             case .success(let value):
                 if response.isSuccess() {
