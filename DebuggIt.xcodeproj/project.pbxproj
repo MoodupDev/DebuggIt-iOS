@@ -99,6 +99,7 @@
 		259616C41F038E84009A2631 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 259616B21F038E84009A2631 /* Montserrat-Thin.ttf */; };
 		259616C51F038E84009A2631 /* Montserrat-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 259616B31F038E84009A2631 /* Montserrat-ThinItalic.ttf */; };
 		2814DBDF2DEBC01807F464BF /* Pods_DebuggItTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B1EDC56BAE4CCCAEE922E7 /* Pods_DebuggItTests.framework */; };
+		2EEE915922E1C1F000314384 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EEE915822E1C1EF00314384 /* WebKit.framework */; };
 		32FF7D199722C049F1A46367 /* Pods_DebuggItDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6852C03E47FF6BC054594596 /* Pods_DebuggItDemo.framework */; };
 		D00C7EF91F569007003202ED /* UIBezier+Arrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00C7EF81F569007003202ED /* UIBezier+Arrow.swift */; };
 		D0234FF81F6FE7F3008C490F /* BugDescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0234FF71F6FE7F3008C490F /* BugDescriptionViewModel.swift */; };
@@ -249,6 +250,7 @@
 		259616B11F038E84009A2631 /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		259616B21F038E84009A2631 /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Thin.ttf"; sourceTree = "<group>"; };
 		259616B31F038E84009A2631 /* Montserrat-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ThinItalic.ttf"; sourceTree = "<group>"; };
+		2EEE915822E1C1EF00314384 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		30812007056C70373B103EBB /* Pods-DebuggIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebuggIt.release.xcconfig"; path = "Target Support Files/Pods-DebuggIt/Pods-DebuggIt.release.xcconfig"; sourceTree = "<group>"; };
 		5FAD87FBC512EB1564134DF8 /* Pods-DebuggItTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebuggItTests.release.xcconfig"; path = "Target Support Files/Pods-DebuggItTests/Pods-DebuggItTests.release.xcconfig"; sourceTree = "<group>"; };
 		6852C03E47FF6BC054594596 /* Pods_DebuggItDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DebuggItDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -293,6 +295,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EEE915922E1C1F000314384 /* WebKit.framework in Frameworks */,
 				21FD5CD01E25449D004C50EC /* DebuggIt.framework in Frameworks */,
 				32FF7D199722C049F1A46367 /* Pods_DebuggItDemo.framework in Frameworks */,
 			);
@@ -313,6 +316,7 @@
 		13AA4D952ECD9E0BDDC32C81 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2EEE915822E1C1EF00314384 /* WebKit.framework */,
 				21AA9EAC1E2534F2005388A1 /* Alamofire.framework */,
 				21AA9EAD1E2534F2005388A1 /* IQKeyboardManagerSwift.framework */,
 				21AA9EAE1E2534F2005388A1 /* KMPlaceholderTextView.framework */,
