@@ -39,7 +39,7 @@ struct Constants {
         // MARK: URLs
         
         static let authorizeUrl = "https://bitbucket.org/site/oauth2/authorize"
-        static let issuesUrl = "https://api.bitbucket.org/1.0/repositories/%@/%@/issues"
+        static let issuesUrl = "https://api.bitbucket.org/2.0/repositories/%@/%@/issues"
         static let accessTokenUrl = "https://bitbucket.org/site/oauth2/access_token"
         static let callbackUrl = "callback.moodup.com"
         
