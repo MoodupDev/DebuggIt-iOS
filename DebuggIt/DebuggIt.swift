@@ -52,7 +52,6 @@ public class DebuggIt: NSObject {
     
     private var logoutShown = false
     
-    private var versionChecked = false
     private var versionSupported = false
 
     private var buttonPositionYDiff: CGFloat = 0
@@ -77,7 +76,6 @@ public class DebuggIt: NSObject {
     
     func initDebugIt(configType:ConfigType) {
         self.configType = configType
-        ApiClient.postEvent(.initialized)
         swizzleMethod(of: UIWindow.self, original: #selector(setter: UIWindow.self.rootViewController), to: #selector(UIWindow.self.attachDebuggItOnRootViewControllerChange(_:)))
         NotificationCenter.default.addObserver(self, selector: #selector(self.attachToWindow(_:)), name: UIWindow.didBecomeKeyNotification, object: nil)
         initReachability()
@@ -116,12 +114,6 @@ public class DebuggIt: NSObject {
     }
     
     func initReachability() {
-        reachability.whenReachable = { reachability in
-            if !self.versionChecked {
-                self.checkVersion(completion: nil)
-            }
-        }
-        
         do {
             try reachability.startNotifier()
         } catch {
@@ -145,16 +137,6 @@ public class DebuggIt: NSObject {
             
             showModal(viewController: Initializer.viewController(WelcomeViewController.self))
         }
-    }
-    
-    private func checkVersion(completion: (() -> ())? = nil) {
-        ApiClient.checkVersion(completionHandler: { [unowned self] (checked, supported) in
-            if checked {
-                self.reachability.stopNotifier()
-            }
-            self.versionChecked = checked
-            self.versionSupported = supported
-        })
     }
     
     func reattach(to viewController: UIViewController) {
@@ -234,32 +216,14 @@ public class DebuggIt: NSObject {
         }
     }
     
-    private func showNotCheckedModal() {
-        let popup = Initializer.viewController(PopupViewController.self)
-        showModal(viewController: popup)
-        popup.setup(willShowNextWindow: false, alertText: "error.version.not.checked".localized(), positiveAction: false, isProgressPopup: false)
-    }
-    
-    private func showNotSupportedModal() {
-        let popup = Initializer.viewController(PopupViewController.self)
-        showModal(viewController: popup)
-        popup.setup(willShowNextWindow: false, alertText: "error.version.unsupported".localized(), positiveAction: false, isProgressPopup: false)
-    }
-    
     @objc func showReportDialog() {
-        if !versionChecked {
-            showNotCheckedModal()
-        } else if !versionSupported {
-            showNotSupportedModal()
+        debuggItButton.isHidden = true
+        takeScreenshot()
+        debuggItButton.isHidden = false
+        if (apiClient?.hasToken)! {
+            showModal(viewController: Initializer.viewController(EditScreenshotModalViewController.self))
         } else {
-            debuggItButton.isHidden = true
-            takeScreenshot()
-            debuggItButton.isHidden = false
-            if (apiClient?.hasToken)! {
-                showModal(viewController: Initializer.viewController(EditScreenshotModalViewController.self))
-            } else {
-                showLoginModal()
-            }
+            showLoginModal()
         }
     }
     

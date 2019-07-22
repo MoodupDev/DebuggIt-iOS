@@ -26,7 +26,6 @@ class EditScreenshotModalViewModel {
         
         ApiClient.upload(.image, data: image.toBase64String(),
                          successBlock: {
-                            ApiClient.postEvent(viewController.freedrawButton.isSelected ? .screenshotAddedDraw : .screenshotAddedRectangle)
                             popup.dismiss(animated: true, completion: self.showBugDescription)
         }, errorBlock: {
             (statusCode, errorMessage) in

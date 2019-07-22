@@ -55,7 +55,6 @@ class AudioCollectionViewCell: UICollectionViewCell {
             player!.volume = 1.0
             player!.play()
             playButton.isSelected = true
-            ApiClient.postEvent(.audioPlayed)
         }
     }
     

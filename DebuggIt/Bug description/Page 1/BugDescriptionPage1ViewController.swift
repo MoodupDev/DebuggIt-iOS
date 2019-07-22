@@ -219,7 +219,6 @@ extension BugDescriptionPage1ViewController : UICollectionViewDataSource {
 extension BugDescriptionPage1ViewController: AudioCollectionViewCellDelegate {
     func audioCollectionCell(_ cell: AudioCollectionViewCell, didRemoveAudioAtIndex index: Int) {
         DebuggIt.sharedInstance.report.audioUrls.remove(at: index)
-        ApiClient.postEvent(.audioRemoved)
         self.reportItemsCollection.reloadData()
     }
 }
@@ -234,7 +233,6 @@ extension BugDescriptionPage1ViewController: ScreenshotCollectionViewCellDelegat
     func screenshotCollectionViewCell(_ cell: ScreenshotCollectionViewCell, didRemoveScreenshotAtIndex index: Int) {
         let screenshot = DebuggIt.sharedInstance.report.screenshots.remove(at: index)
         ImageCache.shared.clear(key: screenshot.url)
-        ApiClient.postEvent(.screenshotRemoved)
         self.reportItemsCollection.reloadData()
     }
 }
