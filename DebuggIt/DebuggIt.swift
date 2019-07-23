@@ -74,7 +74,7 @@ public class DebuggIt: NSObject {
     }
     
     @discardableResult @objc public func initAWS(bucketName: String, accessKey: String, secretKey: String, region: String) -> DebuggIt {
-        storageClient = AWSClient(bucketName: bucketName, accesKey: accessKey, secretKey: secretKey, region: region)
+        storageClient = AWSClient(bucketName: bucketName, accessKey: accessKey, secretKey: secretKey, region: region)
         return self
     }
     
@@ -83,8 +83,11 @@ public class DebuggIt: NSObject {
         return self
     }
     
-    @discardableResult @objc public func initCustomStorage(uploadImage: () -> (), uploadAudio: () -> ()) -> DebuggIt {
+    @discardableResult @objc public func initCustomStorage(
+        uploadImage: @escaping (_ base64EncodedString: String) -> (),
+        uploadAudio: @escaping (_ base64EncodedString: String) -> ()) -> DebuggIt {
         
+        storageClient = ApiClient(uploadImage: uploadImage, uploadAudio: uploadAudio)
         return self
     }
     
