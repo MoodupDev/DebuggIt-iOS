@@ -9,7 +9,11 @@
 import Alamofire
 import SwiftyJSON
 
-class AWSClient {
+class AWSClient: ApiStorageProtocol {
+    
+    init(bucketName: String, accesKey: String, secretKey: String, region: String) {
+        
+    }
     
     func upload(_ type: MediaType, data base64EncodedString: String, successBlock: @escaping () -> (), errorBlock: @escaping (Int?, String?) -> ()) {
         

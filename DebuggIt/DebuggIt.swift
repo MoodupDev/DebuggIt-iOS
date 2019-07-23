@@ -29,7 +29,7 @@ public class DebuggIt: NSObject {
     let reachability = Reachability()!
     
     var apiClient: ApiClientProtocol?
-    var awsClient: AWSClient?
+    var storageClient: ApiStorageProtocol?
     var configType: ConfigType = .bitbucket
     var report: Report = Report()
     
@@ -73,8 +73,18 @@ public class DebuggIt: NSObject {
         return initDebugIt(configType: .github)
     }
     
-    @discardableResult @objc public func initAWS(url: String, imagePath: String, audioPath: String) -> DebuggIt {
-        awsClient = AWSClient(url, imagePath, audioPath)
+    @discardableResult @objc public func initAWS(bucketName: String, accessKey: String, secretKey: String, region: String) -> DebuggIt {
+        storageClient = AWSClient(bucketName: bucketName, accesKey: accessKey, secretKey: secretKey, region: region)
+        return self
+    }
+    
+    @discardableResult @objc public func initDefaultStorage(url: String, imagePath: String, audioPath: String) -> DebuggIt {
+        storageClient = ApiClient(url: url, imagePath: imagePath, audioPath: audioPath)
+        return self
+    }
+    
+    @discardableResult @objc public func initCustomStorage(uploadImage: () -> (), uploadAudio: () -> ()) -> DebuggIt {
+        
         return self
     }
     

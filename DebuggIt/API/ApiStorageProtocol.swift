@@ -8,11 +8,7 @@
 
 import Foundation
 
-protocol ApiStorageProtocol 
-func upload(_ type: MediaType, data base64EncodedString: String, successBlock: @escaping () -> (), errorBlock: @escaping (Int?, String?) -> ()) {
-    <#code#>
-}
-{
+protocol ApiStorageProtocol {
     
     func upload(_ type: MediaType, data base64EncodedString: String, successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int?, _ errorMessage: String?) -> ())
 }
