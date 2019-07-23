@@ -29,6 +29,7 @@ public class DebuggIt: NSObject {
     let reachability = Reachability()!
     
     var apiClient: ApiClientProtocol?
+    var awsClient: AWSClient?
     var configType: ConfigType = .bitbucket
     var report: Report = Report()
     
@@ -57,31 +58,36 @@ public class DebuggIt: NSObject {
     private var buttonPositionYDiff: CGFloat = 0
     // MARK: - Public methods
     
-    @objc public func initBitbucket(repoSlug: String, accountName: String) {
+    @discardableResult @objc public func initBitbucket(repoSlug: String, accountName: String) -> DebuggIt {
         apiClient = BitbucketApiClient(repoSlug: repoSlug, accountName: accountName)
-        initDebugIt(configType: .bitbucket)
+        return initDebugIt(configType: .bitbucket)
     }
     
-    @objc public func initJira(host: String, projectKey: String, usesHttps: Bool = true) {
+    @discardableResult @objc public func initJira(host: String, projectKey: String, usesHttps: Bool = true) -> DebuggIt {
         apiClient = JiraApiClient(host: host, projectKey: projectKey, usesHttps: usesHttps)
-        initDebugIt(configType: .jira)
+        return initDebugIt(configType: .jira)
     }
     
-    @objc public func initGithub(repoSlug: String, accountName: String) {
+    @discardableResult @objc public func initGithub(repoSlug: String, accountName: String) -> DebuggIt {
         apiClient = GitHubApiClient(repoSlug: repoSlug, accountName: accountName)
-        initDebugIt(configType: .github)
+        return initDebugIt(configType: .github)
+    }
+    
+    @discardableResult @objc public func initAWS(url: String, imagePath: String, audioPath: String) -> DebuggIt {
+        awsClient = AWSClient(url, imagePath, audioPath)
+        return self
     }
     
     // MARK: - Methods
     
-    func initDebugIt(configType:ConfigType) {
+    func initDebugIt(configType:ConfigType) -> DebuggIt {
         self.configType = configType
         swizzleMethod(of: UIWindow.self, original: #selector(setter: UIWindow.self.rootViewController), to: #selector(UIWindow.self.attachDebuggItOnRootViewControllerChange(_:)))
         NotificationCenter.default.addObserver(self, selector: #selector(self.attachToWindow(_:)), name: UIWindow.didBecomeKeyNotification, object: nil)
         initReachability()
         
         guard let bundle = Bundle(identifier: "com.moodup.DebuggIt")
-            else { return }
+            else { return self }
         let fonts = [
             bundle.url(forResource: "Montserrat-Regular", withExtension: "ttf"),
             bundle.url(forResource: "Montserrat-Black", withExtension: "ttf"),
@@ -111,6 +117,8 @@ public class DebuggIt: NSObject {
             
             CTFontManagerRegisterGraphicsFont(font, nil)
         })
+        
+        return self
     }
     
     func initReachability() {

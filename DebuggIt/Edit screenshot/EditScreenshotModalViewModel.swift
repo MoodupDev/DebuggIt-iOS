@@ -24,7 +24,7 @@ class EditScreenshotModalViewModel {
             popup.setup(willShowNextWindow: true, alertText: "alert.sending.screenshot".localized(), positiveAction: true, isProgressPopup: true)
         })
         
-        ApiClient.upload(.image, data: image.toBase64String(),
+        DebuggIt.sharedInstance.awsClient?.upload(.image, data: image.toBase64String(),
                          successBlock: {
                             popup.dismiss(animated: true, completion: self.showBugDescription)
         }, errorBlock: {
