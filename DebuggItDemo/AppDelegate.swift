@@ -18,8 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         DebuggIt.sharedInstance
-            .initDefaultStorage(url: "", imagePath: "", audioPath: "")
-            .initAWS(bucketName: "", accessKey: "", secretKey: "", region: "")
+            .initAWS(bucketName: "staging.debugg.it", regionType: .EUCentral1, identityPool: "***REMOVED***")
             .initBitbucket(repoSlug: "BugReporter", accountName: "MoodUp")
         
         return true

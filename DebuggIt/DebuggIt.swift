@@ -9,6 +9,7 @@
 import UIKit
 import IQKeyboardManagerSwift
 import Reachability
+import AWSS3
 
 enum ConfigType {
     case jira
@@ -73,8 +74,8 @@ public class DebuggIt: NSObject {
         return initDebugIt(configType: .github)
     }
     
-    @discardableResult @objc public func initAWS(bucketName: String, accessKey: String, secretKey: String, region: String) -> DebuggIt {
-        storageClient = AWSClient(bucketName: bucketName, accessKey: accessKey, secretKey: secretKey, region: region)
+    @discardableResult @objc public func initAWS(bucketName: String, regionType: AWSRegionType, identityPool: String) -> DebuggIt {
+        storageClient = AWSClient(bucketName: bucketName, regionType: regionType, identityPool: identityPool)
         return self
     }
     
