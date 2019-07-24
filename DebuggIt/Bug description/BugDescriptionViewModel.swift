@@ -24,7 +24,6 @@ class BugDescriptionViewModel {
     }
     
     func clearData() {
-        ApiClient.postEvent(.reportCanceled)
         DebuggIt.sharedInstance.report = Report()
         ImageCache.shared.clearAll()
     }
@@ -68,7 +67,6 @@ class BugDescriptionViewModel {
                 progressPopup.dismiss(animated: true, completion: {
                     self.showPopup(willShowNextWindow: false, alertText: "alert.message.saved.report".localized(), positiveAction: true, isProgressPopup: false)
                 })
-                self.postEventsAfterIssueSent(report: DebuggIt.sharedInstance.report)
                 self.clearData()
         }, errorBlock: { (status, error) in
             if status != nil {
@@ -81,21 +79,6 @@ class BugDescriptionViewModel {
                 })
             }
         })
-    }
-    
-    func postEventsAfterIssueSent(report: Report) {
-        ApiClient.postEvent(.reportSent)
-        ApiClient.postEvent(.audioAmount, value: report.audioUrls.count)
-        ApiClient.postEvent(.screenshotAmount, value: report.screenshots.count)
-        if !report.actualBehavior.isEmpty {
-            ApiClient.postEvent(.actualBehaviorFilled)
-        }
-        if !report.stepsToReproduce.isEmpty {
-            ApiClient.postEvent(.stepsToReproduceFilled)
-        }
-        if !report.expectedBehavior.isEmpty {
-            ApiClient.postEvent(.expectedBehaviorFilled)
-        }
     }
     
     func showPopup(willShowNextWindow: Bool, alertText: String, positiveAction: Bool, isProgressPopup: Bool) {

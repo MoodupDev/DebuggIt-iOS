@@ -8,11 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2101FA421E251ED000A7E979 /* DebuggIt.h in Headers */ = {isa = PBXBuildFile; fileRef = 2101FA341E251ED000A7E979 /* DebuggIt.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2117A6121E29350B0065191F /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2117A6111E29350B0065191F /* Config.swift */; };
-		2117A6141E29366C0065191F /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2117A6131E29366C0065191F /* Config.plist */; };
 		213313761E251FBA00777356 /* DebuggIt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213313481E251FBA00777356 /* DebuggIt.swift */; };
 		213313AB1E25212E00777356 /* ApiClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213313A91E25212E00777356 /* ApiClientProtocol.swift */; };
-		213313AC1E25212E00777356 /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213313AA1E25212E00777356 /* EventType.swift */; };
 		213313BA1E25217D00777356 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213313B81E25217D00777356 /* Report.swift */; };
 		213313BB1E25217D00777356 /* Screenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213313B91E25217D00777356 /* Screenshot.swift */; };
 		213313BE1E25219600777356 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213313BC1E25219600777356 /* WelcomeViewController.swift */; };
@@ -67,7 +64,7 @@
 		2133142C1E25247C00777356 /* BugDescriptionPage2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2133142A1E25247C00777356 /* BugDescriptionPage2ViewController.swift */; };
 		2133142D1E25247C00777356 /* BugDescriptionPage2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2133142B1E25247C00777356 /* BugDescriptionPage2ViewController.xib */; };
 		2133142F1E2524C100777356 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2133142E1E2524C100777356 /* Localizable.strings */; };
-		21E83D1C1E25272600D24FBF /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E83D181E25272600D24FBF /* ApiClient.swift */; };
+		21E83D1C1E25272600D24FBF /* AWSClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E83D181E25272600D24FBF /* AWSClient.swift */; };
 		21E83D1D1E25272600D24FBF /* BitbucketApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E83D191E25272600D24FBF /* BitbucketApiClient.swift */; };
 		21E83D1E1E25272600D24FBF /* GitHubApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E83D1A1E25272600D24FBF /* GitHubApiClient.swift */; };
 		21E83D1F1E25272600D24FBF /* JiraApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E83D1B1E25272600D24FBF /* JiraApiClient.swift */; };
@@ -99,6 +96,8 @@
 		259616C41F038E84009A2631 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 259616B21F038E84009A2631 /* Montserrat-Thin.ttf */; };
 		259616C51F038E84009A2631 /* Montserrat-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 259616B31F038E84009A2631 /* Montserrat-ThinItalic.ttf */; };
 		2814DBDF2DEBC01807F464BF /* Pods_DebuggItTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B1EDC56BAE4CCCAEE922E7 /* Pods_DebuggItTests.framework */; };
+		2E1FADBA22E70EF700F988F7 /* ApiStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1FADB922E70EF700F988F7 /* ApiStorageProtocol.swift */; };
+		2E1FADBC22E7102D00F988F7 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1FADBB22E7102D00F988F7 /* ApiClient.swift */; };
 		2EEE915922E1C1F000314384 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EEE915822E1C1EF00314384 /* WebKit.framework */; };
 		32FF7D199722C049F1A46367 /* Pods_DebuggItDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6852C03E47FF6BC054594596 /* Pods_DebuggItDemo.framework */; };
 		D00C7EF91F569007003202ED /* UIBezier+Arrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00C7EF81F569007003202ED /* UIBezier+Arrow.swift */; };
@@ -155,11 +154,8 @@
 		2101FA311E251ED000A7E979 /* DebuggIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DebuggIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2101FA341E251ED000A7E979 /* DebuggIt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DebuggIt.h; sourceTree = "<group>"; };
 		2101FA351E251ED000A7E979 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2117A6111E29350B0065191F /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		2117A6131E29366C0065191F /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		213313481E251FBA00777356 /* DebuggIt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebuggIt.swift; sourceTree = "<group>"; };
 		213313A91E25212E00777356 /* ApiClientProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClientProtocol.swift; sourceTree = "<group>"; };
-		213313AA1E25212E00777356 /* EventType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventType.swift; sourceTree = "<group>"; };
 		213313B81E25217D00777356 /* Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		213313B91E25217D00777356 /* Screenshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screenshot.swift; sourceTree = "<group>"; };
 		213313BC1E25219600777356 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -220,7 +216,7 @@
 		21AA9EAF1E2534F2005388A1 /* ReachabilitySwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReachabilitySwift.framework; path = "../../Library/Developer/Xcode/DerivedData/DebuggIt-avwdflpfppwqvfhlfgyvzfeeoynw/Build/Products/Debug-iphonesimulator/ReachabilitySwift/ReachabilitySwift.framework"; sourceTree = "<group>"; };
 		21AA9EB01E2534F2005388A1 /* RNCryptor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RNCryptor.framework; path = "../../Library/Developer/Xcode/DerivedData/DebuggIt-avwdflpfppwqvfhlfgyvzfeeoynw/Build/Products/Debug-iphonesimulator/RNCryptor/RNCryptor.framework"; sourceTree = "<group>"; };
 		21AA9EB11E2534F2005388A1 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../Library/Developer/Xcode/DerivedData/DebuggIt-avwdflpfppwqvfhlfgyvzfeeoynw/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
-		21E83D181E25272600D24FBF /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		21E83D181E25272600D24FBF /* AWSClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSClient.swift; sourceTree = "<group>"; };
 		21E83D191E25272600D24FBF /* BitbucketApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitbucketApiClient.swift; sourceTree = "<group>"; };
 		21E83D1A1E25272600D24FBF /* GitHubApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubApiClient.swift; sourceTree = "<group>"; };
 		21E83D1B1E25272600D24FBF /* JiraApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JiraApiClient.swift; sourceTree = "<group>"; };
@@ -250,6 +246,8 @@
 		259616B11F038E84009A2631 /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		259616B21F038E84009A2631 /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Thin.ttf"; sourceTree = "<group>"; };
 		259616B31F038E84009A2631 /* Montserrat-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ThinItalic.ttf"; sourceTree = "<group>"; };
+		2E1FADB922E70EF700F988F7 /* ApiStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiStorageProtocol.swift; sourceTree = "<group>"; };
+		2E1FADBB22E7102D00F988F7 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		2EEE915822E1C1EF00314384 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		30812007056C70373B103EBB /* Pods-DebuggIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebuggIt.release.xcconfig"; path = "Target Support Files/Pods-DebuggIt/Pods-DebuggIt.release.xcconfig"; sourceTree = "<group>"; };
 		5FAD87FBC512EB1564134DF8 /* Pods-DebuggItTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebuggItTests.release.xcconfig"; path = "Target Support Files/Pods-DebuggItTests/Pods-DebuggItTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -373,7 +371,7 @@
 			children = (
 				213313AD1E25213200777356 /* Clients */,
 				213313A91E25212E00777356 /* ApiClientProtocol.swift */,
-				213313AA1E25212E00777356 /* EventType.swift */,
+				2E1FADB922E70EF700F988F7 /* ApiStorageProtocol.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -381,7 +379,8 @@
 		213313AD1E25213200777356 /* Clients */ = {
 			isa = PBXGroup;
 			children = (
-				21E83D181E25272600D24FBF /* ApiClient.swift */,
+				21E83D181E25272600D24FBF /* AWSClient.swift */,
+				2E1FADBB22E7102D00F988F7 /* ApiClient.swift */,
 				21E83D191E25272600D24FBF /* BitbucketApiClient.swift */,
 				21E83D1A1E25272600D24FBF /* GitHubApiClient.swift */,
 				21E83D1B1E25272600D24FBF /* JiraApiClient.swift */,
@@ -428,7 +427,6 @@
 				213313CD1E25222A00777356 /* IssueContentProvider.swift */,
 				213313CE1E25222A00777356 /* TokenManager.swift */,
 				213313CF1E25222A00777356 /* Utils.swift */,
-				2117A6111E29350B0065191F /* Config.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -502,7 +500,6 @@
 				2101FA341E251ED000A7E979 /* DebuggIt.h */,
 				2133142E1E2524C100777356 /* Localizable.strings */,
 				2101FA351E251ED000A7E979 /* Info.plist */,
-				2117A6131E29366C0065191F /* Config.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -774,7 +771,6 @@
 				213313C81E2521F800777356 /* WebViewController.xib in Resources */,
 				213314201E25245000777356 /* AudioCollectionViewCell.xib in Resources */,
 				259616C11F038E84009A2631 /* Montserrat-Regular.ttf in Resources */,
-				2117A6141E29366C0065191F /* Config.plist in Resources */,
 				213314221E25245000777356 /* NewScreenshotCollectionViewCell.xib in Resources */,
 				259616BF1F038E84009A2631 /* Montserrat-Medium.ttf in Resources */,
 				259616BE1F038E84009A2631 /* Montserrat-LightItalic.ttf in Resources */,
@@ -855,6 +851,8 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-DebuggItDemo/Pods-DebuggItDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/KMPlaceholderTextView/KMPlaceholderTextView.framework",
@@ -864,6 +862,8 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSS3.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KMPlaceholderTextView.framework",
@@ -905,6 +905,8 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-DebuggItTests/Pods-DebuggItTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/KMPlaceholderTextView/KMPlaceholderTextView.framework",
@@ -914,6 +916,8 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSS3.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KMPlaceholderTextView.framework",
@@ -983,7 +987,8 @@
 				213314031E25228500777356 /* RoundedImageView.swift in Sources */,
 				213314001E25228500777356 /* ResizableRectangle.swift in Sources */,
 				213313BA1E25217D00777356 /* Report.swift in Sources */,
-				21E83D1C1E25272600D24FBF /* ApiClient.swift in Sources */,
+				2E1FADBA22E70EF700F988F7 /* ApiStorageProtocol.swift in Sources */,
+				21E83D1C1E25272600D24FBF /* AWSClient.swift in Sources */,
 				21E83D1D1E25272600D24FBF /* BitbucketApiClient.swift in Sources */,
 				213313D01E25222A00777356 /* Constants.swift in Sources */,
 				213313E41E25225A00777356 /* ApiClientProtocol+Headers.swift in Sources */,
@@ -998,9 +1003,8 @@
 				213313E61E25225A00777356 /* DataResponse+Validation.swift in Sources */,
 				213313E81E25225A00777356 /* String+Localized.swift in Sources */,
 				213313D51E25222A00777356 /* Utils.swift in Sources */,
-				2117A6121E29350B0065191F /* Config.swift in Sources */,
+				2E1FADBC22E7102D00F988F7 /* ApiClient.swift in Sources */,
 				2133142C1E25247C00777356 /* BugDescriptionPage2ViewController.swift in Sources */,
-				213313AC1E25212E00777356 /* EventType.swift in Sources */,
 				213313AB1E25212E00777356 /* ApiClientProtocol.swift in Sources */,
 				213313EF1E25225A00777356 /* UIWindow+Screenshot.swift in Sources */,
 				213314021E25228500777356 /* RoundedButton.swift in Sources */,

@@ -1,92 +1,57 @@
 //
 //  ApiClient.swift
-//  DebugIt
+//  DebuggIt
 //
-//  Created by Arkadiusz Żmudzin on 04.11.2016.
-//  Copyright © 2016 MoodUp. All rights reserved.
+//  Created by Piotr Gomoła on 23/07/2019.
+//  Copyright © 2019 Mood Up. All rights reserved.
 //
 
-import Alamofire
-import SwiftyJSON
+import Foundation
 
-class ApiClient {
-    static func upload(_ type: MediaType, data base64EncodedString: String, successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int?, _ errorMessage: String?) -> ()) {
-        var url: String
-        switch type {
-        case .image:
-            url = Constants.Api.uploadImageUrl
-        default:
-            url = Constants.Api.uploadAudioUrl
-        }
-        
-        let params : Parameters = [
-            "data": base64EncodedString,
-            "app_id": Bundle.main.bundleIdentifier ?? ""
-        ]
-        
-        AF.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { (response) in
-            switch response.result {
-            case .success(let value):
-                let value = JSON(value)
-                if response.isSuccess() {
-                    let url = value["url"].stringValue
-                    switch(type) {
-                    case .image:
-                        let screenName = DebuggIt.sharedInstance.report.currentScreenshotScreenName!
-                        DebuggIt.sharedInstance.report.screenshots.append(Screenshot(screenName: screenName, url: url))
-                    case .audio:
-                        DebuggIt.sharedInstance.report.audioUrls.append(url)
-                    }
-                    successBlock()
-                } else {
-                    errorBlock(response.responseCode, value.rawString())
+class ApiClient: ApiStorageProtocol {
+    
+    private var url, imagePath, audioPath: String?
+    private var uploadImage, uploadAudio: ((_ base64EncodedString: String) -> ())?
+    
+    init(url: String, imagePath: String, audioPath: String) {
+        self.url = url
+        self.imagePath = imagePath
+        self.audioPath = audioPath
+    }
+    
+    init(uploadImage: @escaping (_ base64EncodedString: String) -> (), uploadAudio: @escaping (_ base64EncodedString: String) -> ()) {
+        self.uploadImage = uploadImage
+        self.uploadAudio = uploadAudio
+    }
+    
+    func upload(_ type: MediaType, data base64EncodedString: String, successBlock: @escaping () -> (), errorBlock: @escaping (Int?, String?) -> ()) {
+        if url != nil {
+            guard let url = self.url, let imagePath = self.imagePath, let audioPath = self.audioPath else { return }
+            let endpoint = url + (type == .image ? imagePath : audioPath)
+            
+            guard let requestURL = URL(string: endpoint) else { return }
+            var request = URLRequest(url: requestURL)
+            request.httpMethod = "POST"
+            request.httpBody = Data(base64Encoded: base64EncodedString, options: .ignoreUnknownCharacters)
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                guard error == nil else {
+                    errorBlock(nil, error?.localizedDescription)
+                    return
                 }
-            case .failure(let error as AFError):
-                errorBlock(nil, error.errorDescription)
-            default:
-                errorBlock(nil, nil)
-
-            }
-        }
-    }
-    
-    static func postEvent(_ event: EventType, value: Int? = nil) {
-        
-        var params: Parameters = [
-            "event_type": event.name(),
-            "app_id": Bundle.main.bundleIdentifier ?? "",
-            "system_version": UIDevice.current.systemVersion,
-            "system": "ios",
-            "device": UIDevice.current.modelName
-        ]
-        if value != nil {
-            params["value"] = value
-        }
-        
-        AF.request(Constants.Api.eventsUrl, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).response { (response) in
-        }
-    }
-    
-    static func checkVersion(completionHandler: @escaping (_ isChecked: Bool, _ isSupported: Bool) -> ()) {
-        if let version = Initializer.bundle(forClass: ApiClient.self).infoDictionary?["CFBundleShortVersionString"] as? String {
-            AF.request(String(format: Constants.Api.supportedVersionUrl, version)).responseData { response in
-                switch response.result {
-                case .success(_):
-                    completionHandler(true, response.isSuccess())
-                case .failure(_):
-                    completionHandler(false, false)
+                
+                if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+                    errorBlock(httpStatus.statusCode, "\(response)")
+                } else {
+                    successBlock()
                 }
             }
         } else {
-            completionHandler(false, false)
+            switch type {
+            case .image:
+                uploadImage?(base64EncodedString)
+            case .audio:
+                uploadAudio?(base64EncodedString)
+            }
         }
-    }
-}
-
-extension ApiClient {
-    
-    enum MediaType {
-        case image
-        case audio
     }
 }

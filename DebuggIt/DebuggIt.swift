@@ -9,6 +9,7 @@
 import UIKit
 import IQKeyboardManagerSwift
 import Reachability
+import AWSS3
 
 enum ConfigType {
     case jira
@@ -29,6 +30,7 @@ public class DebuggIt: NSObject {
     let reachability = Reachability()!
     
     var apiClient: ApiClientProtocol?
+    var storageClient: ApiStorageProtocol?
     var configType: ConfigType = .bitbucket
     var report: Report = Report()
     
@@ -52,38 +54,54 @@ public class DebuggIt: NSObject {
     
     private var logoutShown = false
     
-    private var versionChecked = false
     private var versionSupported = false
 
     private var buttonPositionYDiff: CGFloat = 0
     // MARK: - Public methods
     
-    @objc public func initBitbucket(repoSlug: String, accountName: String) {
+    @discardableResult @objc public func initBitbucket(repoSlug: String, accountName: String) -> DebuggIt {
         apiClient = BitbucketApiClient(repoSlug: repoSlug, accountName: accountName)
-        initDebugIt(configType: .bitbucket)
+        return initDebugIt(configType: .bitbucket)
     }
     
-    @objc public func initJira(host: String, projectKey: String, usesHttps: Bool = true) {
+    @discardableResult @objc public func initJira(host: String, projectKey: String, usesHttps: Bool = true) -> DebuggIt {
         apiClient = JiraApiClient(host: host, projectKey: projectKey, usesHttps: usesHttps)
-        initDebugIt(configType: .jira)
+        return initDebugIt(configType: .jira)
     }
     
-    @objc public func initGithub(repoSlug: String, accountName: String) {
+    @discardableResult @objc public func initGithub(repoSlug: String, accountName: String) -> DebuggIt {
         apiClient = GitHubApiClient(repoSlug: repoSlug, accountName: accountName)
-        initDebugIt(configType: .github)
+        return initDebugIt(configType: .github)
+    }
+    
+    @discardableResult @objc public func initAWS(bucketName: String, regionType: AWSRegionType, identityPool: String) -> DebuggIt {
+        storageClient = AWSClient(bucketName: bucketName, regionType: regionType, identityPool: identityPool)
+        return self
+    }
+    
+    @discardableResult @objc public func initDefaultStorage(url: String, imagePath: String, audioPath: String) -> DebuggIt {
+        storageClient = ApiClient(url: url, imagePath: imagePath, audioPath: audioPath)
+        return self
+    }
+    
+    @discardableResult @objc public func initCustomStorage(
+        uploadImage: @escaping (_ base64EncodedString: String) -> (),
+        uploadAudio: @escaping (_ base64EncodedString: String) -> ()) -> DebuggIt {
+        
+        storageClient = ApiClient(uploadImage: uploadImage, uploadAudio: uploadAudio)
+        return self
     }
     
     // MARK: - Methods
     
-    func initDebugIt(configType:ConfigType) {
+    func initDebugIt(configType:ConfigType) -> DebuggIt {
         self.configType = configType
-        ApiClient.postEvent(.initialized)
         swizzleMethod(of: UIWindow.self, original: #selector(setter: UIWindow.self.rootViewController), to: #selector(UIWindow.self.attachDebuggItOnRootViewControllerChange(_:)))
         NotificationCenter.default.addObserver(self, selector: #selector(self.attachToWindow(_:)), name: UIWindow.didBecomeKeyNotification, object: nil)
         initReachability()
         
         guard let bundle = Bundle(identifier: "com.moodup.DebuggIt")
-            else { return }
+            else { return self }
         let fonts = [
             bundle.url(forResource: "Montserrat-Regular", withExtension: "ttf"),
             bundle.url(forResource: "Montserrat-Black", withExtension: "ttf"),
@@ -113,15 +131,11 @@ public class DebuggIt: NSObject {
             
             CTFontManagerRegisterGraphicsFont(font, nil)
         })
+        
+        return self
     }
     
     func initReachability() {
-        reachability.whenReachable = { reachability in
-            if !self.versionChecked {
-                self.checkVersion(completion: nil)
-            }
-        }
-        
         do {
             try reachability.startNotifier()
         } catch {
@@ -145,16 +159,6 @@ public class DebuggIt: NSObject {
             
             showModal(viewController: Initializer.viewController(WelcomeViewController.self))
         }
-    }
-    
-    private func checkVersion(completion: (() -> ())? = nil) {
-        ApiClient.checkVersion(completionHandler: { [unowned self] (checked, supported) in
-            if checked {
-                self.reachability.stopNotifier()
-            }
-            self.versionChecked = checked
-            self.versionSupported = supported
-        })
     }
     
     func reattach(to viewController: UIViewController) {
@@ -234,32 +238,14 @@ public class DebuggIt: NSObject {
         }
     }
     
-    private func showNotCheckedModal() {
-        let popup = Initializer.viewController(PopupViewController.self)
-        showModal(viewController: popup)
-        popup.setup(willShowNextWindow: false, alertText: "error.version.not.checked".localized(), positiveAction: false, isProgressPopup: false)
-    }
-    
-    private func showNotSupportedModal() {
-        let popup = Initializer.viewController(PopupViewController.self)
-        showModal(viewController: popup)
-        popup.setup(willShowNextWindow: false, alertText: "error.version.unsupported".localized(), positiveAction: false, isProgressPopup: false)
-    }
-    
     @objc func showReportDialog() {
-        if !versionChecked {
-            showNotCheckedModal()
-        } else if !versionSupported {
-            showNotSupportedModal()
+        debuggItButton.isHidden = true
+        takeScreenshot()
+        debuggItButton.isHidden = false
+        if (apiClient?.hasToken)! {
+            showModal(viewController: Initializer.viewController(EditScreenshotModalViewController.self))
         } else {
-            debuggItButton.isHidden = true
-            takeScreenshot()
-            debuggItButton.isHidden = false
-            if (apiClient?.hasToken)! {
-                showModal(viewController: Initializer.viewController(EditScreenshotModalViewController.self))
-            } else {
-                showLoginModal()
-            }
+            showLoginModal()
         }
     }
     

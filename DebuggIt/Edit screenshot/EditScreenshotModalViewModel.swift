@@ -24,9 +24,8 @@ class EditScreenshotModalViewModel {
             popup.setup(willShowNextWindow: true, alertText: "alert.sending.screenshot".localized(), positiveAction: true, isProgressPopup: true)
         })
         
-        ApiClient.upload(.image, data: image.toBase64String(),
+        DebuggIt.sharedInstance.storageClient?.upload(.image, data: image.toBase64String(),
                          successBlock: {
-                            ApiClient.postEvent(viewController.freedrawButton.isSelected ? .screenshotAddedDraw : .screenshotAddedRectangle)
                             popup.dismiss(animated: true, completion: self.showBugDescription)
         }, errorBlock: {
             (statusCode, errorMessage) in
