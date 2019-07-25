@@ -8,6 +8,8 @@
 
 import UIKit
 import DebuggIt
+import Alamofire
+import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,10 +20,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         DebuggIt.sharedInstance
-            .initAWS(bucketName: "staging.debugg.it", regionType: .EUCentral1, identityPool: "***REMOVED***")
+//            .initAWS(bucketName: "staging.debugg.it", regionType: .EUCentral1, identityPool: "***REMOVED***")
+            .initDefaultStorage(url: "https://debuggit-api.herokuapp.com", imagePath: "/api/v1/upload/image", audioPath: "/api/v1/upload/audio")
+//            .initCustomStorage(uploadImage: { (base64, delegate) in
+//                self.send(url: "https://debuggit-api.herokuapp.com/api/v1/upload/image", base: base64, delegate: delegate)
+//            }, uploadAudio: { (base64, delegate) in
+//                self.send(url: "https://debuggit-api.herokuapp.com/api/v1/upload/audio", base: base64, delegate: delegate)
+//            })
             .initBitbucket(repoSlug: "BugReporter", accountName: "MoodUp")
         
         return true
+    }
+    
+    func send(url: String, base: String, delegate: ApiClientDelegate) {
+        let params : Parameters = [
+            "data": base,
+            "app_id": Bundle.main.bundleIdentifier ?? ""
+        ]
+        
+        AF.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { (response) in
+            switch response.result {
+            case .success(let value):
+                let value = JSON(value)
+                let url = value["url"].stringValue
+                delegate.successClousure(url)
+            case .failure(let error as AFError):
+                delegate.errorClousure(nil, error.errorDescription)
+            default:
+                delegate.errorClousure(nil, nil)
+                
+            }
+            
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

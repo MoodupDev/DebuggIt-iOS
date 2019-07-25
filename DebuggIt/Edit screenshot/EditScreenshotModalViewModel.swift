@@ -30,7 +30,7 @@ class EditScreenshotModalViewModel {
         }, errorBlock: {
             (statusCode, errorMessage) in
             popup.dismiss(animated: false, completion: {
-                viewController.present(Utils.createGeneralErrorAlert(), animated: true, completion: nil)
+                DebuggIt.sharedInstance.showModal(viewController: Utils.createGeneralErrorAlert())
             })
         })
     }

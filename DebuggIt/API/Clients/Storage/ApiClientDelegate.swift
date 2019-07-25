@@ -11,8 +11,8 @@ import Foundation
 
 public class ApiClientDelegate: NSObject, UploadDelegate {
     
-    var successClousure: (String) -> ()
-    var errorClousure: (Int?, String?) -> ()
+    public var successClousure: (String) -> ()
+    public var errorClousure: (Int?, String?) -> ()
     
     init(onSuccess: @escaping (String) -> (),
          onError: @escaping (Int?, String?) -> ()) {
