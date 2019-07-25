@@ -85,8 +85,8 @@ public class DebuggIt: NSObject {
     }
     
     @discardableResult @objc public func initCustomStorage(
-        uploadImage: @escaping (_ base64EncodedString: String) -> (),
-        uploadAudio: @escaping (_ base64EncodedString: String) -> ()) -> DebuggIt {
+        uploadImage: @escaping ((String, ApiClientDelegate) -> ()),
+        uploadAudio: @escaping ((String, ApiClientDelegate) -> ())) -> DebuggIt {
         
         storageClient = ApiClient(uploadImage: uploadImage, uploadAudio: uploadAudio)
         return self

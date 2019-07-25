@@ -91,9 +91,9 @@ class AWSClient: ApiStorageProtocol {
     func generateFileName(_ type: MediaType) -> String {
         switch type {
         case .image:
-            return "\(uploadedImagePrefix)_\(Date().timeIntervalSince1970)\(uploadedImageSuffix)"
+            return "\(uploadedImagePrefix)_\(Int(Date().timeIntervalSince1970))\(uploadedImageSuffix)"
         case.audio:
-            return "\(uploadedAudioPrefix)_\(Date().timeIntervalSince1970)\(uploadedAudioSuffix)"
+            return "\(uploadedAudioPrefix)_\(Int(Date().timeIntervalSince1970))\(uploadedAudioSuffix)"
         }
     }
 }

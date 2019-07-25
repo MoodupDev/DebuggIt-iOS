@@ -98,6 +98,7 @@
 		2814DBDF2DEBC01807F464BF /* Pods_DebuggItTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B1EDC56BAE4CCCAEE922E7 /* Pods_DebuggItTests.framework */; };
 		2E1FADBA22E70EF700F988F7 /* ApiStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1FADB922E70EF700F988F7 /* ApiStorageProtocol.swift */; };
 		2E1FADBC22E7102D00F988F7 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1FADBB22E7102D00F988F7 /* ApiClient.swift */; };
+		2E66EF1622E9AEAD00425DE9 /* ApiClientDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E66EF1522E9AEAD00425DE9 /* ApiClientDelegate.swift */; };
 		2EEE915922E1C1F000314384 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EEE915822E1C1EF00314384 /* WebKit.framework */; };
 		32FF7D199722C049F1A46367 /* Pods_DebuggItDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6852C03E47FF6BC054594596 /* Pods_DebuggItDemo.framework */; };
 		D00C7EF91F569007003202ED /* UIBezier+Arrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00C7EF81F569007003202ED /* UIBezier+Arrow.swift */; };
@@ -248,6 +249,7 @@
 		259616B31F038E84009A2631 /* Montserrat-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ThinItalic.ttf"; sourceTree = "<group>"; };
 		2E1FADB922E70EF700F988F7 /* ApiStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiStorageProtocol.swift; sourceTree = "<group>"; };
 		2E1FADBB22E7102D00F988F7 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		2E66EF1522E9AEAD00425DE9 /* ApiClientDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClientDelegate.swift; sourceTree = "<group>"; };
 		2EEE915822E1C1EF00314384 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		30812007056C70373B103EBB /* Pods-DebuggIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebuggIt.release.xcconfig"; path = "Target Support Files/Pods-DebuggIt/Pods-DebuggIt.release.xcconfig"; sourceTree = "<group>"; };
 		5FAD87FBC512EB1564134DF8 /* Pods-DebuggItTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebuggItTests.release.xcconfig"; path = "Target Support Files/Pods-DebuggItTests/Pods-DebuggItTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -379,11 +381,8 @@
 		213313AD1E25213200777356 /* Clients */ = {
 			isa = PBXGroup;
 			children = (
-				21E83D181E25272600D24FBF /* AWSClient.swift */,
-				2E1FADBB22E7102D00F988F7 /* ApiClient.swift */,
-				21E83D191E25272600D24FBF /* BitbucketApiClient.swift */,
-				21E83D1A1E25272600D24FBF /* GitHubApiClient.swift */,
-				21E83D1B1E25272600D24FBF /* JiraApiClient.swift */,
+				2E66EF1422E9AE8A00425DE9 /* IssueClient */,
+				2E66EF1322E9AE5F00425DE9 /* Storage */,
 			);
 			path = Clients;
 			sourceTree = "<group>";
@@ -592,6 +591,26 @@
 				259616B31F038E84009A2631 /* Montserrat-ThinItalic.ttf */,
 			);
 			name = Montserrat;
+			sourceTree = "<group>";
+		};
+		2E66EF1322E9AE5F00425DE9 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				21E83D181E25272600D24FBF /* AWSClient.swift */,
+				2E1FADBB22E7102D00F988F7 /* ApiClient.swift */,
+				2E66EF1522E9AEAD00425DE9 /* ApiClientDelegate.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		2E66EF1422E9AE8A00425DE9 /* IssueClient */ = {
+			isa = PBXGroup;
+			children = (
+				21E83D191E25272600D24FBF /* BitbucketApiClient.swift */,
+				21E83D1A1E25272600D24FBF /* GitHubApiClient.swift */,
+				21E83D1B1E25272600D24FBF /* JiraApiClient.swift */,
+			);
+			path = IssueClient;
 			sourceTree = "<group>";
 		};
 		C56436CC1ABC06839AB8C08D /* Pods */ = {
@@ -965,6 +984,7 @@
 				D064719E1F6A7662007D4AEA /* BugDescriptionPage1ViewModel.swift in Sources */,
 				21E83D1F1E25272600D24FBF /* JiraApiClient.swift in Sources */,
 				213313ED1E25225A00777356 /* UIView+RoundedCorners.swift in Sources */,
+				2E66EF1622E9AEAD00425DE9 /* ApiClientDelegate.swift in Sources */,
 				213313BB1E25217D00777356 /* Screenshot.swift in Sources */,
 				2133141F1E25245000777356 /* AudioCollectionViewCell.swift in Sources */,
 				213313FD1E25228500777356 /* DebuggItButton.swift in Sources */,
