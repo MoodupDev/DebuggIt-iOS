@@ -20,12 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         DebuggIt.sharedInstance
-//            .initAWS(bucketName: "staging.debugg.it", regionType: .EUCentral1, identityPool: "***REMOVED***")
-            .initDefaultStorage(url: "https://debuggit-api.herokuapp.com", imagePath: "/api/v1/upload/image", audioPath: "/api/v1/upload/audio")
+            .initAWS(bucketName: "staging.debugg.it", regionType: .EUCentral1, identityPool: "***REMOVED***")
+//            .initDefaultStorage(url: "https://url-to-backend.com/api", imagePath: "/debuggit/uploadImage", audioPath: "/debuggit/uploadAudio")
 //            .initCustomStorage(uploadImage: { (base64, delegate) in
-//                self.send(url: "https://debuggit-api.herokuapp.com/api/v1/upload/image", base: base64, delegate: delegate)
+//                self.send(url: "https://url-to-backend.com/debuggit/uploadImage", base: base64, delegate: delegate)
 //            }, uploadAudio: { (base64, delegate) in
-//                self.send(url: "https://debuggit-api.herokuapp.com/api/v1/upload/audio", base: base64, delegate: delegate)
+//                self.send(url: "https://debuggit-api.herokuapp.com/debuggit/uploadAudio", base: base64, delegate: delegate)
 //            })
             .initBitbucket(repoSlug: "BugReporter", accountName: "MoodUp")
         
@@ -35,7 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func send(url: String, base: String, delegate: ApiClientDelegate) {
         let params : Parameters = [
             "data": base,
-            "app_id": Bundle.main.bundleIdentifier ?? ""
         ]
         
         AF.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { (response) in

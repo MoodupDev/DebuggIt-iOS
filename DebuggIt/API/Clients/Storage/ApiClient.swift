@@ -41,14 +41,14 @@ class ApiClient: ApiStorageProtocol {
             request.httpMethod = "POST"
             let parameters: [String: Any] = [
                 "data": base64EncodedString,
-                "app_id": Bundle.main.bundleIdentifier ?? ""
             ]
             do {
-                request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted) // pass dictionary to nsdata object and set it as request body
+                request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
             } catch let error {
                 print(error.localizedDescription)
             }
-            //request.httpBody = Data(base64Encoded: base64EncodedString, options: .ignoreUnknownCharacters)
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
             URLSession.shared.dataTask(with: request) { data, response, error in
                 DispatchQueue.main.async {
                     guard error == nil else {
