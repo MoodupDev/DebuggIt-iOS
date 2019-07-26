@@ -335,6 +335,7 @@ extension UIWindow {
         guard !(self is DebuggIt.DebuggItWindow) && self.isKeyWindow else { return }
         DebuggIt.sharedInstance.removeReportButtonIfExists(from: self)
         DebuggIt.sharedInstance.reattach(to: self.rootViewController!)
+        viewController.becomeFirstResponder()
     }
 }
 
@@ -344,6 +345,21 @@ extension DebuggIt: BugDescriptionPage1Delegate {
             self.changeButtonImageToScreenshot()
             self.moveApplicationWindowToFront()
             IQKeyboardManager.shared.enable = false
+        }
+    }
+}
+
+extension UIViewController {
+    open override var canBecomeFirstResponder: Bool {
+        get {
+            return true
+        }
+    }
+    
+    open override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        super.motionEnded(motion, with: event)
+        if motion == .motionShake {
+            DebuggIt.sharedInstance.showReportDialog()
         }
     }
 }

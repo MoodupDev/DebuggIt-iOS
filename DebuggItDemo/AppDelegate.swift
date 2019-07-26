@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                self.send(url: "https://debuggit-api.herokuapp.com/debuggit/uploadAudio", base: base64, delegate: delegate)
 //            })
             .initBitbucket(repoSlug: "BugReporter", accountName: "MoodUp")
-        
+        DebuggIt.sharedInstance.recordingEnabled = true
         return true
     }
     
