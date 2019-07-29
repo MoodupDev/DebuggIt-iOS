@@ -61,17 +61,17 @@ public class DebuggIt: NSObject {
     
     @discardableResult @objc public func initBitbucket(repoSlug: String, accountName: String) -> DebuggIt {
         apiClient = BitbucketApiClient(repoSlug: repoSlug, accountName: accountName)
-        return initDebugIt(configType: .bitbucket)
+        return initDebuggIt(configType: .bitbucket)
     }
     
     @discardableResult @objc public func initJira(host: String, projectKey: String, usesHttps: Bool = true) -> DebuggIt {
         apiClient = JiraApiClient(host: host, projectKey: projectKey, usesHttps: usesHttps)
-        return initDebugIt(configType: .jira)
+        return initDebuggIt(configType: .jira)
     }
     
     @discardableResult @objc public func initGithub(repoSlug: String, accountName: String) -> DebuggIt {
         apiClient = GitHubApiClient(repoSlug: repoSlug, accountName: accountName)
-        return initDebugIt(configType: .github)
+        return initDebuggIt(configType: .github)
     }
     
     @discardableResult @objc public func initAWS(bucketName: String, regionType: AWSRegionType, identityPool: String) -> DebuggIt {
@@ -98,7 +98,7 @@ public class DebuggIt: NSObject {
     
     // MARK: - Methods
     
-    func initDebugIt(configType:ConfigType) -> DebuggIt {
+    func initDebuggIt(configType:ConfigType) -> DebuggIt {
         self.configType = configType
         swizzleMethod(of: UIWindow.self, original: #selector(setter: UIWindow.self.rootViewController), to: #selector(UIWindow.self.attachDebuggItOnRootViewControllerChange(_:)))
         NotificationCenter.default.addObserver(self, selector: #selector(self.attachToWindow(_:)), name: UIWindow.didBecomeKeyNotification, object: nil)
@@ -180,10 +180,21 @@ public class DebuggIt: NSObject {
             errorBlock: errorBlock)
     }
     
+    
+    func resetButtonImage() {
+        DispatchQueue.main.async {
+            self.debuggItButton.imageView.image = Initializer.image(named: "logoBugSmall")
+        }
+    }
+    
     private func addReportButton(to containter: UIView) {
+        let nextScreenshotImage = Initializer.image(named: "nextScreenshoot")
+        let isWithScreenshotImage = self.debuggItButton == nil ? false : (self.debuggItButton.imageView.image == nextScreenshotImage)
         removeReportButtonIfExists(from: containter)
         let button = createReportButton()
-        
+        if isWithScreenshotImage {
+            button.imageView.image = nextScreenshotImage
+        }
         containter.addSubview(button)
         addConstraints(for: button, in: containter)
         
