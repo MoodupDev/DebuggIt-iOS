@@ -26,9 +26,11 @@ class EditScreenshotModalViewModel {
         
         DebuggIt.sharedInstance.storageClient?.upload(.image, data: image.toBase64String(),
                          successBlock: {
+                            DebuggIt.sharedInstance.resetButtonImage()
                             popup.dismiss(animated: true, completion: self.showBugDescription)
         }, errorBlock: {
             (statusCode, errorMessage) in
+            DebuggIt.sharedInstance.resetButtonImage()
             popup.dismiss(animated: false, completion: {
                 DebuggIt.sharedInstance.showModal(viewController: Utils.createGeneralErrorAlert())
             })
