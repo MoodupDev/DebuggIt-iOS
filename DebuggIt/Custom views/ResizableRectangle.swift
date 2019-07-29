@@ -20,8 +20,6 @@ class ResizableRectangle: UIView {
     var isResizingUpperLeft = false
     var touchStart: CGPoint?
     var isPinned = false
-    var switchInX = false
-    var switchInY = false
     
     class func instantiateFromNib() -> ResizableRectangle {
         return Initializer.view(ResizableRectangle.self) as! ResizableRectangle
@@ -61,8 +59,8 @@ class ResizableRectangle: UIView {
             let height = self.frame.size.height
             
             if isResizingLowerRight {
-                switchInX = ((touchPoint?.x)! + deltaWidth) < self.resizeThumbViewSize
-                switchInY = ((touchPoint?.y)! + deltaWidth) < self.resizeThumbViewSize
+                let switchInX = ((touchPoint?.x)! + deltaWidth) < self.resizeThumbViewSize
+                let switchInY = ((touchPoint?.y)! + deltaWidth) < self.resizeThumbViewSize
                 
                 self.frame = CGRect(
                     x: x,
@@ -80,12 +78,9 @@ class ResizableRectangle: UIView {
                     isResizingLowerRight = false
                     isResizingUpperRight = true
                 }
-                
-                switchInX = false
-                switchInY = false
             } else if isResizingUpperLeft {
-                switchInX = (width - deltaWidth) < self.resizeThumbViewSize
-                switchInY = (height - deltaHeight) < self.resizeThumbViewSize
+                let switchInX = (width - deltaWidth) < self.resizeThumbViewSize
+                let switchInY = (height - deltaHeight) < self.resizeThumbViewSize
                 
                 self.frame = CGRect(
                     x: x + (switchInX ? (width - self.resizeThumbViewSize) : deltaWidth),
@@ -103,12 +98,9 @@ class ResizableRectangle: UIView {
                     isResizingUpperLeft = false
                     isResizingLowerLeft = true
                 }
-                
-                switchInX = false
-                switchInY = false
             } else if isResizingUpperRight {
-                switchInX = (width + deltaWidth) < self.resizeThumbViewSize
-                switchInY = (height - deltaHeight) < self.resizeThumbViewSize
+                let switchInX = (width + deltaWidth) < self.resizeThumbViewSize
+                let switchInY = (height - deltaHeight) < self.resizeThumbViewSize
                 
                 self.frame = CGRect(
                     x: x,
@@ -126,12 +118,9 @@ class ResizableRectangle: UIView {
                     isResizingUpperRight = false
                     isResizingLowerRight = true
                 }
-                
-                switchInX = false
-                switchInY = false
             } else if isResizingLowerLeft {
-                switchInX = (width - deltaWidth) < self.resizeThumbViewSize
-                switchInY = (height + deltaHeight) < self.resizeThumbViewSize
+                let switchInX = (width - deltaWidth) < self.resizeThumbViewSize
+                let switchInY = (height + deltaHeight) < self.resizeThumbViewSize
                 
                 self.frame = CGRect(
                     x: x + (switchInX ? (width - self.resizeThumbViewSize) : deltaWidth),
@@ -149,9 +138,6 @@ class ResizableRectangle: UIView {
                     isResizingLowerLeft = false
                     isResizingUpperLeft = true
                 }
-                
-                switchInX = false
-                switchInY = false
             } else {
                 self.center = CGPoint(x: self.center.x + (touchPoint?.x)! - (touchStart?.x)!, y: self.center.y + (touchPoint?.y)! - (touchStart?.y)!)
             }
