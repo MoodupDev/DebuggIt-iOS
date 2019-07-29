@@ -9,7 +9,7 @@
 import Alamofire
 import SwiftyJSON
 
-class BitbucketApiClient: ApiClientProtocol {
+final class BitbucketApiClient: ApiClientProtocol {
     
     // MARK: Properties
     

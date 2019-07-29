@@ -10,7 +10,10 @@ import Foundation
 
 protocol ApiStorageProtocol {
     
-    func upload(_ type: MediaType, data base64EncodedString: String, successBlock: @escaping () -> (), errorBlock: @escaping (_ statusCode: Int?, _ errorMessage: String?) -> ())
+    func upload(_ type: MediaType,
+                data base64EncodedString: String,
+                successBlock: @escaping () -> (),
+                errorBlock: @escaping (_ statusCode: Int?, _ errorMessage: String?) -> ())
 }
 
 enum MediaType {

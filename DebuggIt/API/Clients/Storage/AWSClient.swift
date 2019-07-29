@@ -10,7 +10,7 @@ import Alamofire
 import SwiftyJSON
 import AWSS3
 
-class AWSClient: ApiStorageProtocol {
+final class AWSClient: ApiStorageProtocol {
     
     private let s3URL = "https://s3.%@.amazonaws.com/%@/%@"
     
@@ -91,9 +91,9 @@ class AWSClient: ApiStorageProtocol {
     func generateFileName(_ type: MediaType) -> String {
         switch type {
         case .image:
-            return "\(uploadedImagePrefix)_\(Date().timeIntervalSince1970)\(uploadedImageSuffix)"
+            return "\(uploadedImagePrefix)_\(Int(Date().timeIntervalSince1970))\(uploadedImageSuffix)"
         case.audio:
-            return "\(uploadedAudioPrefix)_\(Date().timeIntervalSince1970)\(uploadedAudioSuffix)"
+            return "\(uploadedAudioPrefix)_\(Int(Date().timeIntervalSince1970))\(uploadedAudioSuffix)"
         }
     }
 }

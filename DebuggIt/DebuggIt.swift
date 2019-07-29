@@ -80,13 +80,17 @@ public class DebuggIt: NSObject {
     }
     
     @discardableResult @objc public func initDefaultStorage(url: String, imagePath: String, audioPath: String) -> DebuggIt {
+        guard let url = URL(string: url) else {
+            print("Failed to initialize DebuggIt - wrong base url")
+            return self
+        }
         storageClient = ApiClient(url: url, imagePath: imagePath, audioPath: audioPath)
         return self
     }
     
     @discardableResult @objc public func initCustomStorage(
-        uploadImage: @escaping (_ base64EncodedString: String) -> (),
-        uploadAudio: @escaping (_ base64EncodedString: String) -> ()) -> DebuggIt {
+        uploadImage: @escaping ((String, ApiClientDelegate) -> ()),
+        uploadAudio: @escaping ((String, ApiClientDelegate) -> ())) -> DebuggIt {
         
         storageClient = ApiClient(uploadImage: uploadImage, uploadAudio: uploadAudio)
         return self
@@ -335,6 +339,7 @@ extension UIWindow {
         guard !(self is DebuggIt.DebuggItWindow) && self.isKeyWindow else { return }
         DebuggIt.sharedInstance.removeReportButtonIfExists(from: self)
         DebuggIt.sharedInstance.reattach(to: self.rootViewController!)
+        viewController.becomeFirstResponder()
     }
 }
 
@@ -344,6 +349,21 @@ extension DebuggIt: BugDescriptionPage1Delegate {
             self.changeButtonImageToScreenshot()
             self.moveApplicationWindowToFront()
             IQKeyboardManager.shared.enable = false
+        }
+    }
+}
+
+extension UIViewController {
+    open override var canBecomeFirstResponder: Bool {
+        get {
+            return true
+        }
+    }
+    
+    open override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        super.motionEnded(motion, with: event)
+        if motion == .motionShake {
+            DebuggIt.sharedInstance.showReportDialog()
         }
     }
 }
