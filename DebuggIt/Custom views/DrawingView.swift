@@ -10,6 +10,10 @@ import UIKit
 
 class DrawingView: UIImageView {
     
+    private let rectangleOriginAdjustment: CGFloat = 2.5
+    private let rectangleRightAdjustment: CGFloat = 5.0
+    private let rectangleBottomAdjustment: CGFloat = 15.0
+    
     var type: DrawingType = .arrow {
         didSet {
             pinCurrentRectangle()
@@ -226,10 +230,10 @@ class DrawingView: UIImageView {
         let size = backgroundRect.size
         
         var topLeft = rectangleRect.origin
-        topLeft.x += backgroundRect.origin.x + 2.5
-        topLeft.y += backgroundRect.origin.y + 2.5
-        let bottomLeft = CGPoint(x: topLeft.x, y: (topLeft.y + size.height) - 15.0)
-        let topRight = CGPoint(x: topLeft.x + size.width - 5, y: topLeft.y)
+        topLeft.x += backgroundRect.origin.x + self.rectangleOriginAdjustment
+        topLeft.y += backgroundRect.origin.y + self.rectangleOriginAdjustment
+        let bottomLeft = CGPoint(x: topLeft.x, y: (topLeft.y + size.height) - self.rectangleBottomAdjustment)
+        let topRight = CGPoint(x: topLeft.x + size.width - self.rectangleRightAdjustment, y: topLeft.y)
         let bottomRight = CGPoint(x: topRight.x, y: bottomLeft.y)
         
         path.move(to: topLeft)
