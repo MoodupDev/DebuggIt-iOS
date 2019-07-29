@@ -80,6 +80,10 @@ public class DebuggIt: NSObject {
     }
     
     @discardableResult @objc public func initDefaultStorage(url: String, imagePath: String, audioPath: String) -> DebuggIt {
+        guard let url = URL(string: url) else {
+            print("Failed to initialize DebuggIt - wrong base url")
+            return self
+        }
         storageClient = ApiClient(url: url, imagePath: imagePath, audioPath: audioPath)
         return self
     }

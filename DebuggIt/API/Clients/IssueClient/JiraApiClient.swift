@@ -9,7 +9,7 @@
 import Alamofire
 import SwiftyJSON
 
-class JiraApiClient: ApiClientProtocol {
+final class JiraApiClient: ApiClientProtocol {
 
     // MARK: Properties
     
