@@ -107,7 +107,9 @@ final class ApiClient: ApiStorageProtocol {
             return
         }
         
-        if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+        if let httpStatus = response as? HTTPURLResponse,
+            let statusCode = Constants.HTTPStatusCodes(rawValue: httpStatus.statusCode),
+            statusCode != .ok {
             errorBlock(httpStatus.statusCode, "\(String(describing: response))")
         } else {
             guard let data = data,

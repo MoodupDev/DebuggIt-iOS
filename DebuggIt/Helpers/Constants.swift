@@ -11,6 +11,10 @@ struct Constants {
     static let debuggItUrl = "http://debugg.it"
     static let welcomeScreenHasBeenShownKey = "debuggit_first_run"
     
+    public enum HTTPStatusCodes: Int {
+        case ok = 200
+    }
+    
     static let cookiesToRemove = [
         "bb_session",
         "csrftoken",
