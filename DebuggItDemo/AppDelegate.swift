@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         DebuggIt.sharedInstance
             .initAWS(bucketName: "staging.debugg.it", regionType: .EUCentral1, identityPool: "***REMOVED***")
+            //TODO Remove and prepare better examples when ready to open source
 //            .initDefaultStorage(url: "https://url-to-backend.com/api", imagePath: "/debuggit/uploadImage", audioPath: "/debuggit/uploadAudio")
 //            .initCustomStorage(uploadImage: { (base64, delegate) in
 //                self.send(url: "https://url-to-backend.com/debuggit/uploadImage", base: base64, delegate: delegate)
@@ -43,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             case .success(let value):
                 let value = JSON(value)
                 let url = value["url"].stringValue
-                delegate.successClousure(url)
+                delegate.uploadSuccessClousure(url)
             case .failure(let error as AFError):
                 delegate.errorClousure(nil, error.errorDescription)
             default:

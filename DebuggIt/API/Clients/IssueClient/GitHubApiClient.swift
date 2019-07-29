@@ -9,7 +9,7 @@
 import Alamofire
 import SwiftyJSON
 
-class GitHubApiClient: ApiClientProtocol {
+final class GitHubApiClient: ApiClientProtocol {
     
     // MARK: Properties
     

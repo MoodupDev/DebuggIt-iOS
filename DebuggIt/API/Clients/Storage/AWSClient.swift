@@ -10,7 +10,7 @@ import Alamofire
 import SwiftyJSON
 import AWSS3
 
-class AWSClient: ApiStorageProtocol {
+final class AWSClient: ApiStorageProtocol {
     
     private let s3URL = "https://s3.%@.amazonaws.com/%@/%@"
     

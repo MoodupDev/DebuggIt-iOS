@@ -9,19 +9,19 @@
 import Foundation
 
 
-public class ApiClientDelegate: NSObject, UploadDelegate {
+final public class ApiClientDelegate: NSObject, UploadDelegate {
     
-    public var successClousure: (String) -> ()
+    public var uploadSuccessClousure: (String) -> ()
     public var errorClousure: (Int?, String?) -> ()
     
-    init(onSuccess: @escaping (String) -> (),
+    init(onUploadSuccess: @escaping (String) -> (),
          onError: @escaping (Int?, String?) -> ()) {
-        self.successClousure = onSuccess
+        self.uploadSuccessClousure = onUploadSuccess
         self.errorClousure = onError
     }
     
-    func onSuccess(fileURL: String) {
-        successClousure(fileURL)
+    func onUploadSuccess(fileURL: String) {
+        uploadSuccessClousure(fileURL)
     }
     
     func onError(code: Int?, message: String?) {
