@@ -46,11 +46,14 @@ class ResizableRectangle: UIView {
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if(!isPinned) {
-            let touchPoint = touches.first?.location(in: self)
-            let previous = touches.first?.previousLocation(in: self)
+            guard
+                let touch = touches.first else { return }
             
-            let deltaWidth = (touchPoint?.x)! - (previous?.x)!
-            let deltaHeight = (touchPoint?.y)! - (previous?.y)!
+            let touchPoint = touch.location(in: self)
+            let previous = touch.previousLocation(in: self)
+            
+            let deltaWidth = touchPoint.x - previous.x
+            let deltaHeight = touchPoint.y - previous.y
             
             let x = self.frame.origin.x
             let y = self.frame.origin.y
@@ -59,14 +62,15 @@ class ResizableRectangle: UIView {
             let height = self.frame.size.height
             
             if isResizingLowerRight {
-                let switchInX = ((touchPoint?.x)! + deltaWidth) < self.resizeThumbViewSize
-                let switchInY = ((touchPoint?.y)! + deltaWidth) < self.resizeThumbViewSize
+                let switchInX = (touchPoint.x + deltaWidth) < self.resizeThumbViewSize
+                let switchInY = (touchPoint.y + deltaWidth) < self.resizeThumbViewSize
                 
                 self.frame = CGRect(
                     x: x,
                     y: y,
-                    width: switchInX ? self.resizeThumbViewSize : (touchPoint?.x)! + deltaWidth,
-                    height: switchInY ? self.resizeThumbViewSize : (touchPoint?.y)! + deltaWidth)
+                    width: switchInX ? self.resizeThumbViewSize : touchPoint.x + deltaWidth,
+                    height: switchInY ? self.resizeThumbViewSize : touchPoint.y + deltaWidth
+                )
                 
                 if switchInX && switchInY {
                     isResizingLowerRight = false
@@ -86,7 +90,8 @@ class ResizableRectangle: UIView {
                     x: x + (switchInX ? (width - self.resizeThumbViewSize) : deltaWidth),
                     y: y + (switchInY ? (height - self.resizeThumbViewSize) : deltaHeight),
                     width: switchInX ? self.resizeThumbViewSize : (width - deltaWidth),
-                    height: switchInY ? self.resizeThumbViewSize : (height - deltaHeight))
+                    height: switchInY ? self.resizeThumbViewSize : (height - deltaHeight)
+                )
                 
                 if switchInX && switchInY {
                     isResizingUpperLeft = false
@@ -106,7 +111,8 @@ class ResizableRectangle: UIView {
                     x: x,
                     y: y + (switchInY ? (height - self.resizeThumbViewSize) : deltaHeight),
                     width: switchInX ? self.resizeThumbViewSize : (width + deltaWidth),
-                    height: switchInY ? self.resizeThumbViewSize : (height - deltaHeight))
+                    height: switchInY ? self.resizeThumbViewSize : (height - deltaHeight)
+                )
                 
                 if switchInX && switchInY {
                     isResizingUpperRight = false
@@ -126,7 +132,8 @@ class ResizableRectangle: UIView {
                     x: x + (switchInX ? (width - self.resizeThumbViewSize) : deltaWidth),
                     y: y,
                     width: switchInX ? self.resizeThumbViewSize : (width - deltaWidth),
-                    height: switchInY ? self.resizeThumbViewSize : (height + deltaHeight))
+                    height: switchInY ? self.resizeThumbViewSize : (height + deltaHeight)
+                )
                 
                 if switchInX && switchInY {
                     isResizingLowerLeft = false
@@ -139,7 +146,8 @@ class ResizableRectangle: UIView {
                     isResizingUpperLeft = true
                 }
             } else {
-                self.center = CGPoint(x: self.center.x + (touchPoint?.x)! - (touchStart?.x)!, y: self.center.y + (touchPoint?.y)! - (touchStart?.y)!)
+                guard let touchStart = self.touchStart else { return }
+                self.center = CGPoint(x: self.center.x + touchPoint.x - touchStart.x, y: self.center.y + (touchPoint.y - touchStart.y))
             }
         }
     }
