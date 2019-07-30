@@ -197,7 +197,6 @@ public class DebuggIt: NSObject {
         }
         containter.addSubview(button)
         addConstraints(for: button, in: containter)
-        
         self.debuggItButton = button
     }
     
@@ -211,6 +210,7 @@ public class DebuggIt: NSObject {
         button.addGestureRecognizer(tapGestureRecognizer)
         button.addGestureRecognizer(panGestureRecognizer)
         button.addGestureRecognizer(longPressGestureRecognizer)
+        
         return button
 
     }
@@ -224,7 +224,7 @@ public class DebuggIt: NSObject {
     }
     
     private func addConstraints(for view : UIView, in container: UIView) {
-        container.addConstraint(NSLayoutConstraint(item: view, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: container, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1.0, constant: 0.0))
+        container.addConstraint(NSLayoutConstraint(item: view, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: container, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1.0, constant: self.buttonPositionYDiff))
         
         container.addConstraint(NSLayoutConstraint(item: view, attribute: NSLayoutConstraint.Attribute.right, relatedBy: NSLayoutConstraint.Relation.equal, toItem: container, attribute: NSLayoutConstraint.Attribute.right, multiplier: 1.0, constant: 0.0))
     }
