@@ -58,9 +58,12 @@ class DrawingView: UIImageView {
         case .free:
             currentPath = initBezierPath()
         case .rectangle:
-            pinCurrentRectangle()
-            currentRectangle = createRectangle(at: touchLocation)
-            self.addSubview(currentRectangle)
+            if currentRectangle != nil {
+                pinCurrentRectangle()
+            } else {
+                currentRectangle = createRectangle(at: touchLocation)
+                self.addSubview(currentRectangle)
+            }
         case .arrow:
             currentArrow = initBezierPath()
         }
