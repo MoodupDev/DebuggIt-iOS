@@ -54,33 +54,24 @@ final class BitbucketApiClient: ApiClientProtocol {
         ]
         
         AF.request(String(format: Constants.Bitbucket.issuesUrl, accountName, repoSlug), method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseString { (response) in
-            print("BITBUCKET: Response")
             switch response.result {
             case .success(let value):
                 if response.isSuccess() {
-                    print("BITBUCKET: Response success")
                     successBlock?()
                 } else {
-                    print("BITBUCKET: Response not success")
                     if response.responseCode == 401 {
-                        print("BITBUCKET: Response 401")
                         self.refreshAccessToken(successBlock: {
-                            print("BITBUCKET: Response refreshed token")
                             self.addIssue(title: title, content: content, priority: priority, kind: kind, successBlock: successBlock, errorBlock: errorBlock)
                         }, errorBlock: { (code, message) in
-                            print("BITBUCKET: Response refresh error")
                             errorBlock?(code, message)
                         })
                     } else {
-                        print("BITBUCKET: Response different error: \(response.responseCode ?? -1)")
                         errorBlock?(response.responseCode, value)
                     }
                 }
             case .failure(let error as AFError):
-                print("BITBUCKET: Response failed: \(error)")
                 errorBlock?(nil, error.errorDescription)
             default:
-                print("BITBUCKET: Response unknown problem")
                 errorBlock?(nil, nil)
                 
             }
