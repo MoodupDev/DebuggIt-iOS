@@ -324,6 +324,7 @@ public class DebuggIt: NSObject {
         IQKeyboardManager.shared.enable = true
         viewController.modalPresentationStyle = .overCurrentContext
         window?.rootViewController?.present(viewController, animated: animated, completion: completion)
+        
     }
     
     func moveApplicationWindowToFront() {
