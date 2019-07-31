@@ -111,10 +111,7 @@ class RecordViewController: UIViewController {
     private func uploadAudio(_ alert: UIAlertController, data: String) {
         DebuggIt.sharedInstance.storageClient?.upload(.audio, data: data, successBlock: {
             alert.dismiss(animated: true, completion: nil)
-            self.present(Utils.createAlert(title: "alert.title.send.audio".localized(), message: "alert.message.saved.audio".localized(), positiveAction: {
-                self.dismiss(animated: true, completion: nil)
-                self.delegate?.recordUploaded()
-            }), animated: true, completion: nil)
+            self.showAudioSentDialog()
         }, errorBlock: { (code, message) in
             alert.dismiss(animated: true, completion: {
                 self.present(Utils.createGeneralErrorAlert(action: {
@@ -123,6 +120,21 @@ class RecordViewController: UIViewController {
                 }), animated: true, completion: nil)
             })
         })
+    }
+    
+    private func showAudioSentDialog() {
+        self.present(
+            Utils.createAlert(
+                title: "alert.title.send.audio".localized(),
+                message: "alert.message.saved.audio".localized(),
+                positiveAction: {
+                    self.dismiss(animated: true, completion: nil)
+                    self.delegate?.recordUploaded()
+                }
+            ),
+            animated: true,
+            completion: nil
+        )
     }
     
     @objc func updateUi() {
