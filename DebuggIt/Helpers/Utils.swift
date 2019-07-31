@@ -14,18 +14,19 @@ class Utils {
     
     static func createAlert(title: String, message: String, positiveAction: (() -> Void)? = nil, negativeAction: (() -> Void)? = nil) -> UIAlertController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        if let positiveAction = positiveAction {
-            alertController.addAction(UIAlertAction(title: "alert.button.ok".localized(), style: .default, handler: {
-                (action: UIAlertAction!) in
-                positiveAction()
-                alertController.dismiss(animated: false, completion: nil)
-            }))
-        }
         
         if let negativeAction = negativeAction {
             alertController.addAction(UIAlertAction(title: "alert.button.cancel".localized(), style: .default, handler: {
                 (action: UIAlertAction!) in
                 negativeAction()
+                alertController.dismiss(animated: false, completion: nil)
+            }))
+        }
+        
+        if let positiveAction = positiveAction {
+            alertController.addAction(UIAlertAction(title: "alert.button.ok".localized(), style: .default, handler: {
+                (action: UIAlertAction!) in
+                positiveAction()
                 alertController.dismiss(animated: false, completion: nil)
             }))
         }
