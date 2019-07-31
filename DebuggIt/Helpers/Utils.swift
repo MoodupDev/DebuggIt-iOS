@@ -37,6 +37,11 @@ class Utils {
         return Utils.createAlert(title: "", message: "error.general".localized(), positiveAction: action)
     }
     
+    static func createAPIErrorAlert(errorCode: Int?, errorMessage: String?) -> UIAlertController {
+        let code = errorCode != nil ? "\(errorCode!)" : ""
+        return Utils.createAlert(title: "\(code)", message: errorMessage ?? "")
+    }
+    
     static func parseError(_ error: String?, defaultMessage message: String = "error.general".localized()) -> String {
         if let errorString = error {
             let json = JSON.init(parseJSON: errorString)

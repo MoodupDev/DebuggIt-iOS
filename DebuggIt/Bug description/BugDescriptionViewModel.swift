@@ -58,10 +58,14 @@ class BugDescriptionViewModel {
     func trySendReport(_ viewController: BugDescriptionViewController) {
         let progressPopup = Initializer.viewController(PopupViewController.self)
         viewController.dismiss(animated: true, completion: {
-            DebuggIt.sharedInstance.showModal(viewController: progressPopup)
+            DebuggIt.sharedInstance.showModal(viewController: progressPopup, animated: true, completion: {
+                self.sendReport(progressPopup)
+            })
             progressPopup.setup(willShowNextWindow: true, alertText: "alert.sending.report".localized(), positiveAction: true, isProgressPopup: true)
         })
-        
+    }
+    
+    private func sendReport(_ progressPopup: PopupViewController) {
         DebuggIt.sharedInstance.sendReport(
             successBlock: {
                 progressPopup.dismiss(animated: true, completion: {

@@ -99,20 +99,8 @@ class RecordViewController: UIViewController {
         if success {
             if let fileData = FileManager().contents(atPath: audioFilename!.relativePath) {
                 let alert = Utils.createAlert(title: "alert.title.sending.audio".localized(), message: "alert.message.wait".localized())
-                self.present(alert, animated: true, completion: nil)
-                DebuggIt.sharedInstance.storageClient?.upload(.audio, data: fileData.base64EncodedString(), successBlock: {
-                    alert.dismiss(animated: true, completion: nil)
-                    self.present(Utils.createAlert(title: "alert.title.send.audio".localized(), message: "alert.message.saved.audio".localized(), positiveAction: {
-                        self.dismiss(animated: true, completion: nil)
-                        self.delegate?.recordUploaded()
-                    }), animated: true, completion: nil)
-                }, errorBlock: { (code, message) in
-                    alert.dismiss(animated: true, completion: {
-                        self.present(Utils.createGeneralErrorAlert(action: {
-                            self.delegate?.recordFailed()
-                            self.dismiss(animated: true, completion: nil)
-                        }), animated: true, completion: nil)
-                    })
+                self.present(alert, animated: true, completion: {
+                    self.uploadAudio(alert, data: fileData.base64EncodedString())
                 })
             }
         } else {
@@ -120,6 +108,34 @@ class RecordViewController: UIViewController {
         }
     }
     
+    private func uploadAudio(_ alert: UIAlertController, data: String) {
+        DebuggIt.sharedInstance.storageClient?.upload(.audio, data: data, successBlock: {
+            alert.dismiss(animated: true, completion: nil)
+            self.showAudioSentDialog()
+        }, errorBlock: { (code, message) in
+            alert.dismiss(animated: true, completion: {
+                self.present(Utils.createGeneralErrorAlert(action: {
+                    self.delegate?.recordFailed()
+                    self.dismiss(animated: true, completion: nil)
+                }), animated: true, completion: nil)
+            })
+        })
+    }
+    
+    private func showAudioSentDialog() {
+        self.present(
+            Utils.createAlert(
+                title: "alert.title.send.audio".localized(),
+                message: "alert.message.saved.audio".localized(),
+                positiveAction: {
+                    self.dismiss(animated: true, completion: nil)
+                    self.delegate?.recordUploaded()
+                }
+            ),
+            animated: true,
+            completion: nil
+        )
+    }
     
     @objc func updateUi() {
         remainingTime -= 1
