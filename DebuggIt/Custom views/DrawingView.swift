@@ -46,6 +46,8 @@ class DrawingView: UIImageView {
         return CGSize(width: widthRatio, height: heightRatio)
     }()
     
+    private var isDrawingRect = false
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         nextDrawings = []
         nextRectangles = []
@@ -60,9 +62,11 @@ class DrawingView: UIImageView {
         case .rectangle:
             if currentRectangle != nil {
                 pinCurrentRectangle()
+                isDrawingRect = false
             } else {
                 currentRectangle = createRectangle(at: touchLocation)
                 self.addSubview(currentRectangle)
+                isDrawingRect = true
             }
         case .arrow:
             currentArrow = initBezierPath()
@@ -102,7 +106,9 @@ class DrawingView: UIImageView {
         default:
             break
         }
-        lastDrawings.append(type)
+        if type != .rectangle || (type == .rectangle && isDrawingRect) {
+            lastDrawings.append(type)
+        }
         delegate?.highlightUndoButton(highlight: true)
     }
     
