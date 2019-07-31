@@ -269,14 +269,18 @@ public class DebuggIt: NSObject {
         if configType == .jira {
             showModal(viewController: Initializer.viewController(LoginModalViewController.self))
         } else {
-            let loginViewController = Initializer.viewController(WebViewController.self)
-            loginViewController.url = apiClient?.loginUrl
-            
-            let navigationController = UINavigationController(rootViewController: loginViewController)
-            navigationController.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: loginViewController, action: #selector(loginViewController.dismiss(_:)))
-            navigationController.navigationBar.topItem?.title = "alert.title.login".localized()
-            
-            showModal(viewController: navigationController)
+            URLSession.shared.reset {
+                DispatchQueue.main.async {
+                    let loginViewController = Initializer.viewController(WebViewController.self)
+                    loginViewController.url = self.apiClient?.loginUrl
+                    
+                    let navigationController = UINavigationController(rootViewController: loginViewController)
+                    navigationController.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: loginViewController, action: #selector(loginViewController.dismiss(_:)))
+                    navigationController.navigationBar.topItem?.title = "alert.title.login".localized()
+                    
+                    self.showModal(viewController: navigationController)
+                }
+            }
         }
     }
     
