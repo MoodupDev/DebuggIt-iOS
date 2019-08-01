@@ -131,6 +131,33 @@ class DrawingView: UIImageView {
         return rectangle
     }
     
+    func isPortraitImage() -> Bool {
+        guard let image = self.image else { return true }
+        return image.size.height > image.size.width
+    }
+    
+    func getWidth(containerWidth: CGFloat, containerHeight: CGFloat) -> CGFloat {
+        guard let image = self.image else { return 0.0 }
+        let imageRatio = image.size.width / image.size.height
+        let containerRatio = containerWidth / containerHeight
+        if imageRatio > containerRatio {
+            return containerWidth
+        } else {
+            return (image.size.width * containerHeight) / image.size.height
+        }
+    }
+    
+    func getHeight(containerWidth: CGFloat, containerHeight: CGFloat) -> CGFloat {
+        guard let image = self.image else { return 0.0 }
+        let imageRatio = image.size.height / image.size.width
+        let containerRatio = containerHeight / containerWidth
+        if imageRatio > containerRatio {
+            return containerHeight
+        } else {
+            return (image.size.height * containerWidth) / image.size.width
+        }
+    }
+    
     func undo() {
         if let lastDrawing = lastDrawings.last {
             switch lastDrawing {

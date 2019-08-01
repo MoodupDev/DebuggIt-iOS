@@ -11,6 +11,7 @@ import UIKit
 class EditScreenshotModalViewController: UIViewController, DrawingViewDelegate {
     
     @IBOutlet weak var backgroundView: BackgroundView!
+    @IBOutlet weak var surfaceContainer: UIView!
     
     @IBOutlet weak var screenshotSurface: DrawingView!
     @IBOutlet weak var arrowButton: UIButton!
@@ -41,29 +42,42 @@ class EditScreenshotModalViewController: UIViewController, DrawingViewDelegate {
     
     private func adjustViewToOrientation() {
         guard let screenshotSurface = self.screenshotSurface,
+            let surfaceContainer = self.surfaceContainer,
             let controlStackView = self.controlButtonsStackView,
             let navigationStackView = self.navigationStackView else { return }
         
-        if (UIDevice.current.orientation.isPortrait) {
+        let isPortrait = UIDevice.current.orientation.isFlat ? (self.view.frame.height > self.view.frame.width) : UIDevice.current.orientation.isPortrait
+        
+        if isPortrait {
+            let containerWidth = UIScreen.main.bounds.width - 50 - 16
+            let containerHeight = UIScreen.main.bounds.height - 48 - 80 - 32
+            
             landscapeConstraints.forEach { backgroundView.removeConstraint($0) }
             landscapeConstraints.removeAll()
             
-            portraitConstraints.append(NSLayoutConstraint(item: screenshotSurface, attribute: .leading, relatedBy: .equal, toItem: backgroundView, attribute: .leading, multiplier: 1.0, constant: 8.0))
-            portraitConstraints.append(NSLayoutConstraint(item: screenshotSurface, attribute: .bottom, relatedBy: .equal, toItem: controlStackView, attribute: .top, multiplier: 1.0, constant: -8.0))
+            portraitConstraints.append(NSLayoutConstraint(item: surfaceContainer, attribute: .leading, relatedBy: .equal, toItem: backgroundView, attribute: .leading, multiplier: 1.0, constant: 8.0))
+            portraitConstraints.append(NSLayoutConstraint(item: surfaceContainer, attribute: .bottom, relatedBy: .equal, toItem: controlStackView, attribute: .top, multiplier: 1.0, constant: -8.0))
             portraitConstraints.append(NSLayoutConstraint(item: controlStackView, attribute: .trailing, relatedBy: .equal, toItem: backgroundView, attribute: .trailing, multiplier: 1.0, constant: -8.0))
             portraitConstraints.append(NSLayoutConstraint(item: controlStackView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 40.0))
+            portraitConstraints.append(NSLayoutConstraint(item: screenshotSurface, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: screenshotSurface.getWidth(containerWidth: containerWidth, containerHeight: containerHeight)))
+            portraitConstraints.append(NSLayoutConstraint(item: screenshotSurface, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: screenshotSurface.getHeight(containerWidth: containerWidth, containerHeight: containerHeight)))
             
             controlStackView.axis = .horizontal
             
             portraitConstraints.forEach { backgroundView.addConstraint($0) }
         } else {
+            let containerWidth = UIScreen.main.bounds.width - 50 - 40 - 24
+            let containerHeight = UIScreen.main.bounds.height - 48 - 40 - 24
+            
             portraitConstraints.forEach { backgroundView.removeConstraint($0) }
             portraitConstraints.removeAll()
             
-            landscapeConstraints.append(NSLayoutConstraint(item: screenshotSurface, attribute: .leading, relatedBy: .equal, toItem: controlStackView, attribute: .trailing, multiplier: 1.0, constant: 8.0))
-            landscapeConstraints.append(NSLayoutConstraint(item: screenshotSurface, attribute: .bottom, relatedBy: .equal, toItem: backgroundView, attribute: .bottom, multiplier: 1.0, constant: -8.0))
+            landscapeConstraints.append(NSLayoutConstraint(item: surfaceContainer, attribute: .leading, relatedBy: .equal, toItem: controlStackView, attribute: .trailing, multiplier: 1.0, constant: 8.0))
+            landscapeConstraints.append(NSLayoutConstraint(item: surfaceContainer, attribute: .bottom, relatedBy: .equal, toItem: backgroundView, attribute: .bottom, multiplier: 1.0, constant: -8.0))
             landscapeConstraints.append(NSLayoutConstraint(item: controlStackView, attribute: .top, relatedBy: .equal, toItem: navigationStackView, attribute: .bottom, multiplier: 1.0, constant: 8.0))
             landscapeConstraints.append(NSLayoutConstraint(item: controlStackView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 40.0))
+            landscapeConstraints.append(NSLayoutConstraint(item: screenshotSurface, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: screenshotSurface.getWidth(containerWidth: containerWidth, containerHeight: containerHeight)))
+            landscapeConstraints.append(NSLayoutConstraint(item: screenshotSurface, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: screenshotSurface.getHeight(containerWidth: containerWidth, containerHeight: containerHeight)))
             
             controlStackView.axis = .vertical
             
