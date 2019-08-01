@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -17,10 +17,13 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditScreenshotModalViewController" customModule="DebugIt">
             <connections>
                 <outlet property="arrowButton" destination="Tkk-pW-6bJ" id="YqC-c3-zEe"/>
+                <outlet property="backgroundView" destination="AjI-Dj-cmh" id="nCE-Zq-ASn"/>
+                <outlet property="controlButtonsStackView" destination="VwM-po-uZI" id="xPL-Gw-PS7"/>
                 <outlet property="freedrawButton" destination="Yuf-29-eh8" id="Bdt-TJ-Q5f"/>
+                <outlet property="navigationStackView" destination="go7-IF-8Kc" id="H22-Bc-ODZ"/>
                 <outlet property="rectangleButton" destination="xaI-5i-RVl" id="rMo-tb-ZDh"/>
                 <outlet property="redoButton" destination="0MY-QP-63J" id="OHj-01-ve4"/>
-                <outlet property="screenshotSurface" destination="Nj5-3L-GDr" id="6xp-4h-DgF"/>
+                <outlet property="screenshotSurface" destination="Nj5-3L-GDr" id="ISR-Hx-0Aw"/>
                 <outlet property="undoButton" destination="Izm-RY-fO5" id="u52-sG-3AK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -35,114 +38,108 @@
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AjI-Dj-cmh" customClass="BackgroundView" customModule="DebuggIt" customModuleProvider="target">
-                    <rect key="frame" x="40" y="30" width="295" height="607"/>
+                    <rect key="frame" x="25" y="24" width="325" height="619"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="07g-wt-XI2">
-                            <rect key="frame" x="8" y="8" width="279" height="591"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="go7-IF-8Kc">
+                            <rect key="frame" x="8" y="8" width="309" height="40"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="go7-IF-8Kc">
-                                    <rect key="frame" x="0.0" y="0.0" width="279" height="40"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fac-uK-0gz">
-                                            <rect key="frame" x="4" y="4" width="60" height="32"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="60" id="kdv-9Z-UFm"/>
-                                            </constraints>
-                                            <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
-                                            <state key="normal" title="Cancel">
-                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="tapCancel:" destination="-1" eventType="touchUpInside" id="uTT-tY-C7t"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l97-P3-CfM">
-                                            <rect key="frame" x="215" y="4" width="60" height="32"/>
-                                            <color key="backgroundColor" red="0.90980392156862744" green="0.41176470588235292" blue="0.27450980392156865" alpha="1" colorSpace="deviceRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="60" id="ly1-wk-q7O"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
-                                            <state key="normal" title="Next">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                    <integer key="value" value="5"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="tapDone:" destination="-1" eventType="touchUpInside" id="2oX-sw-nPy"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fac-uK-0gz">
+                                    <rect key="frame" x="4" y="4" width="60" height="32"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="40" id="1qz-2K-ou1"/>
+                                        <constraint firstAttribute="width" constant="60" id="kdv-9Z-UFm"/>
                                     </constraints>
-                                    <edgeInsets key="layoutMargins" top="4" left="4" bottom="4" right="4"/>
-                                </stackView>
-                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nj5-3L-GDr" customClass="DrawingView" customModule="DebuggIt" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="40" width="279" height="511"/>
-                                </imageView>
-                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="VwM-po-uZI">
-                                    <rect key="frame" x="0.0" y="551" width="279" height="40"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tkk-pW-6bJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="56" height="40"/>
-                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
-                                            <state key="normal" image="iconArrowInactive"/>
-                                            <connections>
-                                                <action selector="tapArrow:" destination="-1" eventType="touchUpInside" id="qJO-aS-1Gg"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaI-5i-RVl">
-                                            <rect key="frame" x="56" y="0.0" width="55.5" height="40"/>
-                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
-                                            <state key="normal" image="iconRectangleInactive"/>
-                                            <connections>
-                                                <action selector="tapRectangle:" destination="-1" eventType="touchUpInside" id="aqx-CR-Xh9"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yuf-29-eh8">
-                                            <rect key="frame" x="111.5" y="0.0" width="56" height="40"/>
-                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
-                                            <state key="normal" image="iconDrawInactive"/>
-                                            <connections>
-                                                <action selector="tapFreeDraw:" destination="-1" eventType="touchUpInside" id="PKJ-hG-hZc"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Izm-RY-fO5">
-                                            <rect key="frame" x="167.5" y="0.0" width="55.5" height="40"/>
-                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
-                                            <state key="normal" image="iconUndoInactive"/>
-                                            <connections>
-                                                <action selector="tapUndo:" destination="-1" eventType="touchUpInside" id="u78-qX-Msv"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0MY-QP-63J">
-                                            <rect key="frame" x="223" y="0.0" width="56" height="40"/>
-                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
-                                            <state key="normal" image="iconRedoInactive"/>
-                                            <connections>
-                                                <action selector="tapRedo:" destination="-1" eventType="touchUpInside" id="nBw-w7-FJp"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
+                                    <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                                    <state key="normal" title="Cancel">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="tapCancel:" destination="-1" eventType="touchUpInside" id="uTT-tY-C7t"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l97-P3-CfM">
+                                    <rect key="frame" x="245" y="4" width="60" height="32"/>
+                                    <color key="backgroundColor" red="0.90980392156862744" green="0.41176470588235292" blue="0.27450980392156865" alpha="1" colorSpace="deviceRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="40" id="MyR-aS-d7G"/>
+                                        <constraint firstAttribute="width" constant="60" id="ly1-wk-q7O"/>
                                     </constraints>
-                                </stackView>
+                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                                    <state key="normal" title="Next">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="tapDone:" destination="-1" eventType="touchUpInside" id="2oX-sw-nPy"/>
+                                    </connections>
+                                </button>
                             </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="1qz-2K-ou1"/>
+                            </constraints>
+                            <edgeInsets key="layoutMargins" top="4" left="4" bottom="4" right="4"/>
+                        </stackView>
+                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nj5-3L-GDr" customClass="DrawingView" customModule="DebuggIt" customModuleProvider="target">
+                            <rect key="frame" x="8" y="56" width="309" height="507"/>
+                        </imageView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="VwM-po-uZI">
+                            <rect key="frame" x="8" y="574" width="190" height="37"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tkk-pW-6bJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="38" height="37"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
+                                    <state key="normal" image="iconArrowInactive"/>
+                                    <connections>
+                                        <action selector="tapArrow:" destination="-1" eventType="touchUpInside" id="qJO-aS-1Gg"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaI-5i-RVl">
+                                    <rect key="frame" x="38" y="0.0" width="38" height="37"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
+                                    <state key="normal" image="iconRectangleInactive"/>
+                                    <connections>
+                                        <action selector="tapRectangle:" destination="-1" eventType="touchUpInside" id="aqx-CR-Xh9"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yuf-29-eh8">
+                                    <rect key="frame" x="76" y="0.0" width="38" height="37"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
+                                    <state key="normal" image="iconDrawInactive"/>
+                                    <connections>
+                                        <action selector="tapFreeDraw:" destination="-1" eventType="touchUpInside" id="PKJ-hG-hZc"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Izm-RY-fO5">
+                                    <rect key="frame" x="114" y="0.0" width="38" height="37"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
+                                    <state key="normal" image="iconUndoInactive"/>
+                                    <connections>
+                                        <action selector="tapUndo:" destination="-1" eventType="touchUpInside" id="u78-qX-Msv"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0MY-QP-63J">
+                                    <rect key="frame" x="152" y="0.0" width="38" height="37"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
+                                    <state key="normal" image="iconRedoInactive"/>
+                                    <connections>
+                                        <action selector="tapRedo:" destination="-1" eventType="touchUpInside" id="nBw-w7-FJp"/>
+                                    </connections>
+                                </button>
+                            </subviews>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="07g-wt-XI2" firstAttribute="leading" secondItem="AjI-Dj-cmh" secondAttribute="leading" constant="8" id="AVp-Y3-EFn"/>
-                        <constraint firstAttribute="bottom" secondItem="07g-wt-XI2" secondAttribute="bottom" constant="8" id="HeD-RG-fvz"/>
-                        <constraint firstAttribute="trailing" secondItem="07g-wt-XI2" secondAttribute="trailing" constant="8" id="bff-NW-Czr"/>
-                        <constraint firstItem="07g-wt-XI2" firstAttribute="top" secondItem="AjI-Dj-cmh" secondAttribute="top" constant="8" id="fau-9J-UQu"/>
+                        <constraint firstAttribute="trailing" secondItem="go7-IF-8Kc" secondAttribute="trailing" constant="8" id="6EU-e2-fHe"/>
+                        <constraint firstItem="go7-IF-8Kc" firstAttribute="top" secondItem="AjI-Dj-cmh" secondAttribute="top" constant="8" id="E4P-VV-Smy"/>
+                        <constraint firstItem="go7-IF-8Kc" firstAttribute="leading" secondItem="AjI-Dj-cmh" secondAttribute="leading" constant="8" id="ED5-9w-Dhc"/>
+                        <constraint firstAttribute="trailing" secondItem="Nj5-3L-GDr" secondAttribute="trailing" constant="8" id="FJ1-HJ-THF"/>
+                        <constraint firstItem="Nj5-3L-GDr" firstAttribute="top" secondItem="go7-IF-8Kc" secondAttribute="bottom" constant="8" id="LXk-KD-HeL"/>
+                        <constraint firstAttribute="bottom" secondItem="VwM-po-uZI" secondAttribute="bottom" constant="8" id="Pnc-Ay-u2c"/>
+                        <constraint firstItem="VwM-po-uZI" firstAttribute="leading" secondItem="AjI-Dj-cmh" secondAttribute="leading" constant="8" id="hOG-Kh-OJJ"/>
                     </constraints>
                 </view>
             </subviews>
@@ -157,7 +154,7 @@
                 <constraint firstItem="Bee-fv-MEP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="yyp-H1-eN1"/>
                 <constraint firstAttribute="bottom" secondItem="AjI-Dj-cmh" secondAttribute="bottom" constant="24" id="z5B-fA-pYd"/>
             </constraints>
-            <point key="canvasLocation" x="44" y="14"/>
+            <point key="canvasLocation" x="44" y="13.943028485757123"/>
         </view>
     </objects>
     <resources>
