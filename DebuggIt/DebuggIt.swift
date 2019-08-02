@@ -230,7 +230,15 @@ public class DebuggIt: NSObject {
     }
     
     @objc func updateDebuggitButtonContraint() {
-        buttonHeightContraint.constant = (self.buttonYMultiplier * UIScreen.main.bounds.height) - (debuggItButton.frame.height / 2)
+        if UIDevice.current.orientation.isPortrait || UIDevice.current.orientation.isLandscape {
+            var height: CGFloat = 0.0
+            if UIDevice.current.orientation.isPortrait {
+                height = (UIScreen.main.bounds.height > UIScreen.main.bounds.width) ? UIScreen.main.bounds.height : UIScreen.main.bounds.width
+            } else if UIDevice.current.orientation.isLandscape {
+                height = (UIScreen.main.bounds.height < UIScreen.main.bounds.width) ? UIScreen.main.bounds.height : UIScreen.main.bounds.width
+            }
+            buttonHeightContraint.constant = (self.buttonYMultiplier * height) - (debuggItButton.frame.height / 2)
+        }
     }
     
     private func addConstraints(for view : UIView, in container: UIView) {
