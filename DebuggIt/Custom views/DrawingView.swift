@@ -41,10 +41,20 @@ class DrawingView: UIImageView {
     private var nextDrawings = [DrawingType]()
     
     private lazy var convertRatio: CGSize = {
-        let widthRatio = (self.image!.size.width / self.bounds.size.width)
-        let heightRatio = (self.image!.size.height / self.bounds.size.height)
-        return CGSize(width: widthRatio, height: heightRatio)
+        return getConvertRatio()
     }()
+    
+    override var bounds: CGRect {
+        didSet {
+            convertRatio = getConvertRatio()
+        }
+    }
+    
+    override var image: UIImage? {
+        didSet {
+            convertRatio = getConvertRatio()
+        }
+    }
     
     private var isDrawingRect = false
     
@@ -110,6 +120,12 @@ class DrawingView: UIImageView {
             lastDrawings.append(type)
         }
         delegate?.highlightUndoButton(highlight: true)
+    }
+    
+    private func getConvertRatio() -> CGSize {
+        let widthRatio = (self.image!.size.width / self.bounds.size.width)
+        let heightRatio = (self.image!.size.height / self.bounds.size.height)
+        return CGSize(width: widthRatio, height: heightRatio)
     }
     
     private func initBezierPath(lineWidth: CGFloat = 5.0, lineCapStyle: CGLineCap = .round) -> UIBezierPath {
