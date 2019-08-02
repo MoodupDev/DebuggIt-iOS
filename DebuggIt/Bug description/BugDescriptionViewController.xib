@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -32,10 +31,10 @@
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pDV-z7-fPk" customClass="BackgroundView" customModule="DebuggIt" customModuleProvider="target">
-                    <rect key="frame" x="25" y="100" width="325" height="467"/>
+                    <rect key="frame" x="25" y="40" width="325" height="587"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JMn-U5-eZa">
-                            <rect key="frame" x="8" y="8" width="309" height="451"/>
+                            <rect key="frame" x="8" y="8" width="309" height="571"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8dn-5n-hAC">
                                     <rect key="frame" x="0.0" y="0.0" width="309" height="40"/>
@@ -85,7 +84,7 @@
                                     <edgeInsets key="layoutMargins" top="4" left="4" bottom="4" right="4"/>
                                 </stackView>
                                 <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s9f-Q6-bqO">
-                                    <rect key="frame" x="0.0" y="40" width="309" height="411"/>
+                                    <rect key="frame" x="0.0" y="40" width="309" height="531"/>
                                 </containerView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -105,9 +104,10 @@
                 <constraint firstItem="pDV-z7-fPk" firstAttribute="centerY" secondItem="xVq-KS-Kf0" secondAttribute="centerY" id="1Im-f3-XoA"/>
                 <constraint firstItem="pDV-z7-fPk" firstAttribute="centerY" secondItem="xVq-KS-Kf0" secondAttribute="centerY" id="DGK-j2-AfF"/>
                 <constraint firstAttribute="trailing" secondItem="pDV-z7-fPk" secondAttribute="trailing" constant="25" id="ECS-uw-gnj"/>
+                <constraint firstItem="pDV-z7-fPk" firstAttribute="top" secondItem="xVq-KS-Kf0" secondAttribute="top" constant="40" id="Esf-vu-5cy"/>
                 <constraint firstAttribute="bottom" secondItem="vdu-mD-wiW" secondAttribute="bottom" id="Ix2-md-r68"/>
+                <constraint firstAttribute="bottom" secondItem="pDV-z7-fPk" secondAttribute="bottom" constant="40" id="JSZ-Bd-mXw"/>
                 <constraint firstItem="pDV-z7-fPk" firstAttribute="centerX" secondItem="xVq-KS-Kf0" secondAttribute="centerX" id="UTA-Y8-OSB"/>
-                <constraint firstItem="pDV-z7-fPk" firstAttribute="height" secondItem="vdu-mD-wiW" secondAttribute="height" multiplier="0.7" id="bF7-52-1Fo"/>
                 <constraint firstItem="vdu-mD-wiW" firstAttribute="leading" secondItem="xVq-KS-Kf0" secondAttribute="leading" id="bIp-lg-uhp"/>
                 <constraint firstItem="pDV-z7-fPk" firstAttribute="centerX" secondItem="xVq-KS-Kf0" secondAttribute="centerX" id="gd5-gm-81F"/>
                 <constraint firstAttribute="trailing" secondItem="vdu-mD-wiW" secondAttribute="trailing" id="kuQ-dQ-jlQ"/>
