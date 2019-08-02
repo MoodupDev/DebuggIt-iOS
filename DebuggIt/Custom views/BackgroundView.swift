@@ -8,7 +8,6 @@
 
 import UIKit
 
-@IBDesignable
 class BackgroundView: UIView {
     
     @IBOutlet weak var usableArea: UIView!

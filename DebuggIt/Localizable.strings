@@ -38,7 +38,7 @@ alert.sending.screenshot = "Sending screenshot.\nWait for the end...";
 alert.sending.report = "Sending report.\nWait for the end...";
 alert.message.wait = "Wait for the end...";
 alert.message.login = "Signing in to account...";
-alert.message.login.successful = "Now let\'s smash some bugs";
+alert.message.login.successful = "Now let\'s smash some bugs\nIf you want to log out just hold down the debugg.it icon";
 
 alert.message.recording.disabled = "Please ask your developer to enable this feature";
 alert.message.recording.missing.description = "Please ask developer to provide microphone usage description";
