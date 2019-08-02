@@ -133,10 +133,10 @@
                             <subviews>
                                 <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nj5-3L-GDr" customClass="DrawingView" customModule="DebuggIt" customModuleProvider="target">
                                     <rect key="frame" x="-7" y="18" width="222" height="423"/>
-                                    <color key="backgroundColor" red="0.0" green="1" blue="0.53567248841262893" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </imageView>
                             </subviews>
-                            <color key="backgroundColor" red="0.0" green="0.57870462940745071" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="Nj5-3L-GDr" firstAttribute="centerX" secondItem="xaL-eI-6kC" secondAttribute="centerX" id="MYU-F7-Tp3"/>
                                 <constraint firstItem="Nj5-3L-GDr" firstAttribute="centerY" secondItem="xaL-eI-6kC" secondAttribute="centerY" id="fMX-KV-DWt"/>
