@@ -23,6 +23,8 @@ class BugDescriptionPage1ViewController: UIViewController {
     
     @IBOutlet weak var reportItemsCollection: UICollectionView!
     weak var delegate: BugDescriptionPage1Delegate?
+    
+    var ratio: CGFloat = 0.0
     // MARK: - Overriden
 
     override func viewDidLoad() {
@@ -31,7 +33,21 @@ class BugDescriptionPage1ViewController: UIViewController {
         initTitle()
         initRecordButton()
         loadDataFromReport()
+        if UIScreen.main.bounds.width > UIScreen.main.bounds.height {
+            ratio = UIScreen.main.bounds.height / UIScreen.main.bounds.width
+        } else {
+            ratio = UIScreen.main.bounds.width / UIScreen.main.bounds.height
+        }
         initReportItemsCollection()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: nil) { (_) in
+            let range = Range(uncheckedBounds: (0, self.reportItemsCollection.numberOfSections))
+            let indexSet = IndexSet(integersIn: range)
+            self.reportItemsCollection.reloadSections(indexSet)
+        }
     }
     
     // MARK: - Methods
@@ -58,6 +74,7 @@ class BugDescriptionPage1ViewController: UIViewController {
     }
     
     private func initReportItemsCollection() {
+        self.reportItemsCollection.delegate = self
         self.reportItemsCollection.dataSource = self
         
         self.reportItemsCollection.register(Initializer.nib(named: Constants.screenshotReuseIdentifier), forCellWithReuseIdentifier: Constants.screenshotReuseIdentifier)
@@ -164,7 +181,7 @@ extension BugDescriptionPage1ViewController: RecordViewControllerDelegate {
 
 // MARK: - UICollectionViewDataSource
 
-extension BugDescriptionPage1ViewController : UICollectionViewDataSource {
+extension BugDescriptionPage1ViewController : UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var itemsCount: Int {
         return self.viewModel.getScreenshotCount()
@@ -174,6 +191,13 @@ extension BugDescriptionPage1ViewController : UICollectionViewDataSource {
         return 1
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView.bounds.height > 190 {
+            return CGSize(width: collectionView.bounds.height * ratio, height: collectionView.bounds.height)
+        } else {
+            return CGSize(width: 190 * ratio, height: 190)
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return itemsCount
