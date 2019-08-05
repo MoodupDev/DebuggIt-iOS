@@ -12,7 +12,6 @@
         <!--Navigation Controller-->
         <scene sceneID="mu8-Dw-XQH">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bYs-2k-f0t" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="cRp-eU-PkA" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YBe-sW-rrv">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -22,6 +21,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="2kv-S7-sh6"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bYs-2k-f0t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-930" y="134"/>
         </scene>
@@ -36,23 +36,7 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <wkWebView contentMode="scaleToFill" customUserAgent="" translatesAutoresizingMaskIntoConstraints="NO" id="koD-R1-d8c">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration" allowsInlineMediaPlayback="YES">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="koD-R1-d8c" secondAttribute="trailing" id="CuP-qL-87m"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="koD-R1-d8c" secondAttribute="bottom" id="S2N-h3-Pgy"/>
-                            <constraint firstItem="koD-R1-d8c" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="ey7-sI-6o5"/>
-                            <constraint firstItem="koD-R1-d8c" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="u1O-4F-X6W"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Bfh-eh-4Nq">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="SdE-Th-eMC">
@@ -61,9 +45,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="webView" destination="koD-R1-d8c" id="2rF-9c-eQi"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -80,27 +61,8 @@
                     <view key="view" contentMode="scaleToFill" id="O7p-tJ-Mci">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <wkWebView contentMode="scaleToFill" customUserAgent="" translatesAutoresizingMaskIntoConstraints="NO" id="X0D-fE-25j">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration" allowsInlineMediaPlayback="YES">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="X0D-fE-25j" firstAttribute="top" secondItem="eeQ-Jf-Pui" secondAttribute="bottom" id="CE1-DD-qHt"/>
-                            <constraint firstAttribute="trailing" secondItem="X0D-fE-25j" secondAttribute="trailing" id="EXg-tc-mqf"/>
-                            <constraint firstItem="OWa-Y7-1DY" firstAttribute="top" secondItem="X0D-fE-25j" secondAttribute="bottom" id="KZj-ei-jPJ"/>
-                            <constraint firstItem="X0D-fE-25j" firstAttribute="leading" secondItem="O7p-tJ-Mci" secondAttribute="leading" id="fji-ha-57s"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="webView" destination="X0D-fE-25j" id="u3n-Um-eUb"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oFy-OI-9yE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -10,14 +10,13 @@ import Foundation
 import UIKit
 import WebKit
 
-class SecondViewController: UIViewController {
-    
-    @IBOutlet weak var webView: WKWebView!
+class SecondViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let url = URL(string: "https://moodup.team/") else { return }
-        self.webView.load(URLRequest(url: url))
+        
+        self.addWebView("https://moodup.team/")
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     

@@ -99,6 +99,7 @@
 		2E1FADBA22E70EF700F988F7 /* ApiStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1FADB922E70EF700F988F7 /* ApiStorageProtocol.swift */; };
 		2E1FADBC22E7102D00F988F7 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1FADBB22E7102D00F988F7 /* ApiClient.swift */; };
 		2E66EF1622E9AEAD00425DE9 /* ApiClientDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E66EF1522E9AEAD00425DE9 /* ApiClientDelegate.swift */; };
+		2EB41C4522F806160090154E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB41C4422F806160090154E /* BaseViewController.swift */; };
 		2EEE915922E1C1F000314384 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EEE915822E1C1EF00314384 /* WebKit.framework */; };
 		2EF71CA922F4729F00EC2EE1 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF71CA822F4729F00EC2EE1 /* SecondViewController.swift */; };
 		32FF7D199722C049F1A46367 /* Pods_DebuggItDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6852C03E47FF6BC054594596 /* Pods_DebuggItDemo.framework */; };
@@ -251,6 +252,7 @@
 		2E1FADB922E70EF700F988F7 /* ApiStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiStorageProtocol.swift; sourceTree = "<group>"; };
 		2E1FADBB22E7102D00F988F7 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		2E66EF1522E9AEAD00425DE9 /* ApiClientDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClientDelegate.swift; sourceTree = "<group>"; };
+		2EB41C4422F806160090154E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		2EEE915822E1C1EF00314384 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		2EF71CA822F4729F00EC2EE1 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		30812007056C70373B103EBB /* Pods-DebuggIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebuggIt.release.xcconfig"; path = "Target Support Files/Pods-DebuggIt/Pods-DebuggIt.release.xcconfig"; sourceTree = "<group>"; };
@@ -553,6 +555,7 @@
 			isa = PBXGroup;
 			children = (
 				21E83D281E25317700D24FBF /* AppDelegate.swift */,
+				2EB41C4422F806160090154E /* BaseViewController.swift */,
 				21E83D2A1E25317700D24FBF /* FirstViewController.swift */,
 				2EF71CA822F4729F00EC2EE1 /* SecondViewController.swift */,
 				21E83D2C1E25317700D24FBF /* Main.storyboard */,
@@ -1046,6 +1049,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EF71CA922F4729F00EC2EE1 /* SecondViewController.swift in Sources */,
+				2EB41C4522F806160090154E /* BaseViewController.swift in Sources */,
 				21E83D2B1E25317700D24FBF /* FirstViewController.swift in Sources */,
 				21E83D291E25317700D24FBF /* AppDelegate.swift in Sources */,
 			);
