@@ -14,6 +14,8 @@ protocol BugDescriptionPage1Delegate: class {
 
 class BugDescriptionPage1ViewController: UIViewController {
     
+    let collectionViewHeight: CGFloat = 190.0
+    
     // MARK: - Properties
     var viewModel = BugDescriptionPage1ViewModel()
     @IBOutlet var kindButtons: [UIButton]!
@@ -192,10 +194,10 @@ extension BugDescriptionPage1ViewController : UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView.bounds.height > 190 {
+        if collectionView.bounds.height > collectionViewHeight {
             return CGSize(width: collectionView.bounds.height * ratio, height: collectionView.bounds.height)
         } else {
-            return CGSize(width: 190 * ratio, height: 190)
+            return CGSize(width: collectionViewHeight * ratio, height: collectionViewHeight)
         }
     }
     
