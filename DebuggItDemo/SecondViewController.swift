@@ -12,10 +12,12 @@ import WebKit
 
 class SecondViewController: BaseViewController {
     
+    private let url = "https://moodup.team/"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.addWebView("https://moodup.team/")
+        self.addWebView(url)
         
         // Do any additional setup after loading the view, typically from a nib.
     }

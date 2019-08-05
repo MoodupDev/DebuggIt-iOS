@@ -35,11 +35,7 @@ class BugDescriptionPage1ViewController: UIViewController {
         initTitle()
         initRecordButton()
         loadDataFromReport()
-        if UIScreen.main.bounds.width > UIScreen.main.bounds.height {
-            ratio = UIScreen.main.bounds.height / UIScreen.main.bounds.width
-        } else {
-            ratio = UIScreen.main.bounds.width / UIScreen.main.bounds.height
-        }
+        initRatio()
         initReportItemsCollection()
     }
     
@@ -53,6 +49,14 @@ class BugDescriptionPage1ViewController: UIViewController {
     }
     
     // MARK: - Methods
+    
+    private func initRatio() {
+        if UIScreen.main.bounds.width > UIScreen.main.bounds.height {
+            ratio = UIScreen.main.bounds.height / UIScreen.main.bounds.width
+        } else {
+            ratio = UIScreen.main.bounds.width / UIScreen.main.bounds.height
+        }
+    }
     
     private func initTitle() {
         titleTextView.delegate = self

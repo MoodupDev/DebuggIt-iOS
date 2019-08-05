@@ -110,15 +110,19 @@ class RecordViewController: UIViewController {
     
     private func uploadAudio(_ alert: UIAlertController, data: String) {
         DebuggIt.sharedInstance.storageClient?.upload(.audio, data: data, successBlock: {
-            alert.dismiss(animated: true, completion: nil)
-            self.showAudioSentDialog()
+            DispatchQueue.main.async {
+                alert.dismiss(animated: true, completion: nil)
+                self.showAudioSentDialog()
+            }
         }, errorBlock: { (code, message) in
-            alert.dismiss(animated: true, completion: {
-                self.present(Utils.createGeneralErrorAlert(action: {
-                    self.delegate?.recordFailed()
-                    self.dismiss(animated: true, completion: nil)
-                }), animated: true, completion: nil)
-            })
+            DispatchQueue.main.async {
+                alert.dismiss(animated: true, completion: {
+                    self.present(Utils.createGeneralErrorAlert(action: {
+                        self.delegate?.recordFailed()
+                        self.dismiss(animated: true, completion: nil)
+                    }), animated: true, completion: nil)
+                })
+            }
         })
     }
     

@@ -10,12 +10,13 @@ import UIKit
 import WebKit
 
 class FirstViewController: BaseViewController {
-
+    
+    private let url = "https://debugg.it/"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.addWebView("https://debugg.it/")
+        self.addWebView(self.url)
         
         // Do any additional setup after loading the view, typically from a nib.
     }
