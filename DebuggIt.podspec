@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "DebuggIt"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "Tool that will help QA and clients report bugs easily directly from the device"
 
 
@@ -92,7 +92,7 @@ DebuggIt.sharedInstance.initJira(host: "jira-host-url", projectKey: "project-key
 
 <a name="configure-api"/>
 
-###API for uploading image files and (optionally) audio files ###
+### API for uploading image files and (optionally) audio files ###
 
 debugg.it requires an API where it can send image files and (optionally) audio files. There are 3 available configurations:
 
