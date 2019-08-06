@@ -14,6 +14,7 @@ class BaseViewController: UIViewController {
     
     func addWebView(_ url: String) {
         guard let url = URL(string: url) else { return }
+        
         let config = WKWebViewConfiguration()
         config.allowsInlineMediaPlayback = true
         let webView = WKWebView(frame: self.view.frame, configuration: config)
