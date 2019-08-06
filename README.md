@@ -96,6 +96,7 @@ debugg.it requires an API where it can send image files and (optionally) audio f
         "data": "base64String"
     }
     ```
+    
     * `DebuggIt.getInstance().initDefaultStorage(url: "baseUrl", imagePath: "imagePath", audioPath: "audioPath")`
         * where
             * `baseUrl` is a base url of your backend (e.g. `https://url-to-backend.com`)
