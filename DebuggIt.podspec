@@ -204,24 +204,22 @@ Ensure you have added _Microphone Usage Description_ in your `Info.plist` file. 
 DESCRIPTION_CONTENT
 
   s.homepage        = "http://debugg.it"
-  # s.screenshots   = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license         = { :type => 'Apache License, Version 2.0', :file => 'LICENSE' }
   s.author          = { "MoodUp.team" => "info@debugg.it" }
   s.source          = { :git => "https://github.com/MoodupDev/DebuggIt-iOS.git", :tag => s.version }
-  s.source_files    = 'DebuggIt/*'
-
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source_files    = 'DebuggIt/**/*.swift'
+  s.resources       = 'DebuggIt/**/*.{png,jpeg,jpg,ttf,storyboard,xib,xcassets}'
 
   s.ios.deployment_target = '11.0'
   s.swift_version = '5.0'
 
-  s.dependency 'Alamofire', "~> 5.0.0-beta.6"
+  s.dependency 'Alamofire', "~> 5.0.0-beta.7"
   s.dependency 'SwiftyJSON', "~> 5.0.0"
   s.dependency 'IQKeyboardManagerSwift', '~> 6.3.0'
   s.dependency 'KMPlaceholderTextView', '~> 1.4.0'
   s.dependency 'RNCryptor', "~> 5.0"
   s.dependency 'ReachabilitySwift', "~> 4.3.1"
-  s.dependency 'AWSCore', "~> 2.10.0"
-  s.dependency 'AWSS3', "~> 2.10.0"
+  s.dependency 'AWSCore', "~> 2.10.2"
+  s.dependency 'AWSS3', "~> 2.10.2"
 
 end

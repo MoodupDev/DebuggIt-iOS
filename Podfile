@@ -4,14 +4,14 @@ platform :ios, '11.0'
 project 'Debuggit.xcodeproj'
 
 def shared_pods
-  pod 'Alamofire', '~> 5.0.0-beta.6'
+  pod 'Alamofire', '~> 5.0.0-beta.7'
   pod 'SwiftyJSON', '~> 5.0.0'
   pod 'IQKeyboardManagerSwift', '~> 6.3.0'
   pod 'KMPlaceholderTextView', '~> 1.4.0'
   pod 'RNCryptor', '~> 5.0'
   pod 'ReachabilitySwift', '~> 4.3.1'
-  pod 'AWSCore', '~> 2.10.0'
-  pod 'AWSS3', '~> 2.10.0'
+  pod 'AWSCore', '~> 2.10.2'
+  pod 'AWSS3', '~> 2.10.2'
 end
 
 target 'DebuggIt' do
