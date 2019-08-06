@@ -108,11 +108,11 @@ debugg.it requires an API where it can send image files and (optionally) audio f
     This is an extension of default API configuration. The difference is that you have to handle `uploadImage` / `uploadAudio` request and response. You are responsible for communication with your backend, but at the same time you have full control over it.
 
     * `DebuggIt.sharedInstance.initCustomStorage(uploadImage: { (base64, delegate) in }, uploadAudio: { (base64, delegate) in })`
-    * where
-        * `uploadImage` is a callback with prepared base64 converted image and response delegate
-            * `delegate` is a `ApiClientDelegate` object, and should call `.uploadSuccessClousure("url-to-image")` in case of success or `.errorClousure(code, message)`in case of error.
-        * `uploadImage` is a callback with prepared base64 converted image and response delegate
-            * `delegate` is a `ApiClientDelegate` object, and should call `.uploadSuccessClousure("url-to-audio")` in case of success or `.errorClousure(code, message)`in case of error.
+        * where
+            * `uploadImage` is a callback with prepared base64 converted image and response delegate
+                * `delegate` is a `ApiClientDelegate` object, and should call `.uploadSuccessClousure("url-to-image")` in case of success or `.errorClousure(code, message)`in case of error.
+            * `uploadImage` is a callback with prepared base64 converted image and response delegate
+                * `delegate` is a `ApiClientDelegate` object, and should call `.uploadSuccessClousure("url-to-audio")` in case of success or `.errorClousure(code, message)`in case of error.
 
 <a name="configure-sample"/>
 
