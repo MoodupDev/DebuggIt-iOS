@@ -19,27 +19,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        DebuggIt.sharedInstance
-            .initAWS(bucketName: "staging.debugg.it", regionType: .EUCentral1, identityPool: "***REMOVED***")
-            //TODO Remove and prepare better examples when ready to open source
-//            .initDefaultStorage(url: "https://url-to-backend.com/api", imagePath: "/debuggit/uploadImage", audioPath: "/debuggit/uploadAudio")
-//            .initCustomStorage(uploadImage: { (base64, delegate) in
-//                self.send(url: "https://url-to-backend.com/debuggit/uploadImage", base: base64, delegate: delegate)
-//            }, uploadAudio: { (base64, delegate) in
-//                self.send(url: "https://debuggit-api.herokuapp.com/debuggit/uploadAudio", base: base64, delegate: delegate)
-//            })
-            .initBitbucket(repoSlug: "BugReporter", accountName: "MoodUp")
-//        .initGithub(repoSlug: "DebuggIt-Android", accountName: "MoodupDev")
+        initS3WithBitbucket()
         DebuggIt.sharedInstance.recordingEnabled = true
         return true
     }
     
-    func send(url: String, base: String, delegate: ApiClientDelegate) {
+    private func initS3WithBitbucket() {
+        DebuggIt.sharedInstance
+            .initAWS(bucketName: "bucketName", regionType: .EUCentral1, identityPool: "identityPool")
+            .initBitbucket(repoSlug: "repo-name", accountName: "repo-owner-username")
+    }
+    
+    private func initDefaultAPIWithGithub() {
+        DebuggIt.sharedInstance
+            .initDefaultStorage(url: "baseUrl", imagePath: "imagePath", audioPath: "audioPath")
+            .initGithub(repoSlug: "repo-name", accountName: "repo-owner-username")
+    }
+    
+    private func initCustomAPIWithJira() {
+        DebuggIt.sharedInstance
+            .initCustomStorage(uploadImage: { (base64, delegate) in
+                self.send(url: "baseUrl/imagePath", base: base64, delegate: delegate)
+            }, uploadAudio: { (base64, delegate) in
+                self.send(url: "baseUrl/audioPath", base: base64, delegate: delegate)
+            })
+            .initJira(host: "jira-host-url", projectKey: "project-key")
+    }
+    
+    private func send(url: String, base: String, delegate: ApiClientDelegate) {
         let params : Parameters = [
             "data": base,
         ]
         
-        AF.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { (response) in
+        AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
             switch response.result {
             case .success(let value):
                 let value = JSON(value)
@@ -49,9 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 delegate.errorClousure(nil, error.errorDescription)
             default:
                 delegate.errorClousure(nil, nil)
-                
             }
-            
         }
     }
 
