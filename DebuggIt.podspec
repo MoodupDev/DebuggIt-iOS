@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "DebuggIt"
-  s.version      = "0.2.4"
+  s.version      = "1.0.0"
   s.summary      = "Tool that will help QA and clients report bugs easily directly from the device"
 
 
@@ -20,56 +20,67 @@ Pod::Spec.new do |s|
 
   s.description  = <<-DESCRIPTION_CONTENT
 # debugg.it
+[https://debugg.it](https://debugg.it)
 
-debugg.it is a simple, yet powerful tool that helps you get reports of the bugs directly to your defined issue tracker. It is a perfect tool for QA/clients.
+## Table of Contents ##
 
-## Installation
++ [What is this repository for?](#what-is-this)
++ [Example](#example)
++ [Installation](#setup)
++ [Configure and initialize debugg.it in your project](#configure)
+    * [Configure service for issues](#configure-issue)
+    * [API for uploading image files and (optionally) audio files](#configure-api)
+    * [Sample configuration](#configure-sample)
++ [Additional options](#extra-options)
++ [Author](#author)
++ [Licence](#licence)
 
-debugg.it is available through CocoaPods. To install it, add the following to your Podfile:
+<a name="what-is-this"/>
 
+## What is this repository for? ##
+
+This is a library, which provides a tool to report iOS application bugs directly into JIRA / GitHub/ BitBucket Issue Tracker.
+
+<a name="example"/>
+
+# Example
+
+To run the example project, open `DebuggIt.xcworkspace`, choose `DebuggItDemo` scheme and build it.
+
+<a name="setup"/>
+
+## Installation ##
+
+debugg.it is available through CocoaPods. To install it, add the following to your Podfile and run `pod install`:
 ```ruby
-use_frameworks!
-platform :ios, '9.0'
 pod 'DebuggIt'
 ```
+<a name="configure"/>
 
-Don’t forget to import the Pod in `AppDelegate`:
+## Configure and initialize debugg.it in your project ##
 
+In your `AppDelegate` import the pod:
 ```swift
 import DebuggIt
 ```
-or in Objective-C
-```objc
-@import DebuggIt;
-```
 
-and add one of these lines (**at start of method**) to initialize debugg.it
+<a name="configure-issue"/>
 
-*Swift*:
+### Configure service for issues ###
+
+Add one of these lines (**at start of method**) to initialize debugg.it issue service
 
 ```swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    ...
     // Override point for customization after application launch.
     DebuggIt.sharedInstance.initBitbucket(repoSlug: "repo-name", accountName: "repo-owner-username")
     // or Github
     DebuggIt.sharedInstance.initGithub(repoSlug: "repo-name", accountName: "repo-owner-username")
     // or JIRA
     DebuggIt.sharedInstance.initJira(host: "jira-host-url", projectKey: "project-key")
+    ...
     return true
-}
-```
-
-*Objective-C*:
-
-```objc
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Bitbucket
-    [[DebuggIt sharedInstance] initBitbucketWithRepoSlug: @"repo-name" accountName:@"repo-owner-username"];
-    // or Github
-    [[DebuggIt sharedInstance] initGithubWithRepoSlug: @"repo-name" accountName:@"repo-owner-username"];
-    // or JIRA
-    [[DebuggIt sharedInstance] initJiraWithHost:@"jira-host-url" projectKey:@"project-key" usesHttps:YES];
-    return YES;
 }
 ```
 
@@ -79,22 +90,101 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 DebuggIt.sharedInstance.initJira(host: "jira-host-url", projectKey: "project-key", usesHttps: false)
 ```
 
-```objc
-[[DebuggIt sharedInstance] initJiraWithHost:@"jira-host-url" projectKey:@"project-key" usesHttps:NO];
-``` 
+<a name="configure-api"/>
 
-### Additional options
+###API for uploading image files and (optionally) audio files ###
 
-#### Record notes
+debugg.it requires an API where it can send image files and (optionally) audio files. There are 3 available configurations:
 
-**debugg.it** allows to record audio notes and add it to bug description. To enable this feature simply add this line in your `AppDelegate` file:
++ AWS S3 Bucket
+
+    This configuration uses your AWS S3 bucket (https://aws.amazon.com/s3/) to store image and audio files.
+
+    * `DebuggIt.sharedInstance.initAWS(bucketName: "bucketName", regionType: .EUCentral1, identityPool: "identityPool")`
+        * where
+            * `bucketName` is a name of your bucket
+            * `regionType` is a`AWSRegionType` where your S3 bucket is hosted
+            * `identityPool` is a cognito generated key for your S3 bucket
+
+##
+
++ Default API
+
+    This configuration uses your backend to send image and audio files. Data is sent via POST call on given endpoint with following parameter:
+    ```json
+    {
+        "data": "base64String"
+    }
+    ```
+    
+    * `DebuggIt.getInstance().initDefaultStorage(url: "baseUrl", imagePath: "imagePath", audioPath: "audioPath")`
+        * where
+            * `baseUrl` is a base url of your backend (e.g. `https://url-to-backend.com`)
+            * `imagePath` is an endpoint handling image upload (e.g. `/debuggit/uploadImage`)
+            * `audioPath` is an endpoint handling audio upload (e.g. `/debuggit/uploadAudio`)
+##
+
++ Custom API
+
+    This is an extension of default API configuration. The difference is that you have to handle `uploadImage` / `uploadAudio` request and response. You are responsible for communication with your backend, but at the same time you have full control over it.
+
+    * `DebuggIt.sharedInstance.initCustomStorage(uploadImage: { (base64, delegate) in }, uploadAudio: { (base64, delegate) in })`
+        * where
+            * `uploadImage` is a callback with prepared base64 converted image and response delegate
+                * `delegate` is a `ApiClientDelegate` object, and should call `.uploadSuccessClousure("url-to-image")` in case of success or `.errorClousure(code, message)`in case of error.
+            * `uploadImage` is a callback with prepared base64 converted image and response delegate
+                * `delegate` is a `ApiClientDelegate` object, and should call `.uploadSuccessClousure("url-to-audio")` in case of success or `.errorClousure(code, message)`in case of error.
+
+<a name="configure-sample"/>
+
+### Sample configurations ###
+
++ Init BitBucket with S3:
+##
+```swift
+DebuggIt.sharedInstance
+        .initAWS(bucketName: "bucketName", regionType: .EUCentral1, identityPool: "identityPool")
+        .initBitbucket(repoSlug: "repo-name", accountName: "repo-owner-username")
+```
+
++ Init GitHub with default API:
+##
+```swift
+DebuggIt.sharedInstance
+        .initDefaultStorage(url: "baseUrl", imagePath: "imagePath", audioPath: "audioPath")
+        .initGithub(repoSlug: "repo-name", accountName: "repo-owner-username")
+```
+
++ Init JIRA with custom API:
+##
+```swift
+DebuggIt.sharedInstance
+        .initCustomStorage(uploadImage: { (base64, delegate) in
+            // Handle API call to your backend and call uploadSuccessClousure on delegate with url
+            // delegate.uploadSuccessClousure("url-to-image")
+
+            // If something went wrong, call errorClousure on delegate
+            // delegate.errorClousure(400, "Could not upload image")
+        }, uploadAudio: { (base64, delegate) in
+            // Handle API call to your backend and call uploadSuccessClousure on delegate with url
+            // delegate.uploadSuccessClousure("url-to-audio")
+
+            // If something went wrong, call errorClousure on delegate
+            // delegate.errorClousure(400, "Could not upload audio")    
+        })
+        .initJira(host: "jira-host-url", projectKey: "project-key")
+```
+## That's all. Your debugg.it is ready to work. ##
+
+<a name="extra-options"/>
+
+## Additional options
+
+**debugg.it** allows to record audio notes and add it to bug description. To enable this feature simply add this line to your configuration in `AppDelegate` class:
+
 
 ```swift
 DebuggIt.sharedInstance.recordingEnabled = true
-```
-
-```objc
-[DebuggIt sharedInstance].recordingEnabled = YES;
 ```
 
 Ensure you have added _Microphone Usage Description_ in your `Info.plist` file. For example:
@@ -115,20 +205,23 @@ DESCRIPTION_CONTENT
 
   s.homepage        = "http://debugg.it"
   # s.screenshots   = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license         = { :type => 'MIT', :file => 'LICENSE' }
+  s.license         = { :type => 'Apache License, Version 2.0', :file => 'LICENSE' }
   s.author          = { "MoodUp.team" => "info@debugg.it" }
-  s.source          = { :http => "http://debugg.it/downloads/ios/#{s.version}/DebuggIt.framework.zip" }
+  s.source          = { :git => "https://github.com/MoodupDev/DebuggIt-iOS.git", :tag => s.version }
+  s.source_files    = 'DebuggIt/*'
 
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '9.0'
-  s.ios.vendored_frameworks = 'outputs/frameworks/DebuggIt.framework'
+  s.ios.deployment_target = '11.0'
+  s.swift_version = '5.0'
 
-  s.dependency 'Alamofire', "~> 4.0"
-  s.dependency 'SwiftyJSON', "~> 3.0"
-  s.dependency 'IQKeyboardManagerSwift', '~> 5.0'
-  s.dependency 'KMPlaceholderTextView', '~> 1.0'
+  s.dependency 'Alamofire', "~> 5.0.0-beta.6"
+  s.dependency 'SwiftyJSON', "~> 5.0.0"
+  s.dependency 'IQKeyboardManagerSwift', '~> 6.3.0'
+  s.dependency 'KMPlaceholderTextView', '~> 1.4.0'
   s.dependency 'RNCryptor', "~> 5.0"
-  s.dependency 'ReachabilitySwift', "~> 3.0"
+  s.dependency 'ReachabilitySwift', "~> 4.3.1"
+  s.dependency 'AWSCore', "~> 2.10.0"
+  s.dependency 'AWSS3', "~> 2.10.0"
 
 end
