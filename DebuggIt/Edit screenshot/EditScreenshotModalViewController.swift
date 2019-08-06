@@ -51,7 +51,7 @@ class EditScreenshotModalViewController: UIViewController, DrawingViewDelegate {
             let controlStackView = self.controlButtonsStackView,
             let navigationStackView = self.navigationStackView else { return }
         
-        let isPortrait = UIDevice.current.orientation.isFlat ? (self.view.frame.height > self.view.frame.width) : UIDevice.current.orientation.isPortrait
+        let isPortrait = UIDevice.current.orientation.isFlat ? (UIScreen.main.bounds.height > UIScreen.main.bounds.width) : UIDevice.current.orientation.isPortrait
         
         if isPortrait {
             let containerWidth = UIScreen.main.bounds.width - (2 * sideMargin) - (2 * baseMargin)

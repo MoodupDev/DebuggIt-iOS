@@ -47,6 +47,7 @@ public class DebuggIt: NSObject {
     }
     
     fileprivate var debuggItButton: DebuggItButton!
+    fileprivate var buttonHeightContraint: NSLayoutConstraint!
     private var currentWindow: UIWindow?
     
     private var applicationWindow: UIWindow?
@@ -56,7 +57,7 @@ public class DebuggIt: NSObject {
     
     private var versionSupported = false
 
-    private var buttonPositionYDiff: CGFloat = 0
+    private var buttonYMultiplier: CGFloat = 0.5
     // MARK: - Public methods
     
     @discardableResult @objc public func initBitbucket(repoSlug: String, accountName: String) -> DebuggIt {
@@ -102,6 +103,7 @@ public class DebuggIt: NSObject {
         self.configType = configType
         swizzleMethod(of: UIWindow.self, original: #selector(setter: UIWindow.self.rootViewController), to: #selector(UIWindow.self.attachDebuggItOnRootViewControllerChange(_:)))
         NotificationCenter.default.addObserver(self, selector: #selector(self.attachToWindow(_:)), name: UIWindow.didBecomeKeyNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateDebuggitButtonContraint), name: UIDevice.orientationDidChangeNotification, object: nil)
         initReachability()
         
         guard let bundle = Bundle(identifier: "com.moodup.DebuggIt")
@@ -137,6 +139,10 @@ public class DebuggIt: NSObject {
         })
         
         return self
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     func initReachability() {
@@ -223,10 +229,23 @@ public class DebuggIt: NSObject {
         }
     }
     
+    @objc func updateDebuggitButtonContraint() {
+        if UIDevice.current.orientation.isPortrait || UIDevice.current.orientation.isLandscape {
+            var height: CGFloat = 0.0
+            if UIDevice.current.orientation.isPortrait {
+                height = (UIScreen.main.bounds.height > UIScreen.main.bounds.width) ? UIScreen.main.bounds.height : UIScreen.main.bounds.width
+            } else if UIDevice.current.orientation.isLandscape {
+                height = (UIScreen.main.bounds.height < UIScreen.main.bounds.width) ? UIScreen.main.bounds.height : UIScreen.main.bounds.width
+            }
+            buttonHeightContraint.constant = (self.buttonYMultiplier * height) - (debuggItButton.frame.height / 2)
+        }
+    }
+    
     private func addConstraints(for view : UIView, in container: UIView) {
-        container.addConstraint(NSLayoutConstraint(item: view, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: container, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1.0, constant: self.buttonPositionYDiff))
+        buttonHeightContraint = NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal, toItem: container, attribute: .top, multiplier: 1.0, constant: ((self.buttonYMultiplier * UIScreen.main.bounds.height) - (view.frame.height / 2)))
+        container.addConstraint(buttonHeightContraint)
         
-        container.addConstraint(NSLayoutConstraint(item: view, attribute: NSLayoutConstraint.Attribute.right, relatedBy: NSLayoutConstraint.Relation.equal, toItem: container, attribute: NSLayoutConstraint.Attribute.right, multiplier: 1.0, constant: 0.0))
+        container.addConstraint(NSLayoutConstraint(item: view, attribute: .right, relatedBy: .equal, toItem: container, attribute: .right, multiplier: 1.0, constant: 0.0))
     }
     
     private func logout() {
@@ -290,9 +309,13 @@ public class DebuggIt: NSObject {
             if(translation.y < 0.0 && view.center.y > (view.frame.height / 2)
                 || translation.y >= 0.0 && view.center.y < ((currentWindow?.frame.maxY)! - (view.frame.height/2))) {
                 view.center = CGPoint(x: view.center.x, y: view.center.y + translation.y)
-                self.buttonPositionYDiff += translation.y
+                self.buttonYMultiplier = view.center.y / UIScreen.main.bounds.height
                 recognizer.setTranslation(CGPoint.zero, in: view)
             }
+        }
+        
+        if recognizer.state == .ended, let view = recognizer.view {
+            buttonHeightContraint.constant = (self.buttonYMultiplier * UIScreen.main.bounds.height) - (view.frame.height / 2)
         }
     }
     
@@ -370,6 +393,7 @@ extension DebuggIt: BugDescriptionPage1Delegate {
 }
 
 extension UIViewController {
+    
     open override var canBecomeFirstResponder: Bool {
         get {
             return true

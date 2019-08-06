@@ -9,14 +9,15 @@
 import UIKit
 import WebKit
 
-class ViewController: UIViewController {
-
-    @IBOutlet weak var webView: WKWebView!
+class FirstViewController: BaseViewController {
+    
+    private let url = "https://debugg.it/"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let url = URL(string: "https://debugg.it/") else { return }
-        self.webView.load(URLRequest(url: url))
+        
+        self.addWebView(self.url)
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
