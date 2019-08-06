@@ -1,3 +1,7 @@
+[![Version](https://img.shields.io/cocoapods/v/DebuggIt.svg?style=flat)](http://cocoapods.org/pods/DebuggIt)
+[![License](https://img.shields.io/cocoapods/l/DebuggIt.svg?style=flat)](http://cocoapods.org/pods/DebuggIt)
+[![Platform](https://img.shields.io/cocoapods/p/DebuggIt.svg?style=flat)](http://cocoapods.org/pods/DebuggIt)
+
 # debugg.it #
 
 [https://debugg.it](https://debugg.it)
