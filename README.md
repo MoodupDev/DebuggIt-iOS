@@ -97,10 +97,10 @@ debugg.it requires an API where it can send image files and (optionally) audio f
     }
     ```
     * `DebuggIt.getInstance().initDefaultStorage(url: "baseUrl", imagePath: "imagePath", audioPath: "audioPath")`
-    * where
-        * `baseUrl` is a base url of your backend (e.g. `https://url-to-backend.com`)
-        * `imagePath` is an endpoint handling image upload (e.g. `/debuggit/uploadImage`)
-        * `audioPath` is an endpoint handling audio upload (e.g. `/debuggit/uploadAudio`)
+        * where
+            * `baseUrl` is a base url of your backend (e.g. `https://url-to-backend.com`)
+            * `imagePath` is an endpoint handling image upload (e.g. `/debuggit/uploadImage`)
+            * `audioPath` is an endpoint handling audio upload (e.g. `/debuggit/uploadAudio`)
 ##
 
 + Custom API
