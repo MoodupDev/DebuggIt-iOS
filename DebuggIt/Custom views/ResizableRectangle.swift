@@ -13,12 +13,13 @@ class ResizableRectangle: UIView {
     @IBOutlet var corners: [UIImageView]!
     
     let resizeThumbSize: CGFloat = 45.0
+    let resizeThumbViewSize: CGFloat = 16.0
     var isResizingLowerRight = false
     var isResizingUpperRight = false
     var isResizingLowerLeft = false
     var isResizingUpperLeft = false
     var touchStart: CGPoint?
-    var isPinned: Bool = false
+    var isPinned = false
     
     class func instantiateFromNib() -> ResizableRectangle {
         return Initializer.view(ResizableRectangle.self) as! ResizableRectangle
@@ -33,7 +34,7 @@ class ResizableRectangle: UIView {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if(!isPinned) {
-            let touch = touches.first as UITouch!
+            let touch = touches.first
             
             touchStart = touch?.location(in: self)
             isResizingLowerRight = (self.bounds.size.width - touchStart!.x < resizeThumbSize && self.bounds.size.height - touchStart!.y < resizeThumbSize);
@@ -45,11 +46,14 @@ class ResizableRectangle: UIView {
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if(!isPinned) {
-            let touchPoint = touches.first?.location(in: self)
-            let previous = touches.first?.previousLocation(in: self)
+            guard
+                let touch = touches.first else { return }
             
-            let deltaWidth = (touchPoint?.x)! - (previous?.x)!
-            let deltaHeight = (touchPoint?.y)! - (previous?.y)!
+            let touchPoint = touch.location(in: self)
+            let previous = touch.previousLocation(in: self)
+            
+            let deltaWidth = touchPoint.x - previous.x
+            let deltaHeight = touchPoint.y - previous.y
             
             let x = self.frame.origin.x
             let y = self.frame.origin.y
@@ -58,17 +62,93 @@ class ResizableRectangle: UIView {
             let height = self.frame.size.height
             
             if isResizingLowerRight {
-                self.frame = CGRect(x: x, y: y, width: (touchPoint?.x)! + deltaWidth, height: (touchPoint?.y)! + deltaWidth)
+                let switchInX = (touchPoint.x + deltaWidth) < self.resizeThumbViewSize
+                let switchInY = (touchPoint.y + deltaWidth) < self.resizeThumbViewSize
+                
+                self.frame = CGRect(
+                    x: x,
+                    y: y,
+                    width: switchInX ? self.resizeThumbViewSize : touchPoint.x + deltaWidth,
+                    height: switchInY ? self.resizeThumbViewSize : touchPoint.y + deltaWidth
+                )
+                
+                if switchInX && switchInY {
+                    isResizingLowerRight = false
+                    isResizingUpperLeft = true
+                } else if switchInX {
+                    isResizingLowerRight = false
+                    isResizingLowerLeft = true
+                } else if switchInY {
+                    isResizingLowerRight = false
+                    isResizingUpperRight = true
+                }
             } else if isResizingUpperLeft {
-                self.frame = CGRect(x: x + deltaWidth, y: y + deltaHeight, width: width - deltaWidth, height: height - deltaHeight)
+                let switchInX = (width - deltaWidth) < self.resizeThumbViewSize
+                let switchInY = (height - deltaHeight) < self.resizeThumbViewSize
+                
+                self.frame = CGRect(
+                    x: x + (switchInX ? (width - self.resizeThumbViewSize) : deltaWidth),
+                    y: y + (switchInY ? (height - self.resizeThumbViewSize) : deltaHeight),
+                    width: switchInX ? self.resizeThumbViewSize : (width - deltaWidth),
+                    height: switchInY ? self.resizeThumbViewSize : (height - deltaHeight)
+                )
+                
+                if switchInX && switchInY {
+                    isResizingUpperLeft = false
+                    isResizingLowerRight = true
+                } else if switchInX {
+                    isResizingUpperLeft = false
+                    isResizingUpperRight = true
+                } else if switchInY {
+                    isResizingUpperLeft = false
+                    isResizingLowerLeft = true
+                }
             } else if isResizingUpperRight {
-                self.frame = CGRect(x: x, y: y+deltaHeight, width: width + deltaWidth, height: height - deltaHeight)
+                let switchInX = (width + deltaWidth) < self.resizeThumbViewSize
+                let switchInY = (height - deltaHeight) < self.resizeThumbViewSize
+                
+                self.frame = CGRect(
+                    x: x,
+                    y: y + (switchInY ? (height - self.resizeThumbViewSize) : deltaHeight),
+                    width: switchInX ? self.resizeThumbViewSize : (width + deltaWidth),
+                    height: switchInY ? self.resizeThumbViewSize : (height - deltaHeight)
+                )
+                
+                if switchInX && switchInY {
+                    isResizingUpperRight = false
+                    isResizingLowerLeft = true
+                } else if switchInX {
+                    isResizingUpperRight = false
+                    isResizingUpperLeft = true
+                } else if switchInY {
+                    isResizingUpperRight = false
+                    isResizingLowerRight = true
+                }
             } else if isResizingLowerLeft {
-                self.frame = CGRect(x: x + deltaWidth, y: y, width: width-deltaWidth, height: height + deltaHeight)
+                let switchInX = (width - deltaWidth) < self.resizeThumbViewSize
+                let switchInY = (height + deltaHeight) < self.resizeThumbViewSize
+                
+                self.frame = CGRect(
+                    x: x + (switchInX ? (width - self.resizeThumbViewSize) : deltaWidth),
+                    y: y,
+                    width: switchInX ? self.resizeThumbViewSize : (width - deltaWidth),
+                    height: switchInY ? self.resizeThumbViewSize : (height + deltaHeight)
+                )
+                
+                if switchInX && switchInY {
+                    isResizingLowerLeft = false
+                    isResizingUpperRight = true
+                } else if switchInX {
+                    isResizingLowerLeft = false
+                    isResizingLowerRight = true
+                } else if switchInY {
+                    isResizingLowerLeft = false
+                    isResizingUpperLeft = true
+                }
             } else {
-                self.center = CGPoint(x: self.center.x + (touchPoint?.x)! - (touchStart?.x)!, y: self.center.y + (touchPoint?.y)! - (touchStart?.y)!)
+                guard let touchStart = self.touchStart else { return }
+                self.center = CGPoint(x: self.center.x + touchPoint.x - touchStart.x, y: self.center.y + (touchPoint.y - touchStart.y))
             }
         }
     }
-    
 }

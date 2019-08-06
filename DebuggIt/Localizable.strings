@@ -38,9 +38,10 @@ alert.sending.screenshot = "Sending screenshot.\nWait for the end...";
 alert.sending.report = "Sending report.\nWait for the end...";
 alert.message.wait = "Wait for the end...";
 alert.message.login = "Signing in to account...";
-alert.message.login.successful = "Now let\'s smash some bugs";
+alert.message.login.successful = "Now let\'s smash some bugs\nIf you want to log out just hold down the debugg.it icon";
 
 alert.message.recording.disabled = "Please ask your developer to enable this feature";
+alert.message.recording.missing.description = "Please ask developer to provide microphone usage description";
 
 alert.message.logout = "Do you want to logout?";
 /* Alert buttons */
@@ -58,8 +59,6 @@ error.login.wrong.credentials = "Invalid email or password,\ncan\'t log in";
 error.title.empty = "Describe what went wrong to send the report";
 error.title.too.long = "Issue title is too long, ensure it has at most %d characters (it has %d).";
 error.2fa.code = "Please enter your two-factor authorization code";
-error.version.unsupported = "Your debugg.it version isn\'t the latest version, check debugg.it website";
-error.version.not.checked = "Can\'t check if your debugg.it version is supported!\nCheck your Internet connection";
 error.repo.access.forbidden = "You don\'t have access to the repository. Please contact your developer";
 
 /* General */

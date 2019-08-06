@@ -12,9 +12,9 @@ import UIKit
 extension UIViewController {
     
     func embed(_ viewController: UIViewController, in container: UIView) {
-        self.addChildViewController(viewController)
+        self.addChild(viewController)
         viewController.view.frame = CGRect(x: 0, y: 0, width: container.frame.size.width, height: container.frame.size.height)
         container.addSubview(viewController.view)
-        viewController.didMove(toParentViewController: self)
+        viewController.didMove(toParent: self)
     }
 }

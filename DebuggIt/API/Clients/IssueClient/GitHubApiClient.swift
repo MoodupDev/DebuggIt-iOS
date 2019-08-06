@@ -9,7 +9,7 @@
 import Alamofire
 import SwiftyJSON
 
-class GitHubApiClient: ApiClientProtocol {
+final class GitHubApiClient: ApiClientProtocol {
     
     // MARK: Properties
     
@@ -50,7 +50,7 @@ class GitHubApiClient: ApiClientProtocol {
             "Authorization" : authorizationHeader(prefix: "token", token: accessToken ?? "")
         ]
         
-        Alamofire.request(String(format: Constants.GitHub.issuesUrl, accountName, repoSlug), method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseString { (response) in
+        AF.request(String(format: Constants.GitHub.issuesUrl, accountName, repoSlug), method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseString { (response) in
             switch response.result {
             case .success(let value):
                 if response.isSuccess() {
@@ -62,11 +62,9 @@ class GitHubApiClient: ApiClientProtocol {
                 errorBlock?(nil, error.errorDescription)
             default:
                 errorBlock?(nil, nil)
-                
+
             }
-            
         }
-        
     }
     
     func refreshAccessToken(successBlock: (() -> ())?, errorBlock: ((_ statusCode: Int? , _ body: String?) -> ())?) {
@@ -85,7 +83,7 @@ class GitHubApiClient: ApiClientProtocol {
             "code": code
         ]
         
-        Alamofire.request(Constants.GitHub.accessTokenUrl, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseString { (response) in
+        AF.request(Constants.GitHub.accessTokenUrl, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseString { (response) in
             switch response.result {
             case .success(let value):
                 if response.isSuccess() {
@@ -98,10 +96,9 @@ class GitHubApiClient: ApiClientProtocol {
                 errorBlock?(nil, error.errorDescription)
             default:
                 errorBlock?(nil, nil)
-                
+
             }
         }
-
     }
     
     private func storeTokens(from jsonString: String) {

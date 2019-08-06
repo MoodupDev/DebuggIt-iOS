@@ -32,7 +32,7 @@ class LoginModalViewController: UIViewController {
     
     // MARK: Actions
     
-    func close(_ sender: UITapGestureRecognizer) {
+    @objc func close(_ sender: UITapGestureRecognizer) {
         self.dismiss(animated: true, completion: nil)
         self.presentingViewController?.dismiss(animated: true, completion: {
             DebuggIt.sharedInstance.moveApplicationWindowToFront()
@@ -47,7 +47,7 @@ class LoginModalViewController: UIViewController {
         
         self.present(loadingAlert, animated: true, completion: nil)
         
-        DebuggIt.sharedInstance.apiClient?.login(email: email, password: password, successBlock: { [unowned self] (response) in
+        DebuggIt.sharedInstance.apiClient?.login(email: email, password: password, successBlock: { [unowned self] in
             loadingAlert.dismiss(animated: true, completion: nil)
             self.present(Utils.createAlert(title: "alert.title.login".localized(), message: "alert.message.login.successful".localized(), positiveAction: {
                 self.dismiss(animated: true, completion: nil)

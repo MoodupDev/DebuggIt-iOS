@@ -26,16 +26,20 @@ class RecordViewController: UIViewController {
     var audioFilename: URL!
     
     var delegate: RecordViewControllerDelegate?
+    var applicationIdleTimerDisabled: Bool = false
     
     // MARK: - Overriden methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.applicationIdleTimerDisabled = UIApplication.shared.isIdleTimerDisabled
+        UIApplication.shared.isIdleTimerDisabled = true
+
         // Do any additional setup after loading the view.
         recordingSession = AVAudioSession.sharedInstance()
         do {
-            try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
+            try recordingSession.setCategory(AVAudioSession.Category.playAndRecord)
             try recordingSession.setActive(true)
             recordingSession.requestRecordPermission() { [unowned self] allowed in
                 DispatchQueue.main.async {
@@ -51,7 +55,13 @@ class RecordViewController: UIViewController {
             delegate?.recordFailed()
         }
     }
-    
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        UIApplication.shared.isIdleTimerDisabled = self.applicationIdleTimerDisabled
+    }
+
     // MARK: - Methods
     
     private func startRecording() {
@@ -89,22 +99,8 @@ class RecordViewController: UIViewController {
         if success {
             if let fileData = FileManager().contents(atPath: audioFilename!.relativePath) {
                 let alert = Utils.createAlert(title: "alert.title.sending.audio".localized(), message: "alert.message.wait".localized())
-                self.present(alert, animated: true, completion: nil)
-                ApiClient.upload(.audio, data: fileData.base64EncodedString(), successBlock: {
-                    alert.dismiss(animated: true, completion: nil)
-                    self.present(Utils.createAlert(title: "alert.title.send.audio".localized(), message: "alert.message.saved.audio".localized(), positiveAction: {
-                        self.dismiss(animated: true, completion: nil)
-                        ApiClient.postEvent(.audioAdded)
-                        ApiClient.postEvent(.audioRecordTime, value: 60 - self.remainingTime)
-                        self.delegate?.recordUploaded()
-                    }), animated: true, completion: nil)
-                }, errorBlock: { (code, message) in
-                    alert.dismiss(animated: true, completion: {
-                        self.present(Utils.createGeneralErrorAlert(action: {
-                            self.delegate?.recordFailed()
-                            self.dismiss(animated: true, completion: nil)
-                        }), animated: true, completion: nil)
-                    })
+                self.present(alert, animated: true, completion: {
+                    self.uploadAudio(alert, data: fileData.base64EncodedString())
                 })
             }
         } else {
@@ -112,8 +108,40 @@ class RecordViewController: UIViewController {
         }
     }
     
+    private func uploadAudio(_ alert: UIAlertController, data: String) {
+        DebuggIt.sharedInstance.storageClient?.upload(.audio, data: data, successBlock: {
+            DispatchQueue.main.async {
+                alert.dismiss(animated: true, completion: nil)
+                self.showAudioSentDialog()
+            }
+        }, errorBlock: { (code, message) in
+            DispatchQueue.main.async {
+                alert.dismiss(animated: true, completion: {
+                    self.present(Utils.createGeneralErrorAlert(action: {
+                        self.delegate?.recordFailed()
+                        self.dismiss(animated: true, completion: nil)
+                    }), animated: true, completion: nil)
+                })
+            }
+        })
+    }
     
-    func updateUi() {
+    private func showAudioSentDialog() {
+        self.present(
+            Utils.createAlert(
+                title: "alert.title.send.audio".localized(),
+                message: "alert.message.saved.audio".localized(),
+                positiveAction: {
+                    self.dismiss(animated: true, completion: nil)
+                    self.delegate?.recordUploaded()
+                }
+            ),
+            animated: true,
+            completion: nil
+        )
+    }
+    
+    @objc func updateUi() {
         remainingTime -= 1
         remainingTimeLabel.text = String(format: "00:%02d", remainingTime)
         recordCircle.alpha = CGFloat(remainingTime % 2)
@@ -132,8 +160,6 @@ class RecordViewController: UIViewController {
     @IBAction func recordStopped(_ sender: UIButton) {
         stopRecording()
     }
-    
-
 }
 
 // MARK: - AVAudioRecorderDelegate

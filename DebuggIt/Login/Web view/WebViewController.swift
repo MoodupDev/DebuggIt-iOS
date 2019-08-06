@@ -23,7 +23,7 @@ class WebViewController: UIViewController {
         self.webView.loadRequest(URLRequest(url: URL(string: url!)!))
     }
     
-    func dismiss(_ sender: AnyObject?) {
+    @objc func dismiss(_ sender: AnyObject?) {
         self.dismiss(animated: true, completion: {
             DebuggIt.sharedInstance.moveApplicationWindowToFront()
         })
@@ -31,7 +31,7 @@ class WebViewController: UIViewController {
 }
 
 extension WebViewController : UIWebViewDelegate {
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
         if isCallback(request.url) {
             if let code = request.url?.queryParams()["code"] {
                 exchangeCodeForAccessToken(code)

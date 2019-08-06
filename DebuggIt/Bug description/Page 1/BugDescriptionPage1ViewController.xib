@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -22,262 +21,280 @@
                 <outlet property="titleTextView" destination="2Gc-AC-FDh" id="Rcg-CL-a6W"/>
                 <outlet property="view" destination="wwm-cq-uWO" id="8YQ-g8-LPY"/>
                 <outletCollection property="kindButtons" destination="iLG-uh-1wi" collectionClass="NSMutableArray" id="jJ7-B4-e1M"/>
-                <outletCollection property="kindButtons" destination="eUF-zg-r2I" collectionClass="NSMutableArray" id="aMy-1j-cNT"/>
                 <outletCollection property="priorityButtons" destination="Gct-GV-P3l" collectionClass="NSMutableArray" id="djL-DW-pcg"/>
                 <outletCollection property="priorityButtons" destination="LWa-fz-5Lc" collectionClass="NSMutableArray" id="HMW-53-Uyv"/>
                 <outletCollection property="priorityButtons" destination="iV4-7x-OEB" collectionClass="NSMutableArray" id="WbY-kX-CYw"/>
+                <outletCollection property="kindButtons" destination="eUF-zg-r2I" collectionClass="NSMutableArray" id="aMy-1j-cNT"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="wwm-cq-uWO">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="373"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dC4-bP-BCP">
-                    <rect key="frame" x="0.0" y="8" width="375" height="1"/>
-                    <color key="backgroundColor" red="0.83529411764705885" green="0.83529411764705885" blue="0.83529411764705885" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="1" id="TtX-7J-kDe"/>
-                    </constraints>
-                </view>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="N11-zk-MET">
-                    <rect key="frame" x="16" y="17" width="343" height="74"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dtm-Db-SUr">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="373"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="UeY-vQ-Hxn" userLabel="Kind buttons">
-                            <rect key="frame" x="85.5" y="0.0" width="172" height="31"/>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kf8-TV-edw">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="373"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iLG-uh-1wi" customClass="RoundedButton" customModule="DebuggIt" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="52" height="31"/>
-                                    <color key="backgroundColor" red="0.90980392160000001" green="0.41176470590000003" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dC4-bP-BCP">
+                                    <rect key="frame" x="0.0" y="8" width="375" height="1"/>
+                                    <color key="backgroundColor" red="0.83529411764705885" green="0.83529411764705885" blue="0.83529411764705885" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="31" id="qVl-5F-5ug"/>
+                                        <constraint firstAttribute="height" constant="1" id="TtX-7J-kDe"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
-                                    <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                                    <state key="normal" title="Bug"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
-                                            <color key="value" red="0.65098039220000004" green="0.65098039220000004" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                            <real key="value" value="1"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                            <real key="value" value="5"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedBackgroundColor">
-                                            <color key="value" red="0.90980392156862744" green="0.41176470588235292" blue="0.27450980392156865" alpha="1" colorSpace="deviceRGB"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedTextColor">
-                                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="normalTextColor">
-                                            <color key="value" red="0.65098039220000004" green="0.65098039220000004" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                    <connections>
-                                        <action selector="kindSelected:" destination="-1" eventType="touchUpInside" id="dlK-g9-qmm"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eUF-zg-r2I" customClass="RoundedButton" customModule="DebuggIt" customModuleProvider="target">
-                                    <rect key="frame" x="64" y="0.0" width="108" height="31"/>
-                                    <color key="backgroundColor" red="0.90980392160000001" green="0.41176470590000003" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
-                                    <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                                    <state key="normal" title="Enhancement"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedBackgroundColor">
-                                            <color key="value" red="0.90980392156862744" green="0.41176470588235292" blue="0.27450980392156865" alpha="1" colorSpace="deviceRGB"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                            <real key="value" value="1"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                            <real key="value" value="5"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
-                                            <color key="value" red="0.65098039220000004" green="0.65098039220000004" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedTextColor">
-                                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="normalTextColor">
-                                            <color key="value" red="0.65098039220000004" green="0.65098039220000004" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                    <connections>
-                                        <action selector="kindSelected:" destination="-1" eventType="touchUpInside" id="WLc-WL-tNX"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <constraints>
-                                <constraint firstItem="eUF-zg-r2I" firstAttribute="height" secondItem="iLG-uh-1wi" secondAttribute="height" id="UzP-xG-NOw"/>
-                            </constraints>
-                        </stackView>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Zua-Ko-RxP" userLabel="Priority buttons">
-                            <rect key="frame" x="65.5" y="43" width="212" height="31"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gct-GV-P3l" customClass="RoundedButton" customModule="DebuggIt" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="53" height="31"/>
-                                    <color key="backgroundColor" red="0.90980392160000001" green="0.41176470590000003" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </view>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="N11-zk-MET">
+                                    <rect key="frame" x="0.0" y="17" width="375" height="74"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="UeY-vQ-Hxn" userLabel="Kind buttons">
+                                            <rect key="frame" x="101.5" y="0.0" width="172" height="31"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iLG-uh-1wi" customClass="RoundedButton" customModule="DebuggIt" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="52" height="31"/>
+                                                    <color key="backgroundColor" red="0.90980392160000001" green="0.41176470590000003" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="31" id="qVl-5F-5ug"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
+                                                    <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                                    <state key="normal" title="Bug"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
+                                                            <color key="value" red="0.65098039220000004" green="0.65098039220000004" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedBackgroundColor">
+                                                            <color key="value" red="0.90980392156862744" green="0.41176470588235292" blue="0.27450980392156865" alpha="1" colorSpace="deviceRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedTextColor">
+                                                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="normalTextColor">
+                                                            <color key="value" red="0.65098039220000004" green="0.65098039220000004" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="kindSelected:" destination="-1" eventType="touchUpInside" id="dlK-g9-qmm"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eUF-zg-r2I" customClass="RoundedButton" customModule="DebuggIt" customModuleProvider="target">
+                                                    <rect key="frame" x="64" y="0.0" width="108" height="31"/>
+                                                    <color key="backgroundColor" red="0.90980392160000001" green="0.41176470590000003" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
+                                                    <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                                    <state key="normal" title="Enhancement"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedBackgroundColor">
+                                                            <color key="value" red="0.90980392156862744" green="0.41176470588235292" blue="0.27450980392156865" alpha="1" colorSpace="deviceRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
+                                                            <color key="value" red="0.65098039220000004" green="0.65098039220000004" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedTextColor">
+                                                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="normalTextColor">
+                                                            <color key="value" red="0.65098039220000004" green="0.65098039220000004" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="kindSelected:" destination="-1" eventType="touchUpInside" id="WLc-WL-tNX"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="eUF-zg-r2I" firstAttribute="height" secondItem="iLG-uh-1wi" secondAttribute="height" id="UzP-xG-NOw"/>
+                                            </constraints>
+                                        </stackView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Zua-Ko-RxP" userLabel="Priority buttons">
+                                            <rect key="frame" x="81.5" y="43" width="212" height="31"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gct-GV-P3l" customClass="RoundedButton" customModule="DebuggIt" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="53" height="31"/>
+                                                    <color key="backgroundColor" red="0.90980392160000001" green="0.41176470590000003" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="31" id="CL2-ho-8Xn"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
+                                                    <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                                    <state key="normal" title="Low"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
+                                                            <color key="value" red="0.65098039220000004" green="0.65098039220000004" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedBackgroundColor">
+                                                            <color key="value" red="0.90980392156862744" green="0.41176470588235292" blue="0.27450980392156865" alpha="1" colorSpace="deviceRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="normalTextColor">
+                                                            <color key="value" red="0.65098039220000004" green="0.65098039220000004" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="prioritySelected:" destination="-1" eventType="touchUpInside" id="dQo-wC-bXd"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LWa-fz-5Lc" customClass="RoundedButton" customModule="DebuggIt" customModuleProvider="target">
+                                                    <rect key="frame" x="67" y="0.0" width="76" height="31"/>
+                                                    <color key="backgroundColor" red="0.90980392160000001" green="0.41176470590000003" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
+                                                    <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                                    <state key="normal" title="Medium"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedBackgroundColor">
+                                                            <color key="value" red="0.90980392156862744" green="0.41176470588235292" blue="0.27450980392156865" alpha="1" colorSpace="deviceRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
+                                                            <color key="value" red="0.65098039220000004" green="0.65098039220000004" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="normalTextColor">
+                                                            <color key="value" red="0.65098039220000004" green="0.65098039220000004" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="prioritySelected:" destination="-1" eventType="touchUpInside" id="r0n-b7-Y9s"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iV4-7x-OEB" customClass="RoundedButton" customModule="DebuggIt" customModuleProvider="target">
+                                                    <rect key="frame" x="155" y="0.0" width="57" height="31"/>
+                                                    <color key="backgroundColor" red="0.90980392160000001" green="0.41176470590000003" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
+                                                    <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                                    <state key="normal" title="High"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
+                                                            <color key="value" red="0.65098039220000004" green="0.65098039220000004" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedBackgroundColor">
+                                                            <color key="value" red="0.90980392156862744" green="0.41176470588235292" blue="0.27450980392156865" alpha="1" colorSpace="deviceRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="normalTextColor">
+                                                            <color key="value" red="0.65098039220000004" green="0.65098039220000004" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="prioritySelected:" destination="-1" eventType="touchUpInside" id="sE7-mL-wlu"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="iV4-7x-OEB" firstAttribute="height" secondItem="Gct-GV-P3l" secondAttribute="height" id="tvG-U1-j7O"/>
+                                                <constraint firstItem="LWa-fz-5Lc" firstAttribute="height" secondItem="Gct-GV-P3l" secondAttribute="height" id="wpY-8P-lhM"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="31" id="CL2-ho-8Xn"/>
+                                        <constraint firstAttribute="height" constant="74" id="VLE-r1-sft"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
-                                    <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                                    <state key="normal" title="Low"/>
+                                </stackView>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2Gc-AC-FDh" customClass="KMPlaceholderTextView" customModule="KMPlaceholderTextView">
+                                    <rect key="frame" x="8" y="116" width="325" height="34"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="34" id="c8B-kK-Qvc"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                     <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
-                                            <color key="value" red="0.65098039220000004" green="0.65098039220000004" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                            <real key="value" value="1"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                            <real key="value" value="5"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedBackgroundColor">
-                                            <color key="value" red="0.90980392156862744" green="0.41176470588235292" blue="0.27450980392156865" alpha="1" colorSpace="deviceRGB"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="normalTextColor">
-                                            <color key="value" red="0.65098039220000004" green="0.65098039220000004" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="What went wrong?"/>
                                     </userDefinedRuntimeAttributes>
+                                </textView>
+                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="28T-Sq-gfZ" userLabel="Record button">
+                                    <rect key="frame" x="341" y="116" width="34" height="34"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="34" id="qj5-Aa-RMC"/>
+                                        <constraint firstAttribute="height" constant="34" id="s7W-mh-Tau"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
+                                    <state key="normal" image="recordMicro"/>
                                     <connections>
-                                        <action selector="prioritySelected:" destination="-1" eventType="touchUpInside" id="dQo-wC-bXd"/>
+                                        <action selector="recordTapped:" destination="-1" eventType="touchUpInside" id="XSn-gL-KOf"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LWa-fz-5Lc" customClass="RoundedButton" customModule="DebuggIt" customModuleProvider="target">
-                                    <rect key="frame" x="67" y="0.0" width="76" height="31"/>
-                                    <color key="backgroundColor" red="0.90980392160000001" green="0.41176470590000003" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
-                                    <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                                    <state key="normal" title="Medium"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedBackgroundColor">
-                                            <color key="value" red="0.90980392156862744" green="0.41176470588235292" blue="0.27450980392156865" alpha="1" colorSpace="deviceRGB"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
-                                            <color key="value" red="0.65098039220000004" green="0.65098039220000004" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                            <real key="value" value="1"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                            <real key="value" value="5"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="normalTextColor">
-                                            <color key="value" red="0.65098039220000004" green="0.65098039220000004" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                    <connections>
-                                        <action selector="prioritySelected:" destination="-1" eventType="touchUpInside" id="r0n-b7-Y9s"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iV4-7x-OEB" customClass="RoundedButton" customModule="DebuggIt" customModuleProvider="target">
-                                    <rect key="frame" x="155" y="0.0" width="57" height="31"/>
-                                    <color key="backgroundColor" red="0.90980392160000001" green="0.41176470590000003" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
-                                    <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                                    <state key="normal" title="High"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
-                                            <color key="value" red="0.65098039220000004" green="0.65098039220000004" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                            <real key="value" value="1"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                            <real key="value" value="5"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedBackgroundColor">
-                                            <color key="value" red="0.90980392156862744" green="0.41176470588235292" blue="0.27450980392156865" alpha="1" colorSpace="deviceRGB"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="normalTextColor">
-                                            <color key="value" red="0.65098039220000004" green="0.65098039220000004" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                    <connections>
-                                        <action selector="prioritySelected:" destination="-1" eventType="touchUpInside" id="sE7-mL-wlu"/>
-                                    </connections>
-                                </button>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="S9b-dF-pQ7">
+                                    <rect key="frame" x="8" y="175" width="359" height="190"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="190" id="7eH-Xe-ipP"/>
+                                    </constraints>
+                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fsU-in-udd">
+                                        <size key="itemSize" width="95" height="160"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                    <cells/>
+                                </collectionView>
                             </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="iV4-7x-OEB" firstAttribute="height" secondItem="Gct-GV-P3l" secondAttribute="height" id="tvG-U1-j7O"/>
-                                <constraint firstItem="LWa-fz-5Lc" firstAttribute="height" secondItem="Gct-GV-P3l" secondAttribute="height" id="wpY-8P-lhM"/>
+                                <constraint firstAttribute="trailing" secondItem="28T-Sq-gfZ" secondAttribute="trailing" id="2bZ-jC-htY"/>
+                                <constraint firstAttribute="trailing" secondItem="dC4-bP-BCP" secondAttribute="trailing" id="Bo1-LC-A2t"/>
+                                <constraint firstItem="28T-Sq-gfZ" firstAttribute="leading" secondItem="2Gc-AC-FDh" secondAttribute="trailing" constant="8" id="CGB-jH-d1h"/>
+                                <constraint firstItem="28T-Sq-gfZ" firstAttribute="top" secondItem="N11-zk-MET" secondAttribute="bottom" constant="25" id="EIA-cg-SYb"/>
+                                <constraint firstItem="2Gc-AC-FDh" firstAttribute="top" secondItem="N11-zk-MET" secondAttribute="bottom" constant="25" id="K6G-vM-Uiy"/>
+                                <constraint firstItem="dC4-bP-BCP" firstAttribute="leading" secondItem="Kf8-TV-edw" secondAttribute="leading" id="Rlr-Fq-8N5"/>
+                                <constraint firstAttribute="bottom" secondItem="S9b-dF-pQ7" secondAttribute="bottom" constant="8" id="W4s-th-hTx"/>
+                                <constraint firstItem="N11-zk-MET" firstAttribute="top" secondItem="dC4-bP-BCP" secondAttribute="bottom" constant="8" id="cy5-38-ep9"/>
+                                <constraint firstItem="2Gc-AC-FDh" firstAttribute="leading" secondItem="Kf8-TV-edw" secondAttribute="leading" constant="8" id="ddd-bl-C0u"/>
+                                <constraint firstItem="S9b-dF-pQ7" firstAttribute="leading" secondItem="Kf8-TV-edw" secondAttribute="leading" constant="8" id="fmO-DY-tZQ"/>
+                                <constraint firstItem="dC4-bP-BCP" firstAttribute="top" secondItem="Kf8-TV-edw" secondAttribute="top" constant="8" id="j1J-GT-zME"/>
+                                <constraint firstItem="S9b-dF-pQ7" firstAttribute="top" secondItem="28T-Sq-gfZ" secondAttribute="bottom" constant="25" id="jZL-HD-2zK"/>
+                                <constraint firstAttribute="trailing" secondItem="N11-zk-MET" secondAttribute="trailing" id="tGy-gI-Ivb"/>
+                                <constraint firstItem="N11-zk-MET" firstAttribute="leading" secondItem="Kf8-TV-edw" secondAttribute="leading" id="txQ-pm-1fl"/>
+                                <constraint firstAttribute="trailing" secondItem="S9b-dF-pQ7" secondAttribute="trailing" constant="8" id="vQL-Ny-rqU"/>
                             </constraints>
-                        </stackView>
+                        </view>
                     </subviews>
-                </stackView>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2Gc-AC-FDh" customClass="KMPlaceholderTextView" customModule="KMPlaceholderTextView">
-                    <rect key="frame" x="16" y="116" width="284" height="34"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="Xlv-f4-eR1"/>
-                        <constraint firstAttribute="height" constant="34" id="c8B-kK-Qvc"/>
+                        <constraint firstItem="Kf8-TV-edw" firstAttribute="top" secondItem="dtm-Db-SUr" secondAttribute="top" id="2bm-8L-Ezx"/>
+                        <constraint firstAttribute="bottom" secondItem="Kf8-TV-edw" secondAttribute="bottom" id="2uM-2P-xNp"/>
+                        <constraint firstAttribute="trailing" secondItem="Kf8-TV-edw" secondAttribute="trailing" id="2xm-rI-vlR"/>
+                        <constraint firstItem="Kf8-TV-edw" firstAttribute="width" secondItem="dtm-Db-SUr" secondAttribute="width" id="7d9-cg-kR7"/>
+                        <constraint firstItem="Kf8-TV-edw" firstAttribute="leading" secondItem="dtm-Db-SUr" secondAttribute="leading" id="7se-aw-rsc"/>
+                        <constraint firstItem="Kf8-TV-edw" firstAttribute="height" secondItem="dtm-Db-SUr" secondAttribute="height" priority="250" id="vfg-Eb-oFj"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="What went wrong?"/>
-                    </userDefinedRuntimeAttributes>
-                </textView>
-                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Os6-AB-mH2">
-                    <rect key="frame" x="8" y="429" width="359" height="230"/>
-                    <subviews>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="S9b-dF-pQ7">
-                            <rect key="frame" x="0.0" y="0.0" width="359" height="230"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="130" id="vhN-Uj-S5v"/>
-                            </constraints>
-                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fsU-in-udd">
-                                <size key="itemSize" width="95" height="160"/>
-                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                <inset key="sectionInset" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
-                            </collectionViewFlowLayout>
-                            <cells/>
-                        </collectionView>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstItem="S9b-dF-pQ7" firstAttribute="top" secondItem="Os6-AB-mH2" secondAttribute="top" id="Se7-8E-dzS"/>
-                        <constraint firstItem="S9b-dF-pQ7" firstAttribute="leading" secondItem="Os6-AB-mH2" secondAttribute="leading" id="dDM-y5-A6M"/>
-                        <constraint firstAttribute="trailing" secondItem="S9b-dF-pQ7" secondAttribute="trailing" id="gzd-ig-icY"/>
-                        <constraint firstAttribute="bottom" secondItem="S9b-dF-pQ7" secondAttribute="bottom" id="vib-vG-rKE"/>
-                    </constraints>
-                </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="28T-Sq-gfZ" userLabel="Record button">
-                    <rect key="frame" x="308" y="116" width="51" height="34"/>
-                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
-                    <state key="normal" image="recordMicro"/>
-                    <connections>
-                        <action selector="recordTapped:" destination="-1" eventType="touchUpInside" id="XSn-gL-KOf"/>
-                    </connections>
-                </button>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailingMargin" secondItem="N11-zk-MET" secondAttribute="trailing" id="8aW-mx-rGM"/>
-                <constraint firstItem="Os6-AB-mH2" firstAttribute="leading" secondItem="wwm-cq-uWO" secondAttribute="leading" constant="8" id="9SJ-qo-WJb"/>
-                <constraint firstItem="2Gc-AC-FDh" firstAttribute="trailing" secondItem="wwm-cq-uWO" secondAttribute="trailingMargin" constant="-59" id="Aeu-j5-ra0"/>
-                <constraint firstItem="N11-zk-MET" firstAttribute="top" secondItem="dC4-bP-BCP" secondAttribute="bottom" constant="8" id="DBg-zH-WhB"/>
-                <constraint firstItem="dC4-bP-BCP" firstAttribute="top" secondItem="wwm-cq-uWO" secondAttribute="top" constant="8" id="OVT-DS-Z8S"/>
-                <constraint firstAttribute="trailingMargin" secondItem="28T-Sq-gfZ" secondAttribute="trailing" id="P8Y-WT-Gsw"/>
-                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Os6-AB-mH2" secondAttribute="bottom" constant="8" id="RWN-LC-2Xd"/>
-                <constraint firstItem="28T-Sq-gfZ" firstAttribute="top" secondItem="N11-zk-MET" secondAttribute="bottom" constant="25" id="Rc9-5l-bme"/>
-                <constraint firstItem="dC4-bP-BCP" firstAttribute="leading" secondItem="wwm-cq-uWO" secondAttribute="leading" id="SsD-re-F75"/>
-                <constraint firstItem="28T-Sq-gfZ" firstAttribute="leading" secondItem="2Gc-AC-FDh" secondAttribute="trailing" constant="8" id="UPr-w1-qyJ"/>
-                <constraint firstAttribute="trailing" secondItem="dC4-bP-BCP" secondAttribute="trailing" id="aIG-cS-3Vh"/>
-                <constraint firstItem="2Gc-AC-FDh" firstAttribute="top" secondItem="N11-zk-MET" secondAttribute="bottom" constant="25" id="bv8-iB-PrU"/>
-                <constraint firstItem="N11-zk-MET" firstAttribute="leading" secondItem="wwm-cq-uWO" secondAttribute="leadingMargin" id="hf6-fD-Cl6"/>
-                <constraint firstItem="2Gc-AC-FDh" firstAttribute="leading" secondItem="wwm-cq-uWO" secondAttribute="leadingMargin" id="jMZ-rh-0rT"/>
-                <constraint firstAttribute="trailing" secondItem="Os6-AB-mH2" secondAttribute="trailing" constant="8" id="jZO-8Y-rFW"/>
-                <constraint firstItem="Os6-AB-mH2" firstAttribute="top" secondItem="2Gc-AC-FDh" secondAttribute="bottom" constant="25" id="rL5-c4-Dse"/>
+                <constraint firstItem="dtm-Db-SUr" firstAttribute="top" secondItem="wwm-cq-uWO" secondAttribute="top" id="4Zw-Ev-bhI"/>
+                <constraint firstAttribute="trailing" secondItem="dtm-Db-SUr" secondAttribute="trailing" id="g6b-cG-BYg"/>
+                <constraint firstItem="dtm-Db-SUr" firstAttribute="leading" secondItem="wwm-cq-uWO" secondAttribute="leading" id="gZQ-1c-QLB"/>
+                <constraint firstAttribute="bottom" secondItem="dtm-Db-SUr" secondAttribute="bottom" id="vWy-Ts-M3J"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="32.5" y="52.5"/>
+            <point key="canvasLocation" x="31.199999999999999" y="-75.112443778110944"/>
         </view>
     </objects>
     <resources>

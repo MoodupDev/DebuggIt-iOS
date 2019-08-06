@@ -11,6 +11,10 @@ struct Constants {
     static let debuggItUrl = "http://debugg.it"
     static let welcomeScreenHasBeenShownKey = "debuggit_first_run"
     
+    public enum HTTPStatusCodes: Int {
+        case ok = 200
+    }
+    
     static let cookiesToRemove = [
         "bb_session",
         "csrftoken",
@@ -20,14 +24,6 @@ struct Constants {
         "__Host-user_session_same_site",
         "user_session"
     ]
-    
-    struct Api {
-        private static let baseUrl = Config.sharedInstance.apiBaseUrl()
-        static let uploadImageUrl = Api.baseUrl + "/api/v1/upload/image"
-        static let uploadAudioUrl = Api.baseUrl + "/api/v1/upload/audio"
-        static let eventsUrl = Api.baseUrl + "/api/v2/events"
-        static let supportedVersionUrl = Api.baseUrl + "/api/v2/supported_versions/ios/%@"
-    }
     
     struct Bitbucket {
         
@@ -39,7 +35,7 @@ struct Constants {
         // MARK: URLs
         
         static let authorizeUrl = "https://bitbucket.org/site/oauth2/authorize"
-        static let issuesUrl = "https://api.bitbucket.org/1.0/repositories/%@/%@/issues"
+        static let issuesUrl = "https://api.bitbucket.org/2.0/repositories/%@/%@/issues"
         static let accessTokenUrl = "https://bitbucket.org/site/oauth2/access_token"
         static let callbackUrl = "callback.moodup.com"
         

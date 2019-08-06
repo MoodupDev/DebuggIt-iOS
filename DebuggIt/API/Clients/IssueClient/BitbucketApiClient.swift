@@ -9,7 +9,7 @@
 import Alamofire
 import SwiftyJSON
 
-class BitbucketApiClient: ApiClientProtocol {
+final class BitbucketApiClient: ApiClientProtocol {
     
     // MARK: Properties
     
@@ -41,7 +41,10 @@ class BitbucketApiClient: ApiClientProtocol {
         
         let params: Parameters = [
             "title": title,
-            "content": content,
+            "content": [
+                "raw": content,
+                "markup": "markdown"
+            ],
             "priority": priority.lowercased(),
             "kind": kind.lowercased()
         ]
@@ -50,7 +53,7 @@ class BitbucketApiClient: ApiClientProtocol {
             "Authorization": authorizationHeader(token: accessToken ?? "")
         ]
         
-        Alamofire.request(String(format: Constants.Bitbucket.issuesUrl, accountName, repoSlug), method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseString { (response) in
+        AF.request(String(format: Constants.Bitbucket.issuesUrl, accountName, repoSlug), method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseString { (response) in
             switch response.result {
             case .success(let value):
                 if response.isSuccess() {
@@ -73,7 +76,6 @@ class BitbucketApiClient: ApiClientProtocol {
                 
             }
         }
-        
     }
     
     func refreshAccessToken(successBlock: (() -> ())?, errorBlock: ((_ statusCode: Int? , _ body: String?) -> ())?) {
@@ -90,7 +92,7 @@ class BitbucketApiClient: ApiClientProtocol {
                             )
         ]
         
-        Alamofire.request(Constants.Bitbucket.accessTokenUrl, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseString { (response) in
+        AF.request(Constants.Bitbucket.accessTokenUrl, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseString { (response) in
             switch response.result {
             case .success(let value):
                 if response.isSuccess() {
@@ -103,10 +105,9 @@ class BitbucketApiClient: ApiClientProtocol {
                 errorBlock?(nil, error.errorDescription)
             default:
                 errorBlock?(nil, nil)
-                
+
             }
         }
-        
     }
     
     internal func exchangeAuthCodeForToken(_ code: String, successBlock: (() -> ())?, errorBlock: ((_ statusCode: Int? , _ body: String?) -> ())?) {
@@ -123,7 +124,7 @@ class BitbucketApiClient: ApiClientProtocol {
             "code": code
         ]
         
-        Alamofire.request(Constants.Bitbucket.accessTokenUrl, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseString { (response) in
+        AF.request(Constants.Bitbucket.accessTokenUrl, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseString { (response) in
             switch response.result {
             case .success(let value):
                 if response.isSuccess() {
@@ -139,7 +140,6 @@ class BitbucketApiClient: ApiClientProtocol {
                 
             }
         }
-        
     }
     
     private func storeTokens(from jsonString: String) {

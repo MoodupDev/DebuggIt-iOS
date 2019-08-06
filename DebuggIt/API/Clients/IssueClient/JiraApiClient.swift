@@ -9,7 +9,7 @@
 import Alamofire
 import SwiftyJSON
 
-class JiraApiClient: ApiClientProtocol {
+final class JiraApiClient: ApiClientProtocol {
 
     // MARK: Properties
     
@@ -62,7 +62,7 @@ class JiraApiClient: ApiClientProtocol {
         
         let url = checkUrlProtocol(url: String(format: Constants.Jira.issuesUrl, host))
         
-        Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseString { (response) in
+        AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseString { (response) in
             switch response.result {
             case .success(let value):
                 if response.isSuccess() {
@@ -74,12 +74,8 @@ class JiraApiClient: ApiClientProtocol {
                 errorBlock?(nil, error.errorDescription)
             default:
                 errorBlock?(nil, nil)
-                
             }
-            
         }
-
-        
     }
     
     func refreshAccessToken(successBlock: (() -> ())?, errorBlock: ((_ statusCode: Int? , _ body: String?) -> ())?) {
@@ -98,7 +94,7 @@ class JiraApiClient: ApiClientProtocol {
         
         let url = checkUrlProtocol(url: String(format: Constants.Jira.configurationUrl, host))
         
-        Alamofire.request(url, method: .get, encoding: URLEncoding.default, headers: headers).responseString { (response) in
+        AF.request(url, method: .get, encoding: URLEncoding.default, headers: headers).responseString { (response) in
             switch response.result {
             case .success(let value):
                 if response.isSuccess() {
@@ -111,11 +107,8 @@ class JiraApiClient: ApiClientProtocol {
                 errorBlock?(nil, error.errorDescription)
             default:
                 errorBlock?(nil, nil)
-                
             }
-            
         }
-        
     }
     
     private func checkUrlProtocol(url: String) -> String {

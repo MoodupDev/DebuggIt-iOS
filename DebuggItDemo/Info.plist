@@ -41,5 +41,8 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    
+    <key>NSMicrophoneUsageDescription</key>
+    <string>debugg.it record notes</string>
 </dict>
 </plist>

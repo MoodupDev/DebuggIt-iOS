@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UIImageView {
-    func loadFrom(url: URL, contentMode mode: UIViewContentMode = .scaleAspectFit) {
+    func loadFrom(url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
         self.contentMode = mode
         if let cachedImage = ImageCache.shared.image(forKey: url) {
             self.image = cachedImage
@@ -30,7 +30,7 @@ extension UIImageView {
         }
     }
     
-    func loadFrom(link: String, contentMode mode: UIViewContentMode = .scaleAspectFit) {
+    func loadFrom(link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
         guard let url = URL(string: link) else { return }
         loadFrom(url: url, contentMode: mode)
     }

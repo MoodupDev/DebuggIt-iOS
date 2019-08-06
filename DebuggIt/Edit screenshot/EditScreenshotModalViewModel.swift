@@ -20,20 +20,46 @@ class EditScreenshotModalViewModel {
     func editScreenshotDone(_ viewController: EditScreenshotModalViewController, image: UIImage) {
         let popup = Initializer.viewController(PopupViewController.self)
         viewController.dismiss(animated: true, completion: {
-            DebuggIt.sharedInstance.showModal(viewController: popup)
+            DebuggIt.sharedInstance.showModal(viewController: popup, animated: true, completion: {
+                self.uploadPicture(popup, image: image)
+            })
             popup.setup(willShowNextWindow: true, alertText: "alert.sending.screenshot".localized(), positiveAction: true, isProgressPopup: true)
         })
-        
-        ApiClient.upload(.image, data: image.toBase64String(),
-                         successBlock: {
-                            ApiClient.postEvent(viewController.freedrawButton.isSelected ? .screenshotAddedDraw : .screenshotAddedRectangle)
-                            popup.dismiss(animated: true, completion: self.showBugDescription)
-        }, errorBlock: {
-            (statusCode, errorMessage) in
-            popup.dismiss(animated: false, completion: {
-                viewController.present(Utils.createGeneralErrorAlert(), animated: true, completion: nil)
-            })
+    }
+    
+    private func uploadPicture(_ popup: PopupViewController, image: UIImage) {
+        DebuggIt.sharedInstance.storageClient?.upload(
+            .image,
+            data: image.toBase64String(),
+            successBlock: {
+                self.onUploadSuccess(popup)
+            }, errorBlock: {
+                (statusCode, errorMessage) in
+                self.onUploadError(popup, errorCode: statusCode, errorMessage: errorMessage)
         })
+    }
+    
+    private func onUploadError(_ popup: PopupViewController, errorCode: Int?, errorMessage: String?) {
+        DispatchQueue.main.async {
+            DebuggIt.sharedInstance.resetButtonImage()
+            popup.dismiss(animated: true, completion: {
+                DebuggIt.sharedInstance.showModal(viewController:
+                    Utils.createAPIErrorAlert(
+                        errorCode: errorCode,
+                        errorMessage: errorMessage
+                    )
+                )
+            })
+        }
+    }
+    
+    private func onUploadSuccess(_ popup: PopupViewController) {
+        DispatchQueue.main.async {
+            DebuggIt.sharedInstance.resetButtonImage()
+            popup.dismiss(animated: true, completion: {
+                self.showBugDescription()
+            })
+        }
     }
     
     func showBugDescription() {

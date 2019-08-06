@@ -10,6 +10,10 @@ import UIKit
 
 class DrawingView: UIImageView {
     
+    private let rectangleOriginAdjustment: CGFloat = 2.5
+    private let rectangleRightAdjustment: CGFloat = 5.0
+    private let rectangleBottomAdjustment: CGFloat = 15.0
+    
     var type: DrawingType = .arrow {
         didSet {
             pinCurrentRectangle()
@@ -37,10 +41,22 @@ class DrawingView: UIImageView {
     private var nextDrawings = [DrawingType]()
     
     private lazy var convertRatio: CGSize = {
-        let widthRatio = (self.image!.size.width / self.bounds.size.width)
-        let heightRatio = (self.image!.size.height / self.bounds.size.height)
-        return CGSize(width: widthRatio, height: heightRatio)
+        return getConvertRatio()
     }()
+    
+    override var bounds: CGRect {
+        didSet {
+            convertRatio = getConvertRatio()
+        }
+    }
+    
+    override var image: UIImage? {
+        didSet {
+            convertRatio = getConvertRatio()
+        }
+    }
+    
+    private var isDrawingRect = false
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         nextDrawings = []
@@ -54,9 +70,14 @@ class DrawingView: UIImageView {
         case .free:
             currentPath = initBezierPath()
         case .rectangle:
-            pinCurrentRectangle()
-            currentRectangle = createRectangle(at: touchLocation)
-            self.addSubview(currentRectangle)
+            if currentRectangle != nil {
+                pinCurrentRectangle()
+                isDrawingRect = false
+            } else {
+                currentRectangle = createRectangle(at: touchLocation)
+                self.addSubview(currentRectangle)
+                isDrawingRect = true
+            }
         case .arrow:
             currentArrow = initBezierPath()
         }
@@ -95,8 +116,16 @@ class DrawingView: UIImageView {
         default:
             break
         }
-        lastDrawings.append(type)
+        if type != .rectangle || (type == .rectangle && isDrawingRect) {
+            lastDrawings.append(type)
+        }
         delegate?.highlightUndoButton(highlight: true)
+    }
+    
+    private func getConvertRatio() -> CGSize {
+        let widthRatio = (self.image!.size.width / self.bounds.size.width)
+        let heightRatio = (self.image!.size.height / self.bounds.size.height)
+        return CGSize(width: widthRatio, height: heightRatio)
     }
     
     private func initBezierPath(lineWidth: CGFloat = 5.0, lineCapStyle: CGLineCap = .round) -> UIBezierPath {
@@ -116,6 +145,33 @@ class DrawingView: UIImageView {
         rectangle.center.x = point.x
     
         return rectangle
+    }
+    
+    func isPortraitImage() -> Bool {
+        guard let image = self.image else { return true }
+        return image.size.height > image.size.width
+    }
+    
+    func getWidth(containerWidth: CGFloat, containerHeight: CGFloat) -> CGFloat {
+        guard let image = self.image else { return 0.0 }
+        let imageRatio = image.size.width / image.size.height
+        let containerRatio = containerWidth / containerHeight
+        if imageRatio > containerRatio {
+            return containerWidth
+        } else {
+            return (image.size.width * containerHeight) / image.size.height
+        }
+    }
+    
+    func getHeight(containerWidth: CGFloat, containerHeight: CGFloat) -> CGFloat {
+        guard let image = self.image else { return 0.0 }
+        let imageRatio = image.size.height / image.size.width
+        let containerRatio = containerHeight / containerWidth
+        if imageRatio > containerRatio {
+            return containerHeight
+        } else {
+            return (image.size.height * containerWidth) / image.size.width
+        }
     }
     
     func undo() {
@@ -226,10 +282,10 @@ class DrawingView: UIImageView {
         let size = backgroundRect.size
         
         var topLeft = rectangleRect.origin
-        topLeft.x += backgroundRect.origin.x
-        topLeft.y += backgroundRect.origin.y
-        let bottomLeft = CGPoint(x: topLeft.x, y: topLeft.y + size.height)
-        let topRight = CGPoint(x: topLeft.x + size.width, y: topLeft.y)
+        topLeft.x += backgroundRect.origin.x + self.rectangleOriginAdjustment
+        topLeft.y += backgroundRect.origin.y + self.rectangleOriginAdjustment
+        let bottomLeft = CGPoint(x: topLeft.x, y: (topLeft.y + size.height) - self.rectangleBottomAdjustment)
+        let topRight = CGPoint(x: topLeft.x + size.width - self.rectangleRightAdjustment, y: topLeft.y)
         let bottomRight = CGPoint(x: topRight.x, y: bottomLeft.y)
         
         path.move(to: topLeft)

@@ -9,12 +9,16 @@
 import UIKit
 import AVFoundation
 
+protocol AudioCollectionViewCellDelegate: class {
+    func audioCollectionCell(_ cell: AudioCollectionViewCell, didRemoveAudioAtIndex index: Int)
+}
+
 class AudioCollectionViewCell: UICollectionViewCell {
-    
     // MARK: - Properties
-    
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var label: UILabel!
+    
+    weak var delegate: AudioCollectionViewCellDelegate?
     
     var player: AVPlayer!
     
@@ -31,7 +35,7 @@ class AudioCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Methods
     
-    func playerDidFinishPlaying(note: NSNotification) {
+    @objc func playerDidFinishPlaying(note: NSNotification) {
         finishPlaying()
     }
     
@@ -51,7 +55,6 @@ class AudioCollectionViewCell: UICollectionViewCell {
             player!.volume = 1.0
             player!.play()
             playButton.isSelected = true
-            ApiClient.postEvent(.audioPlayed)
         }
     }
     
@@ -65,11 +68,6 @@ class AudioCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func removeAudio(_ sender: UIButton) {
-        DebuggIt.sharedInstance.report.audioUrls.remove(at: index)
-        ApiClient.postEvent(.audioRemoved)
-        if let viewController = self.viewController() as? BugDescriptionPage1ViewController {
-            viewController.reportItemsCollection.reloadData()
-        }
+        self.delegate?.audioCollectionCell(self, didRemoveAudioAtIndex: index)
     }
-
 }

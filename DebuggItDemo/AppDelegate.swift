@@ -8,6 +8,8 @@
 
 import UIKit
 import DebuggIt
+import Alamofire
+import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,10 +17,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        DebuggIt.sharedInstance.initBitbucket(repoSlug: "bugreporter", accountName: "moodup")
+        initS3WithBitbucket()
+        DebuggIt.sharedInstance.recordingEnabled = true
         return true
+    }
+    
+    private func initS3WithBitbucket() {
+        DebuggIt.sharedInstance
+            .initAWS(bucketName: "bucketName", regionType: .EUCentral1, identityPool: "identityPool")
+            .initBitbucket(repoSlug: "repo-name", accountName: "repo-owner-username")
+    }
+    
+    private func initDefaultAPIWithGithub() {
+        DebuggIt.sharedInstance
+            .initDefaultStorage(url: "baseUrl", imagePath: "imagePath", audioPath: "audioPath")
+            .initGithub(repoSlug: "repo-name", accountName: "repo-owner-username")
+    }
+    
+    private func initCustomAPIWithJira() {
+        DebuggIt.sharedInstance
+            .initCustomStorage(uploadImage: { (base64, delegate) in
+                self.send(url: "baseUrl/imagePath", base: base64, delegate: delegate)
+            }, uploadAudio: { (base64, delegate) in
+                self.send(url: "baseUrl/audioPath", base: base64, delegate: delegate)
+            })
+            .initJira(host: "jira-host-url", projectKey: "project-key")
+    }
+    
+    private func send(url: String, base: String, delegate: ApiClientDelegate) {
+        let params : Parameters = [
+            "data": base,
+        ]
+        
+        AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+            switch response.result {
+            case .success(let value):
+                let value = JSON(value)
+                let url = value["url"].stringValue
+                delegate.uploadSuccessClousure(url)
+            case .failure(let error as AFError):
+                delegate.errorClousure(nil, error.errorDescription)
+            default:
+                delegate.errorClousure(nil, nil)
+            }
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

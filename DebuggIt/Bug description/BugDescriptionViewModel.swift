@@ -20,11 +20,10 @@ class BugDescriptionViewModel {
     }
     
     func getTitleCharactersCount() -> Int {
-        return DebuggIt.sharedInstance.report.title.characters.count
+        return DebuggIt.sharedInstance.report.title.count
     }
     
     func clearData() {
-        ApiClient.postEvent(.reportCanceled)
         DebuggIt.sharedInstance.report = Report()
         ImageCache.shared.clearAll()
     }
@@ -51,7 +50,7 @@ class BugDescriptionViewModel {
     
     func showTooLongTitlePopup(_ viewController: BugDescriptionViewController) {
         viewController.dismiss(animated: true, completion: {
-            let title = String(format: "error.title.too.long".localized(), Constants.reportTitleMaxCharacters, DebuggIt.sharedInstance.report.title.characters.count)
+            let title = String(format: "error.title.too.long".localized(), Constants.reportTitleMaxCharacters, DebuggIt.sharedInstance.report.title.count)
             self.showPopup(willShowNextWindow: true, alertText: title, positiveAction: false, isProgressPopup: false)
         })
     }
@@ -59,16 +58,19 @@ class BugDescriptionViewModel {
     func trySendReport(_ viewController: BugDescriptionViewController) {
         let progressPopup = Initializer.viewController(PopupViewController.self)
         viewController.dismiss(animated: true, completion: {
-            DebuggIt.sharedInstance.showModal(viewController: progressPopup)
+            DebuggIt.sharedInstance.showModal(viewController: progressPopup, animated: true, completion: {
+                self.sendReport(progressPopup)
+            })
             progressPopup.setup(willShowNextWindow: true, alertText: "alert.sending.report".localized(), positiveAction: true, isProgressPopup: true)
         })
-        
+    }
+    
+    private func sendReport(_ progressPopup: PopupViewController) {
         DebuggIt.sharedInstance.sendReport(
             successBlock: {
                 progressPopup.dismiss(animated: true, completion: {
                     self.showPopup(willShowNextWindow: false, alertText: "alert.message.saved.report".localized(), positiveAction: true, isProgressPopup: false)
                 })
-                self.postEventsAfterIssueSent(report: DebuggIt.sharedInstance.report)
                 self.clearData()
         }, errorBlock: { (status, error) in
             if status != nil {
@@ -81,21 +83,6 @@ class BugDescriptionViewModel {
                 })
             }
         })
-    }
-    
-    func postEventsAfterIssueSent(report: Report) {
-        ApiClient.postEvent(.reportSent)
-        ApiClient.postEvent(.audioAmount, value: report.audioUrls.count)
-        ApiClient.postEvent(.screenshotAmount, value: report.screenshots.count)
-        if !report.actualBehavior.isEmpty {
-            ApiClient.postEvent(.actualBehaviorFilled)
-        }
-        if !report.stepsToReproduce.isEmpty {
-            ApiClient.postEvent(.stepsToReproduceFilled)
-        }
-        if !report.expectedBehavior.isEmpty {
-            ApiClient.postEvent(.expectedBehaviorFilled)
-        }
     }
     
     func showPopup(willShowNextWindow: Bool, alertText: String, positiveAction: Bool, isProgressPopup: Bool) {

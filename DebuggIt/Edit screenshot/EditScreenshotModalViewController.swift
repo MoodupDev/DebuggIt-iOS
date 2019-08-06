@@ -10,33 +10,97 @@ import UIKit
 
 class EditScreenshotModalViewController: UIViewController, DrawingViewDelegate {
     
+    private let baseMargin: CGFloat = 8.0
+    private let varticalMargin: CGFloat = 24.0
+    private let sideMargin: CGFloat = 25.0
+    private let buttonContainerSize: CGFloat = 40.0
+    
+    @IBOutlet weak var backgroundView: BackgroundView!
+    @IBOutlet weak var surfaceContainer: UIView!
+    
     @IBOutlet weak var screenshotSurface: DrawingView!
     @IBOutlet weak var arrowButton: UIButton!
     @IBOutlet weak var rectangleButton: UIButton!
     @IBOutlet weak var freedrawButton: UIButton!
     @IBOutlet weak var undoButton: UIButton!
     @IBOutlet weak var redoButton: UIButton!
-    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var controlButtonsStackView: UIStackView!
+    @IBOutlet weak var navigationStackView: UIStackView!
+    
     var viewModel = EditScreenshotModalViewModel()
+    
+    var landscapeConstraints: [NSLayoutConstraint] = []
+    var portraitConstraints: [NSLayoutConstraint] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.screenshotSurface.image = self.viewModel.getCurrentScreenshot()
         self.initButtons()
         self.screenshotSurface.delegate = self
+        self.adjustViewToOrientation()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        self.adjustViewToOrientation()
+    }
+    
+    private func adjustViewToOrientation() {
+        guard let screenshotSurface = self.screenshotSurface,
+            let surfaceContainer = self.surfaceContainer,
+            let controlStackView = self.controlButtonsStackView,
+            let navigationStackView = self.navigationStackView else { return }
+        
+        let isPortrait = UIDevice.current.orientation.isFlat ? (UIScreen.main.bounds.height > UIScreen.main.bounds.width) : UIDevice.current.orientation.isPortrait
+        
+        if isPortrait {
+            let containerWidth = UIScreen.main.bounds.width - (2 * sideMargin) - (2 * baseMargin)
+            let containerHeight = UIScreen.main.bounds.height - (2 * varticalMargin) - (2 * buttonContainerSize) - (4 * baseMargin)
+            
+            landscapeConstraints.forEach { backgroundView.removeConstraint($0) }
+            landscapeConstraints.removeAll()
+            
+            portraitConstraints.append(NSLayoutConstraint(item: surfaceContainer, attribute: .leading, relatedBy: .equal, toItem: backgroundView, attribute: .leading, multiplier: 1.0, constant: baseMargin))
+            portraitConstraints.append(NSLayoutConstraint(item: surfaceContainer, attribute: .bottom, relatedBy: .equal, toItem: controlStackView, attribute: .top, multiplier: 1.0, constant: -baseMargin))
+            portraitConstraints.append(NSLayoutConstraint(item: controlStackView, attribute: .trailing, relatedBy: .equal, toItem: backgroundView, attribute: .trailing, multiplier: 1.0, constant: -baseMargin))
+            portraitConstraints.append(NSLayoutConstraint(item: controlStackView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: self.buttonContainerSize))
+            portraitConstraints.append(NSLayoutConstraint(item: screenshotSurface, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: screenshotSurface.getWidth(containerWidth: containerWidth, containerHeight: containerHeight)))
+            portraitConstraints.append(NSLayoutConstraint(item: screenshotSurface, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: screenshotSurface.getHeight(containerWidth: containerWidth, containerHeight: containerHeight)))
+            
+            controlStackView.axis = .horizontal
+            
+            portraitConstraints.forEach { backgroundView.addConstraint($0) }
+        } else {
+            let containerWidth = UIScreen.main.bounds.width - (2 * sideMargin) - buttonContainerSize - (3 * baseMargin)
+            let containerHeight = UIScreen.main.bounds.height - (2 * varticalMargin) - buttonContainerSize - (3 * baseMargin)
+            
+            portraitConstraints.forEach { backgroundView.removeConstraint($0) }
+            portraitConstraints.removeAll()
+            
+            landscapeConstraints.append(NSLayoutConstraint(item: surfaceContainer, attribute: .leading, relatedBy: .equal, toItem: controlStackView, attribute: .trailing, multiplier: 1.0, constant: baseMargin))
+            landscapeConstraints.append(NSLayoutConstraint(item: surfaceContainer, attribute: .bottom, relatedBy: .equal, toItem: backgroundView, attribute: .bottom, multiplier: 1.0, constant: -baseMargin))
+            landscapeConstraints.append(NSLayoutConstraint(item: controlStackView, attribute: .top, relatedBy: .equal, toItem: navigationStackView, attribute: .bottom, multiplier: 1.0, constant: baseMargin))
+            landscapeConstraints.append(NSLayoutConstraint(item: controlStackView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: self.buttonContainerSize))
+            landscapeConstraints.append(NSLayoutConstraint(item: screenshotSurface, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: screenshotSurface.getWidth(containerWidth: containerWidth, containerHeight: containerHeight)))
+            landscapeConstraints.append(NSLayoutConstraint(item: screenshotSurface, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: screenshotSurface.getHeight(containerWidth: containerWidth, containerHeight: containerHeight)))
+            
+            controlStackView.axis = .vertical
+            
+            landscapeConstraints.forEach { backgroundView.addConstraint($0) }
+        }
     }
     
     private func initButtons() {
-        undoButton.setImage(Initializer.image(named: "iconUndoActive"), for: UIControlState.selected)
-        undoButton.setImage(Initializer.image(named: "iconUndoInactive"), for: UIControlState.normal)
-        redoButton.setImage(Initializer.image(named: "iconRedoActive"), for: UIControlState.selected)
-        redoButton.setImage(Initializer.image(named: "iconRedoInactive"), for: UIControlState.normal)
-        rectangleButton.setImage(Initializer.image(named: "iconRectangleActive"), for: UIControlState.selected)
-        rectangleButton.setImage(Initializer.image(named: "iconRectangleInactive"), for: UIControlState.normal)
-        freedrawButton.setImage(Initializer.image(named: "iconDrawActive"), for: UIControlState.selected)
-        freedrawButton.setImage(Initializer.image(named: "iconDrawInactive"), for: UIControlState.normal)
-        arrowButton.setImage(Initializer.image(named: "iconArrowActive"), for: UIControlState.selected)
-        arrowButton.setImage(Initializer.image(named: "iconArrowInactive"), for: UIControlState.normal)
+        undoButton.setImage(Initializer.image(named: "iconUndoActive"), for: UIControl.State.selected)
+        undoButton.setImage(Initializer.image(named: "iconUndoInactive"), for: UIControl.State.normal)
+        redoButton.setImage(Initializer.image(named: "iconRedoActive"), for: UIControl.State.selected)
+        redoButton.setImage(Initializer.image(named: "iconRedoInactive"), for: UIControl.State.normal)
+        rectangleButton.setImage(Initializer.image(named: "iconRectangleActive"), for: UIControl.State.selected)
+        rectangleButton.setImage(Initializer.image(named: "iconRectangleInactive"), for: UIControl.State.normal)
+        freedrawButton.setImage(Initializer.image(named: "iconDrawActive"), for: UIControl.State.selected)
+        freedrawButton.setImage(Initializer.image(named: "iconDrawInactive"), for: UIControl.State.normal)
+        arrowButton.setImage(Initializer.image(named: "iconArrowActive"), for: UIControl.State.selected)
+        arrowButton.setImage(Initializer.image(named: "iconArrowInactive"), for: UIControl.State.normal)
         arrowButton.isSelected = true
     }
     

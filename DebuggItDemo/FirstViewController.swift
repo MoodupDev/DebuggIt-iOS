@@ -7,11 +7,17 @@
 //
 
 import UIKit
+import WebKit
 
-class ViewController: UIViewController {
-
+class FirstViewController: BaseViewController {
+    
+    private let url = "https://debugg.it/"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.addWebView(self.url)
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -19,7 +25,4 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
-

@@ -26,8 +26,8 @@ class TokenManager {
     static let sharedManager = TokenManager()
     
     private init() {
-        self.encryptor = RNCryptor.Encryptor(password: serviceName)
-        self.decryptor = RNCryptor.Decryptor(password: serviceName)
+        self.encryptor = RNCryptor.Encryptor(password: self.serviceName)
+        self.decryptor = RNCryptor.Decryptor(password: self.serviceName)
         self.keys = self.defaults.array(forKey: storedKeysKey) as? [String] ?? [String]()
     }
     
@@ -73,7 +73,7 @@ class TokenManager {
     }
     
     private func deleteKey(_ key: String) {
-        if let index = keys.index(of: key) {
+        if let index = keys.firstIndex(of: key) {
             keys.remove(at: index)
             saveKeys()
         }
