@@ -93,7 +93,7 @@ debugg.it requires an API where it can send image files and (optionally) audio f
     This configuration uses your backend to send image and audio files. Data is sent via POST call on given endpoint with following parameter:
     ```json
     {
-        'data': 'base64String'
+        "data": "base64String"
     }
     ```
     * `DebuggIt.getInstance().initDefaultStorage(url: "baseUrl", imagePath: "imagePath", audioPath: "audioPath")`
