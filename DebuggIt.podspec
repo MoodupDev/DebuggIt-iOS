@@ -197,4 +197,11 @@ DESCRIPTION_CONTENT
 
   s.ios.deployment_target = '11.0'
   s.swift_version = '5.0'
+
+  s.dependency 'Alamofire', '~> 5.0.0-beta.7'
+  s.dependency 'SwiftyJSON', '~> 5.0.0'
+  s.dependency 'IQKeyboardManagerSwift', '~> 6.3.0'
+  s.dependency 'KMPlaceholderTextView', '~> 1.4.0'
+  s.dependency 'RNCryptor', '~> 5.1.0'
+  s.dependency 'ReachabilitySwift', '~> 4.3.1'
 end
