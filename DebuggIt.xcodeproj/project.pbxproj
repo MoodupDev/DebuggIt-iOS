@@ -102,6 +102,8 @@
 		2EE1296A22FADCA600EBDDAC /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 2EE1296922FADCA600EBDDAC /* LICENSE */; };
 		2EE1297522FAFCD300EBDDAC /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EE1297322FAFCD300EBDDAC /* AWSS3.framework */; };
 		2EE1297622FAFCD300EBDDAC /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EE1297422FAFCD300EBDDAC /* AWSCore.framework */; };
+		2EE1297922FB020700EBDDAC /* AWSCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2EE1297422FAFCD300EBDDAC /* AWSCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2EE1297A22FB020700EBDDAC /* AWSS3.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2EE1297322FAFCD300EBDDAC /* AWSS3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2EEE915922E1C1F000314384 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EEE915822E1C1EF00314384 /* WebKit.framework */; };
 		2EF71CA922F4729F00EC2EE1 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF71CA822F4729F00EC2EE1 /* SecondViewController.swift */; };
 		471C3CFE9F90C58D8425001A /* Pods_DebuggItTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9D8B4DCFF853936EA2294DC /* Pods_DebuggItTests.framework */; };
@@ -151,6 +153,17 @@
 				21FD5CD11E25449D004C50EC /* DebuggIt.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2EE1297822FB01F100EBDDAC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2EE1297922FB020700EBDDAC /* AWSCore.framework in CopyFiles */,
+				2EE1297A22FB020700EBDDAC /* AWSS3.framework in CopyFiles */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -697,6 +710,8 @@
 				2101FA2D1E251ED000A7E979 /* Frameworks */,
 				2101FA2E1E251ED000A7E979 /* Headers */,
 				2101FA2F1E251ED000A7E979 /* Resources */,
+				2EE1297822FB01F100EBDDAC /* CopyFiles */,
+				2EE1297B22FB022A00EBDDAC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -905,6 +920,23 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		2EE1297B22FB022A00EBDDAC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework/strip-frameworks.sh\"\n";
 		};
 		74B7513821EDEEFCEE8ECF95 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

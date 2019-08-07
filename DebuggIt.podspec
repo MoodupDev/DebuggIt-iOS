@@ -193,7 +193,7 @@ DESCRIPTION_CONTENT
   s.author          = { "MoodUp.team" => "biuro@mooduplabs.com" }
   s.source          = { :http => "https://github.com/MoodupDev/DebuggIt-iOS/releases/download/#{s.version}/DebuggIt-#{s.version}.zip" }
   s.vendored_frameworks = "DebuggIt.framework"
-  s.framework = "UIKit", "WebKit", "AWSCore", "AWSS3"
+  s.framework = "UIKit", "WebKit"
 
   s.ios.deployment_target = '11.0'
   s.swift_version = '5.0'
