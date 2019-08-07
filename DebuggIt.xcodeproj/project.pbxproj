@@ -101,6 +101,7 @@
 		2E66EF1622E9AEAD00425DE9 /* ApiClientDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E66EF1522E9AEAD00425DE9 /* ApiClientDelegate.swift */; };
 		2EB41C4522F806160090154E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB41C4422F806160090154E /* BaseViewController.swift */; };
 		2EE1295F22FABA0600EBDDAC /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EEE915822E1C1EF00314384 /* WebKit.framework */; };
+		2EE1296A22FADCA600EBDDAC /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 2EE1296922FADCA600EBDDAC /* LICENSE */; };
 		2EEE915922E1C1F000314384 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EEE915822E1C1EF00314384 /* WebKit.framework */; };
 		2EF71CA922F4729F00EC2EE1 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF71CA822F4729F00EC2EE1 /* SecondViewController.swift */; };
 		32FF7D199722C049F1A46367 /* Pods_DebuggItDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6852C03E47FF6BC054594596 /* Pods_DebuggItDemo.framework */; };
@@ -254,6 +255,7 @@
 		2E1FADBB22E7102D00F988F7 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		2E66EF1522E9AEAD00425DE9 /* ApiClientDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClientDelegate.swift; sourceTree = "<group>"; };
 		2EB41C4422F806160090154E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		2EE1296922FADCA600EBDDAC /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
 		2EEE915822E1C1EF00314384 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		2EF71CA822F4729F00EC2EE1 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		30812007056C70373B103EBB /* Pods-DebuggIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebuggIt.release.xcconfig"; path = "Target Support Files/Pods-DebuggIt/Pods-DebuggIt.release.xcconfig"; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 				213313C91E25220E00777356 /* Helpers */,
 				213313B61E25215900777356 /* Models */,
 				213313A81E25211A00777356 /* API */,
+				2EE1296922FADCA600EBDDAC /* LICENSE */,
 				213313481E251FBA00777356 /* DebuggIt.swift */,
 				2133140A1E2522EF00777356 /* Supporting Files */,
 				21E83D201E25281500D24FBF /* Assets.xcassets */,
@@ -798,6 +801,7 @@
 				2133142D1E25247C00777356 /* BugDescriptionPage2ViewController.xib in Resources */,
 				213313C81E2521F800777356 /* WebViewController.xib in Resources */,
 				213314201E25245000777356 /* AudioCollectionViewCell.xib in Resources */,
+				2EE1296A22FADCA600EBDDAC /* LICENSE in Resources */,
 				259616C11F038E84009A2631 /* Montserrat-Regular.ttf in Resources */,
 				213314221E25245000777356 /* NewScreenshotCollectionViewCell.xib in Resources */,
 				259616BF1F038E84009A2631 /* Montserrat-Medium.ttf in Resources */,

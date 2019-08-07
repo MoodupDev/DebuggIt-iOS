@@ -16,7 +16,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift (~> 6.3.0)
   - KMPlaceholderTextView (~> 1.4.0)
   - ReachabilitySwift (~> 4.3.1)
-  - RNCryptor (~> 5.0)
+  - RNCryptor (~> 5.1.0)
   - SwiftyJSON (~> 5.0.0)
 
 SPEC REPOS:
@@ -40,6 +40,6 @@ SPEC CHECKSUMS:
   RNCryptor: a369134686cd2ad391323cc856b62e591193ba79
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: f93fb17125db6d0efa8afdba630652c45b1f24cf
+PODFILE CHECKSUM: d4e8adb366ac4988ef196f05e456392fbebe3eb3
 
 COCOAPODS: 1.7.5

@@ -192,7 +192,7 @@ DESCRIPTION_CONTENT
   s.license         = { :type => 'Apache License, Version 2.0', :file => 'LICENSE' }
   s.author          = { "MoodUp.team" => "biuro@mooduplabs.com" }
   s.source          = { http: "https://github.com/MoodupDev/DebuggIt-iOS/releases/download/#{s.version}/DebuggIt-#{s.version}.zip" }
-  s.preserve_paths = '*'
+  s.ios.vendored_frameworks = 'DebuggIt.framework'
 
   s.ios.deployment_target = '11.0'
   s.swift_version = '5.0'
