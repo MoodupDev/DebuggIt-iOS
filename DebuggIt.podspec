@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "DebuggIt"
-  s.version      = "1.0.4"
+  s.version      = "1.0.5"
   s.summary      = "Tool that will help QA and clients report bugs easily directly from the device"
   s.description  = <<-DESCRIPTION_CONTENT
 # debugg.it
@@ -193,7 +193,7 @@ DESCRIPTION_CONTENT
   s.author          = { "MoodUp.team" => "biuro@mooduplabs.com" }
   s.source          = { :http => "https://github.com/MoodupDev/DebuggIt-iOS/releases/download/#{s.version}/DebuggIt-#{s.version}.zip" }
   s.vendored_frameworks = "DebuggIt.framework"
-  s.framework = "UIKit", "WebKit"
+  s.framework = "UIKit", "WebKit", "AWSCore", "AWSS3"
 
   s.ios.deployment_target = '11.0'
   s.swift_version = '5.0'
