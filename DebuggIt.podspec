@@ -206,13 +206,14 @@ DESCRIPTION_CONTENT
 
   s.homepage        = "http://debugg.it"
   s.license         = { :type => 'Apache License, Version 2.0', :file => 'LICENSE' }
-  s.author          = { "MoodUp.team" => "info@debugg.it" }
+  s.author          = { "MoodUp.team" => "biuro@mooduplabs.com" }
   s.source          = { :git => "https://github.com/MoodupDev/DebuggIt-iOS.git", :tag => s.version }
   s.source_files    = 'DebuggIt/**/*.swift'
   s.resources       = 'DebuggIt/**/*.{png,jpeg,jpg,ttf,storyboard,xib,xcassets,strings}'
 
   s.ios.deployment_target = '11.0'
   s.swift_version = '5.0'
+  s.framework = "UIKit,WebKit"
 
   s.dependency 'Alamofire', "~> 5.0.0-beta.7"
   s.dependency 'SwiftyJSON', "~> 5.0.0"

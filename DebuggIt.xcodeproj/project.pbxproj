@@ -100,6 +100,7 @@
 		2E1FADBC22E7102D00F988F7 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1FADBB22E7102D00F988F7 /* ApiClient.swift */; };
 		2E66EF1622E9AEAD00425DE9 /* ApiClientDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E66EF1522E9AEAD00425DE9 /* ApiClientDelegate.swift */; };
 		2EB41C4522F806160090154E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB41C4422F806160090154E /* BaseViewController.swift */; };
+		2EE1295F22FABA0600EBDDAC /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EEE915822E1C1EF00314384 /* WebKit.framework */; };
 		2EEE915922E1C1F000314384 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EEE915822E1C1EF00314384 /* WebKit.framework */; };
 		2EF71CA922F4729F00EC2EE1 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF71CA822F4729F00EC2EE1 /* SecondViewController.swift */; };
 		32FF7D199722C049F1A46367 /* Pods_DebuggItDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6852C03E47FF6BC054594596 /* Pods_DebuggItDemo.framework */; };
@@ -291,6 +292,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EE1295F22FABA0600EBDDAC /* WebKit.framework in Frameworks */,
 				250DE940BF29E9979A39832A /* Pods_DebuggIt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
