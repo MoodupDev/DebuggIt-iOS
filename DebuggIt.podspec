@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "DebuggIt"
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
   s.summary      = "Tool that will help QA and clients report bugs easily directly from the device"
 
 
@@ -53,6 +53,7 @@ To run the example project, open `DebuggIt.xcworkspace`, choose `DebuggItDemo` s
 
 debugg.it is available through CocoaPods. To install it, add the following to your Podfile and run `pod install`:
 ```ruby
+use_modular_headers!
 pod 'DebuggIt'
 ```
 <a name="configure"/>
@@ -205,13 +206,14 @@ DESCRIPTION_CONTENT
 
   s.homepage        = "http://debugg.it"
   s.license         = { :type => 'Apache License, Version 2.0', :file => 'LICENSE' }
-  s.author          = { "MoodUp.team" => "info@debugg.it" }
+  s.author          = { "MoodUp.team" => "biuro@mooduplabs.com" }
   s.source          = { :git => "https://github.com/MoodupDev/DebuggIt-iOS.git", :tag => s.version }
   s.source_files    = 'DebuggIt/**/*.swift'
-  s.resources       = 'DebuggIt/**/*.{png,jpeg,jpg,ttf,storyboard,xib,xcassets}'
+  s.resources       = 'DebuggIt/**/*.{png,jpeg,jpg,ttf,storyboard,xib,xcassets,strings}'
 
   s.ios.deployment_target = '11.0'
   s.swift_version = '5.0'
+  s.framework = "UIKit,WebKit"
 
   s.dependency 'Alamofire', "~> 5.0.0-beta.7"
   s.dependency 'SwiftyJSON', "~> 5.0.0"
