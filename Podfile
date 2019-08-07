@@ -10,8 +10,6 @@ def shared_pods
   pod 'KMPlaceholderTextView', '~> 1.4.0'
   pod 'RNCryptor', '~> 5.1.0'
   pod 'ReachabilitySwift', '~> 4.3.1'
-  pod 'AWSCore', '~> 2.10.2'
-  pod 'AWSS3', '~> 2.10.2'
 end
 
 target 'DebuggIt' do
