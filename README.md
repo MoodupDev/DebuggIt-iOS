@@ -37,6 +37,7 @@ To run the example project, open `DebuggIt.xcworkspace`, choose `DebuggItDemo` s
 
 debugg.it is available through CocoaPods. To install it, add the following to your Podfile and run `pod install`:
 ```ruby
+use_modular_headers!
 pod 'DebuggIt'
 ```
 <a name="configure"/>

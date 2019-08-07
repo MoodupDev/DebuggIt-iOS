@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "DebuggIt"
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
   s.summary      = "Tool that will help QA and clients report bugs easily directly from the device"
 
 
@@ -53,6 +53,7 @@ To run the example project, open `DebuggIt.xcworkspace`, choose `DebuggItDemo` s
 
 debugg.it is available through CocoaPods. To install it, add the following to your Podfile and run `pod install`:
 ```ruby
+use_modular_headers!
 pod 'DebuggIt'
 ```
 <a name="configure"/>
