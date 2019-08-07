@@ -213,7 +213,7 @@ DESCRIPTION_CONTENT
 
   s.ios.deployment_target = '11.0'
   s.swift_version = '5.0'
-  s.framework = "UIKit,WebKit"
+  s.framework = 'UIKit', 'WebKit'
 
   s.dependency 'Alamofire', "~> 5.0.0-beta.7"
   s.dependency 'SwiftyJSON', "~> 5.0.0"
