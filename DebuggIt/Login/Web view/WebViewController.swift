@@ -7,20 +7,19 @@
 //
 
 import UIKit
+import WebKit
 
 class WebViewController: UIViewController {
     
-    @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var loadIndicator: UIActivityIndicatorView!
     
     var url: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        webView.delegate = self
-        
-        self.webView.loadRequest(URLRequest(url: URL(string: url!)!))
+        webView.navigationDelegate = self
+        webView.load(URLRequest(url: URL(string: url!)!))
     }
     
     @objc func dismiss(_ sender: AnyObject?) {
@@ -30,15 +29,17 @@ class WebViewController: UIViewController {
     }
 }
 
-extension WebViewController : UIWebViewDelegate {
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
-        if isCallback(request.url) {
-            if let code = request.url?.queryParams()["code"] {
+extension WebViewController : WKNavigationDelegate {
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        if isCallback(navigationAction.request.url) {
+            if let code = navigationAction.request.url?.queryParams()["code"] {
                 exchangeCodeForAccessToken(code)
             }
-            return false
+            decisionHandler(.cancel)
+        } else {
+            decisionHandler(.allow)
         }
-        return true
     }
     
     func isCallback(_ url: URL?) -> Bool {
@@ -60,11 +61,15 @@ extension WebViewController : UIWebViewDelegate {
             }, errorBlock: nil)
     }
     
-    func webViewDidStartLoad(_ webView: UIWebView) {
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         loadIndicator.startAnimating()
     }
     
-    func webViewDidFinishLoad(_ webView: UIWebView) {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        loadIndicator.stopAnimating()
+    }
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         loadIndicator.stopAnimating()
     }
 }

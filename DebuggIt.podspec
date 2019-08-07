@@ -208,7 +208,7 @@ DESCRIPTION_CONTENT
   s.author          = { "MoodUp.team" => "info@debugg.it" }
   s.source          = { :git => "https://github.com/MoodupDev/DebuggIt-iOS.git", :tag => s.version }
   s.source_files    = 'DebuggIt/**/*.swift'
-  s.resources       = 'DebuggIt/**/*.{png,jpeg,jpg,ttf,storyboard,xib,xcassets}'
+  s.resources       = 'DebuggIt/**/*.{png,jpeg,jpg,ttf,storyboard,xib,xcassets,strings}'
 
   s.ios.deployment_target = '11.0'
   s.swift_version = '5.0'
